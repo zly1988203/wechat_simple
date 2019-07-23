@@ -1,0 +1,357 @@
+@charset "utf-8";
+@import '../base/func_common.less';
+
+body {
+    background: #F3F4F5;
+}
+
+/* 搜索 */
+.search-form {
+    position: relative;
+    background: #FFFFFF;
+    box-shadow: 0 0 0.2rem 0 rgba(227,227,227,0.40);
+    .search-station {
+        display: flex;
+        align-items: center;
+        .sui-list {
+            flex: 1;
+            .icon-Line_icon{
+              color: #D3D2DB;
+              position: absolute;
+              margin-top: 0.72rem;
+              margin-left: 0.18rem;
+              font-size: 24px;
+            }
+            li {
+                padding: 0.362rem 0 0.35rem;
+                background: none;
+                display:flex;
+
+                span{
+                    align-self: flex-end;
+                    font-size: 12px;
+                }
+
+              .icon-start_icon{
+                color: #6392FE;
+              }
+
+                .control {
+                    padding-left: 0.37rem;
+                    position: relative;
+                    width:80% ;
+                    input {
+                        display: block;
+                        width: 100%;
+                        border: 0;
+                        font-family: PingFangSC-Regular;
+                        font-size: 0.28rem;
+                        //color: #CCCCCC;
+                        letter-spacing: 0;
+                    }
+                  /* Chrome/Opera/Safari */
+                   input::-webkit-input-placeholder {
+                    color: #CCCCCC;
+                  }
+                   input::-moz-placeholder { /* Firefox 19+ */
+                    color: #CCCCCC;
+                  }
+                   input:-ms-input-placeholder { /* IE 10+ */
+                    color: #CCCCCC;
+                  }
+                   input:-moz-placeholder { /* Firefox 18- */
+                    color: #CCCCCC;
+                  }
+                }
+            }
+
+            .bottom-line {
+                width: 6rem;
+                border-bottom: 1px solid #f1f1f1;
+                margin-left: 1.25rem;
+            }
+        }
+    }
+
+}
+
+.hot-line-list header,.scheduling header {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    border-bottom: 1px solid #f2f2f2;
+    height: 0.8rem;
+}
+
+.hot-line-list header .border-weight,.scheduling header .border-weight {
+    border-left: .06rem solid #6392fe;
+    height: .24rem;
+    align-self: center;
+}
+
+.hot-line-list header .title,.scheduling header .title {
+    font-family: PingFangSC-Regular;
+    font-size: .28rem;
+    color: #BBB;
+    letter-spacing: 0;
+    margin: .2rem;
+    width: 90%
+}
+
+.scheduling header .nav-right {
+    align-self: center;
+    vertical-align: middle;
+    color: #CCCCCC;
+    font-size: 12px;
+    margin-right: 0.2rem;
+}
+
+.hot-line-list {
+  margin: .2rem auto;
+  width: 7.1rem;
+  position: relative;
+  background-color: #fff;
+  border-radius: .06rem;
+  box-shadow: 0 0 0.2rem 0 rgba(227,227,227,0.40);
+}
+
+.hot-line-list .line-list {
+  width: 100%;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: inline-flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  text-align: center
+}
+
+.hot-line-list .line-list div {
+  width: 50%;
+  padding: .2rem;
+  position: relative;
+  font-family: PingFangSC-Regular;
+  font-size: .24rem;
+  color: #666;
+  letter-spacing: 0;
+  text-align: center;
+  border-bottom: 1px solid #f2f2f2;
+  border-right: 0.01rem solid #f2f2f2;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+}
+
+.hot-line-list .line-list .icon-Special_price_icon {
+  display: block;
+  position: absolute;
+  top: -0.24rem;
+  left: 0;
+  color:#fe6666 ;
+  font-size: 24px;
+}
+
+.hot-line-list .line-list div .discount {
+  color: #000;
+  text-decoration: line-through
+}
+
+.scheduling {
+    width: 7.1rem;
+    height: 2.11rem;
+    margin: .2rem auto;
+    background: #fff;
+    box-shadow: 0 0 .20rem 0 rgba(227,227,227,0.40);
+    border-radius: .06rem
+}
+
+.scheduling .content {
+    display: -webkit-inline-flex;
+    display: inline-flex;
+    margin-top: .12rem;
+    width: 100%;
+}
+
+.scheduling .content .addr {
+    font-size: .24rem;
+    color: #666;
+    font-family: PingFangSC-Regular;
+    letter-spacing: 0;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 1.86rem
+}
+
+.scheduling .content .area {
+    font-size: .2rem;
+    color: #aaa
+}
+
+.scheduling .content .startAdrs {
+    margin-left: .39rem
+}
+
+.scheduling .content .center-line {
+    margin: 0 .6rem
+}
+
+.scheduling .content .center-line .time {
+    font-family: PingFangSC-Regular;
+    font-size: .18rem;
+    color: #6392fe;
+    letter-spacing: 0;
+    text-align: center
+}
+
+.scheduling .content .center-line .line {
+    width: 1.42rem;
+    height: 0.08rem;
+    background: url(../../images/commutingBus/index/line.png) no-repeat 100%;
+    background-size: 100% 100%;
+}
+
+.scheduling .rolling ul {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    margin-top: .25rem;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center
+}
+
+.scheduling .rolling ul li {
+    width: .12rem;
+    height: .12rem;
+    margin: 0 .06rem;
+    border-radius: 100%;
+    background: #eee
+}
+
+.scheduling .rolling ul .active {
+    background: #6392fe
+}
+.scheduling .swiper-container{
+    height: 1.29rem;
+    width: 100%;
+    cursor:pointer;
+}
+.scheduling .swiper-container .swiper-pagination{
+    bottom: 0;
+    height: 0.4rem;
+}
+
+.scheduling .swiper-container  .swiper-pagination-bullet{
+    width: 0.1rem;
+    height: 0.1rem;
+    border-radius: 100%;
+    margin: 1.3rem 0.05rem;
+}
+
+.scheduling .swiper-pagination-bullet-active{
+    background: #6392FE;
+}
+
+.scheduling .swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet{
+    margin: 0.2rem 0.05rem;
+}
+
+
+.near-order {
+  margin: .2rem auto;
+  width: 7.1rem;
+  position: relative;
+  background-color: #fff;
+  border-radius: .06rem;
+  box-shadow: 0 0 0.2rem 0 rgba(227,227,227,0.40);
+}
+
+.near-order .content {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: inline-flex;
+  margin: .23rem .2rem;
+  align-items: center;
+}
+
+.near-order .content .location {
+  font-size: 12px;
+  color: #cccccc;
+}
+
+.near-order .content .addr {
+  font-size: .24rem;
+  color: #666;
+  font-family: PingFangSC-Regular;
+  letter-spacing: 0;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 1.88rem
+}
+
+.near-order .content .area {
+  font-size: .2rem;
+  color: #aaa
+}
+
+.near-order .content .startAdrs {
+  margin-left: .2rem
+}
+
+.near-order .content .center-line {
+  margin-left: .2rem;
+  margin-right: .2rem
+}
+
+.near-order .content .center-line .arrow {
+  color: #c3c3c3;
+  font-size: .45rem;
+}
+
+.near-order .content .btn-list {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: inline-flex;
+  margin-left: .1rem
+}
+
+.near-order .content .btn-list div {
+  background: #fff;
+  box-shadow: 0 0 .2rem 0 hsla(0,0%,89%,.4);
+  border-radius: .06rem;
+  font-family: PingFangSC-Regular;
+  font-size: .2rem;
+  color: #aaa;
+  letter-spacing: 0;
+  text-align: center;
+  margin-left: .1rem;
+  width: .7rem;
+  line-height: .4rem;
+}
+
+.near-order .content .btn-list div:active {
+  background: #6392fe;
+  box-shadow: 0 0 .2rem 0 rgba(61,59,238,.3);
+  color: #fff
+}
+
+.near-order .line {
+  width: 90%;
+  border-bottom: 1px solid #f2f2f2;
+  float: right
+}
+
+
+.banner{
+    margin:0.2rem auto;
+    width: 7.1rem;
+}
+

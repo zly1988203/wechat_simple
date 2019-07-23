@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>电子发票</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/coach/e-invoice.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<header>
+    开具电子发票
+</header>
+<div class="content">
+    <div class="item">
+        <span class="point">*</span>
+        <span class="title">车票号</span>
+        <div class="inp"><input id='ticketNo' type="text"></div>
+    </div>
+    <div class="item">
+        <span class="point">*</span>
+        <span class="title">手机号</span>
+        <div class="inp"><input id="collPhone" type="tel" maxlength="11"></div>
+    </div>
+</div>
+
+<div class="warm-prompt">
+    <h6>温馨提示：</h6>
+    <p>1.车票号、手机号请在订单详情中查看</p>
+    <p>2.手机号请用购票时填写的联系人手机号</p>
+</div>
+
+    <div class="btn-next">
+        下一步
+    </div>
+</body>
+<script src="../../dist/javascripts/zepto.min.js"></script>
+<script src="../../dist/javascripts/simpleui.min.js"></script>
+<script src="../../dist/javascripts/vectors.min.js"></script>
+<script>
+
+    $('.btn-next').on('click',function () {
+        var collPhone = $('#collPhone').val();
+        var ticketNo = $('#ticketNo').val();
+        if(!(/^1\d{10}$/.test(collPhone))){
+            $.toast('请填写正确的手机号');
+            return false;
+        }
+
+
+
+    })
+</script>
+</html>

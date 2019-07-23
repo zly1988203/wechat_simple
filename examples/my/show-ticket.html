@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>中交出行</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/my/e-ticket.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+    <div class="ticket-detail">
+        <div class="head">
+            <div class="tips">还剩  <span>22</span> 小时 <span>34</span> 分 上车</div>
+            <div class="checkanimat"></div>
+            <div class="info">
+                <div class="detail">
+                    <div class="title">
+                        <h4>粤B12330</h4>
+                        <span>7月24日 8:36</span>
+                    </div>
+                    <div class="address">深圳 - 广州</div>
+                </div>
+                <div class="code">
+                    <div class="station">
+                        <div class="station-item start">
+                            <h4>深圳湾创业投资大厦</h4>
+                        </div>
+                        <div class="station-item end">
+                            <h4>深圳湾创业投资大厦</h4>
+                        </div>
+                    </div>
+                    <div class="number"><span>验票码：</span>1009</div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom">
+            <i></i>
+            <h4>欢迎乘车</h4>
+            <p>上车时请出示此页面给司机以供验票</p>
+        </div>
+        <div class="btn-group">
+            <div class="btn primary">立刻评价</div>
+        </div>
+    </div>
+
+<script src="../../dist/javascripts/zepto.min.js"></script>
+<script src="../../dist/javascripts/simpleui.min.js"></script>
+<script src="../../dist/javascripts/vectors.min.js"></script>
+<script src="../../dist/javascripts/flightchart.min.js"></script>
+<script>
+    $(function() {
+        //动态电子票
+        $('.checkanimat').flightChart({
+            flights: ['../../dist/images/bus/check-animat/01.png', '../../dist/images/bus/check-animat/02.png', '../../dist/images/bus/check-animat/03.png', '../../dist/images/bus/check-animat/04.png', '../../dist/images/bus/check-animat/05.png', '../../dist/images/bus/check-animat/06.png', '../../dist/images/bus/check-animat/07.png', '../../dist/images/bus/check-animat/08.png'],
+            flightSpeed: 3,
+            text: '暂无文字'
+        });
+
+        // 退票
+        $('#refund').on('click', function () {
+            $.dialog({
+                title: '您确定要退票吗？',
+                text: '将收取手续费25元',
+                buttons: [{
+                    text: '再想想',
+                    onClick: function() {
+                        console.log('btn 1');
+                    }
+                }, {
+                    text: '确定',
+                    onClick: function() {
+                        console.log('btn 2');
+                    }
+                }]
+            });
+        });
+    });
+</script>
+</body>
+</html>

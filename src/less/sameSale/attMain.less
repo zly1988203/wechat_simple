@@ -1,0 +1,1126 @@
+body,html{
+  background: #F3F4F5;
+}
+
+.main-container{
+  padding-bottom: 1.66rem;
+
+  .att-banner{
+    width: 100%;
+    .swiper-container {
+      width: 100%;
+      margin: 0 auto;
+      .content {
+        text-align: center;
+        background: #fff;
+        -webkit-transition: box-shadow .6s;
+        transition: box-shadow .6s;
+        .thumb {
+          height: 3.75rem;
+          img{
+            width: 100%;
+            height: 3.75rem;
+          }
+        }
+        .att-title{
+          opacity: 0.6;
+          font-family: PingFangSC-Regular;
+          font-size: 0.32rem;
+          color: #FFFFFF;
+          letter-spacing: 0;
+          text-align: right;
+          background: rgba(0,0,0,0.40);
+          height: 0.65rem;
+          line-height: 0.65rem;
+          margin-top: -0.6rem;
+          padding-right: 0.2rem;
+        }
+      }
+
+      .swiper-pagination-bullets{
+        bottom:0.6rem;
+      }
+    }
+  }
+
+  .attractions-container{
+    background: #FFFFFF;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.05);
+    .att-header{
+      display: flex;
+      margin: 0.2rem;
+      height: 0.89rem;
+      line-height: 0.89rem;
+      .att-title{
+        flex: 1;
+        font-family: PingFangSC-Regular;
+        font-size: 0.32rem;
+        color: #4A4A4A;
+        span{
+          font-family: PingFangSC-Regular;
+          font-size: 0.24rem;
+          color: #999999;
+        }
+      }
+      .att-total-price{
+        font-family: PingFangSC-Regular;
+        font-size: 0.42rem;
+        color: #FE6666;
+        text-align: right;
+      }
+    }
+    .att-body{
+      .att-item{
+        border-top: 1px solid #f1f1f1;
+        border-bottom: 1px solid #f1f1f1;
+        display: flex;
+        .item-banner{
+          margin: 0.2rem;
+
+          img{
+            width: 1.4rem;
+            height: 1.4rem;
+            border-radius: 0.04rem;
+          }
+        }
+        .item-content{
+          margin: 0.2rem;
+          width: 100%;
+          .item-name-price{
+            display: flex;
+            .item-name{
+              flex: 1;
+              font-family: PingFangSC-Regular;
+              font-size: 0.32rem;
+              color: #333333;
+            }
+            .item-sell-price{
+              font-family: PingFangSC-Regular;
+              font-size: 0.24rem;
+              color: #FE6666;
+              text-align: right;
+              em{
+                font-size: 0.42rem;
+              }
+            }
+          }
+
+          .item-instructions{
+            font-family: PingFangSC-Regular;
+            font-size: 0.2rem;
+            color: #999999;
+          }
+          .item-others{
+            display: flex;
+            margin-top: 0.2rem;
+            .item-others-left{
+              flex: 1;
+              display: flex;
+              .item-tag{
+                font-family: PingFangSC-Regular;
+                font-size: 0.2rem;
+                color: #6392FE;
+                text-align: center;
+
+                background: rgba(99,146,254,0.30);
+                border: 1px solid #6392FE;
+                border-radius: 0.1rem;
+                line-height: 0.4rem;
+              }
+              .item-readme{
+                margin-left: 0.1rem;
+                text-align: center;
+                font-family: PingFangSC-Regular;
+                font-size: 0.24rem;
+                color: #999999;
+                span{
+                  height: 0.4rem;
+                  margin-right: 0.1rem;
+                  border: 1px solid #c3c3c3;
+                }
+                i{
+                  display: inline-block;
+                  width: 0.09rem;
+                  height: 0.18rem;
+                  background: url(../../images/bus/icon-right-black.png) center no-repeat;
+                  background-size: 100% 100%;
+                  margin-left: 0.1rem;
+                }
+              }
+            }
+            .item-others-right{
+              .btn-buy{
+                width: 0.7rem;
+                height: 0.4rem;
+                line-height: 0.4rem;
+                background: #6392FE;
+                box-shadow: 0 0 0.2rem 0 rgba(61,59,238,0.30);
+                border-radius: 0.06rem;
+
+                font-family: PingFangSC-Regular;
+                font-size: 0.2rem;
+                color: #FFFFFF;
+                letter-spacing: 0;
+                text-align: center;
+              }
+            }
+
+          }
+        }
+
+      }
+      .active{
+        width: 0.8rem;
+        height: 0.8rem;
+        right: 0;
+        position: absolute;
+        background: url("../../images/bus/icon-buy.png") 50% no-repeat;
+        background-size: 100%;
+      }
+      .item-person-panle{
+        display: flex;
+        .item-person-info{
+          font-family: PingFangSC-Regular;
+          font-size: 0.24rem;
+          color: #999999;
+          //display: flex;
+          margin: 0.1rem;
+          margin-right: 0.2rem;
+          flex:auto;
+          padding-left: 1.8rem;
+          .person-info{
+            flex: 1;
+            .person{
+              color:  #333333
+            }
+            .person-price{
+              color:  #FE6666;
+            }
+          }
+        }
+        .person-btn{
+          margin: 0.2rem;
+          .btn-edit{
+            width: 0.7rem;
+            height: 0.4rem;
+            line-height: 0.4rem;
+            background: #6392FE;
+            box-shadow: 0 0 0.2rem 0 rgba(61,59,238,0.30);
+            border-radius: 0.06rem;
+
+            font-family: PingFangSC-Regular;
+            font-size: 0.2rem;
+            color: #FFFFFF;
+            letter-spacing: 0;
+            text-align: center;
+          }
+        }
+      }
+
+      .load-more{
+        font-family: PingFangSC-Regular;
+        font-size: 0.24rem;
+        color: #6392FE;
+        text-align: center;
+        height: 0.6rem;
+        line-height: 0.6rem;
+      }
+    }
+  }
+
+
+  .attraction-transportation-content{
+    background: #FFFFFF;
+    box-shadow: 0 0.02rem 0.02rem 0 rgba(0,0,0,0.05);
+    margin-top:  0.22rem;
+    .header{
+      padding: 0.22rem;
+      font-size: 0.32rem;
+      color: #4A4A4A;
+
+    }
+    .trans-body{
+      padding: 0.22rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .station{
+        .station-item{
+          height: 0.84rem;
+          input{
+            background: #F6F6F6;
+            border-radius: 0.06rem;
+            border: none;
+            padding: 0 0.22rem;
+            display: block;
+            height:100%;
+            line-height: 0.84rem;
+            font-size: 0.28rem;
+            color: #333333;
+            width: 5rem;
+            &::placeholder{
+              color: #999999;
+            }
+          }
+
+          &:first-child:before{
+            background: transparent;
+            border: 1px solid #6392FE;
+          }
+          &:first-child:after{
+            border-left: 1px dashed #D3D2DB;
+            border-right: none;
+            left: .08rem;
+          }
+          &:last-child:before{
+            background: transparent;
+            border: 1px solid #333;
+          }
+        }
+      }
+
+      .pre-buy-btn{
+        background: #6392FE;
+        box-shadow: 0 0 0.2rem 0 rgba(61,59,238,0.30);
+        border-radius: 0.06rem;
+        padding:  0 0.2rem;
+        height: 0.4rem;
+        line-height: 0.4rem;
+        font-size: 0.24rem;
+        color: #FFFFFF;
+        letter-spacing: 0;
+        text-align: center;
+      }
+    }
+  }
+
+  .buy-bottom-content{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right:0;
+    background: #FFFFFF;
+    box-shadow: inset 0 1px 0 0 rgba(0,0,0,0.10);
+    height: 1.44rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 0.22rem;
+    font-size: 0.38rem;
+    color: #333333;
+
+    .all-total-price{
+      span{
+        color: #FE6666;
+      }
+    }
+    .to-pay-btn{
+      background: #6392FE;
+      border-radius: 0.5rem;
+      height: 1rem;
+      line-height: 1rem;
+      padding: 0 0.63rem;
+      color: #FFFFFF;
+      text-align: center;
+    }
+  }
+}
+
+
+#attOrderInfo{
+  background: #FFFFFF;
+  box-shadow: 0 0 10px 0 rgba(0,0,0,0.10);
+  height: 80%;
+  header{
+    height: 0.84rem;
+    background: #F1F1F1;
+    border-bottom: 1px solid #f1f1f1;
+    display: flex;
+    width: 100%;
+    .head-left{
+      flex: 1;
+      margin: 0.2rem;
+    }
+    .head-right{
+      margin: 0.2rem;
+    }
+    .btn-order-canle{
+      width: 0.7rem;
+      height: 0.4rem;
+      line-height: 0.4rem;
+      background: #FFFFFF;
+      box-shadow: 0 0 0.2rem 0 rgba(0,0,0,0.10);
+      border-radius: 0.06rem;
+
+      font-family: PingFangSC-Regular;
+      font-size: 0.2rem;
+      color: #999999;
+      letter-spacing: 0;
+      text-align: center;
+    }
+    .btn-order-ok{
+      width: 0.7rem;
+      height: 0.4rem;
+      line-height: 0.4rem;
+      background: #6392FE;
+      box-shadow: 0 0 0.2rem 0 rgba(61,59,238,0.30);
+      border-radius: 0.06rem;
+
+      font-family: PingFangSC-Regular;
+      font-size: 0.2rem;
+      color: #FFFFFF;
+      letter-spacing: 0;
+      text-align: center;
+    }
+  }
+  .order-content{
+    width: 100%;
+    .att-info{
+      border-bottom: 1px solid #f1f1f1;
+      .att-name{
+        margin: 0.2rem;
+        font-family: PingFangSC-Regular;
+        font-size: 0.32rem;
+        color: #333333;
+      }
+      .att-tag-readme{
+        display: flex;
+        margin: 0.2rem;
+        .tag-left{
+          flex: 1;
+          .att-tags{
+            width: 0.96rem;
+            height: 0.36rem;
+            background: rgba(99,146,254,0.30);
+            border: 1px solid #6392FE;
+            border-radius: 0.1rem;
+            font-family: PingFangSC-Regular;
+            font-size: 0.2rem;
+            color: #6392FE;
+            text-align: center;
+          }
+        }
+        .tag-right{
+          .att-readme{
+            font-family: PingFangSC-Regular;
+            font-size: 0.24rem;
+            color: #6392FE;
+            text-align: center;
+          }
+        }
+      }
+    }
+    .att-date{
+      width: 100%;
+      height: 1.25rem;
+      line-height: 1.25rem;
+      display: flex;
+      border-bottom: 1px solid #f1f1f1;
+      .date-title{
+        margin: 0 0.2rem;
+        flex: 1;
+        font-family: PingFangSC-Regular;
+        font-size: 0.32rem;
+        color: #4A4A4A;
+      }
+      .date-str{
+        margin: 0 0.2rem;
+        font-family: PingFangSC-Regular;
+        font-size: 0.32rem;
+        color: #9B9B9B;
+        text-align: right;
+        .date-val{
+
+        }
+        i{
+          display: inline-block;
+          width: 0.09rem;
+          height: 0.18rem;
+          background: url(../../images/bus/icon-right-black.png) center no-repeat;
+          background-size: 100% 100%;
+          margin-left: 0.1rem;
+        }
+      }
+    }
+  }
+
+  .person-panle{
+    margin-top: .22rem;
+    padding: 0 .22rem;
+    background: #fff;
+    box-shadow: 0 0.02rem 0.02rem 0 rgba(0,0,0,.05);
+    .content{
+      .person-item{
+        display: flex;
+        height: 1.25rem;
+        line-height: 1.25rem;
+        border-bottom: 1px solid #f1f1f1;
+        .item-type{
+          flex: 1;
+          font-family: PingFangSC-Regular;
+          font-size: 0.32rem;
+          color: #333333;
+        }
+        .item-number{
+          display: flex;
+          margin: auto;
+          .reduce-number{
+            width: 0.5rem;
+            height: 0.5rem;
+            background: url("../../images/bus/icon-reduce.png") no-repeat;
+            background-size: 100%;
+          }
+          .number-str{
+            width: 0.5rem;
+            height: 0.5rem;
+            border-radius: 0.5rem;
+            background: #6392FE;
+            box-shadow: 0 0.08rem 0.3rem 0 rgba(61,59,238,0.30);
+          }
+          .number-val{
+            font-family: PingFangSC-Regular;
+            font-size: 0.38rem;
+            color: #FFFFFF;
+            text-align: center;
+            margin-top: -0.4rem;
+          }
+          .add-number{
+            width: 0.5rem;
+            height: 0.5rem;
+            background: url("../../images/bus/icon-add.png") no-repeat;
+            background-size: 100%;
+          }
+        }
+      }
+
+    }
+
+    .person-type{
+      .head {
+        padding: .36rem 0 .37rem;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        border-bottom: 1px solid #e6e6e6;
+        h4 {
+          //flex: 1;
+          font-size: .32rem;
+          line-height: .45rem;
+          color: #333;
+          font-weight: 400;
+        }
+
+        .personPrice{
+          margin-left: 0.2rem;
+          .priceTitle{
+
+          }
+          .priceSell{
+            color: #fe6666;
+          }
+        }
+
+        .handle-plus {
+          -webkit-box-flex: 1;
+          -webkit-flex: 1;
+          flex: 1;
+          text-align: right;
+          -webkit-align-self: center;
+          align-self: center;
+        }
+      }
+      .item {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        position: relative;
+        padding: .22rem 0;
+        border-bottom: 1px solid #f1f1f1;
+
+        .handle-minus {
+          margin: 0 .4rem 0 0;
+          width: .5rem;
+          height: .5rem;
+          background: url(../../images/bus/icon-minus.png) no-repeat 50%;
+          background-size: 100% 100%;
+          white-space: nowrap;
+          word-break: keep-all;
+        }
+        .name {
+          font-size: .32rem;
+          line-height: .45rem;
+          color: #333;
+        }
+        .info {
+          -webkit-box-flex: 1;
+          -webkit-flex: 1;
+          flex: 1;
+          margin-left: .32rem;
+          p {
+            font-size: .32rem;
+            line-height: .43rem;
+            color: #333;
+            margin-top: .06rem;
+            .label {
+              margin-right: .22rem;
+            }
+          }
+        }
+
+
+      }
+      .icon-person-plus{
+        width: 0.5rem;
+        height: 0.5rem;
+        background: no-repeat center;
+        background-size: 100% 100%;
+        background-image: url("../../images/bus/icon-plus.png");
+        display: inline-block;
+      }
+    }
+
+    .title{
+      font-family: PingFangSC-Regular;
+      font-size: 0.24rem;
+      color: #333333;
+      .prompt{
+        font-family: PingFangSC-Regular;
+        font-size: 0.2rem;
+        color: #3F3F3F;
+        .p-red{
+          font-family: PingFangSC-Regular;
+          font-size: 0.2rem;
+          color: #FE6666;
+        }
+      }
+    }
+
+
+
+  }
+
+  .passenger {
+    margin-top: 0.22rem;
+    padding: 0 0.22rem;
+    background: #fff;
+    box-shadow: 0 0.02rem 0.02rem 0 rgba(0,0,0,0.05);
+
+    .head {
+      padding: 0.36rem 0 0.37rem;
+      display: flex;
+      align-items: center;
+
+      h4 {
+        flex: 1;
+        font-size: 0.32rem;
+        line-height: 0.45rem;
+        color: #333;
+        font-weight: normal;
+
+        span {
+          color: #9b9b9b;
+        }
+      }
+
+      .handle-plus {
+        flex: 1;
+        text-align: right;
+        align-self: center;
+
+        & > * {
+          display: inline-block;
+          vertical-align: middle;
+        }
+
+        i {
+          width: 0.5rem;
+          height: 0.5rem;
+          background: no-repeat center;
+          background-size: 100% 100%;
+
+          &.icon-minus {
+            background-image: url("../../images/bus/icon_less.png");
+          }
+
+          &.icon-plus {
+            background-image: url("../../images/bus/icon-plus.png");
+          }
+        }
+
+        .txt {
+          margin: 0 0.22rem;
+          font-size: 0.38rem;
+          color: #333;
+        }
+      }
+    }
+
+    .content {
+      .item {
+        display: flex;
+        align-items: center;
+        position: relative;
+        padding: 0.22rem 0;
+        border-bottom: 1px solid #F1F1F1;
+
+        &:last-child {
+          border-bottom: 0 none;
+        }
+
+        .handle-minus {
+          margin: 0 0.4rem 0 0;
+          width: 0.5rem;
+          height: 0.5rem;
+          background: url(../../images/bus/icon-minus.png) no-repeat center;
+          background-size: 100% 100%;
+          white-space: nowrap;
+          word-break: keep-all;
+        }
+
+        .name {
+          font-size: 0.32rem;
+          line-height: 0.45rem;
+          color: #333;
+        }
+
+        .info {
+          flex: 1;
+          margin-left: 0.32rem;
+
+          p {
+            font-size: 0.32rem;
+            line-height: 0.43rem;
+            color: #333;
+            margin-top: 0.06rem;
+
+            &:first-child {
+              margin-top: 0;
+            }
+
+            .label {
+              margin-right: 0.22rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .total-amount{
+    display: flex;
+    text-align: right;
+    font-family: PingFangSC-Regular;
+    font-size: 0.38rem;
+    height: 0.97rem;
+    line-height: 0.97rem;
+    background: #fff;
+    box-shadow: 0 0.02rem 0.02rem 0 rgba(0,0,0,.05);
+    padding: 0 .22rem;
+    .total-str{
+      color: #333333;
+      flex: 1;
+    }
+    .total-val{
+      color: #FE6666;
+    }
+  }
+
+  .icon-collect-plus{
+    width: 0.5rem;
+    height: 0.5rem;
+    background: no-repeat center;
+    background-size: 100% 100%;
+    background-image: url("../../images/bus/icon-plus.png");
+  }
+}
+
+//弹窗公共头部-关闭
+.sui-popup-container{
+  .popup-header{
+    background: #fff;
+    position: relative;
+    .header-tips{
+      padding: 0.2rem 0.22rem;
+      font-size: 0.32rem;
+      color: #333333;
+      text-align: center;
+    }
+    .close-popup{
+      width: 0.22rem;
+      height: 0.22rem;
+      background: url("../../images/sameSale/icon-close.png") center no-repeat;
+      background-size: 100% 100%;
+      position: absolute;
+      right: 0.22rem;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+    }
+  }
+  .popup-btn-bar{
+    background: #fff;
+    margin-top: 0.22rem;
+    height: 1rem;
+    padding: 0.22rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .confirm-btn{
+      height: 1rem;
+      line-height: 1rem;
+      padding: 0 1.33rem;
+      margin: 0 auto;
+      font-size: 0.38rem;
+      color: #FFFFFF;
+      text-align: center;
+      background: #6392FE;
+      border-radius: 1rem;
+    }
+  }
+}
+
+//乘车站点选择
+.station-list-popup{
+  .popup-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.22rem;
+    .header-tips{
+      font-size: 0.28rem;
+      color: #6392FE;
+    }
+    .close-popup{
+      width: 0.22rem;
+      height: 0.22rem;
+      background: url("../../images/sameSale/icon-close.png") center no-repeat;
+      background-size: 100% 100%;
+    }
+  }
+  .station-list{
+    padding-bottom: 1.66rem;
+    ul{
+      li{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.4rem 0.22rem;
+        font-size: 0.32rem;
+        color: #333333;
+        .station-name{
+          max-width: 80%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        .station-checkbox{
+          width: 0.36rem;
+          height: 0.36rem;
+          border-radius: 100%;
+          border: 1px solid #ddd;
+        }
+      }
+
+      .active{
+        .station-checkbox{
+          border: 1px solid #6392FE;
+          position: relative;
+          &:before{
+            content: '';
+            display: block;
+            width: 0.24rem;
+            height: 0.24rem;
+            background: #6392FE;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            border-radius: 100%;
+            box-shadow: 0 0 0.05rem 0 rgba(61,59,238,0.30);
+          }
+        }
+      }
+    }
+  }
+
+  .popup-btn-bar{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1rem;
+    padding: 0.22rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .confirm-btn{
+      height: 1rem;
+      line-height: 1rem;
+      padding: 0 1.33rem;
+      margin: 0 auto;
+      font-size: 0.38rem;
+      color: #FFFFFF;
+      text-align: center;
+      background: #6392FE;
+      border-radius: 1rem;
+    }
+  }
+}
+
+//乘车说明
+.riding-tips-popup{
+  z-index: 8001;
+  .riding-content{
+    padding: 0.44rem 0.22rem 0.22rem;
+    font-size: 0.28rem;
+    color: #333333;
+    img{
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+  }
+}
+
+//景区门票
+.scenic-ticket-popup{
+  max-height: 80%;
+  .sui-popup-modal{
+    background: #F3F4F5;
+  }
+  .popup-content{
+    .station-line{
+      background: #fff;
+      font-size: 0.32rem;
+      color: #333333;
+      padding: 0.22rem;
+      span{
+        display: inline-block;
+        width: 0.24rem;
+        height: 0.2rem;
+        background: url("../../images/sameSale/icon-right.png") center no-repeat;
+        background-size: 100% 100%;
+        margin: 0 0.05rem;
+      }
+    }
+    .station-spec{
+      background: #fff;
+      display: flex;
+      align-items: center;
+      padding: 0.1rem 0.22rem 0.22rem;
+      .labels{
+        flex: 1;
+        span{
+          font-size: 0.2rem;
+          color: #6392FE;
+          text-align: center;
+          background: rgba(99,146,254,0.30);
+          border: 1px solid #6392FE;
+          border-radius: 0.1rem;
+          padding: 0.04rem 0.08rem;
+          margin-left: 0.05rem;
+        }
+      }
+      .warm-prompt{
+        text-align: right;
+        font-size: 0.24rem;
+        color: #6392FE;
+      }
+    }
+    .depart-date-box{
+      background: #fff;
+      padding: 0.4rem 0.22rem;
+      font-size: 0.32rem;
+      display: flex;
+      .depart-tips{
+        color: #4A4A4A;
+        flex: 1;
+      }
+      .depart-date{
+        text-align: right;
+        display: flex;
+        align-items: center;
+        input{
+          border: none;
+          color: #999999;
+          text-align: right;
+          height: 100%;
+          width: 2rem;
+        }
+        i{
+          width: 0.12rem;
+          height: 0.24rem;
+          background: url("../../images/bus/icon_more.png") center no-repeat;
+          background-size: 100% 100%;
+          margin-left: 0.2rem;
+
+        }
+      }
+    }
+    .flowLine{
+      margin-top: 0.22rem;
+      background: #fff;
+      padding: 0.22rem;
+      font-size: 0.32rem;
+      color: #333333;
+      span{
+        font-size: 0.2rem;
+        color: #FE6666;
+      }
+    }
+    .busLine{
+      margin-top: 0.22rem;
+      background: #fff;
+      .line-header{
+        padding: 0.22rem;
+      }
+      #wrapper{
+        position: relative;
+        height: 1.8rem;
+        .content{
+          position: absolute;
+          ul{
+            background-color: #fff;
+            font-size: 0;
+            white-space: nowrap;
+            li{
+              width: 1.8rem;
+              height: 1rem;
+              display: inline-block;
+              position: relative;
+              font-size: 0.28rem;
+              border-radius: 0.08rem;
+              margin: 0.4rem 0.2rem;
+              text-align: center;
+              border: 1px solid #CCCCCC;
+              .time{
+                height: 0.5rem;
+                line-height: 0.7rem;
+                color: #333333;
+              }
+              .price{
+                height: 0.5rem;
+                line-height: 0.5rem;
+                color: #FE6666;
+              }
+
+              &:active{
+                background: #6392FE;
+                box-shadow: 0 0 0.2rem 0 rgba(61,59,238,0.30);
+                .time{
+                  color: #fff;
+                }
+                .price{
+                  color: #fff;
+                }
+              }
+            }
+            .active{
+              background: #6392FE;
+              box-shadow: 0 0 0.2rem 0 rgba(61,59,238,0.30);
+              .time{
+                color: #fff;
+              }
+              .price{
+                color: #fff;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .ticket-list{
+      background: #fff;
+      margin-top: 0.22rem;
+      ul{
+        li{
+          display: flex;
+          align-items: center;
+          padding: 0.4rem 0.22rem;
+          .ticket-info{
+            flex: 1;
+            display: flex;
+            align-items: flex-end;
+            .ticket-type{
+              font-size: 0.32rem;
+              color: #333333;
+            }
+            .unit-price{
+              font-size: 0.2rem;
+              color: #333333;
+              margin-left: 0.22rem;
+              span{
+                color: #FE6666;
+              }
+            }
+          }
+          .ticket-amount{
+            display: flex;
+            align-items: center;
+            .amount{
+              background: #6392FE;
+              box-shadow: 0 0.08rem 0.3rem 0 rgba(61,59,238,0.30);
+              font-size: 0.38rem;
+              color: #FFFFFF;
+              text-align: center;
+              width: 0.5rem;
+              height: 0.5rem;
+              line-height: 0.5rem;
+              border-radius: 100%;
+              margin: 0 0.3rem;
+              input{
+                border: none;
+                width: 100%;
+                height: 100%;
+                background: transparent;
+                font-size: 0.38rem;
+                color: #FFFFFF;
+                text-align: center;
+              }
+            }
+            i{
+              display: block;
+              color: #999999;
+              width: 0.5rem;
+              height: 0.5rem;
+            }
+            .less{
+              background: url("../../images/sameSale/icon-less.png") center no-repeat;
+              background-size: 100% 100%;
+            }
+            .more{
+              background: url("../../images/sameSale/icon-more.png") center no-repeat;
+              background-size: 100% 100%;
+            }
+
+          }
+        }
+      }
+      .total-price{
+        padding: 0.22rem;
+        text-align: right;
+        font-size: 0.38rem;
+        color: #333333;
+        span{
+          color: #FE6666;
+        }
+      }
+    }
+  }
+
+}
+
+.sui-mask, .sui-mask-transparent, .sui-popup-mask,.sui-popup-container .sui-popup-modal,.station-list-popup{
+  //display: block!important;
+}
+

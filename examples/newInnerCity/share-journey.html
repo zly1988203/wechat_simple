@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>分享行程</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/newInnerCity/share-journey.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<!--地图请保持在前面-->
+<div class="ola-maps" id="allmap"></div>
+
+<div class="main-container">
+    <div class="head">车企名称</div>
+    <!--行程信息-->
+    <div class="journey-container">
+        <div class="container">
+            <div class="title sui-border-b">用户名</div>
+            <div class="journey-content">
+                <div class="station-box">
+                    <div class="station depart">
+                        <div>深圳南山·深圳湾创业投资大厦</div>
+                        <div class="time">10月15日 12:00 上车</div>
+                    </div>
+                    <div class="station arrive">
+                        <div>深圳福田·一个神奇的地方</div>
+                        <div class="time">10月15日 13:00 下车</div>
+                    </div>
+                </div>
+            </div>
+            <div class="driver-info-container">
+                <div class="info">
+                    <div class="avatar"><img src="../../dist/images/common/avatar_driver.png"/></div>
+                    <div class="content">
+                        <h4>王师傅 · 粤BDE990</h4>
+                        <div class="second">
+                            <div>白色 · 别克君越</div>
+                            <div class="service">
+                                <div class="times">已服务123次</div>
+                                <div class="level">5.0</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="other-info">
+                        <div class="identification">中交认证</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="../../dist/javascripts/zepto.min.js"></script>
+<script src="../../dist/javascripts/simpleui.min.js"></script>
+<script src="../../dist/javascripts/vectors.min.js"></script>
+<script src="../../dist/javascripts/backtrack.min.js"></script>
+<script src="https://webapi.amap.com/maps?v=1.4.4&key=cc84bbc40681d10bdf6a924b2caf31d5&plugin=AMap.Driving"></script>
+
+<script>
+    $(function () {
+        var map = new AMap.Map('allmap', {
+            resizeEnable: true, //是否监控地图容器尺寸变化
+            zoom:13, //初始化地图层级
+            center: [116.397428, 39.90923] //初始化地图中心点
+        });
+    })
+</script>
+</body>
+</html>

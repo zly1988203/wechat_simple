@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>中交出行</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <style>
+        
+    </style>
+</head>
+
+<body>
+
+    <h2>WebSocket</h2>
+    <br />
+    <p>
+        <button id="action">发起通讯</button><br />
+        <button id="send">发送内容</button><br />
+        <button id="close">关闭通讯</button><br />
+        <button id="start">开始听车</button><br />
+        <button id="end">停止听车</button><br />
+        <button id="error">发送错误</button><br />
+    </p>
+    <br />
+    <p>
+        <label for="message">
+            发送内容：
+            <input type="text" id="message" name="message" />
+        </label>
+    </p>
+
+    <script src="../dist/javascripts/zepto.min.js"></script>
+    <script src="../dist/javascripts/simpleui.min.js"></script>
+    <script src="../dist/javascripts/vectors.min.js"></script>
+    <script src="../dist/javascripts/communicate.min.js"></script>
+    <script>
+        $(function () {
+            var ws = new communicate({
+                url: 'ws://localhost:8080',
+                errorCallback: function (event) {
+                    console.error(event)
+                },
+                openCallback: function (event) {
+                    console.log(event)
+                },
+                messageCallback: function (event) {
+                    console.log(event)
+                }
+            });
+            /**
+             * $action  发起通讯
+             * $send    发送内容
+             * $close   关闭通讯
+             * $start   开始听车
+             * $end     停止听车
+             * $error   发送错误
+            */
+            var $action =   document.getElementById('action'),
+                $send =     document.getElementById('send'),
+                $close =    document.getElementById('close'),
+                $start =    document.getElementById('start'),
+                $end =      document.getElementById('end'),
+                $error =    document.getElementById('error');
+            
+            //发起通讯
+            $action.addEventListener('click', function() {
+                ws.init()
+            });
+
+            //发送内容
+            $send.addEventListener('click', function () {
+                var msg = document.getElementById('message').value
+
+                ws.send(msg)
+            })
+
+            //关闭通讯
+            $close.addEventListener('click', function () {
+                ws.close()
+            })
+
+            //开始听车
+            $start.addEventListener('click', function () {
+                ws.send({
+                    start: true
+                })
+            })
+
+            //停止听车
+            $end.addEventListener('click', function () {
+                ws.send({
+                    end: true
+                })
+            })
+
+            //发送错误
+            $error.addEventListener('click', function () {
+                ws.send({
+                    error: true
+                })
+            })
+        });
+    </script>
+</body>
+
+</html>

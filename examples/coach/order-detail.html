@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>中交出行</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/coach/order-detail.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<!-- 订单状态    待支付：pay-waiting,待出票：issuing,出票成功：issued-success,出票失败：issued-fail,已关闭：closed,部分退票：refund-part,全部退票：refund-all-->
+<!--<div class="order-detail-state pay-waiting">-->
+    <div class="count-down" style="display: none">
+        请在<span class="minute">08</span>分<span class="second">08</span>秒内支付，支付后务必查看订单详情，确认是否出票成功，若出票失败，票款会原路退回给微信。
+    </div>
+
+    <div class="ticket-info">
+        <div class="row">
+            <div class="time">4月27日 (周一) 8:36</div>
+            <div class="other">行程约<span>1.5</span>小时</div>
+        </div>
+
+        <div class="station sui-border-b">
+            <div class="station-item">
+                <h4>深圳湾创业投资大厦</h4>
+            </div>
+            <div class="station-item">
+                <h4>深圳会展中心</h4>
+            </div>
+        </div>
+
+        <!--<div class="check-station" data-href="#">查看地图</div>-->
+        <div class="warm-prompt">
+            <h6>温馨提示：</h6>
+            <p>儿童票、学生票等请前往车站购买。请在发车前提前到站取票，以免耽误行程。距发车时间15分钟内不支持网上退票。</p>
+        </div>
+
+        <div class="ticket-rule" data-trigger-rule="#ticketRule">取票/退票规则</div>
+    </div>
+
+    <!-- 取票/退票规则 - 使用规则 -->
+    <div id="ticketRule" class="sui-popup-container">
+        <div class="sui-popup-mask"></div>
+        <div class="sui-popup-modal">
+            <div class="rule-content">
+                <div class="close cancel"></div>
+                <h1>取票/退票规则</h1>
+                <div class="rule-bar">
+                    <div class="content">
+                        <P>缺少文案</P>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--
+      如果不需要向右的箭头，去掉li.class=sui-cell-link即可
+    -->
+    <ul class="coupon-btn sui-list">
+        <li class="sui-border-b">
+            <div class="name">订单状态</div>
+            <div class="value text-gray" id="order_status"></div>
+        </li>
+        <li class="sui-border-b coupon-toggle">
+            <div class="name">支付方式</div>
+            <div class="value text-gray">微信支付</div>
+        </li>
+        <li class="sui-border-b coupon-toggle">
+            <div class="name">购票张数</div>
+            <div class="value text-gray">2张</div>
+        </li>
+        <li class="sui-border-b coupon-toggle">
+            <div class="name">票价总额</div>
+            <div class="value text-gray">8元</div>
+        </li>
+        <li>
+            <div class="name">订单总额</div>
+            <div class="value text-red total-amount"><button class="detail-btn">明细</button><span>4元</span></div>
+        </li>
+    </ul>
+
+    <ul class="coupon-btn sui-list">
+        <li class="sui-border-b">
+            <div class="name">下单时间</div>
+            <div class="value text-gray">2017-04-28   10:26:32  </div>
+        </li>
+        <li class="sui-border-b coupon-toggle">
+            <div class="name">订单编号</div>
+            <div class="value text-gray">ORCJ010002200202002002020</div>
+        </li>
+    </ul>
+
+    <!-- 乘车人 -->
+    <div class="passenger">
+        <div class="content">
+            <div class="title">乘车人</div>
+            <div class="item text-gray sui-border-b">
+                <div class="info">
+                    <div class="info-head">
+                        <div class="name">牛嘎嘎</div>
+                        <div class="btn-check">验票</div>
+                    </div>
+                    <p><span class="label">手机号</span>13632145546</p>
+                    <p><span class="label">身份证</span>3625311990****0027</p>
+                </div>
+            </div>
+            <div class="item text-gray">
+                <div class="info">
+                    <div class="name">李梅梅</div>
+                    <p><span class="label">手机号</span>13632145546</p>
+                    <p><span class="label">身份证</span>3625311990****0027</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="btn-group pab-10" id="btn-group-A">
+        <button class="default">取消订单</button>
+        <button class="primary">确定支付<span class="total">310</span>元</button>
+    </div>
+
+    <div class="btn-group pab-10" id="btn-group-B" style="display: none">
+        <button class="default">退票</button>
+        <button class="primary">再次购买</button>
+    </div>
+
+    <div class="btn-group pab-10" id="btn-group-C" style="display: none">
+        <button class="primary">再次购买</button>
+    </div>
+
+    <div class="popup-container-detail" style="display: none">
+        <div class="detail-content">
+            <ul class="detail-box">
+                <li class="detail-item">
+                    <div class="name">票价总额</div>
+                    <div class="value"><span>50</span>X<span>2</span>元</div>
+                </li>
+                <li class="detail-item">
+                    <div class="name">服务费总额</div>
+                    <div class="value"><span>2</span>X<span>2</span>元</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+<div class="popup-container-detail" style="display: none">
+    <div class="check-content">
+        <div><i class="icon-close"></i></div>
+        <div class="order-info">
+            <div class="start-time">2018/10/10（周四）15:10  发车</div>
+            <div class="fff-line"></div>
+            <div class="station-info">
+                <div class="icon-station-line">
+                    <div class="icon-point"></div>
+                    <div class="icon-line"></div>
+                    <div class="icon-point"></div>
+                </div>
+                <!--<img src="../../dist/images/coach/icon-line.png">-->
+                <div>
+                    <div class="station-start">深圳东站</div>
+                    <div class="station-end">广州东站</div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="order-check">
+            <div class="prompt">向验票员/扫码机展示二维码验票</div>
+            <div class="qr-code" id="qrcode"></div>
+            <div class="check-code">验票码：41444455</div>
+            <div class="person-info">乘车人：王小瑞  362531********0027</div>
+            <div class="ccc-line"></div>
+            <div class="check-info">
+                <div class="check-item">
+                    <div class="title">
+                        <span>检票口</span>
+                    </div>
+                    <div class="txt">
+                        <span>5</span>
+                    </div>
+                </div>
+                <div class="check-item">
+                    <div class="title">
+                        <span>票价</span>
+                    </div>
+                    <div class="txt">
+                        <span>11元</span>
+                    </div>
+                </div>
+                <div class="check-item">
+                    <div class="title">
+                        <span>座位</span>
+                    </div>
+                    <div class="txt">
+                        <span>1</span>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="../../dist/javascripts/zepto.min.js"></script>
+<script src="../../dist/javascripts/simpleui.min.js"></script>
+<script src="../../dist/javascripts/vectors.min.js"></script>
+<script src="../../dist/javascripts/qrcode.min.js"></script>
+<script>
+    $(function() {
+        //规则
+        $.ruleInit();
+        /*根据订单状态动态生成对应状态特有的页面*/
+        var status = "pay_waiting";
+        checkTicketState(status);
+    });
+
+    function initQrCode() {
+        var qrcode = new QRCode(document.getElementById("qrcode"));
+        var ticketSerialNo = 'www.baidu.com';
+        qrcode.makeCode(ticketSerialNo);
+    }
+
+    /*根据订单状态动态生成对应状态特有的页面
+        参数为：订单状态
+     订单状态 [待支付：pay_waiting,待出票：issuing,出票成功：issued_success,出票失败：issued_fail,已关闭：closed,部分退票：refund_part,全部退票：refund_all]
+    */
+    function checkTicketState(status){
+        if(status=="pay_waiting"){//待支付
+            //顶部提示信息
+            setCountDown(63);
+
+            //修改订单状态
+            $('#order_status').text('待支付');
+
+            //修改底部按钮组
+            $('#btn-group-A').show();
+            $('#btn-group-B').hide();
+            $('#btn-group-C').hide();
+
+        }else if(status=="issuing"){//待出票
+            //顶部提示信息
+            var $cd = $('<div class="count-down">正在出票，若出票失败，票款会原路退回给微信。</div>');
+            $('body').prepend($cd);
+
+            //修改订单状态
+            $('#order_status').text('待出票');
+
+            //无按钮
+            $('#btn-group-A').hide();
+            $('#btn-group-B').hide();
+            $('#btn-group-C').hide();
+        }else if(status=="issued_success") {//出票成功
+            //顶部提示信息： 无
+            //修改订单状态
+            $('#order_status').text('已出票');
+
+            //修改底部按钮组
+            $('#btn-group-A').hide();
+            $('#btn-group-B').show();
+            $('#btn-group-C').hide();
+
+        }else if(status=="issued_fail") {//出票失败
+            //顶部提示信息： 无
+            //修改订单状态
+            $('#order_status').text('出票失败');
+            //修改底部按钮组
+            $('#btn-group-A').hide();
+            $('#btn-group-B').hide();
+            $('#btn-group-C').show();
+
+        }else if(status=="closed") {//已关闭
+            //顶部提示信息： 无
+            //修改订单状态
+            $('#order_status').text('已关闭');
+
+            //修改底部按钮组
+            $('#btn-group-A').hide();
+            $('#btn-group-B').hide();
+            $('#btn-group-C').show();
+
+        }else if(status=="refund_all") {//全部退票
+            //顶部提示信息： 无
+            //修改订单状态
+            $('#order_status').text('全部退票');
+
+            //修改底部按钮组
+            $('#btn-group-A').hide();
+            $('#btn-group-B').show();
+            $('#btn-group-C').hide();
+
+        }else if(status=="refund_part") {//部分退票
+            //顶部提示信息： 无
+            //修改订单状态
+            $('#order_status').text('部分退票');
+
+            //修改底部按钮组
+            $('#btn-group-A').hide();
+            $('#btn-group-B').show();
+            $('#btn-group-C').hide();
+        }
+    }
+
+    /* 倒计时
+    * param  参数是秒数
+    * */
+    function setCountDown(n) {
+        var time = {
+            minute: 0,
+            second: 0
+        };
+
+        //计算出分和秒
+        if(typeof n === 'number') {
+            time.minute = parseInt(n / 60);
+            time.second = n % 60;
+        }
+
+        //填充元素到body最前面
+        var $cd = $('<div class="count-down">请在<span class="minute">' + time.minute + '</span>分<span class="second">' + time.second + '</span>秒内支付，支付后务必查看订单详情，确认是否出票成功，若出票失败，票款会原路退回给微信。</div>');
+        $('body').prepend($cd);
+
+        full(time);
+
+        //计时
+        function full(t) {
+            if(t.second > 0) {
+                t.second--;
+            } else {
+                if(t.minute > 0) {
+                    t.minute--;
+                    t.second = 59;
+                } else {
+                    //计时完毕
+                    //todo
+
+                    return false;
+                }
+            }
+
+            $cd.find('.minute').text(t.minute);
+            $cd.find('.second').text(t.second);
+
+            setTimeout(function () {
+                full(t);
+            }, 1000);
+        }
+    }
+    $('.btn-check').on('click',function () {
+        initQrCode();
+        $('#qrCodePropup').show();
+    })
+
+
+</script>
+</body>
+</html>

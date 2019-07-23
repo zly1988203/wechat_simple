@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>中交出行</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+	<link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+	<link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+	<link href="../../dist/stylesheets/base/progressbar.css" rel="stylesheet" type="text/css">
+	<link href="../../dist/stylesheets/activity/detail.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+    <div class="detail">
+        <div class="header">
+            <div class="banner"><img src="../../dist/images/activity/default.jpg"></div>
+            <div class="progress-box">
+                <div class="title">送不停不停送不停不停送不停不停</div>
+                <div class="content">
+                    <!-- data-amount：总计，data-count：当前占数 -->
+                    <!-- progress disabled：礼品已领完或者活动未开始 -->
+                    <div class="progress disabled" data-amount="0" data-count="0">
+                        <div class="progress-bar progress-bar-warning progress-bar-striped active" style="width: 90%;"></div>
+                        <div class="progress-value"></div>
+                    </div>
+                    <div class="progress-info">
+                        <span>已领取：0/3</span>
+                        <span>活动剩余名额：5</span>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-group">
+                <!-- default：默认（棕色）, primary：主要（橘色）, disabled：禁止（透明度降低） -->
+                <!-- 最多放两个按钮，不然很丑 -->
+                <div class="btn default" trigger-target="#share">分享活动</div>
+                <!--<div class="btn default disabled">登录参与</div>-->
+                <div class="btn primary" trigger-target="#receive">立即领取</div>
+            </div>
+
+            <div class="ewmbar">
+                <div class="container">
+                    <div class="ewm"><img src="../../tmp/ewm_tmp.png"></div>
+                    <div class="content">
+                        <p>长按二维码</p>
+                        <p>关注XX出行享受更多出优惠行</p>
+                        <p>优惠更多出行优惠</p>
+                        <p>享受更多出行优惠</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="guide"></div>
+        </div>
+
+        <div class="line-list">
+            <div class="title">活动线路</div>
+            <ul class="tabs">
+                <li class="active" data-target="#tab1"><a href="javascript:void(0);">定制班线</a></li>
+                <li data-target="#tab2"><a href="javascript:void(0);">上下班</a></li>
+                <li data-target="#tab3"><a href="javascript:void(0);">城际约租车</a></li>
+            </ul>
+            <div class="line-list-swapper">
+                <!-- 定制班线列表 -->
+                <div id="tab1" class="line-list-box">
+                    <div class="container">
+                        <div class="item">
+                            <div class="content">
+                                <p>湖南长沙马兰坡婆婆婆婆</p>
+                                <p>广东深圳前海湾</p>
+                            </div>
+                            <div class="btn primary">立即购票</div>
+                        </div>
+                        <div class="item">
+                            <div class="content">
+                                <p>马兰坡一日游</p>
+                            </div>
+                            <div class="btn primary">立即购票</div>
+                        </div>
+                        <div class="item">
+                            <div class="content">
+                                <p>马兰坡一日游马兰坡一日游</p>
+                            </div>
+                            <div class="btn primary">立即购票</div>
+                        </div>
+                        <div class="item">
+                            <div class="content">
+                                <p>湖南长沙马兰坡婆婆婆婆</p>
+                                <p>广东深圳前海湾</p>
+                            </div>
+                            <div class="btn primary">立即购票</div>
+                        </div>
+                    </div>
+                    <div class="btn more">展开全部</div>
+                </div>
+
+                <!-- 上下班列表 -->
+                <div id="tab2" class="line-list-box">
+                    <div class="container">
+                        <div class="item">
+                            <div class="content">
+                                <p>湖南长沙马兰坡婆婆婆婆</p>
+                                <p>广东深圳前海湾</p>
+                            </div>
+                            <div class="btn primary">立即购票</div>
+                        </div>
+                        <div class="item">
+                            <div class="content">
+                                <p>马兰坡一日游</p>
+                            </div>
+                            <div class="btn primary">立即购票</div>
+                        </div>
+                        <div class="item">
+                            <div class="content">
+                                <p>马兰坡一日游马兰坡一日游</p>
+                            </div>
+                            <div class="btn primary">立即购票</div>
+                        </div>
+                        <div class="item">
+                            <div class="content">
+                                <p>湖南长沙马兰坡婆婆婆婆</p>
+                                <p>广东深圳前海湾</p>
+                            </div>
+                            <div class="btn primary">立即购票</div>
+                        </div>
+                        <div class="item">
+                            <div class="content">
+                                <p>马兰坡一日游</p>
+                            </div>
+                            <div class="btn primary">立即购票</div>
+                        </div>
+                        <div class="item">
+                            <div class="content">
+                                <p>马兰坡一日游马兰坡一日游</p>
+                            </div>
+                            <div class="btn primary">立即购票</div>
+                        </div>
+                        <div class="item">
+                            <div class="content">
+                                <p>湖南长沙马兰坡婆婆婆婆</p>
+                                <p>广东深圳前海湾</p>
+                            </div>
+                            <div class="btn primary">立即购票</div>
+                        </div>
+                    </div>
+                    <div class="btn more">展开全部</div>
+                </div>
+
+                <!-- 城际约租车列表 -->
+                <div id="tab3" class="line-list-box">
+                    <div class="container">
+                        <div class="item">
+                            <div class="content">
+                                <p>湖南长沙马兰坡婆婆婆婆</p>
+                                <p>广东深圳前海湾</p>
+                            </div>
+                            <div class="btn primary">立即购票</div>
+                        </div>
+                        <div class="item">
+                            <div class="content">
+                                <p>马兰坡一日游</p>
+                            </div>
+                            <div class="btn primary">立即购票</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 优惠券 -->
+        <div class="coupon">
+            <div class="title">领取详情</div>
+            <div class="container">
+                <div class="item">
+                    <div class="left">
+                        <h2>城际班车劵</h2>
+                        <h4>有效期至2017-12-31</h4>
+                        <p>限线路 这是这是这是1号线，这是这是2号线，这是3号线，这是这是2号线，这是3号线</p>
+                    </div>
+                    <div class="right">
+                        <h2><i>¥</i>100<i>.00</i></h2>
+                        <h4>满100元可使用</h4>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="left">
+                        <h2>城际班车劵</h2>
+                        <h4>有效期至2017-12-31</h4>
+                        <p>限线路 这是这是这是1号线，这是这是2号线，这是3号线，这是这是2号线，这是3号线</p>
+                    </div>
+                    <div class="right">
+                        <h2><i>¥</i>100<i>.00</i></h2>
+                        <h4>满100元可使用</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 活动说明 -->
+        <div class="explain">
+            <h4>活动时间</h4>
+            <p>2017年10月1日 ~ 2017年10月7日</p>
+            <h4>活动礼品</h4>
+            <p>1、定制班线-5元优惠券 x 1</p>
+            <p>2、上下班-1元优惠券 x 3</p>
+            <p>3、城际约租车-10元优惠券 x 5</p>
+            <h4>活动规则</h4>
+            <p>1、下单购买带有[买满有礼]标识的线路，即可参与活动。</p>
+            <p>2、累计金额达标后，即可领取优惠券，数量有限，先到先得。</p>
+            <p>3、优惠券可与其他优惠叠加使用。</p>
+            <p>4、优惠券仅限在中交出行下单且选择在线支付时使用。</p>
+            <p>5、其他未尽事宜，请咨询客服。</p>
+        </div>
+    </div>
+
+    <!-- 分享活动 -->
+    <div id="share" trigger-hide="#share" style="display: none"></div>
+
+    <!-- 领取奖品 -->
+    <div id="receive" style="display: none">
+        <div class="container">
+            <div class="icon"></div>
+            <div class="content">
+                <p>定制班线-5元优惠券 x 1</p>
+                <p>上下班-1元优惠券 x 3</p>
+                <p>城际约租车-10元优惠券 x 5</p>
+                <p>城际约租车-10元优惠券 x 5</p>
+            </div>
+            <div class="btn primary" trigger-hide="#receive">知道了</div>
+        </div>
+    </div>
+
+	<script src="../../dist/javascripts/zepto.min.js"></script>
+	<script src="../../dist/javascripts/simpleui.min.js"></script>
+	<script src="../../dist/javascripts/vectors.min.js"></script>
+    <script>
+        $(function () {
+            progress();
+
+            //分享活动
+            $('[trigger-target]').on('click', function () {
+                var target = $(this).attr('trigger-target');
+                $(target).show();
+            });
+            $('[trigger-hide]').on('click', function () {
+                var target = $(this).attr('trigger-hide');
+                $(target).hide();
+            });
+
+            //tabs
+            $('.tabs li a').on('click', function () {
+               var $el = $(this).parent();
+
+               //点击增加active
+               $el.addClass('active');
+               $el.siblings().removeClass('active');
+
+               //显示对应列表
+               var $target = $($el.data('target'));
+                $target.show();
+                $target.siblings().hide();
+            });
+            $('.tabs li.active a').click();
+
+            //list box: 显示全部
+            $('.line-list-box .more').on('click', function () {
+               var $el = $(this),
+                   $parent = $el.parent(),
+                   toggle = $el.data('toggle');
+
+               if(!toggle) {
+                   $parent.addClass('all');
+                   $el.text('收起全部').data('toggle', true);
+               } else {
+                   $parent.removeClass('all');
+                   $el.text('展开全部').data('toggle', false);
+               }
+            });
+        });
+
+        /*
+        * 进度条
+        * */
+        function progress() {
+            $('.progress').each(function (index, item) {
+               var $el = $(this),
+                   $bar = $el.find('.progress-bar'),
+                   $value = $el.find('.progress-value');
+               var amount = $el.data('amount'),
+                   count = $el.data('count');
+               var percent = 0;
+
+                if(amount == 0) {
+                    //总数为0
+                    percent = 100;
+                } else {
+                    percent = count / amount * 100;
+                }
+
+                $bar.css('width', percent + '%');
+
+                $value.text(count + '/' + amount + '元');
+            });
+        }
+    </script>
+</body>
+</html>

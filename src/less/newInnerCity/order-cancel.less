@@ -1,0 +1,282 @@
+@charset "utf-8";
+html,body{
+    min-height: 100%;
+    height: 100%;
+    background: #FFFFFC;
+}
+
+.main-container{
+    padding-bottom: 1.4rem;
+    .journey-container{
+        //width: 100%;
+        background: #FFFFFF;
+        box-shadow: 0 0 20px 0 rgba(227,227,227,0.40);
+        font-size: 0.28rem;
+        color: #333;
+        letter-spacing: 0;
+        padding: 0.2rem;
+        .time-box{
+            font-weight: bold;
+        }
+        .station-box{
+            display: flex;
+            padding: 0.2rem 0;
+            border-bottom:1px solid #F1F1F1;;
+            .left{
+                flex: 1;
+                font-weight: bold;
+                .station{
+                    padding-left: 0.48rem;
+                    position: relative;
+                    &:before{
+                        content: '';
+                        display: block;
+                        width: 0.16rem;
+                        height: 0.16rem;
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        bottom: 0;
+                        margin: auto 0;
+                        border-radius: 100%;
+                        border: 0.01rem solid #6392FE;
+                    }
+                }
+
+                .depart{
+                    &:after{
+                        content: '';
+                        display: block;
+                        height: 0.2rem;
+                        border-left: 1px solid #D3D2DB;
+                        position: absolute;
+                        left: 0.09rem;
+                        top:0.34rem;
+                    }
+                }
+                .arrive{
+                    &:before{
+                        border: 0.01rem solid #333333;
+                    }
+                    margin-top: 0.1rem;
+                }
+            }
+            .right{
+                text-align: center;
+                .box{
+                    padding: 0.1rem 0.2rem;
+                    background: #FFFFFF;
+                    box-shadow: 0 0 0.2rem 0 rgba(227,227,227,0.40);
+                    border-radius: 0.06rem;
+                }
+            }
+        }
+        .notes-box{
+            display: flex;
+            padding: 0.26rem 0 0;
+            .icon{
+                width: 0.24rem;
+                height: 0.24rem;
+                background: url("../../images/newInnerCity/icon-notes-gray.png") center no-repeat;
+                background-size: 100% 100%;
+                align-self: center;
+            }
+            .notes{
+                flex: 1;
+                margin-left: 0.27rem;
+                border: none;
+                line-height: 0.4rem;
+                font-size: 0.2rem;
+                color: #999999;
+                letter-spacing: 0;
+            }
+        }
+    }
+
+    .cancel-status-container{
+        text-align: center;
+        background: #FFFFFF;
+        box-shadow: 0 0 0.2rem 0 rgba(227,227,227,0.40);
+        border-radius: 0.06rem;
+        margin: 0.2rem 0.2rem 0;
+        padding: 0.3rem 0;
+        .status{
+            .result{
+                position: relative;
+                font-size: 0.32rem;
+                color: #333333;
+                letter-spacing: 0;
+                line-height: 0.45rem;
+                margin: 0 auto;
+                display: inline-block;
+                padding-left: 0.56rem;
+                &:before{
+                    content: '';
+                    display: block;
+                    width: 0.45rem;
+                    height: 0.45rem;
+                    position: absolute;
+                    left: 0;
+                    background: url("../../images/newInnerCity/icon-success.png") center no-repeat;
+                    background-size: 100% 100%;
+                }
+            }
+        }
+        .tips{
+            margin-top: 0.3rem;
+            font-size: 0.24rem;
+            color: #AAAAAA;
+            text-align: center;
+        }
+    }
+    .service-cancel{
+        .status{
+            .result{
+                &:before{
+                    background: url("../../images/newInnerCity/icon-service.png") center no-repeat;
+                    background-size: 100% 100%;
+                }
+            }
+        }
+    }
+    .busy-cancel{
+        .status{
+            .result{
+                &:before{
+                    background: url("../../images/newInnerCity/icon-busy.png") center no-repeat;
+                    background-size: 100% 100%;
+                }
+            }
+        }
+    }
+    .timeout-cancel{
+        .status{
+            .result{
+                &:before{
+                    background: url("../../images/newInnerCity/icon-timeout.png") center no-repeat;
+                    background-size: 100% 100%;
+                }
+            }
+        }
+    }
+
+    .cancel-detail-container{
+        background: #FFFFFF;
+        box-shadow: 0 0 0.2rem 0 rgba(227,227,227,0.40);
+        border-radius: 0.06rem;
+        margin: 0.2rem 0.2rem 0;
+        padding: 0 0.2rem 0.2rem;
+        .title{
+            font-size: 0.28rem;
+            color: #666666;
+            letter-spacing: 0;
+            border-bottom: 1px solid #F2F2F2;
+            padding: 0.2rem 0;
+            position: relative;
+            &:before{
+                content: '';
+                display: block;
+                width: 0.06rem;
+                height: 0.24rem;
+                position: absolute;
+                left: -0.2rem;
+                top: 0.26rem;
+                background: #6392FE;
+                //border-radius: 0 0.06rem 0.06rem 0;
+            }
+        }
+        .detail-list{
+            ul{
+                padding-bottom: 0.2rem;
+                border-bottom: 0.01rem dashed #e8e8e8;
+                li{
+                    display: flex;
+                    font-size: 0.28rem;
+                    color: #666666;
+                    letter-spacing: 0;
+                    margin-top: 0.2rem;
+                    .name{
+                        flex: 1;
+
+                    }
+                    .value{
+                        flex: 1;
+                        text-align: right;
+                    }
+                }
+            }
+        }
+        .refund-amount{
+            text-align: center;
+            color: #AAAAAA;
+            padding: 0.37rem 0 0.4rem;
+            .amount{
+                font-size: 0.24rem;
+                span{
+                    font-size: 0.32rem;
+                    color: #666666;
+                    padding: 0 0.19rem;
+                }
+            }
+            .tips{
+                font-size: 0.2rem;
+                margin-top: 0.15rem;
+            }
+        }
+        .refund-notes-box{
+            background: #F3F4F5;
+            box-shadow: inset 0 0 0.02rem 0 rgba(0,0,0,0.20);
+            border-radius: 0.03rem;
+            height: 2.3rem;
+            padding: 0.2rem;
+            textarea{
+                border: none;
+                background: #F3F4F5;
+                width: 100%;
+                height: 1.97rem;
+                font-size: 0.28rem;
+                color: #999999;
+                letter-spacing: 0;
+            }
+            textarea::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+                color: #999999;
+            }
+            textarea:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+                color: #999999;
+            }
+            textarea::-moz-placeholder { /* Mozilla Firefox 19+ */
+                color: #999999;
+            }
+            textarea:-ms-input-placeholder { /* Internet Explorer 10-11 */
+                color: #999999;
+            }
+            .compute{
+                font-size: 0.24rem;
+                color: #999999;
+                letter-spacing: 0;
+                text-align: right;
+            }
+        }
+    }
+}
+
+
+.btn{
+    font-size: 0.28rem;
+    background: #FFFFFF;
+    box-shadow: 0 0 0.2rem 0 rgba(227,227,227,0.40);
+    border-radius: 0.06rem;
+    color: #AAAAAA;
+    letter-spacing: 0;
+    text-align: center;
+}
+.normal{
+    background: #FFFFFF;
+    box-shadow: 0 0 0.2rem 0 rgba(227,227,227,0.40);
+    color: #AAAAAA;
+}
+.protrude{
+    background: #6392FE;
+    box-shadow: 0 0 0.2rem 0 rgba(61,59,238,0.31);
+    color: #FFFFFF;
+}

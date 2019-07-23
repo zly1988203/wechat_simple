@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>投诉建议</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/my/suggest.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	
+	<div class="form">
+        <div class="content">
+            <textarea placeholder="请输入投诉或者建议的内容，我们会尽快处理。"></textarea>
+            <div>0/500</div>
+        </div>
+
+        <button id="submitButton" class="btn primary">匿名提交</button>
+	</div>
+	
+	<div class="result" style="display:none">
+	    <div class="content">
+	        <div class="wrap">
+                <i class="icon-success"></i>
+                <h1>提交成功</h1>
+                <div class="remark">
+                    我们会尽快处理您的问题<br/>
+                    您的反馈将是我们进步的动力
+                </div>
+	        </div>
+	    </div>
+	    <button class="btn primary" data-href="#">返回首页</button>
+	</div>
+	
+	<script src="../../dist/javascripts/zepto.min.js"></script>
+	<script src="../../dist/javascripts/simpleui.min.js"></script>
+	<script src="../../dist/javascripts/common.min.js"></script>
+	<script>
+    $(function() {
+        //字数统计
+        $('textarea').on('input', function() {
+            var length = $(this).val().length;
+
+            if(length <= 500) {
+                $(this).next('div').removeClass('sui-red').text(length + '/500');
+            } else {
+               /* $(this).next('div').attr('class', 'sui-red').text('字数太多了。');*/
+            }
+        });
+        
+        //提交
+        $('#submitButton').on('click', function() {
+            $.showLoading('正在提交数据');
+
+            setTimeout(function() {
+                $.hideLoading();
+                $('body').addClass('result-body');
+                $('.form').hide();
+                $('.result').show();
+            }, 800);
+        });
+        $('#submitButton').click()
+    })
+    </script>
+</body>
+</html>

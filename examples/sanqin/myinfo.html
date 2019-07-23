@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>编辑资料</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/sanqin/myinfo.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<ul class="sui-list sui-border-tb form">
+    <li class="link sui-cell-link">
+        <div class="avatar-box">
+            <div class="avatar"></div>
+            <div class="tips">修改头像</div>
+        </div>
+    </li>
+    <li>
+        <dl class="sui-cell-default control">
+            <dt><label for="nickname">昵称</label></dt>
+            <dd><input type="text" id="nickname" placeholder="取一个独特的名字吧" class="text-align-right input-placeholder-color-C2"/></dd>
+        </dl>
+    </li>
+    <li>
+        <dl class="sui-cell-default control">
+            <dt><label for="gender">性别</label></dt>
+            <dd>
+                <select id="gender">
+                    <option value="男">男</option>
+                    <option value="女">女</option>
+                </select>
+            </dd>
+        </dl>
+    </li>
+    <li>
+        <dl class="sui-cell-default control">
+            <dt><label for="age">年龄</label></dt>
+            <dd>
+                <select id="age">
+                    <option>00后</option>
+                    <option>90后</option>
+                    <option>80后</option>
+                    <option>70后</option>
+                    <option>60后</option>
+                </select>
+            </dd>
+        </dl>
+    </li>
+    <li>
+        <dl class="sui-cell-default control">
+            <dt><label for="ID">ID</label></dt>
+            <dd>
+                <input type="text" id="ID" value="hjdfhs88hdjs" class="text-align-right input-placeholder-color-99" readonly/>
+            </dd>
+        </dl>
+    </li>
+    <li>
+        <dl class="sui-cell-default control">
+            <dt><label for="phonenumber">手机号码</label></dt>
+            <dd>
+                <input type="text" id="phonenumber" placeholder="未绑定" class="text-align-right input-placeholder-color-99" readonly/>
+            </dd>
+        </dl>
+    </li>
+</ul>
+
+<div class="btn-group">
+    <button class="default">取消</button>
+    <button class="primary">完成</button>
+</div>
+
+<!--弹窗部分-->
+<div id="mobile-form-container" class="sui-popup-container" >
+        <div class="sui-popup-mask"></div>
+        <div class="sui-popup-modal">
+            <!--内容开始-->
+            <div id="mobile-form">
+                <div class="banner"></div>
+
+                <div class="form">
+                    <div class="mobile text sui-border-b">
+                        <input type="tel" placeholder="请输入手机号码" id="mobile" maxlength="11"/>
+                    </div>
+                    <div class="verifycode text sui-border-b">
+                        <div class="text-box">
+                            <input type="tel" placeholder="请输入验证码" id="verifycode" />
+                        </div>
+                        <button type="button" id="sandBtn">获取验证码</button>
+                    </div>
+
+                    <button id="submitButton" type="button" class="submit-btn">立即绑定</button>
+                </div>
+            </div>
+            <!--内容结束-->
+        </div>
+</div>
+
+<script src="../../dist/javascripts/zepto.min.js"></script>
+<script src="../../dist/javascripts/simpleui.min.js"></script>
+<script src="../../dist/javascripts/backtrack.min.js"></script>
+<script>
+    $(function(){
+
+        //返回键控制
+        backtrack(function () {
+            var self = this;
+
+            //弹窗层，返回0
+            $('#phonenumber').on('click.back', function () {
+                self.setState(0);
+            });
+
+        }, function (data) {
+            this.go();
+        });
+
+        bindPhoneNumber();
+        // 发送验证码
+        $('#sandBtn').on('click', function() {
+            sandVerifycode($(this));
+        });
+
+        // 立即绑定
+        $('#submitButton').on('click', function() {
+            var submitBtn = $(this);
+            var mobile = $.trim($('#mobile').val());
+            var verifycode = $.trim($('#verifycode').val());
+
+            if(mobile.length <= 0 || verifycode.length <= 0) {
+                $.alert('请填写手机号码和验证码。');
+                return;
+            }
+
+            submitBtn.prop('disabled', true);
+            $.showLoading('正在绑定中');
+
+            // 模拟异步请求
+            setTimeout(function() {
+                checkVerificationCode(0);
+                /*$.hideLoading();
+                //$.toastSuccess('绑定成功');
+                $.toastError('验证码错误');
+                submitBtn.prop('disabled', false);*/
+            }, 1000);
+        });
+    });
+
+    //校验验证码 0-校验通过
+    function checkVerificationCode(flag){
+        if(0==flag){
+            $.toastSuccess('绑定成功');
+            $('#mobile-form-container').closePopup();//回到编辑页面
+            $("#phonenumber").val($.trim($("#mobile").val()));//手机号码回写
+        }else{
+            $.toastError('验证码错误');
+            //停留在当前页面
+        }
+    }
+
+    function bindPhoneNumber() {
+        $('#phonenumber').on('click', function(){
+            $('#mobile-form-container').popup('push');
+        });
+        // 关闭
+        $('#skip-binding-btn').click(function() {
+            $('#mobile-form-container').closePopup();
+        });
+
+    }
+
+    // 发送验证码 - 倒计时
+    function sandVerifycode(element) {
+       // var element = $("#sendcode");
+        var btnText = element.text();
+        element.prop('disabled', true);
+        var duration = 60;
+        element.text(duration + 's');
+        var timer = setInterval(function() {
+            duration--;
+            if(duration <= 0) {
+                element.prop('disabled', false).text(btnText);
+                clearInterval(timer);
+                return;
+            }
+            element.text((duration < 10 ? '0' + duration : duration) + 's');
+        }, 1000);
+    }
+</script>
+</body>
+</html>

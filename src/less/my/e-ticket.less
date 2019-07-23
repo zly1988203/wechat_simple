@@ -1,0 +1,224 @@
+@charset "utf-8";
+
+.ticket-detail {
+  padding-bottom: 1.7rem;
+
+  .head {
+    .tips {
+      position: relative;
+      text-align: center;
+      padding: 0.29rem 0.1rem 0.32rem;
+      font-size: 0.38rem;
+      color: #9B9B9B;
+      line-height: 0.53rem;
+      background: #fff;
+      box-shadow: 0 2px 4px 0 rgba(0,0,0,0.10);
+      border-radius: 0 0 10px 10px;
+
+      &:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -6%;
+        z-index: 5;
+        width: 100%;
+        height: 0;
+        padding-top: 1.33%;
+        background: url(../../images/my/dashed-1.png) no-repeat center;
+        background-size: 100% 100%;
+      }
+
+      span {
+        margin: 0 5px;
+        color: #f28354;
+      }
+    }
+
+    .info {
+      position: relative;
+      padding: 0.177rem 0.22rem 0.25rem;
+      background: #fff;
+      box-shadow: 0 2px 4px 0 rgba(0,0,0,0.10);
+      border-radius: 0.2rem;
+
+      &:after {
+        content: '';
+        position: absolute;
+        top: -0.1rem;
+        left: 0;
+        right: 0;
+        z-index: 5;
+        width: 100%;
+        height: 0;
+        padding-top: 1.33%;
+        background: url(../../images/my/dashed-1.png) no-repeat center;
+        background-size: 100% 100%;
+        transform: rotate(180deg);
+      }
+
+      .detail {
+        .title {
+          display: flex;
+          align-items: center;
+
+          h4 {
+            flex: 1;
+            position: relative;
+            padding-left: 0.56rem;
+            min-height: 0.53rem;
+            line-height: 0.55rem;
+            font-size: 0.52rem;
+            color: #333;
+            text-align: left;
+            margin-right: 0.22rem;
+            font-weight: 400;
+
+            &:before {
+              content: '';
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              left: 0;
+              width: 0.4rem;
+              height: 0.46rem;
+              margin: auto 0;
+              background: url(../../images/my/icon-car.png) no-repeat center;
+              background-size: 100% 100%;
+            }
+          }
+
+          span {
+            font-size: 0.48rem;
+            line-height: 0.5rem;
+            color: #333;
+          }
+        }
+
+        .address {
+          margin-top: 0.17rem;
+          font-size: 0.3rem;
+          color: #333;
+          line-height: 0.42rem;
+        }
+      }
+
+      .code {
+        margin-top: 0.1rem;
+        display: flex;
+        align-items: flex-end;
+
+        .station {
+          flex: 1;
+
+          h4 {
+            font-size: 0.3rem;
+            color: #999;
+          }
+        }
+
+        .number {
+          margin-left: 0.22rem;
+          font-size: 0.3rem;
+          color: #999;
+          line-height: 0.42rem;
+          text-align: right;
+
+          span {
+            color: #999;
+            font-weight: normal;
+          }
+        }
+      }
+    }
+
+
+  }
+
+  .bottom {
+    padding-bottom: 0.22rem;
+
+    i {
+      position: relative;
+      display: block;
+      width: 0.413rem;
+      height: 0.413rem;
+      margin: 0.457rem auto 0;
+      background: url(../../images/my/icon-point.png) no-repeat center;
+      background-size: 100% 100%;
+    }
+
+    h4 {
+      font-size: 0.32rem;
+      color: #999;
+      margin-top: 4%;
+      text-align: center;
+    }
+
+    p {
+      padding: 0 0.1rem;
+      font-size: 0.32rem;
+      color: #999;
+      line-height: 0.45rem;
+      text-align: center;
+    }
+  }
+
+  .btn-group {
+    background: transparent;
+  }
+}
+
+.checkanimat {
+  position: relative;
+  height: 0;
+  padding-top: 62.1333%;
+  background-color: #fff;
+  border-radius: 0.2rem;
+  overflow: hidden;
+
+  .fly-txt {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 66;
+    margin: auto 0.1rem;
+    text-align: center;
+    height: 1.46rem;
+    line-height: 1.46rem;
+    font-size: 1.46rem;
+    color: #374542;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .ca-icon {
+    position: absolute;
+    z-index: 67;
+    width: 0.86rem;
+    height: 0.86rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+
+    &.flightTop {
+      animation: caFramesTop linear infinite;
+    }
+
+    &.flightBottom {
+      animation: caFramesBottom linear infinite;
+    }
+  }
+
+  /*向上*/
+  @keyframes caFramesTop {
+    to { top: -100% }
+  }
+
+  /*向上*/
+  @keyframes caFramesBottom {
+    to { bottom: -100% }
+  }
+}

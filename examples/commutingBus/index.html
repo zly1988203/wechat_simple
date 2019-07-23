@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>中交出行</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/swiper.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/commutingBus/commutingBusIndex.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/commutingBus/commutingSearchPop.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/commutingBus/fonts/iconfont.css" rel="stylesheet">
+</head>
+
+<body>
+    <!--顶部-->
+    <header class="header">
+        <div id="menuArmrest" class="avatar"></div>
+        <div class="nav">
+            <div class="thumb"></div>
+            <div class="list-bar">
+                <div class="content">
+                    <i class="icon"></i>
+                    <ul class="list">
+                        <li data-icon="bus" data-href="../bus/bus.html">定制班线</li>
+                        <li data-icon="bus" data-href="../travel/index.html">旅游班线</li>
+                        <li class="active" data-icon="bus" data-href="../commutingBus/index.html">定制通勤</li>
+                        <li data-icon="car" data-href="../rent/appointment.html">城际约租车</li>
+                        <li data-icon="bus" data-href="../coach/index.html">汽车票</li>
+                        <li data-icon="car" data-href="../hailing/hailing.html" class="active" >网约车</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <div class="search-form sui-border-b">
+        <div class="search-station">
+            <ul class="sui-list">
+                <span class="icon iconfont icon-Line_icon"></span>
+                <li>
+                    <span class="icon iconfont icon-start_icon"></span>
+                    <div class="control start">
+                        <input id="startAddr" type="text" class="select-city-btn" placeholder="您在哪上车" readonly />
+                    </div>
+                </li>
+                <div class="bottom-line"></div>
+                <li>
+                    <span class="icon iconfont icon-end_icon"></span>
+                    <div class="control end">
+                        <input id="endAddr" type="text" class="select-city-btn" placeholder="您要去哪儿" readonly />
+                    </div>
+                </li>
+                <input type="hidden" id="stationType" value="startAddr">
+            </ul>
+        </div>
+    </div>
+
+    <!--行程-->
+    <!--行程-->
+    <div class="scheduling" style="display: none;">
+        <header>
+            <div class="border-weight"></div>
+            <div class="title">行程</div>
+            <span class="icon iconfont icon-more_icon1 nav-right"></span>
+        </header>
+        <div id="scheduling-panle" class="scheduling-panle">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <!--最近订单-->
+    <!--最近订单-->
+    <div class="near-order" style="display: none;">
+    </div>
+
+    <!--banner图-->
+    <div id="swpBanner" class="banner" style="display:none;">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+
+    <!--推荐线路-->
+    <div  id="hotLine" class="hot-line-list">
+        <header>
+            <div class="border-weight"></div>
+            <div class="title">推荐线路</div>
+        </header>
+        <div class="line-list">
+
+        </div>
+    </div>
+
+    <!--查询地址-->
+    <div id="search-address" class="sui-popup-container" hidden>
+        <div class="sui-popup-mask"></div>
+        <div class="sui-popup-modal">
+            <div class="search-bar">
+                <div class="search-bar-inner">
+                    <div class="tools-control">
+                        <div id="setCityButton" class="set-city">
+                            深圳
+                        </div>
+                        <input type="hidden" id="areaCode" value="0755">
+                        <input type="hidden" id="cityId" value="431000">
+                        <div class="search-input">
+                            <span class="icon iconfont icon-search_icon"></span>
+                            <input id="textSearchMap" type="text" placeholder="搜索地点地址" />
+                        </div>
+                    </div>
+                    <button  type="button" class="cancel" id="closeBtn">关闭</button>
+                    <button  type="button" class="cancel" id="cancelBtn" style="display: none">取消</button>
+                </div>
+            </div>
+
+            <div id="searchWrapper" class="wrapper">
+                <div class="content">
+                    <ul id="mapResult" class="sui-list">
+
+                    </ul>
+                    <div id="adrsResult" class="gather">
+
+                        <div class="current-panle">
+                            <!-- 当前位置 -->
+                            <div class="current" id="currentAddress" style="display: none;">
+                                <div class="title">当前定位：</div>
+                                <div class="adrs" id="currentAddressDetail" data-lng="" data-lat="">
+                                    <span></span>
+                                </div>
+                            </div>
+
+                            <!-- 历史记录 -->
+                            <div class="historyAddress" id="historySearch" style="display: none;">
+                                <div class="title">历史地点</div>
+                                <div class="station-group" id="historyStation">
+                                </div>
+                            </div>
+                            <div class="remove-history" style="display: none;">清空历史记录</div>
+                        </div>
+
+                        <!-- 地区推荐 -->
+                        <div class="recommend" id="areaCityPanel" style="display: none;">
+                            <div class="title">按地区找线路</div>
+                            <div class="area-content">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--选择城市-->
+    <div id="select-Citys" class="sui-popup-container">
+        <div class="sui-popup-mask"></div>
+        <!--<div class="sui-popup-mask"></div>
+        <div class="sui-popup-modal">-->
+        <div class="sui-popup-modal">
+            <div class="search-bar sui-border-b">
+                <div class="search-bar-inner">
+                    <div class="tools-control">
+                        <div class="search-input">
+                            <span class="icon iconfont icon-search_icon"></span>
+                            <input type="text" placeholder="区域名称/地址" />
+                        </div>
+                    </div>
+                    <button id="closeCitys" type="button" class="cancel">关闭</button>
+                </div>
+            </div>
+
+            <!-- 字母检索 -->
+            <ul class="nav-city">
+
+            </ul>
+            <div class="pop-special">L</div>
+            <div id="cityWrapper" class="wrapper">
+                <div class="content">
+                    <div class="current-city"><div style="height: 0.4rem;padding: .05rem;"><span style="vertical-align: text-top;">当前定位所在城市：</span></div><div class="city-name"><span>深圳</span></div></div>
+                    <div class="city-list"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--侧边栏菜单-->
+    <div id="sideMenu" class="sui-popup-container">
+        <div class="sui-popup-mask"></div>
+        <div class="sui-popup-modal">
+            <div class="head" data-url="#">
+                <div class="avatar" style="background-image:url(../../dist/images/common/avatar_driver.png);"></div>
+                <div class="mobile">13800138000</div>
+            </div>
+            <ul class="sui-list">
+                <li data-url="#"><div class="sui-cell-icons"><span class="sui-cell-icon icon-myorder"></span> 订单</div></li>
+                <li data-url="#"><div class="sui-cell-icons"><span class="sui-cell-icon icon-ticket"></span> 车票</div></li>
+                <li data-url="#"><div class="sui-cell-icons"><span class="sui-cell-icon icon-coupon"></span> 优惠</div></li>
+                <li data-url="#"><div class="sui-cell-icons badge-hot"><span class="sui-cell-icon icon-activity"></span> 活动</div></li>
+                <li data-url="#"><div class="sui-cell-icons"><span class="sui-cell-icon icon-config"></span> 设置</div></li>
+                <li data-url="#"><div class="sui-cell-icons"><span class="sui-cell-icon icon-suggest"></span> 反馈建议</div></li>
+                <li data-url="#"><div class="sui-cell-icons"><span class="sui-cell-icon icon-conversion"></span> 奖品兑换</div></li>
+                <li data-url="#"><div class="sui-cell-icons"><span class="sui-cell-icon icon-ranking"></span> 员工排行榜</div></li>
+            </ul>
+            <div class="foot">
+                <div class="item" data-href="tel:123456789">
+                    <span class="icon icon-contact"></span>
+                    <p>联系客服</p>
+                </div>
+                <div class="item" data-href="#">
+                    <span class="icon icon-invite"></span>
+                    <p>邀请有礼</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <!--<#include "_footer.ftl">-->
+    
+	<script src="../../dist/javascripts/zepto.min.js"></script>
+	<script src="../../dist/javascripts/simpleui.min.js"></script>
+    <script src="../../dist/javascripts/vectors.min.js"></script>
+    <script src="../../dist/stylesheets/commutingBus/fonts/iconfont.js"></script>
+    <script src="../../src/js/commutingBus/serverApi.js"></script>
+    <script src="../../src/js/base/swiper.js"></script>
+    <script src="../../src/js/jweixin-1.4.0.js"></script>
+    <script src="https://webapi.amap.com/maps?v=1.4.4&key=cc84bbc40681d10bdf6a924b2caf31d5"></script>
+    <script src="../../src/js/commutingBus/commutingBusIndex.js"></script>
+</body>
+</html>

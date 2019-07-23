@@ -1,0 +1,226 @@
+<div id="__adWrapper">
+    <!-- 公共静态资源 start -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
+    <!-- 公共静态资源 end -->
+
+    <!-- 关闭按钮：不显示 -->
+    <div id="__adWrapperCloseTisement" style="display: none;position: absolute;top: 15px;right: 25px;z-index: 2003;width: 36px;height: 36px;background: no-repeat center;-webkit-background-size: 100% 100%;background-size: 100% 100%;"></div>
+    <script>
+        //阻止冒泡 - 滚动事件
+        document.getElementById('__adWrapper').addEventListener('touchmove', function (e) {
+            return false;
+        });
+
+        document.getElementById('__adWrapperCloseTisement').addEventListener('click', function () {
+            delAd('__adWrapper');
+        }, false);
+        var delAd = function (im) {
+            var imDOM = document.getElementById(im);
+            imDOM && imDOM.parentNode.removeChild(imDOM);
+        }
+    </script>
+
+    <style>
+        .v-wrapper {
+            position: relative;
+            height: 1.5rem;
+            margin: 0 0.22rem 0.22rem;
+            border-radius: 0.05rem;
+            overflow: hidden;
+        }
+
+        .swiper-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            background: #fff;
+        }
+
+        .swiper-slide img {
+            border: 0;
+            display: block;
+        }
+
+        .swiper-pagination {
+            left: 0;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .swiper-pagination-bullet {
+            margin: 0 0.05rem;
+            width: 0.15rem;
+            height: 0.15rem;
+        }
+
+        .swiper-pagination-bullet-active {
+            opacity: 1;
+            background: #fff;
+        }
+    </style>
+
+    <div class="v-wrapper">
+        <!-- Swiper -->
+        <div class="swiper-container">
+            <!-- main -->
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><a href="#"><img width="100%" height="100%" src="http://img5.imgtn.bdimg.com/it/u=3208258265,2930130286&fm=27&gp=0.jpg"></a></div>
+            </div>
+            <!-- pagination -->
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.0.2/js/swiper.min.js"></script>
+    <script>
+        (function(){
+            var force = '1';
+            var operator_id = '{{ $operator_id }}';
+            /**
+             * 事件列表：
+             * 1. 广告加载完成之后，触发第一张广告的 displayed 事件
+             * 2. 滑动到其他slide 时，触发滑动后的slide 的displayed 事件
+             * 3. 广告被点击时，触发当前广告的 clicked 事件
+             */
+            function initSwiper(){
+                if(!Swiper) {
+                    return setTimeout(function () {
+                        initSwiper();
+                    }, 1000);
+                }
+
+                //默认参数
+                var swiperOpt = {
+                    pagination: '.swiper-pagination',
+                    loop : true,
+                    paginationClickable: true,
+                    spaceBetween: 0,
+                    onInit:function(swiper){
+                        var slideArr = swiper.slides;
+                        var _currentSlideIndex = swiper.activeIndex; // 当前的slide的index
+                        var _currentSlide = slideArr[_currentSlideIndex]; // 当前的slide
+                        var _$currentSlide = $(_currentSlide);
+
+                        var first_vert_id = _$currentSlide.data('id');
+                        if(force != 1){
+                            displayed(first_vert_id);
+                        }
+                    },
+                    onSlideChangeEnd:function(swiper){  // 切换到另一个slide完成之后触发
+                        var slideArr = swiper.slides;
+                        var _currentSlideIndex = swiper.activeIndex; // 切换完成后的当前的slide的index
+                        var _currentSlide = slideArr[_currentSlideIndex]; // 切换完成后的当前的slide
+                        var _$currentSlide = $(_currentSlide);
+
+                        var displayed_vert_id = _$currentSlide.data('id');
+                        if(force != 1){
+                            displayed(displayed_vert_id);
+                        }
+                    },
+                    onClick:function(swiper){
+                        var slideArr = swiper.slides;
+                        var _currentSlideIndex = swiper.activeIndex; // 当前的slide的index
+                        var _currentSlide = slideArr[_currentSlideIndex]; // 当前的slide
+                        var _$currentSlide = $(_currentSlide);
+
+                        var clicked_vert_id = _$currentSlide.data('id');
+                        var target_url = _$currentSlide.data('href');
+                        clicked(clicked_vert_id, target_url);
+                    }
+                }
+
+                //拷贝参数
+                if(!!opt && typeof opt == 'object') {
+                    for(var val in opt) {
+                        for(var v in swiperOpt) {
+                            if(val === v) {
+                                //合并
+                                swiperOpt[v] = opt[val]
+                            } else {
+                                //新增
+                                swiperOpt[val] = opt[val]
+                            }
+                        }
+                    }
+                }
+
+                /*
+                * param
+                *   loop：循环
+                *   paginationClickable：此参数设置为true时，点击分页器的指示点分页器会控制Swiper切换。
+                *   spaceBetween：间距
+                * */
+                var swiper = new Swiper('.swiper-container', swiperOpt);
+            }
+
+            var clicked = function(vert_id, target_url){
+                if(force != 1){
+                    var clicked_url = '//{{ config("domain") }}/pub/vert_clicked';
+                    $.get(clicked_url,{id:vert_id,operator_id:operator_id}, function(){
+                        if(target_url){
+                            top.location.href = target_url;
+                        }
+                    })
+                }else{
+                    if(target_url){
+                        top.location.href = target_url;
+                    }
+                }
+            };
+
+            var displayed = function(vert_id){
+                var displayed_url = '//{{ config("domain")}}/pub/vert_displayed';
+                $.get(displayed_url,{id:vert_id, operator_id:operator_id});
+            };
+
+            var getList = function(){
+                var url = '//{{ config("domain") }}/pub/vert_list?position_code={{ $position_code }}&provider_id={{ $provider_id }}&operator_id={{ $operator_id }}&force=' + force;
+                $.get(url, null, function(result){
+                    if(result && result.code === 0){
+                        var list = result.data.list;
+                        if(result.data.display_count > 0 && list.length > 0){
+                            var html = '';
+                            var opt = {},
+                                className = 'swiper-slide';
+
+                            //只有一个的时候
+                            if(list.length == 1) {
+                                //不知道分页容器
+                                opt = {
+                                    pagination: null
+                                }
+
+                                //禁止触发
+                                className += ' swiper-no-swiping'
+                            }
+
+                            list.forEach(function(value){
+                                html += '<div class="' + className + '" data-id="' + value.id + '" data-href="' + value.target_url + '"><a href="javascript:void(0)"><img width="100%" height="100%" src="' + value.img_url + '"></a></div>';
+                            });
+                            $('.swiper-wrapper').html(html);
+                            $('#__adWrapper').show();
+
+                            initSwiper(opt);
+                        }else{
+                            delAd('__adWrapper');
+                        }
+
+                    }else{
+                        // 广告获取失败操作
+                        delAd('__adWrapper');
+                    }
+                });
+            };
+
+            window.onload = function () {
+                getList();
+            }
+        })();
+
+    </script>
+</div>

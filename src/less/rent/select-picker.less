@@ -1,0 +1,66 @@
+@charset "utf-8";
+@link-color-default: #333;
+// 控件高度
+@item-height: 36px;
+
+#select-picker-popup {
+    .toolbar-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        span {
+            font-size: 16px;
+        }
+    }
+    .sui-cancel,.sui-ok {
+        width: 60px;
+        line-height: 44px;
+        font-size: 16px;
+    }
+    .sui-cancel {
+        color: #999;
+    }
+    .sui-ok {
+        color: @link-color-default;
+    }
+    .picker-container {
+        width: 100%;
+        height: @item-height * 5;
+        margin: 0 auto 8px;
+        -webkit-mask-box-image: linear-gradient(to top, transparent, transparent 5%, white 18%, white 85%, transparent 95%, transparent);
+        .picker-col-wrapper {
+            float: left;
+            width: 100%;
+            height: @item-height * 5;
+            position: relative;
+            overflow: hidden;
+            .picker-control {
+                width: 100%;
+                height: 100%;
+                vertical-align: top;
+                text-align: center;
+            }
+            li {
+                height: @item-height;
+                line-height: @item-height;
+                color: #999;
+                font-size: 16px;
+                &.selected {
+                    color: @link-color-default;
+                    font-size: 20px;
+                }
+            }
+        }
+        
+    }
+    .picker-center-highlight {
+        height: @item-height;
+        box-sizing: border-box;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        bottom: @item-height * 2 + 8px;
+        margin-top: -16px;
+        pointer-events: none;
+    }
+}

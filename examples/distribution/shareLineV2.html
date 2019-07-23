@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>中交出行-推广线路2</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/distribution/shareLineV2.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="linePage" class="all-container">
+    <div class="poster-container">
+        <div id="img-box"></div>
+        <div class="poster-box" id="poster">
+            <img src="../../dist/images/distribution/v2/poster-bg-1-1.png" id="poster_bg_lines"/>
+            <div class="poster-content">
+                <div class="avatar">
+                    <img src="../../dist/images/coach/ticket-rule-test.gif"/>
+                </div>
+                <div class="tips">王小瑞请你来坐车</div>
+                <!--线路 有起点站终点站的 二行-->
+                <div class="lines-box">
+                    <div class="station">
+                        <img src="../../src/images/distribution/v2/icon-up.png"/>
+                        <div class="item">开始战点开始战点开始战点开始战点</div>
+                        <div class="item">终点站</div>
+                        <img src="../../src/images/distribution/v2/icon-down.png"/>
+                    </div>
+
+                    <div class="price-container">
+                        <img src="../../src/images/distribution/v2/price-bg.png"/>
+                        <div class="price-content">
+                            <div class="price-box"><em>￥</em><div class="price">99.99</div></div>
+                        </div>
+                    </div>
+                </div>
+                <!--线路 只有名称的 一行-->
+                <div class="lines-box" style="display: none">
+                    <div class="line-name">线路名称线路名称线路名称</div>
+                    <div class="price-container">
+                        <img src="../../src/images/distribution/v2/price-bg.png"/>
+                        <div class="price-content">
+                            <div class="price-box"><em>￥</em><div class="price">99.99</div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--平台 只有文案 TODO-->
+                <div class="platform-desc" style="display: none">
+                    华美出行：合规车辆、专业司机为您
+                    服务。省钱车券只发三天，手慢无。
+                </div>
+
+                <div class="company-box">
+                    <div class="desc">
+                        华美出行：合规车辆、专业司机为您服务。省钱车券只发三天，手慢无。
+                    </div>
+                </div>
+                <div class="OR-content">
+                    <div class="OR-box">
+                        <img src="../../dist/images/distribution/trial.jpg"/>
+                    </div>
+                    <p>长按扫码 购买车票</p>
+                </div>
+                <div class="copyright">中交出行提供技术支持</div>
+            </div>
+        </div>
+        <div class="more"></div>
+    </div>
+    <div class="poster-switch-box" id="wrapper">
+        <div class="switch content">
+            <ul>
+                <li class="item" data-index="1"></li>
+                <li class="item" data-index="2"></li>
+                <li class="item" data-index="3"></li>
+                <li class="item" data-index="4"></li>
+                <li class="item" data-index="5"></li>
+                <li class="item" data-index="6"></li>
+                <li class="item" data-index="7"></li>
+                <li class="item" data-index="8"></li>
+            </ul>
+        </div>
+        <div class="notice">
+            <span class="notice-btn">收益须知</span>
+        </div>
+    </div>
+
+    <!--更多方式弹窗-->
+    <div id="more_popup" class="popup-container" style="display: none">
+        <div class="popup-box">
+            <div class="type-box">
+                <div class="type">
+                    <h4>方式一</h4>
+                    <p>微信右上角分享</p>
+                    <p>点击微信右上角三个点“...”通过【发给朋友】【分享到朋友圈】推广</p>
+                </div>
+                <div class="type">
+                    <h4>方式二</h4>
+                    <p>复制一下链接推广 <span class="copy-btn">复制链接</span></p>
+                    <textarea id="hunterUrl" class="hunter-url" readonly>www：4561SSS4545645484textarea4561SSS4545645484t4561SSS4545645484textarea4561SSS4545645484textareaextarea.chuxin.com</textarea>
+                </div>
+            </div>
+            <div class="close-btn sui-border-t">关闭</div>
+        </div>
+    </div>
+    <!--收益须知弹窗-->
+    <div id="notice_popup" class="popup-container" style="display: none">
+        <div class="popup-box">
+            <div class="notice-box">
+                <div class="title">收益须知</div>
+                <div class="img"></div>
+                <div class="notice-content">
+                    <p>1.您每成功邀请一位好友购买将获得支付金额的一定比例作为奖励</p><br/>
+                    <p>2.奖励金额定时结算存入“赚取赏金”，请前往“个人中心”进行查看</p><br/>
+                    <p>3.结算时，好友退单将不计入奖励</p><br/>
+                    <p>4.您每成功邀请一位好友购买将获得支付金额的一定比例作为奖励</p><br/>
+                    <p>5.奖励金额定时结算存入“赚取赏金”，请前往“个人中心”进行查看</p><br/>
+                    <p>6.结算时，好友退单将不计入奖励</p><br/>
+                    <p>7.您每成功邀请一位好友购买将获得支付金额的一定比例作为奖励</p><br/>
+                    <p>8.奖励金额定时结算存入“赚取赏金”，请前往“个人中心”进行查看</p><br/>
+                    <p>9.结算时，好友退单将不计入奖励</p>
+                </div>
+            </div>
+            <div class="close-btn sui-border-t">关闭</div>
+        </div>
+    </div>
+</div>
+
+<div id="canvas-box"></div>
+<!--<div id="img-box"></div>-->
+<script src="../../dist/javascripts/zepto.min.js"></script>
+<script src="../../dist/javascripts/simpleui.min.js"></script>
+<script src="../../dist/javascripts/vectors.min.js"></script>
+<script src="../../dist/javascripts/html2canvas.min.js"></script>
+<script src="../../dist/javascripts/clipboard.min.js"></script>
+<script src="../../src/js/distributionPlatform/shareLineV2.js"></script>
+</body>
+</html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>中交出行</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/rent/scan-code-payment.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="payment">
+        <div class="payment-top">
+            <p>您正在进行扫码支付操作，请确认订单信息。</p>
+        </div>
+
+        <div class="payment-list">
+            <div class="title">订单信息</div>
+            <div class="head">
+                <div class="date">08月19日  11:20 出发</div>
+                <div class="code">2人</div>
+            </div>
+            <div class="main">
+                <div class="info">
+                    <div class="info-item start">深圳湾创业投资大厦</div>
+                    <div class="info-item end">深圳会展中心</div>
+                </div>
+            </div>
+            <div class="tips">愿意等待15分钟以上</div>
+        </div>
+
+        <div class="payment-info">
+            <div class="title">费用详情</div>
+            <div class="price-container">
+                共 <span>30.5</span> 元
+            </div>
+            <div class="detail-info">
+                <div class="detail">
+                    <dl>
+                        <dt>城际约租车</dt>
+                        <dd>70元</dd>
+                    </dl>
+                    <dl>
+                        <dt>优惠券</dt>
+                        <dd>-8.5元</dd>
+                    </dl>
+                </div>
+                <div class="title-bar">查看明细</div>
+            </div>
+        </div>
+
+        <!-- 刚下单支付样式 -->
+        <div class="pay-method newly">
+            <div class="title">支付方式</div>
+            <label class="wechat" for="wechatPay">
+                <span>微信支付</span>
+                <input type="radio" id="wechatPay" />
+            </label>
+            <label class="later" for="laterPay">
+                <span>稍后支付</span>
+                <input type="radio" id="laterPay" />
+            </label>
+        </div>
+        <!-- 后续支付样式 -->
+        <div class="pay-method recently">
+            <div class="title">支付方式</div>
+            <label class="wechat" for="wechatPay">
+                <span>微信支付</span>
+                <input type="radio" id="wechatPay" />
+            </label>
+        </div>
+
+        <div class="pay-foot">
+            <div class="btn-group">
+
+                <div class="btn primary">确定支付</div>
+            </div>
+            <div class="link">
+                <span class="inter-rule">城际约租车规则</span>
+                |
+                <span data-href="tel:13800138000">联系客服</span>
+            </div>
+        </div>
+    </div>
+
+    <!--城际约租车规则-->
+    <div id="interRule" class="sui-popup-container">
+        <div class="sui-popup-mask"></div>
+        <div class="sui-popup-modal">
+            <div class="listWrapper">
+                <div class="content">
+                    <article class="sui-article">
+                        <h1>城际约租车规则</h1>
+                        <div class="sui-border-t content">
+                            <p><strong>一、约车流程</strong><br/>
+                                1、预约下单：乘客下单需至少提前20分钟。<br/>
+                                2、车企服务：为保证服务质量，车企客服将与您联系确认出行事宜，并沟通清楚情况下，对乘客发起的城际约租车行程进行调整，如调整：出发地、目的地、出行时间、出行费用等信息。<br/>
+                                3、司机服务：司机根据订单需求接送乘客。 <br/>
+                                4、双方评价：司机和乘客均可在拼车后评价对方。</p>
+                            <p><strong>二、司机责任</strong><br/>
+                                1、停靠点选择：司机按照乘客指定停靠点拼车；请乘客尽量设置方便司机停靠的地点；司机可以拒绝停靠交通规则禁止的地点。<br/>
+                                2、车辆规范：司机需要驾驶经过认证的车辆，并保持车内整洁干净，无杂物。<br/>
+                                3、行李放置：司机需要保持车辆可以放置至少一个标准行李箱；乘客如有超大行李，需与客服提前说明；<br/>
+                                4、城际约租车的过路、过桥费由司机承担。<br/>
+                                5、文明驾驶，遵守交通规则。</p>
+                            <p><strong>三、双方共同遵守的规则</strong><br/>
+                                1、守时规则：司机和乘客均需按照订单时间前后10分钟完成搭乘；如有特殊情况，需要提前电话沟通。<br/>
+                                2、文明拼车：双方均需遵守文明规范，共建和谐社会。<br/>
+                                3、本平台倡议无烟行车；如果有宠物搭乘，需要提前说明；司机有权拒绝未经申请的宠物搭乘。<br/>
+                                4、违反本规则的司机和乘客，平台有权取消注册会员资格，并追究可能导致的损失。</p>
+                            <p><strong>四、取消及退款</strong><br/>
+                                1、原则上司机和乘客在订单确认后，均不能取消订单；<br/>
+                                2、司机或乘客如有特殊情况，请致电客服协商处理；<br/>
+                                3、司机未能按照本规则服务，乘客可致电客服处理。</p>
+                        </div>
+                    </article>
+                    <div class="close-popup close" data-target="interRule"></div>
+                </div>
+            </div>
+            <div class="btn-group">
+                <div class="btn primary close-popup" data-target="interRule">返回城际约租车</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../dist/javascripts/zepto.min.js"></script>
+    <script src="../../dist/javascripts/simpleui.min.js"></script>
+    <script src="../../dist/javascripts/vectors.min.js"></script>
+    <script src="../../dist/javascripts/backtrack.min.js"></script>
+    <script>
+        $(function() {
+            //初始秒数
+            var t = 840;
+            countDown(t);
+
+            //倒计时
+            function countDown(t) {
+                var r = format(t);
+                full(r);
+
+                var auto = setInterval(function() {
+                    if(r.second > 0) {
+                        r.second--;
+                    } else {
+                        if(r.minute > 0) {
+                            r.second = 60;
+                            r.minute--;
+                        } else {
+                            if(r.hours > 0) {
+                                r.second = 60;
+                                r.minute = 59;
+                                r.hours--;
+                            } else {
+                                r.second = 0;
+                                clearInterval(auto);
+                            }
+                        }
+                    }
+
+                    full(r);
+                }, 1000);
+            }
+
+            //填入
+            function full(r) {
+                var $t = $('#time');
+                var html = r.second + '秒';
+
+                if(r.minute >= 0) {
+                    html = r.minute + '分' + html;
+                }
+                if(r.hours >= 0) {
+                    html = r.hours + '时' + html;
+                }
+
+                $t.html(html);
+            }
+
+            //格式化时间
+            function format(n) {
+                var s = parseInt(n);
+                var m = 0;
+                var h = 0;
+
+                if(s > 60) {
+                    m = parseInt(s / 60);
+                    s = parseInt(s % 60);
+
+                    if(m > 60) {
+                        h = parseInt(m / 60);
+                        m = parseInt(m % 60);
+                    }
+                }
+
+                var result = {};
+                result.second = s;
+                if(m > 0) {
+                    result.minute = m;
+                }
+                if(h > 0) {
+                    result.hours = h;
+                }
+
+                return result;
+            }
+
+            //查看明细
+            $('.detail-info .title-bar').on('click', function() {
+                var $el = $(this);
+
+                if($el.hasClass('active')) {
+                    $el.removeClass('active');
+                    $el.prev().hide();
+                } else {
+                    $el.addClass('active');
+                    $el.prev().show();
+                }
+            });
+
+            //城际约租车规则
+            $('.inter-rule').on('click', function () {
+                $('#interRule').popup('popup', function() {
+                    var $el = $('#interRule');
+                    if($el.data('isInitsc')) return;
+                    $el.data('isInitsc', true);
+
+                    setTimeout(function() {
+                        $el.find('.listWrapper').css('height', $(window).height() - $el.find('.btn.primary').height() - 15);
+                        new IScroll('#interRule .listWrapper');
+                        $el.data('isInitsc', false);
+                    }, 300);
+                });
+            });
+
+            //返回键控制
+            backtrack(function () {
+                var self = this;
+
+                //弹窗层，返回0
+                $('.inter-rule').on('click.back', function () {
+                    self.setState(0);
+                });
+
+                //关闭弹窗层，返回-1
+                $('[data-target="interRule"]').on('click.back', function () {
+                    self.setState(-1);
+                });
+            }, function (data) {
+                this.go();
+            });
+
+            //支付方式样式选择 0-刚下单时，1或其他-稍后支付
+            checkPayMethod(0);
+            //根据状态flag选择支付方式样式：0-刚刚下单样式；1或者其他-稍后支付样式
+            function checkPayMethod(flag){
+                if(flag==0){
+                    $('.newly').show();
+                    $('.recently').hide();
+                }else{
+                    $('.newly').hide();
+                    $('.recently').show();
+                }
+                initPayMethod(flag);
+            }
+
+            //初始化默认选中的支付方式 0-刚刚下单；1或者其他-稍后支付
+            function initPayMethod(flag){
+                if(0==flag){
+                    $('.newly label #wechatPay').prop('checked',true);
+                }else {
+                    $('.recently label #wechatPay').prop('checked',true);
+                }
+                payMethodCheckBG(flag);//选中支付方式的背景
+            }
+
+            // 刚下单时 支付选择方式
+            $('.newly label').on('click',function(){
+                var _this = $(this);
+                _this.children('input').prop('checked',true);
+                _this.siblings('label').children('input').prop('checked',false);
+                payMethodCheckBG(0);
+            });
+
+            //选中支付方式的背景设置 0-刚刚下单；1或者其他-稍后支付
+            function payMethodCheckBG(flag){
+                if(flag==0){
+                    var _methods = $('.newly label');
+                    setBGImg(_methods);
+                }
+                else{
+                    var _methods = $('.recently label');
+                    setBGImg(_methods);
+                }
+            }
+
+            //遍历input 如果checked为ture，则背景图片为蓝色，否则为灰色
+            function setBGImg(_methods) {
+                for (var i = 0; i < _methods.length; i++) {
+                    var _el = $(_methods[i]).children('input');
+                    if (_el.prop('checked')) {
+                        _el.css('background_image', 'url(../../dist/images/common/icon_choice.png)');
+                    } else {
+                        _el.css('background_image', 'url(../../dist/images/common/icon_unchoice_3x.png)');
+                    }
+                }
+            }
+
+        });
+    </script>
+
+</body>
+</html>

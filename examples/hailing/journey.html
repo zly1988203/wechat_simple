@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>中交出行</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/hailing/wait.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+    <div id="wait-instant">
+        <header>
+            <div class="info">
+                <div class="avatar" style="background-image: url(../../dist/images/common/avatar_driver.png)"></div>
+                <div class="content">
+                    <h4>王师傅 · 江苏客运认证网约车司机</h4>
+                    <div class="second">
+                        <span>白色 · 别克君越</span>
+                        <span>粤BDE990</span>
+                    </div>
+                    <div class="starbar">
+                        <div class="grade"><span>4.0</span></div>
+                        <i class="star"></i>
+                        <i class="star"></i>
+                        <i class="star"></i>
+                        <i class="star"></i>
+                        <i></i>
+                    </div>
+                </div>
+                <div class="tel" data-tel="12345678"></div>
+            </div>
+            <div class="journey-info">
+                <div class="end">
+                    <div class="title">目的地</div>
+                    <div class="content">
+                        <h4>深圳市 花园路283号沙河街道某某小区花园路283号沙河街道某某小区</h4>
+                        <p>已行驶：23分钟3秒</p>
+                    </div>
+                </div>
+                <!--优惠券-->
+                <div class="price-content">
+                    <div class="normal-price-box">
+                        <span class="left">一口价</span><span class="right normal">7.96元</span>
+                    </div>
+                    <!--<div class="discount-price-box">
+                        <span class="left">优惠券</span><span class="right discount">-5.96元&nbsp;&gt;</span>
+                    </div>-->
+                    <div class="discount-price-box no-discount">
+                        <span class="left">优惠券</span><span class="right discount">无可用券&nbsp;&gt;</span>
+                    </div>
+                </div>
+                <!-- 等待支付 -->
+                <div class="pay-wait">
+                    <div class="price">
+                        <div class="gold">
+                            <span class="tag">一口价</span><b>23</b>元
+                        </div>
+                        <div class="rule" data-href="bill-rules.html">计费规则</div>
+                    </div>
+                    <div class="btn primary">微信支付</div>
+                </div>
+            </div>
+        </header>
+        <div id="allmap"></div>
+
+        <!-- 更多操作 -->
+        <div id="more"></div>
+        <div class="more-modal">
+            <ul>
+                <li data-href="#">分享行程</li>
+                <!-- data-tel属性：只有已经设置了紧急联系人，才有该属性 -->
+                <li class="sos" data-tel="tel:123456">紧急求助</li>
+                <li class="complain">投诉建议</li>
+                <li data-href="tel:123456">联系客服</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 投诉建议 - 提交成功 -->
+    <div class="complain-success">
+        <div class="complain-success-modal">
+            <div class="title">提交成功</div>
+            <div class="content">
+                <ul>
+                    <li>
+                        <h4>投诉结果：客服已收到。</h4>
+                        <p>我们将尽快给您安排处理，给您本次出行带来 的不便，深感歉意。</p>
+                    </li>
+                    <li>
+                        <h4>投诉原因：</h4>
+                        <p>本文信息描述本文信息描述本文信息描述本文 本文信息描述本文信息描述本文信息描述信息 描述</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="btn primary confirm">知道了</div>
+        </div>
+    </div>
+    
+	<script src="../../dist/javascripts/zepto.min.js"></script>
+	<script src="../../dist/javascripts/simpleui.min.js"></script>
+    <script src="../../dist/javascripts/vectors.min.js"></script>
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.4&key=cc84bbc40681d10bdf6a924b2caf31d5&plugin=AMap.Driving"></script>
+    <script type="text/javascript">
+        //强制使用https
+        var AMapUIProtocol = 'https:';  //注意结尾包括冒号
+    </script>
+    <!--引入UI组件库（1.0版本） -->
+    <script src="https://webapi.amap.com/ui/1.0/main.js"></script>
+    <script src="../../dist/javascripts/communicate.min.js"></script>
+	<script>
+        $(function() {
+            //map
+            AMapUI.loadUI(['overlay/SimpleMarker'], function (SimpleMarker) {
+                initMap(SimpleMarker)
+            })
+            function initMap(SimpleMarker) {
+                var map = new AMap.Map('allmap', {
+                    resizeEnable: true,
+                    zoom: 16,
+                    center: [113.939428, 22.528159]
+                });
+
+                /**
+                 *@param policy         驾车路线规划策略
+                 *@param map            AMap.Map对象, 展现结果的地图实例
+                 *@param hideMarkers    是否隐藏线路规划点图标
+                */
+                var driving = new AMap.Driving({
+                    policy: AMap.DrivingPolicy.LEAST_TIME,
+                    map: map,
+                    hideMarkers: true
+                });
+
+                /**
+                 *@param    origin          起点
+                 *@param    destination     目的地
+                 *@param    waypoints       途径点：也许有，也许没有，可以选填{waypoints: waypoints}
+                */
+                var origin = new AMap.LngLat(113.870999, 22.572401),
+                    destination = new AMap.LngLat(113.937839, 22.522394),
+                    waypoints = [new AMap.LngLat(113.870732, 22.568868), new AMap.LngLat(113.880646, 22.560853), new AMap.LngLat(113.887276, 22.554591), new AMap.LngLat(113.894679, 22.547418), new AMap.LngLat(113.897962, 22.537132), new AMap.LngLat(113.92354, 22.523952), new AMap.LngLat(113.942465, 22.518382)]
+
+                driving.search(origin, destination, function (status, result) {
+                    if(status == 'complete') {
+                        //规划成功 - 标注点
+                        // markerPoints(waypoints)
+                        markerPoints(origin, 'start')
+                        markerPoints(destination, 'end')
+
+                        //设置起点为中心点
+                        map.setCenter(origin)
+                    } else if(status == 'no_data') {
+                        //返回0结果
+                    } else if(status == 'error') {
+                        //规划错误
+                        console.log(status)
+                        console.log(result)
+                    }
+                });
+
+                /**
+                 *@param    position    坐标
+                 *@param    icon        图标
+                 *@param    offset      图标偏移量
+                */
+                function markerPoints(points, mark) {
+                    if(points instanceof Array) {
+                        //途径点
+                        for (var i = 0; i < points.length; i++) {
+                            new AMap.Marker({
+                                map: map,
+                                position: points[i],
+                                icon: new AMap.Icon({
+                                    image: "../../dist/images/bus/map-4.png",
+                                    size: new AMap.Size(26, 26),  //图标大小
+                                    imageSize: new AMap.Size(13, 13),
+                                    imageOffset: new AMap.Pixel(0, 0)
+                                }),
+                                offset: new AMap.Pixel(0, 0)
+                            })
+                        }
+                    } else if(typeof points == 'object' && typeof mark == 'string') {
+                        //起点和目的地
+                        new AMap.Marker({
+                            map: map,
+                            position: points,
+                            icon: new AMap.Icon({
+                                image: "../../dist/images/bus/map-" + mark + ".png",
+                                size: new AMap.Size(50, 72),  //图标大小
+                                imageSize: new AMap.Size(25, 36),
+                                imageOffset: new AMap.Pixel(0, 0)
+                            })
+                        })
+                    }
+                }
+            }
+
+            //拨打电话
+            $('.tel').on('click.tel', function() {
+                var tel = $(this).data('tel')
+
+                $.alert('您的电话号码已做加密处理，<br />联系司机师傅，请您通过页面按键拨打。', '温馨提示', ['知道了'], function() {
+                    window.location.href = 'tel:' + tel
+                })
+            });
+
+            //点击更多
+            $('#more').on('click', function() {
+                var self = $(this),
+                    $modal = $('.more-modal');
+                
+                if(!self.data('state') || self.data('state') == 'close') {
+                    self.addClass('open').data('state', 'open');
+                    $modal.show();
+                } else {
+                    self.removeClass('open').data('state', 'close');
+                    $modal.hide();
+                }
+            });
+
+            //更多操作栏点击 - 增加active
+            $('.more-modal li').on('click', function() {
+                $(this).addClass('active').siblings().removeClass('active');
+            });
+
+            //紧急联系人
+            $('.sos').on('click', function() {
+                var self = $(this);
+
+                if(!self.data('tel')) {
+                    //没有设置紧急联系人
+                    $.confirm('您还没有设置紧急联系人', '温馨提示', ['取消', '去设置'], function() {
+                        console.log('去设置')
+
+                        //跳转到紧急联系人页面
+                        window.location.href = '../my/contacts.html'
+                    }, function() {
+                        console.log('取消')
+                    })
+                } else {
+                    //已有紧急联系人
+                    var tel = self.data('tel');
+
+                    //发送成功
+                    // $.alert('紧急求助短信发送成功', '发送成功', ['知道了'], function() {
+                    //     console.log('知道了', tel)
+                    // });
+
+                    //发送失败
+                    $.confirm('发送失败，手机号有误', '发送失败', ['取消', '去设置'], function () {
+                        console.log('去设置')
+
+                        //跳转到紧急联系人页面
+                        window.location.href = '../my/contacts.html'
+                    }, function () {
+                        console.log('取消')
+                    })
+                }
+            });
+
+            //投诉建议
+            $('.complain').on('click', function() {
+                $('#more').removeClass('open').data('state', 'close');
+                $('.more-modal').hide();
+
+                //弹窗提示
+                $.dialog({
+                    html: '<div class="complain-header">' + 
+                            '<h4>投诉</h4>' +
+                            '<div class="tel-type">' + 
+                                '<label><input type="radio" name="tel" /> 监管电话</label>' +
+                                '<label><input type="radio" name="tel" checked /> 客服电话</label>' +
+                            '</div>' +
+                        '</div>' +
+                        '<form id="complain-reason">' +
+                            '<label><input type="radio" name="reason" checked /> 司机态度恶劣</label>' +
+                            '<label><input type="radio" name="reason" /> 司机中途甩客</label>' +
+                            '<label><input type="radio" name="reason" /> 车辆与描述不符</label>' +
+                            '<label><input type="radio" name="reason" /> 司机中途加价</label>' +
+                            '<label class="other-reason"><input type="radio" name="reason" /> 其他原因</label>' +
+                            '<div class="frm-item"><textarea class="scroll-bar" maxlength="200" placeholder="请描述（内容匿名，可放心填写）"></textarea><span class="amount">0/200</span></div>' +
+                        '</form>',
+                    buttons: [{
+                        text: '取消',
+                        onClick: function () {
+                            console.log('取消')
+                        }
+                    }, {
+                            text: '提交',
+                            onClick: function () {
+                                console.log('提交')
+
+                                /**
+                                 * 提交成功
+                                 * 
+                                 *@param  $success      提交成功弹窗
+                                 *@param  $success_li   成功信息列表
+                                 *@param  $result       投诉结果
+                                 *@param  $reason       投诉原因
+                                */
+                                var $success = $('.complain-success'),
+                                    $success_li = $success.find('.content li'),
+                                    $result = $success_li.eq(0),
+                                    $reason = $success_li.eq(1);
+
+                                //投诉结果和处理信息
+                                var result_txt = '客服已收到。1',
+                                    result_tips = '我们将尽快给您安排处理，给您本次出行带来的不便，深感歉意。3';
+                                $result.find('h4').text('投诉结果：' + result_txt);
+                                $result.find('p').text(result_tips);
+
+                                //投诉原因
+                                var reason_txt = '本文信息描述本文信息描述本文信息描述本文本文信息描述本文信息描述本文信息描述信息描述2';
+                                $reason.find('p').text(reason_txt);
+
+                                //展示
+                                $success.show();
+                            }
+                        }]
+                });
+
+                //reset dialog
+                $('.sui-dialog').addClass('reset-dialog complain');
+
+                //其他原因
+                $('#complain-reason label').on('click', function () {
+                    if ($(this).hasClass('other-reason')) {
+                        $('.frm-item').show();
+                    } else {
+                        $('.frm-item').hide();
+                    }
+                });
+
+                //计算
+                $('.frm-item textarea').on('input', amountHandler);
+                $('.frm-item textarea').on('change', amountHandler);
+
+                function amountHandler() {
+                    var self = $(this);
+                    var len = self.val().length;
+
+                    if (len > 200) {
+                        $.trim(self.val()).length = 200;
+                    } else {
+                        self.next().text(len + '/200')
+                    }
+                }
+            });
+
+            //投诉建议 - 提交成功 - 知道了
+            $('.complain-success .confirm').on('click', function() {
+                $('.complain-success').hide();
+            });
+        });
+    </script>
+</body>
+</html>

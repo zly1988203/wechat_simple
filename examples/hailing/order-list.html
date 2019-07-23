@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>中交出行</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../../dist/stylesheets/base/vectors.2.css">
+    <link href="../../dist/stylesheets/my/myorder.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/hailing/order-list.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="tab">
+    <div class="tab-bar">
+        <div class="content">
+            <ul>
+                <li data-tab="1" class="active">网约车</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="sub-nav">
+    <a class="nav-item nav-active" data-nav="1">待出行</a>
+    <a class="nav-item" data-nav="2">出行中</a>
+    <a class="nav-item" data-nav="3">已完成</a>
+    <a class="nav-item" data-nav="4">已取消</a>
+</div>
+
+<div class="order-container">
+
+    <!--<div class="custom">
+        <div class="order-item" data-href="#0">
+            <div class="content">
+                <div class="time"><strong>1月2日 8:36</strong><span class="status status-deep-yellow">等待接驾</span></div>
+                <div class="row">
+                    <div class="address">
+                        <span class="start">深圳湾创业投资大厦</span><span class="end">深圳会展中心</span>
+                    </div>
+                    <div class="price color-red">待支付20.08元</div>
+                </div>
+            </div>
+        </div>
+        <div class="order-item" data-href="#1">
+            <div class="content">
+                <div class="time"><strong>1月2日 8:36</strong><span class="status status-deep-yellow">等待接驾</span></div>
+                <div class="row">
+                    <div class="address">
+                        <span class="start">深圳湾创业投资大厦</span><span class="end">深圳会展中心</span>
+                    </div>
+                    <div class="price color-blue">已支付20.08元</div>
+                </div>
+            </div>
+        </div>
+        <div class="order-item" data-href="#2">
+            <div class="content">
+                <div class="time"><strong>1月2日 8:36</strong><span class="status status-deep-yellow">等待接驾</span></div>
+                <div class="row">
+                    <div class="address">
+                        <span class="start">深圳湾创业投资大厦</span><span class="end">深圳会展中心</span>
+                    </div>
+                    <div class="price color-gray">已退款20.08元</div>
+                </div>
+            </div>
+        </div>
+    </div>
+-->
+</div>
+
+<script src="../../dist/javascripts/zepto.min.js"></script>
+<script src="../../dist/javascripts/simpleui.min.js"></script>
+<script src="../../dist/javascripts/vectors.min.js"></script>
+<script>
+    $(function () {
+        //请求列表数据
+        /*
+         * param
+         *
+         *   存储数据，第一次切换才请求，之后都使用缓存里的数据
+         *   如果刷新，缓存就会被清理，需要重新请求
+         *
+         * */
+        //一级导航
+        var listData = {
+            tab1: {
+                nav1: '',
+                nav2: '',
+                nav3: '',
+                nav4: ''
+            }
+        };
+        //二级导航
+        var navData = {
+            nav1:'',
+            nav2:'',
+            nav3:'',
+            nav4:''
+        };
+
+        //tab请求锁
+        var orderClock = true;
+
+        //二级导航栏点击事件
+        $('.sub-nav .nav-item').on('click', function () {
+            $(this).addClass('nav-active').siblings().removeClass('nav-active');
+            //获取当前选中的一级导航栏
+            var _activeTab = $('.tab ul li.active').data('tab');
+            //获取二级导航类型
+            var _navType = $(this).data('nav');
+            if(orderClock){
+                orderClock = false;
+                getList(_activeTab,_navType);
+            }
+        });
+
+        /********************************************************************/
+        /**
+         * @param: t:一级导航类型，nav：二级导航类型
+         */
+        function getList(t, nav) {
+            //请求tab类型
+            var T = t;
+            var _type = '';
+            //二级导航
+            var _N = nav;
+            var _NType = '';
+
+            switch (T) {
+                case 1:
+                    _type = 'tab1';
+                break;
+                default: return '';
+        }
+            switch (_N){
+                case 1:
+                    _NType = 'nav1';
+                    break;
+                case 2:
+                    _NType = 'nav2';
+                    break;
+                case 3:
+                    _NType = 'nav3';
+                    break;
+                case 4:
+                    _NType = 'nav4';
+                    break;
+                default: return '';
+            }
+            console.log('当前点击页面：' + _type + ',   ' + _NType);
+            //TODO 如果已经请求过了，则退出
+            if(listData[_type][_NType] != '') {
+                full(listData);
+                return false;
+            }
+            //清空数据并显示loading
+            $('.order-container').html('').loading();
+
+            //模拟请求
+            setTimeout(function(){
+                //存储ajax请求到的数据
+                if(Math.random() < 0.8) {
+                    navData[_NType] = [
+                            {
+                                status: '等待接驾',
+                                date: '1月2日 8:36',
+                                start: '深圳湾创业投资大厦',
+                                end: '深圳会展中心',
+                                price: parseFloat(Math.random() * 100).toFixed(2),
+                                payStatus: '待支付'
+                            },
+                            {
+                                status: '已到达目的地',
+                                date: '1月2日 8:36',
+                                start: '深圳湾创业投资大厦',
+                                end: '深圳会展中心',
+                                price: parseFloat(Math.random() * 100).toFixed(2),
+                                payStatus: '已支付'
+                            },
+                            {
+                                status: '接驾成功',
+                                date: '1月2日 8:36',
+                                start: '深圳湾创业投资大厦',
+                                end: '深圳会展中心',
+                                price: parseFloat(Math.random() * 100).toFixed(2),
+                                payStatus: '已退款'
+                            },
+                            {
+                                status: '出行中',
+                                date: '1月2日 8:36',
+                                start: '深圳湾创业投资大厦',
+                                end: '深圳会展中心',
+                                price: parseFloat(Math.random() * 100).toFixed(2),
+                                payStatus: '已退款'
+                            },
+                            {
+                                status: '已完成',
+                                date: '1月2日 8:36',
+                                start: '深圳湾创业投资大厦',
+                                end: '深圳会展中心',
+                                price: parseFloat(Math.random() * 100).toFixed(2),
+                                payStatus: '已退款'
+                            }
+                        ];
+                }
+                else {
+                    //empty
+                    navData[_NType] = [];
+                }
+                listData[_type] = navData;
+                full(listData);
+            }, 1000);
+
+            //填充数据并关闭loading
+            function full(oData) {
+                var _html = '';
+                var _statusClass= '';
+                var _payStatusClass = '';//订单支付状态
+
+                if(oData[_type][_NType].length > 0) {
+                   if( _type == 'tab1'){
+                        //网约车二级导航
+                        _html += '<div class="custom">';
+
+                        for (var i = 0; i < oData[_type][_NType].length; i++) {
+
+                            /*状态对应颜色
+                        * 	status-deep-yellow：深黄色，status-light-blue：淡蓝色，status-light-green：淡绿色，status-blue：蓝色，status-gray:灰色
+                        * */
+                            switch (oData[_type][_NType][i].status) {
+                                case '等待接驾':
+                                    _statusClass = ' status-deep-yellow';
+                                    break;
+                                case '已到达目的地':
+                                    _statusClass = ' status-light-blue';
+                                    break;
+                                case '接驾成功':
+                                    _statusClass = ' status-light-green';
+                                    break;
+                                case '出行中':
+                                    _statusClass = ' status-blue';
+                                    break;
+                                case '已完成':
+                                    _statusClass = ' status-gray';
+                                    break;
+                                default:
+                                    _statusClass = ' status-gray';
+                            }
+                            /*支付状态颜色*/
+                            switch (oData[_type][_NType][i].payStatus){
+                                case '待支付': _payStatusClass = ' color-red';break;
+                                case '已支付': _payStatusClass = ' color-blue';break;
+                                case '已退款': _payStatusClass = ' color-gray';break;
+                                default: _payStatusClass = 'color-gray';
+                            }
+
+                            _html +=
+                                '<div class="order-item" data-href="#' + i + '">' +
+                                '<div class="content">' +
+                                '<div class="time"><strong>' + oData[_type][_NType][i].date + '</strong><span class="status' + _statusClass + '">' + oData[_type][_NType][i].status + '</span></div>' +
+                                '<div class="row">' +
+                                '<div class="address">' +
+                                '<span class="start">' + oData[_type][_NType][i].start + '</span><span class="end">' + oData[_type][_NType][i].end + '</span>' +
+                                '</div>' +
+                                '<div class="price ' + _payStatusClass + '">' + oData[_type][_NType][i].payStatus + oData[_type][_NType][i].price+'元</div>' +
+                                '</div>' +
+                                '</div>' +
+                                '</div>';
+                        }
+                        _html += '</div>';
+
+                    }
+                }
+                else {
+                    //empty
+                    _html += '<div class="order-empty">' +
+                        '<i></i>' +
+                        '<p>您当前没有订单</p>' +
+                        '<div class="btn-group">' +
+                        '<button class="btn primary">去购票</button>' +
+                        '</div>' +
+                        '</div>';
+                }
+
+                //当前请求的tab类型 == 当前点击的tab类型
+                var _activeT = $('.tab ul li.active').data('tab');
+                var _navType = $('.sub-nav .nav-item.nav-active').data('nav');//二级导航默认类型为nav-active的类型
+                if(T == _activeT) {
+                    $('.order-container').html('').append(_html).hideLoading();
+                    //绑定点击链接事件
+                    $('[data-href]').on('click', function () {
+                        window.location.href = $(this).data('href');
+                    });
+                } else {
+                    getList(_activeT,_navType);
+                }
+
+                //解锁
+                orderClock = true;
+            }
+        }
+
+        //滚动插件
+        var dateScroll = new IScroll('.tab-bar', {
+            scrollX: true,
+            scrollY: false,
+            mouseWheel: true
+        });
+
+        //tab切换
+        $('.tab ul li').on('click', function () {
+            var self = $(this);
+
+            self.addClass('active').siblings().removeClass('active');
+            dateScroll.scrollToElement(self[0], 500, true, true, IScroll.utils.ease.circular);
+
+            //under
+            under(self);
+
+            //切换列表
+            if(orderClock) {
+                orderClock = false;
+
+                var _tab = self.data('tab');
+                var _nav = $('.sub-nav .nav-item.nav-active').data('nav');
+                console.log('切换列表')
+                getList(_tab,_nav);
+            }
+        });
+
+        //under
+        function under(self) {
+            var under = $('.tab .under');
+
+            var auto = setInterval(function () {
+                if(self.width() > 0) {
+                    clearInterval(auto);
+
+                    //取缓存 - 宽度
+                    if(localStorage.getItem('under-width')) {
+                        under.width(under_w);
+                    } else {
+                        under.width(under_w);
+                    }
+
+                    //设置尺寸
+                    var w = self.width(),
+                        fsize = parseFloat($('html').css('font-size'));
+                    var under_w = w / fsize * 0.9 + 'rem';
+                    under.width(under_w);
+
+                    //设置缓存 - 宽度
+                    localStorage.setItem('under-width', under_w);
+
+                    //取缓存 - 定位
+                    if(localStorage.getItem('under-left')) {
+                        under.css('left', localStorage.getItem('under-left'));
+                    } else {
+                        under.css('left', 0);
+                    }
+
+                    //定位
+                    var surplus = w * 0.1 / fsize / 2;
+                    surplus += self.position().left / fsize;
+                    surplus += 'rem';
+
+                    under.css('left', surplus);
+
+                    //设置缓存 - 宽度
+                    localStorage.setItem('under-left', surplus);
+                }
+            }, 600);
+        }
+
+        init();
+    });
+
+    function init() {
+        var $tab = $('.tab');
+
+        //under
+        $tab.find('.tab-bar .content').append('<div class="under"></div>');
+
+        //tab的active
+        $tab.find('ul li.active').click();
+        $('.order-container').find('.sub-nav .nav-item.nav-active').click();
+    }
+</script>
+</body>
+</html>

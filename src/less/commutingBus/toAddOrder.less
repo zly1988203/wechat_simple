@@ -1,0 +1,205 @@
+
+.order-head{
+      background: #FFFFFF;
+      box-shadow: 0 0 0.2rem 0 rgba(0,0,0,0.10);
+      .head-panle{
+        padding: 0.2rem;
+      }
+      .head{
+        display: flex;
+        align-items: center;
+        font-size: 0.28rem;
+        color: #333333;
+        .line-name{
+          margin-left: 0.2rem;
+          color: #CCCCCC;
+        }
+        .license-plate{
+          flex: 1;
+          text-align: right;
+          font-weight: bold;
+        }
+      }
+      .station{
+        margin-top: 0.2rem;
+        .station-item{
+          &:before{
+            width: 0.22rem;
+            height: 0.22rem;
+            border-radius: 0.22rem;
+          }
+          &:first-child:before{
+            background: url("../../images/commutingBus/icon-on.png") center no-repeat;
+            background-size: 100% 100%;
+          }
+          &:first-child:after{
+            border: 1px dashed #D3D2DB;
+            left: 0.08rem;
+          }
+          &:last-child:before{
+            background: url("../../images/commutingBus/icon-off.png") center no-repeat;
+            background-size: 100% 100%;
+          }
+        }
+      }
+    }
+
+.order-panle{
+  background: #FFFFFF;
+  box-shadow: 0 0.08rem 0.3rem 0 rgba(227,227,227,0.40);
+  font-family: PingFangSC-Regular;
+  font-size: 0.28rem;
+  color: #333333;
+  margin-top: 0.2rem;
+  .item-info{
+    display: flex;
+    margin-left: 0.2rem;
+    margin-right: 0.2rem;
+    border-bottom: 1px solid #F1F1F1;;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 0.59rem;
+    padding: 0.3rem 0.22rem 0.3rem 0;
+    background: none;
+    border-bottom: 0.01rem solid rgba(241, 241, 241, 0.95);
+    .title{
+      flex: 1;
+
+
+    }
+
+    input{
+      border: none;
+      height: 100%;
+      text-align: right;
+    }
+
+    .price-txt{
+      display: flex;
+      font-family: PingFangSC-Regular;
+      font-size: 0.28rem;
+      text-align: right;
+      .normal-price{
+        color: #B9B9B9;
+        text-decoration: line-through;
+      }
+      .special-price{
+        color: #EC5A6C;
+        margin-left: 0.2rem;
+      }
+    }
+
+    .tip{
+      font-family: PingFangSC-Regular;
+      font-size: 0.2rem;
+      color: #B9B9B9;
+    }
+
+    .coupon-price{
+      font-family: PingFangSC-Regular;
+      font-size: 0.28rem;
+      color: #9B9B9B;
+      text-align: right;
+      position: relative;
+      margin-right: 0.3rem;
+    }
+    .coupon-price:after {
+      content: "";
+      position: absolute;
+      bottom: 0.1rem;
+      right: -.3rem;
+      display: block;
+      width: .18rem;
+      height: .35rem;
+      background: url(../../images/commutingBus/icon_more.png);
+      background-size: 100% 100%;
+
+    }
+
+  }
+
+
+  .ticket-type{
+    font-family: PingFangSC-Regular;
+    font-size: .2rem;
+
+    margin-top: -.4rem;
+    //color: #333333;
+    .normal-number{
+      margin-left: .2rem;
+      color: #333333;
+    }
+    .special-number{
+      color: #EC5A6C;
+    }
+
+  }
+
+
+}
+
+.order-footer{
+  position: fixed;
+  display: flex;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.2rem;
+  text-align: center;
+  background: #F2F2F2;
+  .back-btn{
+    background: #FFFFFF;
+    box-shadow: 0 0 0.2rem 0 rgba(227,227,227,0.40);
+    border-radius: 0.06rem;
+    font-family: PingFangSC-Regular;
+    font-size: 0.32rem;
+    color: #AAAAAA;
+    letter-spacing: 0;
+    text-align: center;
+    width: 1.44rem;
+    height: 0.75rem;
+    line-height: 0.75rem;
+  }
+
+  .pay-price{
+    flex: 1;
+    height: 0.75rem;
+    line-height: 0.75rem;
+    text-align: right;
+    font-family: PingFangSC-Regular;
+    font-size: 0.24rem;
+    color: #999999;
+    letter-spacing: 0;
+    text-align: right;
+    vertical-align: baseline;
+    margin-right: 0.2rem;
+  }
+
+  .pay-btn{
+    background: #6392FE;
+    box-shadow: 0 0 0.2rem 0 rgba(61,59,238,0.31);
+    border-radius: 0.06rem;
+    font-family: PingFangSC-Regular;
+    font-size: 0.32rem;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    text-align: center;
+    width: 2.24rem;
+    height: 0.75rem;
+    line-height: 0.75rem;
+  }
+}
+
+.rule-content{
+  color: #424242;
+  padding: 0.22rem;
+  font-size: 0.24rem;
+  margin-top: 0.11rem;
+  margin-bottom: 1rem;
+  img{
+    margin: auto;
+    width: 100%;
+  }
+}

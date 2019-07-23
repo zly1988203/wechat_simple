@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>第一页</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/summary/page_01.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="summary-body">
+        <div class="summary-head">
+            <div class="summary-head-img"><img src="../../dist/images/summary/head01.png"></div>
+            <div class="summary-head-name">路人甲</div>
+        </div>
+        <div class="summary-context">
+            2018年，<br/>
+            你一共乘坐了 <span class="times">N </span>次 <span class="provider-name">XXXX</span><br/>
+            <span class="provider-name">XXXX</span> 与你同行了 <span class="distance">N</span> 公里<br/>
+            相当于北京到 <span class="address-name">平流层</span> 的距离<br/>
+            有没有某个Ta，<br/>
+            也和你走过这么长的路呢？<br/>
+        </div>
+        <div class="summary-foot">
+            <div class="summary-qrcode"><img src="../../dist/images/summary/qrcode-ex.png"></div>
+            <div class="summary-btn"><a href="summary/page_02.html"></a></div>
+            <div class="summary-text">中交出行提供技术支持</div>
+        </div>
+    </div>
+    <div class="little-red-packet"></div>
+    <div class="popup-overlay" ></div>
+    <div class="popup">
+        <div class="direct"></div>
+        <div class="red-packet-popup">
+            <div class="red-packet-img"></div>
+            <div class="red-packet-context1">恭喜您获得10个红包</div>
+            <div class="red-packet-context2">分享给好友，大家一起抢</div>
+        </div>
+        <div class="btn-close-popup"></div>
+    </div>
+</body>
+
+<script src="../../dist/javascripts/zepto.min.js"></script>
+<script src="../../dist/javascripts/simpleui.min.js"></script>
+<script src="../../dist/javascripts/vectors.min.js"></script>
+<script src="../../dist/javascripts/backtrack.min.js"></script>
+<!--<script src="../../src/js/summary/page_01.js"></script>-->
+
+<script>
+    var clickEvent = isAndroid()?'tap':'click';
+    $('.summary-head-img').on(clickEvent,function () {
+        var t1 = $(this).next();
+        t1.html('路人乙');
+    });
+    $(".little-red-packet").on(clickEvent,function () {
+        var dis = $(".little-red-packet").css("right");
+        if (dis == "-21px"){
+            $(".little-red-packet").css("right",".17rem");
+        }
+        else{
+            // $(".popup-overlay").show();
+            // $(".popup").show();
+            var scrollHeight = $(document).height();//文档高度
+            $(".popup").height = scrollHeight+"px";
+            $(".popup").fadeIn("fast");
+            $(".popup-overlay").fadeIn("fast");
+        }
+    });
+
+    $(".btn-close-popup").on(clickEvent,function () {
+        $(".popup").hide();
+        $(".popup-overlay").hide();
+    });
+</script>
+</html>

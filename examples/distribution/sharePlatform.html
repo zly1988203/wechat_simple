@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>中交出行</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/distribution/hunter.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="all-container">
+    <div class="poster-container">
+        <div class="poster-box" id="poster">
+            <img src="../../dist/images/distribution/poster-1.png" id="poster_bg"/>
+        </div>
+        <div class="more"></div>
+    </div>
+    <div class="poster-switch-box">
+        <div class="switch clearfloat">
+            <div class="item active" data-index="1"></div>
+            <div class="item" data-index="2"></div>
+            <div class="item" data-index="3"></div>
+            <div class="item" data-index="4"></div>
+            <div class="item" data-index="5"></div>
+        </div>
+        <div class="notice">
+            <span class="notice-btn">收益须知</span>
+        </div>
+    </div>
+
+    <!--更多方式弹窗-->
+    <div id="more_popup" class="popup-container" style="display: none">
+        <div class="popup-box">
+            <div class="type-box">
+                <div class="type">
+                    <h4>方式一</h4>
+                    <p>微信右上角分享</p>
+                    <p>点击微信右上角三个点“...”通过【发给朋友】【分享到朋友圈】推广</p>
+                </div>
+                <div class="type">
+                    <h4>方式二</h4>
+                    <p>复制一下链接推广 <span class="copy-btn">复制链接</span></p>
+                    <textarea id="hunterUrl" class="hunter-url" readonly>www：4561SSS4545645484textarea4561SSS4545645484t4561SSS4545645484textarea4561SSS4545645484textareaextarea.chuxin.com</textarea>
+                </div>
+            </div>
+            <div class="close-btn sui-border-t">关闭</div>
+        </div>
+    </div>
+    <!--收益须知弹窗-->
+    <div id="notice_popup" class="popup-container" style="display: none">
+        <div class="popup-box">
+            <div class="notice-box">
+                <div class="title">收益须知</div>
+                <div class="img"></div>
+                <div class="notice-content">
+                    <p>1.您每成功邀请一位好友购买将获得支付金额的一定比例作为奖励</p><br/>
+                    <p>2.奖励金额定时结算存入“赚取赏金”，请前往“个人中心”进行查看</p><br/>
+                    <p>3.结算时，好友退单将不计入奖励</p><br/>
+                    <p>4.您每成功邀请一位好友购买将获得支付金额的一定比例作为奖励</p><br/>
+                    <p>5.奖励金额定时结算存入“赚取赏金”，请前往“个人中心”进行查看</p><br/>
+                    <p>6.结算时，好友退单将不计入奖励</p><br/>
+                    <p>7.您每成功邀请一位好友购买将获得支付金额的一定比例作为奖励</p><br/>
+                    <p>8.奖励金额定时结算存入“赚取赏金”，请前往“个人中心”进行查看</p><br/>
+                    <p>9.结算时，好友退单将不计入奖励</p>
+                </div>
+            </div>
+            <div class="close-btn sui-border-t">关闭</div>
+        </div>
+    </div>
+</div>
+
+<div id="canvas-box"></div>
+<div id="img-box"></div>
+<script src="../../dist/javascripts/zepto.min.js"></script>
+<script src="../../dist/javascripts/simpleui.min.js"></script>
+<script src="../../dist/javascripts/vectors.min.js"></script>
+<script src="../../dist/javascripts/html2canvas.min.js"></script>
+<script src="../../dist/javascripts/clipboard.min.js"></script>
+<script src="../../dist/javascripts/distributionPlatform/sharePlatform.min.js"></script>
+<script>
+
+</script>
+</body>
+</html>

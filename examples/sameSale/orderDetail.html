@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>中交出行</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/sameSale/orderDetail.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <!-- 路线 -->
+    <div class="ticket-info">
+        <!-- 车牌号，乘车人信息 -->
+        <div class="row flex jcs">
+            <div class="time">18：00 <span>粤B2333</span> </div>
+            <div class="service tc">客服</div>
+        </div>
+        <!-- 流水班车，车票号 -->
+        <div class="row flex jcs" style="display:none;">
+            <div class="time">流水班车<span class="flowingBus">(购票后可随时上车)</span> </div>
+            <div class="service tc">客服</div>
+        </div>
+
+
+        <div class="station">
+            <div class="station-item">
+                <h4>深圳湾创业投资大厦</h4>
+            </div>
+            <div class="station-item">
+                <h4>深圳会展中心</h4>
+            </div>
+        </div>
+        <div class="reminder">
+            <div>温馨提示：</div>
+            <div>儿童票、学生票等请前往车站购买。 请在发车前提前到站取票，以免耽误行程。 发车时间后不支持网上退票。</div>
+        </div>
+        <div class="ticket-rule" data-trigger-rule="#ticketRule">取票/退票规则</div>
+    </div>
+
+    <!-- 取票/退票规则 - 使用规则 -->
+    <div id="ticketRule" class="sui-popup-container">
+        <div class="sui-popup-mask"></div>
+        <div class="sui-popup-modal">
+            <div class="rule-content">
+                <div class="close cancel"></div>
+                <h1>取票/退票规则</h1>
+                <div class="rule-bar">
+                    <div class="content">
+                        <P>缺少文案</P>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--
+     如果不需要向右的箭头，去掉li.class=sui-cell-link即可
+   -->
+    <ul class="coupon-btn sui-list">
+        <li class="sui-border-b">
+            <div class="name">订单状态</div>
+            <div class="value">已出票</div>
+        </li>
+        <li class="sui-border-b coupon-toggle">
+            <div class="name">购票张数</div>
+            <div class="value">2张</div>
+        </li>
+        <li class="sui-border-b coupon-toggle sui-cell-link">
+            <div class="name">订单总额</div>
+            <div class="value orderTotal">￥<span>20.00</span></div>
+        </li>
+    </ul>
+
+    <ul class="coupon-btn sui-list">
+        <li class="sui-border-b">
+            <div class="name">下单时间</div>
+            <div class="value text-gray">2017-04-28   10:26:32  </div>
+        </li>
+        <li class="sui-border-b coupon-toggle">
+            <div class="name">订单编号</div>
+            <div class="value text-gray">ORCJ010002200202002002020</div>
+        </li>
+    </ul>
+
+    <!-- 乘车人-->
+    <div>
+        <div class="rider">乘车人</div>
+        <ul class="coupon-btn sui-list riderList">
+            <li>
+                <div class="riderItem">
+                    <div>王小瑞</div>
+                    <div>身份证<span>360*********0027</span></div>
+                    <div class="flex ac jcs">
+                        <div>保单号<span>4452221596521461</span></div>
+                        <div class="ticket">验票</div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="riderItem">
+                    <div>王小瑞</div>
+                    <div>身份证<span>360*********0027</span></div>
+                    <div class="flex ac jcs">
+                        <div>保单号<span>4452221596521461</span></div>
+                        <div class="ticket ticketActive">验票</div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- 车票号 -->
+    
+    <div>
+        <div class="rider">车票号</div>
+        <ul class="coupon-btn sui-list riderList">
+            <li>
+                <div class="riderItem">
+                    <div>票号</div>
+                    <div class="flex ac jcs">
+                        <div>6033000410</div>
+                        <div class="ticket">验票</div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="riderItem">
+                    <div>票号</div>
+                    <div class="flex ac jcs">
+                        <div>6033000410</div>
+                        <div class="ticket ticketActive">验票</div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+
+
+    <div class="btn-group">
+        <div class="btn default">退票</div>
+        <div class="btn primary">再次购票</div>
+    </div>
+    
+
+    <script src="../../dist/javascripts/zepto.min.js"></script>
+    <script src="../../dist/javascripts/simpleui.min.js"></script>
+    <script src="../../dist/javascripts/vectors.min.js"></script>
+    <script>
+        $(function () {
+            //规则
+            $.ruleInit();
+        });
+    </script>
+</body>
+</html>

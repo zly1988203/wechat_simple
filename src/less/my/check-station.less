@@ -1,0 +1,377 @@
+@charset "utf-8";
+
+.line-detail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  background-color: #fff;
+  box-shadow: 0 0.04rem 0.04rem 0 rgba(0,0,0,0.10);
+
+  .detail-head {
+    padding: 0.3rem 0.22rem 0;
+    display: flex;
+
+    .detail-date {
+      flex: 1;
+      text-align: left;
+      font-size: 0.32rem;
+      color: #333;
+      line-height: 0.45rem;
+    }
+
+    .licence {
+      padding: 0.03rem 0.05rem 0.02rem;
+      background: #B1C9FF;
+      border-radius: 0.05rem;
+      font-size: 0.32rem;
+      color: #333;
+      font-weight: bold;
+      line-height: 0.45rem;
+    }
+
+    .detail-tel {
+      display: inline-block;
+      padding: 0 15px;
+
+      &:after {
+        content: '';
+        display: block;
+        width: 30px;
+        height: 30px;
+        background: url("../../images/my/button_telephone.png") center no-repeat;
+        background-size: 100% 100%;
+      }
+    }
+  }
+
+  .detail-station-info {
+    margin: 0.23rem 0 0.395rem;
+    padding: 0 0.22rem;
+    display: flex;
+    align-items: flex-end;
+
+    .station {
+      flex: 1;
+    }
+
+    .time {
+      margin-left: 0.22rem;
+      font-size: 0.28rem;
+      color: #999;
+      line-height: 0.4rem;
+    }
+  }
+
+  .detail-tips {
+    position: relative;
+    margin: 0 10px 5px;
+    text-align: center;
+
+    & > span {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      padding: 0 10px;
+      font-size: 14px;
+      color: #ccc;
+      background: #fff;
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      z-index: 0;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      margin: auto;
+      border-bottom: 1px dashed #ccc;
+    }
+  }
+
+  .detail-bar {
+    position: relative;
+    min-height: 2.735rem;
+
+    /*tips*/
+    .tips {
+      position: absolute;
+      top: 0.06rem;
+      left: 0.32rem;
+      bottom: 0;
+      max-height: 4.85rem;
+      width: 0.36rem;
+      font-size: 0.28rem;
+      color: #6392FE;
+      text-align: center;
+      display: flex;
+      align-items: center;
+
+      &:before {
+        content: '暂无车辆定位';
+        display: block;
+        line-height: 0.4rem;
+      }
+    }
+  }
+
+  .detail-main {
+    max-height: 4.85rem;
+    overflow: hidden;
+    transition: all 0.25s;
+
+    .content {
+      transition-duration: 0.6s!important;
+    }
+
+    .detail-station-list {
+      position: relative;
+      padding-left: 0.82rem;
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0.525rem;
+        bottom: 0.525rem;
+        left: 0.99rem;
+        z-index: 2;
+        width: 0.02rem;
+        background-color: #F1F1F1;
+      }
+
+      ul {
+        li {
+          position: relative;
+          padding-left: 0.46rem;
+
+          &:before {
+            content: '';
+            position: absolute;
+            top: 0.35rem;
+            left: 0.06rem;
+            z-index: 666;
+            margin: auto 0;
+            width: 0.24rem;
+            height: 0.24rem;
+            background: no-repeat center;
+            background-size: 100% 100%;
+          }
+
+          /*电子围栏*/
+          &.arrive, &.leave {
+            &:after {
+              content: '';
+              position: absolute;
+              left: -0.52rem;
+              z-index: 667;
+              margin: auto 0;
+              width: 0.4rem;
+              height: 0.46rem;
+              background: url(../../images/my/icon-arrive.png) no-repeat center;
+              background-size: 100% 100%;
+            }
+          }
+          /*汽车到达*/
+          &.arrive {
+            &:after {
+              top: 0;
+              bottom: 0;
+            }
+          }
+          /*汽车离开*/
+          &.leave {
+            &:after {
+              bottom: -0.2rem;
+            }
+          }
+
+          .content {
+            display: flex;
+            align-items: center;
+            padding: 0.25rem 0.27rem 0.25rem 0;
+
+            h4 {
+              flex: 2.5;
+              font-size: 0.32rem;
+              color: #999;
+              text-align: left;
+              font-weight: normal;
+              font-family: "Microsoft YaHei";
+              line-height: 0.45rem;
+            }
+
+            span {
+              flex: 1;
+              font-size: 0.28rem;
+              color: #999;
+              text-align: right;
+              font-weight: normal;
+              line-height: 0.4rem;
+            }
+          }
+
+          &.active {
+            &:before {
+              top: 0.28rem;
+              left: 0.01rem;
+              width: 0.36rem;
+              height: 0.36rem;
+            }
+
+            .content {
+              h4 {
+                font-size: 0.32rem;
+                font-weight: bold;
+                color: #333;
+              }
+
+              span {
+                color: #333;
+                font-weight: bold;
+              }
+            }
+          }
+        }
+
+        &.detail-station-start {
+          li {
+            &:before {
+              background-image: url(../../images/my/icon_past.png);
+            }
+
+            &:first-child::before {
+              background-image: url(../../images/my/icon_departure.png);
+            }
+
+            &.active {
+              &:before {
+                background-image: url(../../images/my/icon_boarding.png);
+              }
+            }
+          }
+        }
+
+        &.detail-station-ending {
+          li {
+            &:before {
+              background-image: url(../../images/my/icon_not_to.png);
+            }
+
+            &:last-child::before {
+              background-image: url(../../images/my/icon_terminus.png);
+            }
+
+            &.active {
+              &:before {
+                background-image: url(../../images/my/icon_get_off.png);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .detail-bottom {
+    .detail-tips {
+      padding: 10px;
+      line-height: 20px;
+      font-size: 14px;
+      color: #999;
+
+      &:before {
+        content: '';
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        margin-right: 10px;
+        background: url("../../images/my/icon_horn_copy.png") center no-repeat;
+        background-size: 100% 100%;
+        vertical-align: middle;
+      }
+    }
+
+    .detail-toggle {
+      padding-top: 0.25rem;
+      height: 0.53rem;
+
+      &:before {
+        content: '';
+        display: block;
+        margin: 0 auto;
+        width: 0.208rem;
+        height: 0.134rem;
+        background: url("../../images/my/button_close.png") no-repeat center;
+        background-size: 100% 100%;
+        transition: all 0.2s;
+        transform: rotate(180deg);
+      }
+
+      &.turn:before {
+        transform: rotate(360deg);
+      }
+    }
+  }
+}
+
+.detail-foot {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  padding: 10px;
+
+  .detail-station-btn {
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background: #6392FE;
+    border-radius: 50px;
+    color: #fff;
+    font-size: 16px;
+    
+    &:active {
+      background: rgba(99,146,254,0.8);
+    }
+  }
+}
+
+.ola-maps {
+  transition: all 0.25s;
+}
+
+.tags {
+  opacity: 0.88;
+  background: #fff;
+  border-radius: 0.2rem;
+  position: fixed;
+  bottom: 1.56rem;
+  left: 0.299rem;
+  right: 0.301rem;
+  z-index: 100;
+  padding: 0.14rem 0.67rem 0.14rem 0.14rem;
+  min-height: 0.67rem;
+
+  p {
+    text-align: center;
+    font-size: 0.32rem;
+    color: #535353;
+  }
+
+  .close {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto 0;
+    width: 0.67rem;
+    height: 0.67rem;
+    background: url("../../images/common/icon_close.png") no-repeat center;
+    background-size: 0.38rem 0.38rem;
+  }
+}

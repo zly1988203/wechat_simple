@@ -1,0 +1,1174 @@
+@charset "utf-8";
+body {
+    padding-bottom: 75px;
+}
+
+.pab-10 {
+    padding-bottom: 10px!important;
+}
+
+.ticket-info {
+    padding: 0.3rem 0.22rem 0 0.22rem;
+    background-color: #fff;
+    box-shadow: 0 0.02rem 0.04rem 0 rgba(0,0,0,0.05);
+
+    .time {
+        font-size: 0.32rem;
+        line-height: 0.45rem;
+        color: #333;
+
+        span {
+            margin-left: 8px;
+            font-size: 16px;
+            color: #9b9b9b;
+        }
+
+        .distribution {
+            border-radius: 0.1rem;
+            font-size: 0.2rem;
+            display: inline-block;
+            line-height: 0.28rem;
+            margin: -0.05rem 0 0 0.22rem;
+            padding: 0.04rem 0.07rem 0.03rem;
+            background: rgba(177, 201, 255, 0.41);
+            border: 0.01rem solid #6392FE;
+            color: #6392FE;
+            vertical-align: middle;
+        }
+    }
+
+    .station {
+        position: relative;
+        margin: 0.29rem 0.22rem 0 0.38rem;
+
+        .start, .end {
+            position: relative;
+            font-size: 0.32rem;
+            color: #333;
+
+            &:before {
+                content: '';
+                position: absolute;
+                top: 0.16rem;
+                bottom: 0;
+                left: -0.38rem;
+                width: 0.16rem;
+                height: 0.16rem;
+                border-radius: 100%;
+            }
+        }
+
+        .start:before {
+            background: #25CE5F;
+        }
+
+        /*竖线*/
+        .start:after {
+            content: '';
+            position: absolute;
+            top: 0.4rem;
+            left: -0.32rem;
+            bottom: -0.2rem;
+            z-index: 6;
+            width: 0;
+            height: auto;
+            border: 1px solid #ccc;
+        }
+
+        .end:before {
+            background: #FE6666;
+        }
+
+        .end {
+            margin-top: 0.13rem;
+            padding-bottom: 0.05rem;
+            border-bottom: 1px solid #F1F1F1;
+        }
+    }
+
+    .ticket-rule {
+        line-height: 0.66rem;
+        height: 0.66rem;
+        text-align: center;
+        font-size: 0.28rem;
+        color: #999;
+    }
+}
+
+.passenger {
+    margin-top: 0.22rem;
+    padding: 0 0.22rem;
+    background: #fff;
+    box-shadow: 0 0.02rem 0.02rem 0 rgba(0,0,0,0.05);
+
+    .head {
+        padding: 0.36rem 0 0.37rem;
+        display: flex;
+        align-items: center;
+
+        h4 {
+            flex: 1;
+            font-size: 0.32rem;
+            line-height: 0.45rem;
+            color: #333;
+            font-weight: normal;
+
+            span {
+                color: #9b9b9b;
+            }
+        }
+
+        .handle-plus {
+            flex: 1;
+            text-align: right;
+            align-self: center;
+
+            & > * {
+                display: inline-block;
+                vertical-align: middle;
+            }
+
+            i {
+                width: 0.5rem;
+                height: 0.5rem;
+                background: no-repeat center;
+                background-size: 100% 100%;
+
+                &.icon-minus {
+                    background-image: url("../../images/bus/icon_less.png");
+                }
+
+                &.icon-plus {
+                    background-image: url("../../images/bus/icon-plus.png");
+                }
+            }
+
+            .txt {
+                margin: 0 0.22rem;
+                font-size: 0.38rem;
+                color: #333;
+            }
+        }
+    }
+
+    .content {
+        .item {
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 0.22rem 0;
+            border-bottom: 1px solid #F1F1F1;
+
+            &:last-child {
+                border-bottom: 0 none;
+            }
+
+            .handle-minus {
+                margin: 0 0.4rem 0 0;
+                width: 0.5rem;
+                height: 0.5rem;
+                background: url(../../images/bus/icon-minus.png) no-repeat center;
+                background-size: 100% 100%;
+                white-space: nowrap;
+                word-break: keep-all;
+            }
+
+            .name {
+                font-size: 0.32rem;
+                line-height: 0.45rem;
+                color: #333;
+            }
+
+            .info {
+                flex: 1;
+                margin-left: 0.32rem;
+
+                p {
+                    font-size: 0.32rem;
+                    line-height: 0.43rem;
+                    color: #333;
+                    margin-top: 0.06rem;
+
+                    &:first-child {
+                        margin-top: 0;
+                    }
+
+                    .label {
+                        margin-right: 0.22rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.frm-radio {
+    width: 0.5rem;
+    height: 0.5rem;
+    border: 0;
+    appearance: none;
+    outline: 0;
+    margin-right: 2px;
+    vertical-align: middle;
+    background: 0 0;
+    position: relative;
+
+    &:before {
+        content: '';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-image: url(../../images/bus/icon_radio_bar.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
+
+    &:checked:before {
+        background-image: url(../../images/bus/icon_radio_bar_select.png);
+    }
+}
+
+.frm-checkbox {
+    width: 36px;
+    height: 36px;
+    border: 0;
+    appearance: none;
+    outline: 0;
+    margin-right: 2px;
+    vertical-align: middle;
+    background: 0 0;
+    position: relative;
+
+    &:before {
+        content: '';
+        display: block;
+        width: 36px;
+        height: 36px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-image: url(../../images/bus/icon_checkbox_bar.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
+
+    &:checked:before {
+        background-image: url(../../images/bus/icon_checkbox_bar_select.png);
+    }
+}
+
+.payment-way {
+    margin-top: 0.22rem;
+    box-shadow: 0 0.02rem 0.02rem 0 rgba(0,0,0,0.05);
+
+    li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        line-height: 0.5rem;
+        padding: 0.37rem 0.22rem 0.38rem 0;
+        margin-left: 0.25rem;
+
+        &:active {
+            background-color: #e5e6e7;
+            margin-left: 0.25rem;
+            padding-left: 0;
+        }
+
+        .icon {
+            position: relative;
+            padding-left: 0.69rem;
+            background-repeat: no-repeat;
+            background-position: left center;
+            background-size: 0.5rem 0.5rem;
+            color: #333;
+            font-size: 0.32rem;
+
+            em {
+                font-size: 0.24rem;
+                color: #999;
+            }
+        }
+
+        .icon-1 {
+            background-image: url(../../images/bus/icon_pay_wechat.png)
+        }
+
+        .icon-2 {
+            background-image: url(../../images/bus/icon_boarding_immediately.png)
+        }
+    }
+}
+
+.coupon-btn {
+    margin-top: 0.22rem;
+    box-shadow: 0 0.02rem 0.02rem 0 rgba(0,0,0,0.05);
+
+    li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        line-height: 0.59rem;
+        padding: 0.33rem 0.22rem 0.33rem 0;
+        margin-left: 0.22rem;
+        background: none;
+        border-bottom: 0.01rem solid rgba(241, 241, 241, 0.95);
+
+        &:active {
+            padding-left: 0;
+            margin-left: 0.22rem;
+        }
+
+        &:last-child {
+            border-bottom: 0 none;
+        }
+    }
+
+    .name {
+        font-size: 0.32rem;
+        color: #333;
+        white-space: nowrap;
+        word-break: keep-all;
+        display: flex;
+        align-items: center;
+        align-self: flex-start;
+
+        .special-tips {
+            font-size: 0.2rem;
+            color: #FFFFFF;
+            background: #FE6666;
+            border-radius: 0.03rem;
+            line-height:0.28rem;
+            padding: 0.01rem 0.06rem;
+            margin-left: 0.22rem;
+        }
+
+        .frm-radio {
+            margin-right: 0.22rem;
+        }
+
+        .tips {
+            font-size: 0.24rem;
+            color: #999;
+            line-height: 0.45rem;
+        }
+    }
+
+    .value {
+        margin-left: 0.22rem;
+        font-size: 0.42rem;
+        color: #333;
+        max-width: 70%;
+        text-align: right;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+
+        &.passenger-date {
+            overflow: auto;
+            text-overflow: inherit;
+            white-space: inherit;
+
+            span {
+                display: inline-block;
+                margin-right: 5px;
+            }
+        }
+    }
+
+    .passenger-list {
+        .name {
+            h4 {
+                flex: 1;
+                font-size: 0.32rem;
+                color: #333;
+                font-weight: normal;
+
+                span {
+                    color: #9b9b9b;
+                }
+            }
+        }
+
+        .value {
+            .handle-plus {
+                flex: 1;
+                text-align: right;
+                align-self: center;
+
+                & > * {
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+
+                i {
+                    width: 0.5rem;
+                    height: 0.5rem;
+                    background: no-repeat center;
+                    background-size: 100% 100%;
+
+                    &.icon-minus {
+                        background-image: url("../../images/bus/icon_less.png");
+
+                        &.out {
+                            background-image: url("../../images/bus/icon_less_out.png");
+                        }
+                    }
+
+                    &.icon-plus {
+                        background-image: url("../../images/bus/icon-plus.png");
+
+                        &.out {
+                            background-image: url("../../images/bus/icon-plus-out.png");
+                        }
+                    }
+                }
+
+                .txt {
+                    margin: 0 0.1rem;
+                    font-size: 0.38rem;
+                    color: #333;
+                }
+            }
+        }
+    }
+
+    //保险
+    .insurance-row {
+        .name {
+            display: block;
+
+            p {
+                font-size: 0.24rem;
+                color: #F27D4A;
+                line-height: 0.33rem;
+                text-align: center;
+            }
+        }
+
+        .insurance {
+            position: relative;
+            display: inline-block;
+            padding: 0.06rem 1rem 0.06rem 0.7rem;
+            border-radius: 1rem;
+
+            &:before {
+                content: '';
+                position: absolute;
+                top: 0.2rem;
+                left: 0.113rem;
+                width: 0.5rem;
+                height: 0.5rem;
+                background: url("../../images/bus/insurance_icon.png") no-repeat center;
+                background-size: 100% 100%;
+            }
+
+            //选择投保
+            &.on {
+                background: #6392FE;
+            }
+
+            //取消投保
+            &.off {
+                background: #ccc;
+            }
+
+            .txt {
+                color: #fff;
+
+                h4 {
+                    line-height: 0.45rem;
+                    font-size: 0.32rem;
+                    font-weight: normal;
+                }
+
+                p {
+                    line-height: 0.33rem;
+                    font-size: 0.24rem;
+                }
+            }
+
+            .count {
+                position: absolute;
+                right: 0.15rem;
+                top: 0;
+                bottom: 0;
+                margin: auto 0;
+                color: #fff;
+                font-size: 0.24rem;
+                height: 0.33rem;
+                line-height: 0.33rem;
+
+                i {
+                    font-size: 0.2rem;
+                    margin-right: 0.09rem;
+                    vertical-align: bottom;
+                }
+            }
+        }
+    }
+
+    //保险添加乘车人
+    .insurance-passenger {
+        position: relative;
+        display: block;
+        padding-top: 0.22rem;
+        padding-bottom: 0;
+        margin-top: -0.01rem;
+        background-color: #fff;
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0.22rem;
+            background: url("../../images/bus/line.png") no-repeat center;
+            background-size: auto 100%;
+        }
+
+        .passenger {
+            margin-top: 0;
+            padding: 0;
+            box-shadow: none;
+
+            .head {
+                display: block;
+                padding: 0.16rem 0 0.39rem;
+                margin: 0 0.42rem;
+                border-bottom: 0.01rem solid rgba(241, 241, 241, 0.95);
+                text-align: center;
+
+                & > * {
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+
+                h4 {
+                    margin: 0.09rem 0.4rem 0 0;
+                }
+            }
+
+            .content {
+                .item {
+                    border-bottom: 0.01rem solid rgba(241, 241, 241, 0.95);
+
+                    &:last-child {
+                        border-bottom: 0 none;
+                    }
+
+                    .name {
+                        align-self: center;
+                    }
+                }
+            }
+        }
+    }
+
+    .text-red {
+        color: #FE6666;
+    }
+
+    .text-gray {
+        font-size: 0.32rem;
+        color: #9b9b9b;
+    }
+}
+
+//保险说明
+#insuranceExplain {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+
+    .mask {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .explain {
+        position: absolute;
+        top: 0.5rem;
+        bottom: 1.66rem;
+        left: 0.35rem;
+        right: 0.35rem;
+        background-color: #fff;
+        border-radius: 0.2rem;
+        padding-bottom: 1rem;
+        overflow: hidden;
+
+        h4 {
+            font-size: 0.38rem;
+            color: #333;
+            text-align: center;
+            line-height: 0.53rem;
+            padding: 0.14rem 0 0.11rem;
+            border-bottom: 0.01rem solid #EAEAEA;
+        }
+
+        .content {
+            margin: 0.645rem 0.34rem;
+            font-size: 0.34rem;
+            color: #333;
+            max-height: 80%;
+            overflow-y: auto;
+        }
+
+        .btn {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            border-radius: 0;
+        }
+    }
+}
+
+// override
+.sui-popup-container .sui-popup-modal {
+    background-color: #fafafa;
+}
+
+#couponList {
+    #listWrapper {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .footer-fixed {
+        .btn-bar {
+            padding-bottom: 10px;
+        }
+    }
+}
+
+.listWrapper {
+    overflow: auto;
+}
+
+.rule-btn {
+    text-align: right;
+    padding: 15px 11px 8px;
+    color: #999;
+    span {
+        padding-left: 18px;
+        background: url(../../images/bus/icon_question_mark.png) left center no-repeat;
+        background-size: 13px 13px;
+        &:active {
+            color: #000;
+        }
+    }
+}
+
+.popup-list {
+    .item {
+        display: flex;
+        padding: 0 10px;
+        margin-top: 10px;
+
+        &:first-child {
+            margin-top: 0;
+        }
+
+        .left {
+            position: relative;
+            padding: 10px 25px 10px 20px;
+            flex: 5;
+            background-color: #fff;
+            box-shadow: 0 2px 2px rgba(0, 0, 0, 0.08);
+            border-radius: 5px;
+            overflow: hidden;
+
+            &:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 0;
+                height: 100%;
+                border: 2px solid #ccc;
+            }
+
+            .main {
+                h4 {
+                    font-size: 19px;
+                    font-weight: normal;
+                    color: #6392FE;
+                }
+
+                p {
+                    font-size: 14px;
+                    color: #6392FE;
+                }
+            }
+
+            .info {
+                position: relative;
+                margin-top: 8px;
+                font-size: 14px;
+                color: #999;
+
+                span {
+                    position: absolute;
+                    bottom: 0;
+                    right: 10px;
+                    font-size: 14px;
+                    color: #333;
+                    line-height: 1.4;
+                }
+            }
+        }
+
+        .right {
+            flex: 3;
+            padding: 10px 8px;
+            background-color: #fff;
+            box-shadow: 0 2px 2px rgba(0, 0, 0, 0.08);
+            border-left: 1px dashed #e7e7e7;
+            border-radius: 5px;
+            overflow: hidden;
+
+            .main {
+                padding-top: 15px;
+                font-size: 28px;
+                color: #FE6666;
+                text-align: center;
+
+                i {
+                    margin: 0 3px;
+                    font-size: 16px;
+                    color: #FE6666;
+                    vertical-align: middle;
+                }
+            }
+
+            .info {
+                font-size: 14px;
+                color: #999;
+                text-align: center;
+            }
+        }
+
+        /*左边边框*/
+        &.blue .left:before {
+            border-color: #6492fc;
+        }
+
+        &.orange .left:before {
+            border-color: #f17c4a;
+        }
+
+        &.green .left:before {
+            border-color: #21cd61;
+        }
+    }
+}
+
+#insuranceList {
+    .insurance-list {
+        padding-top: 10px;
+
+        .left {
+            padding: 0 15px;
+
+            .head {
+                display: flex;
+                align-items: center;
+                padding: 9px 0;
+                border-bottom: 1px solid #F1F1F1;
+
+                .content {
+                    flex: 4;
+
+                    h4 {
+                        font-size: 19px;
+                        color: #333;
+                    }
+
+                    p {
+                        font-size: 14px;
+                        color: #999;
+                    }
+                }
+
+                .price {
+                    font-size: 16px;
+                    color: #333;
+
+                    span {
+                        display: inline-block;
+                        margin: -1px 5px 0 0;
+                        vertical-align: middle;
+                        font-size: 20px;
+                        color: #FE6666;
+                    }
+                }
+            }
+
+            .state {
+                text-align: center;
+                font-size: 14px;
+                color: #999;
+                padding: 6px 0;
+
+                &:before {
+                    content: '';
+                    display: inline-block;
+                    width: 16px;
+                    height: 16px;
+                    background: url(../../images/bus/icon-state.png) no-repeat center;
+                    background-size: 100% 100%;
+                    margin-right: 6px;
+                    vertical-align: sub;
+                }
+            }
+        }
+    }
+}
+
+.btn-group {
+    background-color: #fafafa;
+}
+
+.btn-bar {
+    position:fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    padding: 18px 15px 50px;
+    background-color: #fafafa;
+
+    button {
+        position: relative;
+        width: 100%;
+        height: 44px;
+        font-size: 16px;
+        color: #fff;
+        background: #6392FE;
+        border-radius: 50px;
+
+        &:before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 50px;
+        }
+    }
+
+    &:active button:before {
+        content: '';
+    }
+}
+
+.not-data {
+    margin-top: 30%;
+    padding-top: 180px;
+    background: top center no-repeat;
+    background-size: 138px auto;
+    text-align: center;
+    color: #999;
+}
+
+//dialog的第一个操作按钮灰色
+.sui-dialog-ft {
+    button:first-child {
+        color: #666;
+    }
+}
+
+/* 分时停售 - 提示 */
+.ticket-tips {
+    background: #FF6B6B;
+    height: 0.7rem;
+    line-height: 0.7rem;
+    text-align: center;
+    padding: 0 0.22rem;
+    font-size: 0.28rem;
+    color: #F3F4F5;
+}
+
+/* 备注 */
+.commit-bar {
+    margin-top: 0.22rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 0.22rem;
+    background: #fff;
+    box-shadow: 0 0.02rem 0.06rem 0 rgba(0, 0, 0, 0.1);
+    border-radius: 0.03rem;
+
+    h4 {
+        font-weight: normal;
+        font-size: 0.32rem;
+        color: #333;
+        margin-right: 0.22rem;
+    }
+
+    .commit {
+        flex: 1;
+        padding: 0.13rem;
+        background: #F3F4F5;
+        border-radius: 0.03rem;
+
+        textarea {
+            width: 100%;
+            min-height: 1rem;
+            border: 0 none;
+            background: transparent;
+            line-height: 0.33rem;
+            font-size: 0.28rem;
+            color: #333;
+        }
+
+        .message-length {
+            text-align: right;
+            line-height: 0.37rem;
+            font-size: 0.26rem;
+            color: #999;
+        }
+    }
+}
+
+//保险v2.0----------------
+.insurance-container{
+    background: #FFFFFF;
+    box-shadow: 0 0.02rem 0.06rem 0 rgba(0,0,0,0.10);
+    border-radius: 0.03rem;
+    margin: 0.22rem 0;
+    padding: 0.22rem 0.22rem 0.44rem;
+    .insurance-title{
+        display: flex;
+        .title{
+            font-size: 0.32rem;
+            color: #333333;
+            font-weight: bold;
+            flex: 1;
+            span{
+                font-size: 0.24rem;
+                color: #2A2A2A;
+                font-weight: normal;
+            }
+        }
+        .unit{
+            font-size: 0.42rem;
+            color: #FE6666;
+        }
+    }
+    #wrapper{
+        position: relative;
+        margin-top: 0.22rem;
+        .content{
+            font-size: 0;
+            position: absolute;
+            ul{
+                white-space: nowrap;
+                li{
+                    display: inline-block;
+                }
+                .insurance-item{
+                    width: 2.4rem;
+                    border: 0.02rem solid #eee;
+                    border-radius: 0.1rem;
+                    padding: 0.05rem 0;
+                    text-align: center;
+                    margin-left: 0.23rem;
+                    &:first-child{
+                        margin-left: 0;
+                    }
+
+                    .desc{
+                        font-size: 0.32rem;
+                        color: #999999;
+                    }
+                    .amount{
+                        font-size: 0.24rem;
+                        color: #CCCCCC;
+                    }
+                    .detail-btn{
+                        font-size: 0.24rem;
+                        color: #6392FE;
+                        border-top: 1px dashed #eee;
+                        margin: 0.05rem 0.1rem 0;
+                        padding: 0.05rem 0 0;
+                        position: relative;
+                        &:after{
+                            content: '';
+                            display: block;
+                            width: 0.69rem;
+                            height: 0.4rem;
+                            background: url("../../images/bus/icon-unchoose.png") center no-repeat;
+                            background-size: 100% 100%;
+                            position: absolute;
+                            right: -0.1rem;
+                            bottom: -0.05rem;
+                        }
+                    }
+                }
+                .active{
+                    border: 0.02rem solid #6392FE;
+                    .desc{
+                        color: #6392FE;
+                    }
+                    .amount{
+                        color: #6392FE;
+                        .unit-price{
+                            color: #FE6666;
+                        }
+                    }
+                    .detail-btn{
+                        border-top: 1px dashed #6392FE;
+                        &:after{
+                            content: '';
+                            display: block;
+                            width: 0.69rem;
+                            height: 0.4rem;
+                            background: url("../../images/bus/icon-choose.png") center no-repeat;
+                            background-size: 100% 100%;
+                            position: absolute;
+                            right: -0.1rem;
+                            bottom: -0.05rem;
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+}
+//备注
+.comment-container{
+    background: #FFFFFF;
+    box-shadow: 0 0.02rem 0.02rem 0 rgba(0,0,0,0.05);
+    display: flex;
+    padding: 0.41rem 0.22rem;
+    font-size: 0.32rem;
+    .comment{
+        flex: 1;
+        color: #4A4A4A;
+    }
+    .commentText{
+        color: #9B9B9B;
+        padding-right: 0.33rem;
+        position: relative;
+        &:after{
+            content: '';
+            display: block;
+            width: 0.12rem;
+            height: 0.24rem;
+            background: url("../../images/bus/icon_more copy.png") center no-repeat;
+            background-size: 100% 100%;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto 0;
+            right: 0;
+        }
+    }
+}
+//备注弹出层
+#popupCommentInfo{
+    font-size: 0;
+    .close{
+        display: inline-block;
+        img{
+            display: block;
+            width: 0.14rem;
+            height: 0.24rem;
+            padding: 0.55rem 0.34rem 0.51rem;
+        }
+    }
+    .commit{
+        background: #F3F4F5;
+        margin: 0 0.22rem 0.22rem;
+        padding: 0.22rem 0.22rem 0;
+        border-radius: 0.04rem;
+        label{
+            display: block;
+            background: transparent;
+            textarea{
+                display: block;
+                width: 100% ;
+                height: 3.16rem;
+                min-height: 3.16rem;
+                border: none;
+                background: transparent;
+                font-size: 0.32rem;
+                color: #333;
+            }
+            textarea::placeholder{
+                color: #999999;
+            }
+        }
+        .message-length{
+            background: #f3f4f5;
+            text-align: right;
+            font-size: 0.26rem;
+            color: #999999;
+        }
+    }
+}
+//保险详情弹出框
+.popup-container{
+    position: fixed;
+    z-index: 200;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    .content{
+        margin: 1.2rem 0.2rem 0;
+        .main-content{
+            background: #FFFFFF;
+            border-radius: 0.06rem;
+            padding-bottom: 1.4rem;
+            .title{
+                font-size: 0.32rem;
+                color: #333333;
+                text-align: center;
+                padding: 0.16rem 0;
+            }
+            .main{
+                margin: 0.39rem 0.35rem 0;
+                min-height: 4.8rem;
+                max-height: 4.8rem;
+                overflow-y: scroll;
+            }
+        }
+        .close{
+            width: 0.7rem;
+            height: 0.7rem;
+            margin: 0.81rem auto 0;
+            background: url("../../images/bus/btn-close.png") center no-repeat;
+            background-size: 100% 100%;
+        }
+    }
+}
+
+.btn-group{
+    .btn{
+        background: #6392FE;
+        font-size: 0.38rem;
+        color: #FFFFFF;
+    }
+}
+
+

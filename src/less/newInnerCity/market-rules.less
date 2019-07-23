@@ -1,0 +1,61 @@
+body{
+  background: #FFFFFF;
+}
+.market-rule-container{
+  padding: 0.4rem 0.6rem;
+  .back-btn{
+    width: 0.14rem;
+    height: 0.24rem;
+    background: url("../../images/newInnerCity/icon-left.png") center no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    top: 0.54rem;
+    left: 0.3rem;
+  }
+  .market-title{
+    font-size: 0.38rem;
+    color: #666666;
+    text-align: center;
+  }
+  .market-content{
+    margin: 0 1rem;
+    ul{
+      .stage-type{
+        border-top: 1px solid #F2F2F2;
+        padding: 0.4rem 0 0.2rem 0;
+        &:first-child{
+          border-top: none;
+        }
+        .stage-name{
+          font-size: 0.28rem;
+          color: #666666;
+          letter-spacing: 0;
+          text-align: center;
+        }
+        ul{
+          .stage-item{
+            padding-top: 0.3rem;
+            .unit-box{
+              font-size: 0.28rem;
+              color: #AAAAAA;
+              letter-spacing: 0;
+              display: flex;
+              .unit{
+                flex: 1;
+              }
+              .price{
+                flex: 1;
+                text-align: right;
+              }
+            }
+            .total{
+              font-size: 0.2rem;
+              color: #AAAAAA;
+              letter-spacing: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}

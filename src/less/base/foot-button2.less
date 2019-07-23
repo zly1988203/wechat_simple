@@ -1,0 +1,47 @@
+// 底部一个按钮，一个连接
+footer {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: #fafafa;
+    z-index: 100;
+    .foot-wrap {
+        padding: 5px 15px 8px;
+    }
+    button {
+        width: 100%;
+        height: 44px;
+        .btn-style-white();
+        font-size: 18px;
+    }
+    .link {
+        text-align: center;
+        color: #999;
+        span {
+            display: inline-block;
+            padding: 0 8px;
+            line-height: 35px;
+        }
+        .contacts-help {
+            position: relative;
+            padding-left: 26px;
+            &:before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 6px;
+                z-index: 11;
+                width: 16px;
+                height: 16px;
+                margin-top: -10px;
+                background: url(../../images/taxi/icon_help.png) 50% no-repeat;
+                background-size: auto 16px;
+            }
+        }
+    }
+}
+.foot-position {
+    width: 100%;
+    height: 92px;
+}

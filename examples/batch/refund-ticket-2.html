@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>中交出行</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/fy-datepicker.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/batch/refund-ticket.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <div class="ticket-info">
+        <div class="row">
+            <div class="time">4月27日 (周一) 8:36</div>
+        </div>
+
+        <div class="station">
+            <div class="station-item"><h4>深圳湾创业投资大厦</h4></div>
+            <div class="station-item"><h4>深圳会展中心</h4></div>
+        </div>
+    </div>
+
+    <div class="head-title">已选择<em>0</em>张车票</div>
+
+    <div class="ticket-date"></div>
+    
+    <div class="btn-group">
+        <div class="btn default">返回</div>
+        <div class="btn readonly" id="submit">下一步</div>
+    </div>
+    
+    <script src="../../dist/javascripts/zepto.min.js"></script>
+    <script src="../../dist/javascripts/simpleui.min.js"></script>
+    <script src="../../dist/javascripts/vectors.min.js"></script>
+    <script src="../../dist/javascripts/fy-datePicker.min.js"></script>
+    <script>
+        $(function () {
+            //存储选中的日期
+            var ticket = null;
+
+            $('.ticket-date').datePicker({
+                dateBase: '2017-6',
+                weekend: true,
+                multiple: true,
+                gather: createData([6, 7, 8]),
+                selectCallback: function (data) {
+                    //TODO
+                    var title = $('.head-title');
+                    var selectData = ticket = data.selectData;
+
+                    //计数
+                    title.find('em').text(selectData.length);
+
+                    //下一步样式
+                    if(selectData.length > 0) {
+                        $('#submit').removeClass('readonly').addClass('primary');
+                    } else {
+                        $('#submit').addClass('readonly').removeClass('primary');
+                    }
+                }
+            });
+
+           //下一步
+            $('#submit').on('click', function () {
+                //TODO
+                console.log(ticket);
+
+                /*
+                * 通勤
+                * */
+                //已过退票时间
+                /*$.dialog({
+                    title: '',
+                    text: '25、26号车票已过退票时间，无法退票。\n' + '若有疑问请联系我们',
+                    buttons: [
+                        {
+                            text: '我知道了',
+                            onClick: function () {
+                                console.log('点击了 -- 我知道了')
+                            }
+                        },
+                        {
+                            text: '拨打电话',
+                            onClick: function () {
+                                console.log('点击了 -- 拨打电话')
+                            }
+                        }
+                    ]
+                });*/
+
+                //有车票已验票
+                $.dialog({
+                    title: '',
+                    text: '25、26号车票已验票，无法退票。\n' + '若有疑问请联系我们',
+                    buttons: [
+                        {
+                            text: '我知道了',
+                            onClick: function () {
+                                console.log('点击了 -- 我知道了')
+                            }
+                        },
+                        {
+                            text: '拨打电话',
+                            onClick: function () {
+                                console.log('点击了 -- 拨打电话')
+                            }
+                        }
+                    ]
+                });
+            });
+        });
+
+        //创建随机数据
+        function createData(monthDrr) {
+            var result = [];
+
+            monthDrr.forEach(function (item, index) {
+                var _n = 0,
+                    _MAX = new Date(2017, item, 0).getDate();
+
+                var arr = [];
+                //创建数组
+                for(var i = 0; i < _MAX; i++) {
+                    _n = parseInt(Math.random().toFixed(2) * 10) + i + index;
+
+                    if(_n <= _MAX) {
+                        arr.push(_n);
+                    }
+                }
+
+                //去重
+                for(var n = 0; n < arr.length; n++) {
+                    for(var m = 0; m < arr.length; m++) {
+                        if(arr[n] == arr[m]) {
+                            arr.splice(m, 1);
+                        }
+                    }
+                }
+
+                //排序
+                arr.sort(function () {
+                    return -1;
+                });
+
+                //填充数据
+                for(var l = 0; l < arr.length; l++) {
+                    var _result = {
+                        date: '2017-' + item + '-' + arr[l],
+                        state: 'select'
+                    };
+
+                    if(parseInt(2 * Math.random())) {
+                        _result.comment = '备注';
+                    }
+
+                    switch(parseInt(4 * Math.random()) + 1) {
+                        case 1:
+                            _result.state = 'select';
+                            break;
+                        case 2:
+                            _result.state = 'readonly';
+                            break;
+                        case 3:
+                            _result.state = 'disabled';
+                            break;
+                    }
+
+                    result.push(_result);
+                }
+            });
+
+            return result;
+        }
+    </script>
+</body>
+</html>

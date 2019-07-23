@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>投诉建议</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/newInnerCity/complaint-suggest.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div class="suggest-main" >
+    <div class="suggest-title">
+        <div class="title-name">投诉</div>
+        <div class="title-text">
+            <input type="radio" name="contact" value=""><label>监管电话</label>
+            <input type="radio" name="contact" value="" checked><label>客服电话</label>
+        </div>
+    </div>
+    <div class="suggest-context">
+        <div class="suggest-context-title">
+            <input type="radio" name="reason" value=""><label>司机态度恶劣</label><br/>
+            <input type="radio" name="reason" value=""><label>司机中途甩客</label><br/>
+            <input type="radio" name="reason" value=""><label>车辆与描述不符</label><br/>
+            <input type="radio" name="reason" value="" ><label>司机中途加价</label><br/>
+            <input type="radio" name="reason" value="" checked><label>其他原因</label><br/>
+        </div>
+        <div class="suggest-context-text">
+            <textarea rows="4" cols="40" placeholder="请描述（内容匿名，可放心填写）" class="input-text"
+                      onkeyup="checkMaxInput(this,200)"
+                      onkeydown="checkMaxInput(this,200)"
+                      onfocus="checkMaxInput(this,200)"
+                      onblur="checkMaxInput(this,200);resetMaxmsg()"></textarea>
+            <div class="input-tip" id="tip">0/200</div>
+        </div>
+    </div>
+    <div class="suggest-foot">
+        <div class="suggest-btn btn-cancel">取消</div>
+        <div class="suggest-btn btn-primary">提交</div>
+    </div>
+</div>
+
+<div class="suggest-commited" hidden>
+    <div class="suggest-commited-head">提交成功</div>
+    <div class="suggest-commited-body">
+        <dl class="suggest-list result">
+            <dt>投诉结果：客服已收到。</dt>
+            <dd>我们将尽快给您安排处理，给您本次出行带来的不便，深感歉意。</dd>
+         </dl>
+        <dl class="suggest-list reason">
+            <dt>投诉原因：</dt>
+            <dd>本文信息描述本文信息描述本文信息描述本文本文信息描述本文信息描述本文信息描述信息描述 信息描述信息描述</dd>
+        </dl>
+    </div>
+    <div class="suggest-commited-foot">知道了</div>
+</div>
+
+<script src="../../dist/javascripts/zepto.min.js"></script>
+<script src="../../dist/javascripts/simpleui.min.js"></script>
+<script src="../../dist/javascripts/vectors.min.js"></script>
+<script src="../../dist/javascripts/backtrack.min.js"></script>
+<script src="../../src/js/newInnerCity/complaint-suggest.js"></script>
+</body>
+</html>

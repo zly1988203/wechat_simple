@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>进行中</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/rent/order-detail.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../../dist/stylesheets/animate.min.css">
+</head>
+
+<body>
+    <div class="to-destination">
+        <div class="order-info">
+            <div class="driver-info">
+                <dl>
+                    <dt><img src="../../dist/images/common/avatar_driver.png" /></dt>
+                    <dd>
+                        <div class="name">位师傅 · 粤BDE990</div>
+                        <div class="attribute">白色 · 现代朗动</div>
+                        <div class="starbar">
+                            <div class="grade"><span>3.5</span></div>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+            <div class="call-tel"></div>
+        </div>
+
+        <div class="particulars">
+            <div class="info">
+                <div class="status">
+                    <span class="success"></span>
+                    <p>成功支付</p>
+                </div>
+                <div class="price">
+                    <span>30.5<em>元</em></span>
+                     <!--现金支付样式 cash-pay -->
+                    <p class="cash-pay"><span class="pay-method-icon"></span>现金支付</p>
+                    <!--在线支付样式 online-pay -->
+                    <p class="online-pay"><span class="pay-method-icon"></span>在线支付</p>
+                </div>
+            </div>
+            <div class="detail">
+                <div class="content">
+                    <dl>
+                        <dt>城际约租车</dt>
+                        <dd>70元</dd>
+                    </dl>
+                    <dl>
+                        <dt>优惠券</dt>
+                        <dd>-8.5元</dd>
+                    </dl>
+                </div>
+                <div class="bar" id="details-view">查看明细</div>
+            </div>
+        </div>
+
+        <!-- 未提交评价 -->
+        <div class="evaluate-swapper">
+            <div class="evaluate">
+                <div class="title">匿名评价司机</div>
+                <div class="star" data-level="0" data-judge="true"></div>
+                <div class="tips">完成匿名评价，我们将提供更好的服务</div>
+            </div>
+            <div class="tags">
+                <div class="title">请选择标签</div>
+                <div class="tag-swapper">
+                    <label for="tag-1">服务好态度棒 <input type="checkbox" name="tags" id="tag-1" value="服务好态度棒"></label>
+                    <label for="tag-2">车内整洁 <input type="checkbox" name="tags" id="tag-2" value="车内整洁"></label>
+                    <label for="tag-3">驾驶平稳 <input type="checkbox" name="tags" id="tag-3" value="驾驶平稳"></label>
+                    <label for="tag-4">活地图认路准 <input type="checkbox" name="tags" id="tag-4" value="活地图认路准"></label>
+                    <label for="tag-5">不是订单显示车辆 <input type="checkbox" name="tags" id="tag-5" value="不是订单显示车辆"></label>
+                    <label for="tag-6">车内有其他陌生人 <input type="checkbox" name="tags" id="tag-6" value="车内有其他陌生人"></label>
+                </div>
+                <div class="commit">
+                    <label for="message-1">
+                        <textarea id="message-1" placeholder="其他意见和建议（内容匿名，可放心填写）" maxlength="200"></textarea>
+                        <div class="message-length">0/200</div>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- 已评价 -->
+        <div class="evaluate-swapper" style="display: none">
+            <div class="evaluate judged">
+                <div class="title">匿名评价司机</div>
+                <div class="star" data-level="3" data-judge="false"></div>
+                <div class="tag-group">
+                    <span>服务好态度棒</span>
+                    <span>车内整洁</span>
+                    <span>驾驶平稳</span>
+                    <span>活地图认路准</span>
+                    <span>不是订单显示车辆</span>
+                    <span>车内有其他陌生人</span>
+                </div>
+                <div class="other">
+                    <span>其他建议：</span>服务态度很好，但是车内有其他陌生人
+                </div>
+                <div class="tips">您的评价会让我们做的更好</div>
+            </div>
+        </div>
+
+        <div class="driver-foot">
+            <div class="btn-group">
+                <div class="btn primary" id="back">返回首页</div>
+                <div class="btn primary" id="sub-evaluate" style="display: none">提交评论</div>
+            </div>
+            <div class="link">
+                <span data-href="tel:13800138000">联系客服</span>
+                |
+                <span data-href="suggest.html">投诉建议</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../dist/javascripts/zepto.min.js"></script>
+    <script src="../../dist/javascripts/simpleui.min.js"></script>
+    <script src="../../dist/javascripts/vectors.min.js"></script>
+    <script src="../../dist/javascripts/backtrack.min.js"></script>
+    <script>
+        $(function () {
+            //返回键控制
+            backtrack(function () {
+                var self = this;
+
+                //弹窗层，返回0
+                $('.star').on('click.back', function () {
+                    self.setState(0);
+                });
+            }, function (data) {
+                this.go();
+            });
+
+            //初始化
+            function init() {
+                //头部星级
+                var $startbar = $('.starbar'),
+                    $grade = $startbar.find('.grade'),
+                    level = $grade.find('span').text().split('.');
+
+                for(var i = 0; i < 5; i++) {
+                    $startbar.append('<i></i>');
+                }
+
+                $startbar.find('i').each(function (index, item) {
+                    if(index < level[0]) {
+                        $(item).addClass('star');
+                    }
+
+                    //半星
+                    if(index + 1 == level[0] && $(item).nextAll().length != 0 && level[1] > 0) {
+                        $(item).next().addClass('star-half');
+                    }
+                });
+
+                //现金支付或者线上支付 0-现金支付，1或者其他-线上支付
+                initPayMethod(0);
+            }
+
+            init();
+
+            //现金支付或者线上支付 0-现金支付，1或者其他-线上支付
+            function initPayMethod(flag){
+                if (0==flag){
+                    $('.price .cash-pay').show();
+                    $('.price .online-pay').hide();
+                }else {
+                    $('.price .cash-pay').hide();
+                    $('.price .online-pay').show();
+                }
+            }
+
+            //查看明细
+            $('#details-view').on('click', function () {
+                var $el = $(this);
+
+                if(!$el.data('lock')) {
+                    $el.prev('.content').show();
+                    $el.addClass('open').text('收起明细');
+
+                    $el.data('lock', true);
+                } else {
+                    $el.prev('.content').hide();
+                    $el.removeClass('open').text('查看明细');
+
+                    $el.data('lock', false);
+                }
+            });
+
+            //评价 - 星星
+            $('.evaluate .star').each(function (index, item) {
+               var $el = $(item);
+
+               //创建5个星星
+               for(var i = 0; i < 5; i++) {
+                   $el.append('<span></span>');
+               }
+
+               //星星评级
+                $el.find('span').each(function (indexChild, itemChild) {
+                    var $child = $(itemChild);
+
+                    if(indexChild < $el.data('level')) {
+                        $child.addClass('active');
+                    }
+                });
+
+               //是否可以评级
+                if($el.data('judge')) {
+                    $el.find('span').on('click', function () {
+                       var $child = $(this),
+                           $tips = $child.parent().siblings('.tips');
+
+                       $child.addClass('active');
+                       $child.prevAll().addClass('active');
+                       $child.nextAll().removeClass('active');
+
+                       switch ($child.prevAll().length) {
+                           case 0:
+                               $tips.text('非常不满意，各方面都很差');
+                               break;
+                           case 1:
+                               $tips.text('不满意，比较差');
+                               break;
+                           case 2:
+                               $tips.text('一般，需要改善');
+                               break;
+                           case 3:
+                               $tips.text('较满意，但仍可改善');
+                               break;
+                           case 4:
+                               $tips.text('非常满意，无可挑剔');
+                               break;
+                       }
+                    });
+
+                    //一次
+                    $el.find('span').one('click.animated', function () {
+                        var $child = $(this),
+                            $parent = $child.parent('.star');
+
+                        if(!$parent.data('animated')) {
+                            $parent.data('animated', true);
+
+                            //明细隐藏、返回首页按钮隐藏、提交评价按钮显示
+                            var $part = $('.particulars');
+                            var part_h = parseFloat($part.height()) + parseFloat($part.css('margin-top')) + parseFloat($part.css('margin-bottom'));
+                            $part.addClass('anm-marTop anm-hide').css({
+                                'margin-top': -part_h + 'px'
+                            });
+
+                            $child.parents('.evaluate').siblings('.tags').show().addClass('animated bounceInUp').one('webkitAnimationStart mozAnimationStart MSAnimationStart oanimationstart animationstart', function () {
+                                tagInt();
+                            });
+                            $('#sub-evaluate').show().siblings().hide();
+                        }
+                    });
+                }
+            });
+
+            //标签
+            function tagInt() {
+                var tagTops = [$('.tag-swapper label').eq(0).offset().top];
+
+                //去除margin-left
+                $('.tag-swapper label').each(function (index, item) {
+                    var $el = $(item);
+                    var itemTop = $el.offset().top;
+
+                    if(tagTops.indexOf(itemTop) < 0) {
+                        if(tagTops.indexOf($el.prev().offset().top) >= 0) {
+                            $el.css('margin-left', 0);
+                        }
+
+                        tagTops.push(itemTop);
+                    }
+                });
+
+                //group
+                var tagGroupTops = [$('.tag-group span').eq(0).offset().top];
+
+                $('.tag-group span').each(function (index, item) {
+                    var $el = $(item);
+                    var itemTop = $el.offset().top;
+
+                    if(tagGroupTops.indexOf(itemTop) < 0) {
+                        if(tagGroupTops.indexOf($el.prev().offset().top) >= 0) {
+                            $el.css('margin-left', 0);
+                        }
+
+                        tagGroupTops.push(itemTop);
+                    }
+                });
+            }
+           // tagInt();
+
+            $('.tag-swapper label').on('click', function () {
+                var $el = $(this);
+
+                if(!$el.data('toggle')) {
+                    $el.addClass('active');
+                    $el.data('toggle', true);
+                } else {
+                    $el.removeClass('active');
+                    $el.data('toggle', false);
+                }
+            });
+
+            //字数统计
+            $('#message-1').on('input', function() {
+                var length = $(this).val().length;
+                if(length <= 40) {
+                    $(this).next('div').attr('class', 'message-length').text(length + '/40');
+                } else {
+                    /*$(this).next('div').attr('class', 'sui-red').text('字数太多了。');*/
+                }
+            });
+
+            //提交评论
+            $('#sub-evaluate').on('click', function () {
+                var result = [];
+
+                $('[name=tags]:checked').each(function () {
+                   result.push($(this).val());
+                });
+
+                console.log(result);
+            })
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+@charset "utf-8";
+@import "../base/variable.less";
+
+body {
+    width: 7.5rem;
+    background-color: #fff;
+}
+
+.invite-infobar {
+    .image{
+        //margin: 50rem auto 0;
+        width: 7.50rem;
+        height:3.75rem;
+        //height: 0;
+        //padding-top: 38.133%;
+        background: url(../../images/my/open_envelope.png) center no-repeat;
+        background-size: 100% 100%;
+    }
+
+    .tip {
+        height:.5rem;
+        //height:.4rem;
+        margin-top: .49rem;
+        text-align: center;
+        font-size: .28rem;
+        color: #666;
+    }
+
+    .award {
+        height:.62rem;
+        margin-top: .12rem;
+        font-size: .44rem;
+        color: #333;
+        text-align: center;
+        span {
+            font-size: .44rem;
+            color: #fd6d6c;
+        }
+    }
+}
+.qrcode {
+    padding: .220rem;
+    margin: .60rem auto 0;
+    width: 2.60rem;
+    height: 2.60rem;
+    border: .01rem solid #CCCCCC;
+    border-radius: .06rem;
+
+    img {
+        width: 2.20rem;
+        height: 2.20rem;
+        background: #F1F1F1;
+    }
+}
+
+.qrcode-tips {
+    margin-top: .36rem;
+    font-size: .28rem;
+    color: #666;
+    text-align: center;
+}
+
+.invite-foot {
+    margin-top: .82rem;
+    padding: 0 .10rem .15rem;
+
+    .btn {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .links{
+        margin-top: .34rem;
+        text-align: center;
+        font-size: .28rem;
+        color: #999;
+
+        span{
+            #sp1{
+                margin: 0 .12rem .32rem 1.3rem;
+            }
+            #sp2{
+                margin: 0 1.3rem .32rem .12rem;
+            }
+            &:active {
+                color: #000;
+            }
+        }
+        span #sp2{
+            margin: 0 1.3rem 0rem .12rem;
+            &:active {
+                color: #000;
+            }
+        }
+
+        i {
+            color: #FF001F;
+            font-style: normal;
+        }
+    }
+}
+
+.btn-group {
+    position:fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    padding: .10rem;
+    background-color: #fafafa;
+    display: flex;
+
+    .btn {
+        flex: 1;
+        margin-left: .10rem;
+
+        &:first-child {
+            margin-left: 0;
+        }
+    }
+}
+
+.btn {
+    width: 7.06rem;
+    position: relative;
+    padding: 0 .22rem;
+    text-align: center;
+    font-size: .38rem;
+    height: 1rem;
+    line-height: .50rem;
+    border-radius: .50rem;
+    box-sizing: border-box;
+    overflow: hidden;
+
+    //&:before {
+    //    position: absolute;
+    //    top: 0;
+    //    left: 0;
+    //    width: 100%;
+    //    height: 100%;
+    //    background: rgba(0, 0, 0, 0.2);
+    //}
+    //
+    //&:active::before {
+    //    content: '';
+    //}
+    //
+    //&.default {
+    //    background-color: #fff;
+    //    color: #999;
+    //    border: 1rem solid #ccc;
+    //}
+    //
+    //&.primary {
+    //    background-color: #6392FE;
+    //    color: #fff;
+    //}
+}
+.black_overlay {
+    background:#000;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    z-index:1;
+    -moz-opacity: 0.8;
+    opacity:.50;
+    filter: alpha(opacity=50);
+}
+
+//分享
+//@import "../base/share-tips.less";

@@ -1,0 +1,226 @@
+@charset "utf-8";
+
+.caption {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &:before, &:after {
+        content: '';
+        flex: 1;
+        width: 0;
+        height: 0;
+        border-bottom: 1px dashed #ccc;
+    }
+
+    &:before {
+        margin-right: 0.26rem;
+    }
+
+    &:after {
+        margin-left: 0.28rem;
+    }
+}
+
+.text-yellow {
+    color: #FFA800;
+}
+
+.cancel {
+    padding-bottom: 2.4rem;
+
+    .detail {
+        background: #fff;
+        border-bottom: 1px solid #E9E9E9;
+        padding: 0.4rem 0.22rem 0.22rem;
+
+        h4 {
+            font-size: 0.28rem;
+            font-weight: normal;
+            color: #999;
+            line-height: 0.4rem;
+        }
+
+        ul {
+            margin-top: 0.4rem;
+
+            li {
+                display: flex;
+                align-self: flex-start;
+                justify-content: space-between;
+                font-size: 0.28rem;
+                color: #4B4B4B;
+                line-height: 0.4rem;
+                margin-top: 0.22rem;
+
+                &:first-child {
+                    margin-top: 0;
+                }
+
+                .left {
+                    width: 2.5rem;
+                    text-align: right;
+                }
+
+                .right {
+                    margin-right: 1.38rem;
+                    text-align: right;
+                }
+
+                .detail-list{
+                    width: 2.5rem;
+                    text-align: left;
+                    padding-left: 1.7rem;
+                }
+
+                em {
+                    display: block;
+                    font-size: 0.24rem;
+                }
+            }
+        }
+
+        .message {
+            margin-top: 0.35rem;
+            border-top: 0.04rem dotted #e8e8e8;
+            padding-top: 0.22rem;
+
+            label {
+                display: block;
+                padding: 0.2rem 0.2rem 0 0.23rem;
+                background: #F3F4F5;
+            }
+
+            textarea {
+                display: block;
+                width: 100%;
+                border: 0 none;
+                background: transparent;
+                font-size: 0.28rem;
+                line-height: 0.4rem;
+                min-height: 0.96rem;
+            }
+
+            .message-length {
+                text-align: right;
+                font-size: 0.26rem;
+                color: #999;
+                line-height: 0.37rem;
+            }
+
+            .sui-red {
+                font-size: 0.26rem;
+                line-height: 0.37rem;
+                text-align: right;
+            }
+        }
+    }
+
+    .tips {
+        font-size: 0.24rem;
+        color: #999;
+        padding: 0.22rem 0.25rem 0.22rem 0.53rem;
+        position: relative;
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0.27rem;
+            left: 0.22rem;
+            width: 0.24rem;
+            height: 0.24rem;
+            background: url("../../images/rent/icon_tips.png") no-repeat center;
+            background-size: 100% 100%;
+        }
+    }
+}
+
+.cancel-foot {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 666;
+    padding-bottom: 0.33rem;
+    background: #fafafa;
+
+    .btn-group {
+        position: relative;
+        padding-right: 0.15rem;
+
+        .btn {
+            font-size: 0.34rem;
+            margin-left: 0.07rem;
+
+            &:first-child {
+                margin-left: 0;
+            }
+
+            &:nth-child(2) {
+                min-width: 2.7rem;
+            }
+        }
+    }
+
+    .link {
+        text-align: center;
+        font-size: 0.28rem;
+        color: #999;
+
+        &:before {
+            content: '';
+            display: inline-block;
+            vertical-align: middle;
+            width: 0.33rem;
+            height: 0.34rem;
+            margin-right: 0.1rem;
+            background: url("../../images/rent/icon_earphone.png") no-repeat center;
+            background-size: 100% 100%;
+        }
+
+        span {
+            vertical-align: middle;
+
+            &.contacts-help {
+                &:before {
+                    content: '';
+                    display: inline-block;
+                    vertical-align: text-bottom;
+                    width: 0.35rem;
+                    height: 0.35rem;
+                    background: url("../../images/rent/emergency_help.png") no-repeat center;
+                    background-size: 100% 100%;
+                }
+            }
+        }
+    }
+}
+
+#interRule {
+    h1 {
+        font-size: 0.28rem;
+        padding-bottom: 0.1rem;
+    }
+
+    .content {
+        p {
+            font-size: 0.28rem;
+
+            &:first-child {
+                margin-top: 0;
+            }
+
+            strong {
+                font-size: 0.28rem;
+            }
+        }
+    }
+
+    .sui-article .content {
+        padding-top: 0.1rem;
+    }
+}
+
+.listWrapper {
+    overflow: auto;
+}

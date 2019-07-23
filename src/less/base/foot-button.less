@@ -1,0 +1,40 @@
+// 底部左-右按钮
+.btn-bar {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    ul {
+        margin: 10px;
+        display: flex;
+        li {
+            flex: 1;
+            padding-right: 5px;
+            button {
+                width: 100%;
+                height: 44px;
+            }
+            &:last-child {
+                padding-left: 5px;
+            }
+        }
+    }
+    .link {
+        text-align: center;
+        color: #999;
+        margin-bottom: 15px;
+        span {
+            display: inline-block;
+            padding: 0 8px;
+            &:active {
+                color: #333;
+            }
+        }
+    }
+}
+.reset {
+    .btn-style-white();
+}
+.finish {
+    .btn-style();
+}

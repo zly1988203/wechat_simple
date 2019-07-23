@@ -1,0 +1,285 @@
+// 搜索栏
+.search-bar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 9;
+    width: 100%;
+    height: 0.88rem;
+    background-color: #fff;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.10);
+
+    .search-bar-inner {
+        height: 0.88rem;
+        padding-right: 1rem;
+    }
+
+    .cancel {
+        width: 1rem;
+        height: 0.4rem;
+        line-height: 0.4rem;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto 0;
+        color: #999;
+        font-size: 0.28rem;
+        border-left: 0.01rem solid #ccc;
+    }
+
+    .tools-control {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 0.88rem;
+
+        .set-city {
+            padding: 0 0.3rem 0 0.22rem;
+            position: relative;
+            line-height: 0.45rem;
+            font-size: 0.32rem;
+            color: #333;
+            white-space: nowrap;
+
+            &:after {
+                content: '';
+                display: inline-block;
+                vertical-align: middle;
+                margin-left: 0.166rem;
+                width: 0;
+                height: 0;
+                border-top: 0.14rem solid #999;
+                border-left: 0.14rem solid transparent;
+                border-right: 0.14rem solid transparent;
+                border-radius: 0.05rem;
+            }
+        }
+
+        .serach-input {
+            flex: 1;
+            background-color: #fff;
+            padding: 0 0.24rem;
+            border-left: 0.01rem solid #ccc;
+            height: 0.45rem;
+            line-height: 0.45rem;
+
+            input {
+                width: 100%;
+                border: 0;
+                margin: 0;
+                padding: 0;
+                position: relative;
+                z-index: 1;
+                font-size: 0.32rem;
+
+                &::-webkit-input-placeholder {
+                    color: #ccc;
+                }
+                &::-moz-placeholder {
+                    color: #ccc;
+                }
+            }
+        }
+    }
+
+    .search-city {
+        padding-left: 0.22rem;
+        // 选择城市的搜索框暂时不要
+        display: block;
+        line-height: 0.88rem;
+        color: #666;
+        font-size: 0.28rem;
+    }
+}
+
+#searchResult {
+    li {
+        position: relative;
+        padding-left: 0.44rem;
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto 0;
+            width: 0.2rem;
+            height: 0.264rem;
+            background: url("../../images/bus/icon_mark.png") no-repeat center;
+            background-size: 100% 100%;
+        }
+    }
+}
+
+#search-address, #select-Citys {
+    .wrapper {
+        width: 100%;
+        margin-top: 0.88rem;
+        overflow: hidden;
+
+        .content {
+            padding-bottom: 0.22rem;
+        }
+
+        .sui-cell-map {
+            h1 {
+                font-size: 0.32rem;
+                line-height: 0.45rem;
+                font-weight: normal;
+            }
+
+            h2 {
+                font-size: 0.24rem;
+                line-height: 0.33rem;
+                color: #999;
+                font-weight: normal;
+            }
+        }
+    }
+
+    /*集合*/
+    .gather {
+        padding: 0 0.11rem;
+
+        & > div {
+            padding: 0 0.12rem 0.22rem;
+            border-bottom: 0.01rem solid #e6e6e6;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        & > div:last-child {
+            border-bottom: 0 none;
+        }
+
+        h4.title, h5.subtitle {
+            margin-top: 0.22rem;
+        }
+
+        h4.title {
+            font-weight: bold;
+            font-size: 0.32rem;
+            color: #333;
+            line-height: 0.45rem;
+        }
+
+        h5.subtitle {
+            font-size: 0.3rem;
+            color: #333;
+            line-height: 0.42rem;
+            font-weight: normal;
+        }
+
+        .station-group {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            margin: 0.22rem 0 0 0;
+
+            & > * {
+                display: inline-block;
+                font-size: 0.28rem;
+                color: #333;
+                line-height: 0.4rem;
+                padding: 0.1rem 0.08rem;
+                margin: 0 0 0.22rem 0.22rem;
+                background: #f1f1f1;
+                border-radius: 0.08rem;
+            }
+        }
+
+        /*当前位置*/
+        .current {
+            h4.title {
+                display: inline-block;
+                margin: 0 0.3rem 0 0;
+                padding: 0 0 0 0.3rem;
+                vertical-align: middle;
+                position: relative;
+
+                &:before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    bottom: 0;
+                    width: 0.2rem;
+                    height: 0.29rem;
+                    margin: auto 0;
+                    background: url("../../images/bus/icon_mark.png") no-repeat center;
+                    background-size: 100% 100%;
+                }
+            }
+
+            .station-group {
+                display: inline-block;
+            }
+        }
+    }
+
+	.remove-history {
+		margin-top: 0.38rem;
+		text-align: center;
+        font-size: 0.28rem;
+        line-height: 0.4rem;
+		color: #666;
+        opacity: 0.66;
+
+        &:before {
+            content: '';
+            display: inline-block;
+            position: relative;
+            top: -0.03rem;
+            vertical-align: middle;
+            margin-right: 0.12rem;
+            width: 0.3rem;
+            height: 0.33rem;
+            background: url(../../images/bus/icon_trash.png) center no-repeat;
+            background-size: 100% 100%;
+        }
+	}
+
+    .nav-city {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 2px;
+        z-index: 66;
+        margin: auto;
+
+        a {
+            font-size: 0.2rem;
+            color: #666;
+        }
+    }
+
+    #cityWrapper {
+        ul.sui-list {
+            margin-right: 0;
+        }
+    }
+}
+
+#select-Citys {
+    .current-city {
+        padding: 0.23rem 0.22rem 0.25rem;
+        font-size: 0.28rem;
+        color: #999;
+    }
+
+    .sui-list-title {
+        background-color: #f0f1f5;
+        font-size: 0.24rem;
+        padding: 0.04rem 0.22rem;
+    }
+
+    .sui-list {
+        li {
+            color: #666;
+            font-size: 0.28rem;
+        }
+    }
+}

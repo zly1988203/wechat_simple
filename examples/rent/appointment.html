@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>中交出行</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/rent/time-picker.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/rent/select-picker.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/rent/appointment.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/font-style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+    <!--顶部-->
+    <header class="header">
+        <div id="menuArmrest" class="avatar"></div>
+        <div class="nav">
+            <div class="thumb"></div>
+            <div class="list-bar">
+                <div class="content">
+                    <i class="icon"></i>
+                    <ul class="list">
+                        <li data-icon="bus" data-href="../bus/bus.html">定制班线</li>
+                        <li data-icon="bus" data-href="../travel/index.html">旅游班线</li>
+                        <li data-icon="bus" data-href="../bus/bus.html">上下班</li>
+                        <li class="active" data-icon="car" data-href="../rent/appointment.html">城际约租车</li>
+                        <li data-icon="bus" data-href="../coach/index.html">汽车票</li>
+                        <li data-icon="car" data-href="../hailing/hailing.html" class="active" >网约车</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 广告位 -->
+    <div class="vrt">
+        <!-- src：引入运营平台广告接口 -->
+        <script src=""></script>
+    </div>
+
+    <div id="tabs" class="tabs-panel">
+        <div class="tab-contents">
+
+            <div id="present" class="content">
+                <div class="search-station">
+                    <ul class="sui-list form">
+                        <li>
+                            <div class="control start">
+                                <input type="text" class="select-city-btn" placeholder="请选择出发地" readonly />
+                            </div>
+                        </li>
+                        <li>
+                            <div class="control end">
+                                <input type="text" class="select-city-btn" placeholder="请选择目的地" readonly />
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="switch-btn"></div>
+                </div>
+
+                <!--目的地提示-->
+                <div class="destination-box">
+                    <div class="destination-content">
+                        <div class="destination-tips-box">
+                            <div class="destination-tips"><span>去：</span><div class="destination">广州大学城广州</div></div>
+                            <div class="icon-close"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--出行人数和出发时间-->
+                <div class="trip-parameter">
+                    <ul class="sui-list controls">
+                        <li class="present-people">
+                            <label for="present_peopleNumber">出行人数</label>
+                            <!--<select id="present_peopleNumber">
+                                <option value="1">1人</option>
+                                <option value="2">2人</option>
+                                <option value="2">2人</option>
+                                <option value="3">3人</option>
+                                <option value="4">4人</option>
+                                <option value="5">5人</option>
+                                <option value="6">6人</option>
+                            </select>-->
+                            <input id="present_peopleNumber" placeholder="请选择出行人数" data-value="2" value="2人" readonly />
+                        </li>
+                        <li class="present-time">
+                            <label for="present_startTime">出发时间</label>
+                            <input type="text" id="present_startTime" class="time startTime" placeholder="请选择何时出发" readonly value="" data-now="1505476456787" data-date="" data-time="" data-intervalminute="10" data-filter="00:00~03:00,07:30~12:00,13:00~16:00,17:00~22:00" />
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 包车 -->
+                <!-- active：选中，disabled：不可选 -->
+                <ul class="charter">
+                    <li class="active">
+                        <label>
+                            <h4>拼车  15元/人</h4>
+                            <p>每人限带一件行李</p>
+                            <input type="radio" name="charterType" value="拼车  15元/人" checked />
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <h4>包车  50元/人</h4>
+                            <p>舒适型4人座（共1辆）</p>
+                            <input type="radio" name="charterType" value="包车  50元/人" />
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <h4>包车  60元/人</h4>
+                            <p>豪华型4人座（共1辆）</p>
+                            <input type="radio" name="charterType" value="包车  60元/人" />
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <h4>包车  90元/人</h4>
+                            <p>七座商务6人座（共1辆）</p>
+                            <input type="radio" name="charterType" value="包车  90元/人" />
+                        </label>
+                    </li>
+                </ul>
+
+                <!-- 活动 -->
+                <div class="activity">
+                    <ul class="tabs">
+                        <li><a href="javascript:void(0);">特价优惠</a></li>
+                        <li><a href="javascript:void(0);">分享立减</a></li>
+                        <li><a href="javascript:void(0);">十五字十五字十五字十五字十五字</a></li>
+                        <li><a href="javascript:void(0);">分享有礼</a></li>
+                        <li><a href="javascript:void(0);">十五字十五字十五字十五字十五字</a></li>
+                        <li><a href="javascript:void(0);">七字七字七字七</a></li>
+                        <li><a href="javascript:void(0);">分享立减</a></li>
+                        <li><a href="javascript:void(0);">买满有礼</a></li>
+                        <li><a href="javascript:void(0);">分享有礼</a></li>
+                    </ul>
+                    <div class="price">
+                        <!-- 如果没有优惠，去掉.discounts元素（及里面的元素） -->
+                        <div class="discounts">
+                            <i></i>
+                            <p>优惠:-61元(原价200）</p>
+                            <p>原价:200</p>
+                            <!-- tips -->
+                            <div class="tips">
+                                <div class="content">
+                                    <p>特价优惠 ——  -61元</p>
+                                    <p>优惠券 —— 61元</p>
+                                </div>
+                                <div class="info">
+                                    <p>(现金支付不支持任何优惠)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 合计 -->
+                        <div class="general-price">
+                            合计 <span>139.0</span> 元
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="personInfo">
+                <header>
+                    <div class="left">
+                        <span class="des">乘车人</span>
+                        <span class="tips">(最多7位)</span>
+                    </div>
+                    <div class="right">
+                        <img id="addPerson" src="../../src/images/rent/add-person.png">
+                    </div>
+                </header>
+                <section id="selectPerson">
+                    <div class="person-item">
+                        <div class="item-left">
+                            <i class="icon-remove"></i>
+                            <span class="item-name">牛曼曼</span>
+                        </div>
+                        <div class="item-right">
+                            <div class="item-txt">
+                                <div>
+                                    <span>手机号</span>
+                                </div>
+                                <div>
+                                    <span>身份证</span>
+                                </div>
+                            </div>
+                            <div class="item-val">
+                                <div class="item-mobile">
+                                    <span>13658745230</span>
+                                </div>
+                                <div class="item-id">
+                                    <span>254658199101195801</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <div class="message">
+        <div class="container">
+            <div class="title">捎话</div>
+            <label class="message-area" for="message-1">
+                <textarea id="message-1" placeholder="给司机捎句话" maxlength="40"></textarea>
+                <div class="message-length">0/40</div>
+            </label>
+        </div>
+    </div>
+
+    <!--线路不存在的提示-->
+    <div class="warn-tip" style="display: none;">抱歉：目的地的城际约租车服务暂未开通。</div>
+
+    <!-- 灰色按钮：search-btn disabled -->
+    <div class="search-btn">预约车辆</div>
+
+    <div class="inter-rule">城际约租车规则</div>
+
+
+    <!--查询地址-->
+    <div id="search-address" class="sui-popup-container">
+        <div class="sui-popup-mask"></div>
+        <div class="sui-popup-modal">
+            <div class="search-bar sui-border-b">
+                <div class="search-bar-inner">
+                    <div class="tools-control">
+                        <div id="setCityButton" class="set-city">深圳</div>
+                        <div class="serach-input">
+                            <input type="text" id="textSearchMap" placeholder="输入关键字" />
+                        </div>
+                    </div>
+                    <button  type="button" class="cancel">取消</button>
+                </div>
+            </div>
+
+            <div class="map-panel">
+                <div id="mapContainer"><div id="currLocation"></div></div>
+                <div id="mapWrapper" class="map-wrapper sui-border-t">
+                    <div class="content">
+                        <ul id="mapResult" class="sui-list sui-border-tb">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="searchWrapper" class="wrapper">
+                <div class="content">
+                    <ul class="sui-list">
+                        <li>
+                            <div class="sui-cell-map">
+                                <h1>中交出行科技有限公司</h1>
+                                <h2>深圳市南山区科园路创业投资大厦8楼802</h2>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="sui-cell-map">
+                                <h1>深圳虚拟大学园管理服务中心</h1>
+                                <h2>高新园南四道19深圳虚拟大学园2层</h2>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="sui-cell-map">
+                                <h1>中交出行科技有限公司</h1>
+                                <h2>深圳市南山区科园路创业投资大厦8楼802</h2>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="sui-cell-map">
+                                <h1>深圳虚拟大学园管理服务中心</h1>
+                                <h2>高新园南四道19深圳虚拟大学园2层</h2>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="sui-cell-map">
+                                <h1>中交出行科技有限公司</h1>
+                                <h2>深圳市南山区科园路创业投资大厦8楼802</h2>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="sui-cell-map">
+                                <h1>深圳虚拟大学园管理服务中心</h1>
+                                <h2>高新园南四道19深圳虚拟大学园2层</h2>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="sui-cell-map">
+                                <h1>中交出行科技有限公司</h1>
+                                <h2>深圳市南山区科园路创业投资大厦8楼802</h2>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="sui-cell-map">
+                                <h1>深圳虚拟大学园管理服务中心</h1>
+                                <h2>高新园南四道19深圳虚拟大学园2层</h2>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="sui-cell-map">
+                                <h1>中交出行科技有限公司</h1>
+                                <h2>深圳市南山区科园路创业投资大厦8楼802</h2>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="sui-cell-map">
+                                <h1>深圳虚拟大学园管理服务中心</h1>
+                                <h2>高新园南四道19深圳虚拟大学园2层</h2>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="sui-cell-map">
+                                <h1>中交出行科技有限公司</h1>
+                                <h2>深圳市南山区科园路创业投资大厦8楼802</h2>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="sui-cell-map">
+                                <h1>深圳虚拟大学园管理服务中心</h1>
+                                <h2>高新园南四道19深圳虚拟大学园2层</h2>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="remove-history">清空历史记录</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--选择城市-->
+    <div id="select-Citys" class="sui-popup-container">
+        <div class="sui-popup-mask"></div>
+        <div class="sui-popup-modal">
+            <div class="search-bar sui-border-b">
+                <div class="search-bar-inner">
+                    <div class="tools-control search-city">
+                        <!--<div class="serach-input sui-border">
+                            <input type="text" placeholder="城市中文名或拼音" />
+                        </div>-->
+                        请选择城市
+                    </div>
+                    <button  type="button" class="cancel">取消</button>
+                </div>
+            </div>
+
+            <div id="cityWrapper" class="wrapper">
+                <div class="content">
+                    <div class="current-city">当前定位城市：深圳市</div>
+                    <div class="sui-list-title">A</div>
+                    <ul class="sui-list">
+                        <li>广州</li>
+                        <li>深圳</li>
+                        <li>珠海</li>
+                        <li>汕头</li>
+                        <li>佛山</li>
+                        <li>韶关</li>
+                        <li>东莞</li>
+                        <li>清远</li>
+                    </ul>
+                    <div class="sui-list-title">B</div>
+                    <ul class="sui-list">
+                        <li>广州</li>
+                        <li>深圳</li>
+                        <li>珠海</li>
+                        <li>汕头</li>
+                        <li>佛山</li>
+                        <li>韶关</li>
+                        <li>东莞</li>
+                        <li>清远</li>
+                    </ul>
+                    <div class="sui-list-title">C</div>
+                    <ul class="sui-list">
+                        <li>广州</li>
+                        <li>深圳</li>
+                        <li>珠海</li>
+                        <li>汕头</li>
+                        <li>佛山</li>
+                        <li>韶关</li>
+                        <li>东莞</li>
+                        <li>清远</li>
+                    </ul>
+                    <div class="sui-list-title">D</div>
+                    <ul class="sui-list">
+                        <li>广州</li>
+                        <li>深圳</li>
+                        <li>珠海</li>
+                        <li>汕头</li>
+                        <li>佛山</li>
+                        <li>韶关</li>
+                        <li>东莞</li>
+                        <li>清远</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--城际约租车规则-->
+    <div id="interRule" class="sui-popup-container">
+        <div class="sui-popup-mask"></div>
+        <div class="sui-popup-modal">
+            <div class="listWrapper">
+                <div class="content rule-content">
+                    <article class="sui-article">
+                        <h1>城际约租车规则</h1>
+                        <div class="sui-border-t content rule-bar">
+                            <p><strong>一、约车流程</strong><br/>
+                                1、预约下单：乘客下单需至少提前20分钟。<br/>
+                                2、车企服务：为保证服务质量，车企客服将与您联系确认出行事宜，并沟通清楚情况下，对乘客发起的城际约租车行程进行调整，如调整：出发地、目的地、出行时间、出行费用等信息。<br/>
+                                3、司机服务：司机根据订单需求接送乘客。 <br/>
+                                4、双方评价：司机和乘客均可在拼车后评价对方。</p>
+                            <p><strong>二、司机责任</strong><br/>
+                                1、停靠点选择：司机按照乘客指定停靠点拼车；请乘客尽量设置方便司机停靠的地点；司机可以拒绝停靠交通规则禁止的地点。<br/>
+                                2、车辆规范：司机需要驾驶经过认证的车辆，并保持车内整洁干净，无杂物。<br/>
+                                3、行李放置：司机需要保持车辆可以放置至少一个标准行李箱；乘客如有超大行李，需与客服提前说明；<br/>
+                                4、城际约租车的过路、过桥费由司机承担。<br/>
+                                5、文明驾驶，遵守交通规则。</p>
+                            <p><strong>三、双方共同遵守的规则</strong><br/>
+                                1、守时规则：司机和乘客均需按照订单时间前后10分钟完成搭乘；如有特殊情况，需要提前电话沟通。<br/>
+                                2、文明拼车：双方均需遵守文明规范，共建和谐社会。<br/>
+                                3、本平台倡议无烟行车；如果有宠物搭乘，需要提前说明；司机有权拒绝未经申请的宠物搭乘。<br/>
+                                4、违反本规则的司机和乘客，平台有权取消注册会员资格，并追究可能导致的损失。</p>
+                            <p><strong>四、取消及退款</strong><br/>
+                                1、原则上司机和乘客在订单确认后，均不能取消订单；<br/>
+                                2、司机或乘客如有特殊情况，请致电客服协商处理；<br/>
+                                3、司机未能按照本规则服务，乘客可致电客服处理。</p>
+                        </div>
+                    </article>
+                    <div class="close-popup close" data-target="interRule"></div>
+                </div>
+            </div>
+            <div class="btn-group">
+                <div class="btn primary close-popup" data-target="interRule">返回城际约租车</div>
+            </div>
+        </div>
+    </div>
+
+    <!--侧边栏菜单-->
+    <div id="sideMenu" class="sui-popup-container">
+        <div class="sui-popup-mask"></div>
+        <div class="sui-popup-modal">
+            <div class="head" data-url="#">
+                <div class="avatar" style="background-image:url(../../dist/images/common/avatar_driver.png);"></div>
+                <div class="mobile">13800138000</div>
+            </div>
+            <ul class="sui-list">
+                <li data-url="#"><div class="sui-cell-icons"><span class="sui-cell-icon icon-myorder"></span> 订单</div></li>
+                <li data-url="#"><div class="sui-cell-icons"><span class="sui-cell-icon icon-ticket"></span> 车票</div></li>
+                <li data-url="#"><div class="sui-cell-icons"><span class="sui-cell-icon icon-coupon"></span> 优惠</div></li>
+                <li data-url="#"><div class="sui-cell-icons badge-hot"><span class="sui-cell-icon icon-activity"></span> 活动</div></li>
+                <li data-url="#"><div class="sui-cell-icons"><span class="sui-cell-icon icon-config"></span> 设置</div></li>
+                <li data-url="#"><div class="sui-cell-icons"><span class="sui-cell-icon icon-suggest"></span> 反馈建议</div></li>
+                <li data-url="#"><div class="sui-cell-icons"><span class="sui-cell-icon icon-conversion"></span> 奖品兑换</div></li>
+                <li data-url="#"><div class="sui-cell-icons"><span class="sui-cell-icon icon-ranking"></span> 员工排行榜</div></li>
+            </ul>
+            <div class="foot">
+                <div class="item" data-href="tel:123456789">
+                    <span class="icon icon-contact"></span>
+                    <p>联系客服</p>
+                </div>
+                <div class="item" data-href="#">
+                    <span class="icon icon-invite"></span>
+                    <p>邀请有礼</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--温馨提示-->
+    <div class="ola-tips">
+        <div class="head">
+            <h4>温馨提醒</h4>
+        </div>
+        <div class="main">
+            <p>1.微信订单服务时间：08:30~20:00。00:00~8:00或20:00~24:00时间段下单，并需要在该时间段出行的乘客，请拨打客服热线预约</p>
+            <p>2. 当前仅提供市区（城区）直达市区（城区）的约车服务，暂无市区（城区）以外的上下车站点，敬请谅解</p>
+        </div>
+    </div>
+
+    <div id="personList" class="sui-popup-container">
+        <div class="sui-popup-mask"></div>
+        <div class="sui-popup-modal">
+            <header>
+                <div class="right">
+                    <img src="../../src/images/rent/add-person.png">
+                    <span>添加乘车人</span>
+                </div>
+            </header>
+            <section class="personArr">
+                <div class="person-item">
+                        <div class="item-left">
+                            <i class="icon-selecte"></i>
+                        </div>
+                        <div class="item-right">
+
+                            <div class="item-name">牛曼曼</div>
+                            <div class="item-info">
+                                <div class="item-txt">
+
+                                    <div>
+                                        <span>手机号</span>
+                                    </div>
+                                    <div>
+                                        <span>身份证</span>
+                                    </div>
+                                </div>
+                                <div class="item-val">
+                                    <div class="item-mobile">
+                                        <span>13658745230</span>
+                                    </div>
+                                    <div class="item-id">
+                                        <span>254658199101195801</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="item-action">
+                            <i id="editPerson" class="icon-edit"></i>
+                        </div>
+                    </div>
+
+            </section>
+            <footer>
+                <div class="selDown-btn">完成</div>
+            </footer>
+
+        </div>
+    </div>
+
+    <div id="editPersonPopup" class="sui-popup-container">
+        <div class="sui-popup-mask"></div>
+        <div class="sui-popup-modal bg-popup">
+            <div class="editform">
+                <div class="item">
+                    <span>姓名</span>
+                    <input type="text"  placeholder="请输入姓名">
+                </div>
+                <div class="item">
+                    <span>手机号</span>
+                    <input type="tel"  placeholder="请输入手机号">
+                </div>
+                <div class="item">
+                    <span>身份证</span>
+                    <input type="text"  placeholder="请输入身份证">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+	<script src="../../dist/javascripts/zepto.min.js"></script>
+	<script src="../../dist/javascripts/simpleui.min.js"></script>
+    <script src="../../dist/javascripts/time-picker.min.js"></script>
+
+    <script src="../../dist/javascripts/select-picker.min.js"></script>
+
+	<script src="../../src/js/vectors.js"></script>
+    <script src="../../dist/javascripts/cityTimePicker.min.js"></script>
+    <!--<script src="../../src/js/cityTimePicker.js"></script>-->
+    <script src="http://webapi.amap.com/maps?v=1.3&key=1ef3b0f40d2caf5da6f206ded594e5c7"></script>
+    <script>
+        var _map, _isInitsa = false, _myIScrollsa, _mapScroll, marker;
+
+        //加载地图
+        var loadMaps = function(lng, lat) {
+            if(_map) return;
+            _mapScroll = new IScroll('#mapWrapper');
+            _map = new AMap.Map('mapContainer', {
+                resizeEnable: true,
+                zoom:15,
+                center: [lng, lat]
+            });
+
+            //添加标注
+            marker = new AMap.Marker({
+                icon: new AMap.Icon({
+                    size: new AMap.Size(25, 36),
+                    imageSize: new AMap.Size(25, 36),
+                    image: '../../dist/images/rent/icon_marker.png'
+                }),
+                position: _map.getCenter()
+            });
+            marker.setMap(_map);
+
+            //移动地图，标注固定在中心点
+            _map.on('mapmove', function() {
+                marker.setPosition(_map.getCenter());
+            });
+
+            //回到原点
+            $('#currLocation').on('click', function() {
+                _map.panTo([lng, lat]);
+            })
+
+            //移动结束
+            searchMaps();
+            _map.on('moveend', function() {
+                searchMaps();
+            });
+        }
+
+
+        //查询地图周边
+        var searchMaps = function() {
+
+            AMap.service(["AMap.PlaceSearch"], function() {
+                var placeSearch = new AMap.PlaceSearch({
+                    pageSize: 10,
+                    pageIndex: 1
+                });
+
+                placeSearch.searchNearBy('', _map.getCenter(), 200, function(status, result) {
+                    if(status == 'error' || status == 'no_data') {
+                        $('#mapResult').html('');
+                        return;
+                    }
+                    var list = result.poiList.pois;
+                    var strHtml = '';
+                    for(var i = 0; i < list.length; i++) {
+                        strHtml += '<li data-name="' + list[i].name + '" data-address="' + list[i].address + '" data-lat="' + list[i].location.lat + '" data-lng="' + list[i].location.lng + '" '+ (i == 0 ? 'class="active"' : '') +'>' +
+                            '<div class="sui-cell-map-result">' +
+                            '<div class="left">' +
+                            '<h1>' + list[i].name + '</h1>' +
+                            '<p>' + list[i].address + '</p>' +
+                            '</div>' +
+                            '<div class="right">' +
+                            '<button type="button">确定</button>' +
+                            '</div>' +
+                            '</div>' +
+                            '</li>';
+                    }
+                    $('#mapResult').html(strHtml);
+                    _mapScroll.refresh();
+
+                    $('#mapResult li').off('tap').on('tap', function() {
+                        $('#mapResult li').removeClass('active');
+                        $(this).addClass('active');
+                        var lat = $(this).data('lat');
+                        var lng = $(this).data('lng');
+                        marker.setPosition([lng, lat]);
+                    });
+
+                    //点击确定返回
+                    $('#mapResult button').off('click').on('click', function() {
+                        var li = $(this).closest('li');
+
+                        $('#search-address').setPopupData({
+                            lat: li.data('lat'),
+                            lng: li.data('lng'),
+                            name: li.data('name'),
+                            address: li.data('address')
+                        });
+                        $('#search-address .cancel').triggerHandler('click');
+                    });
+                });
+            });
+        }
+
+        //搜索结果面板
+        var searchAddressClass = {
+                // 显示搜索结果面板
+                 showSearchAddressResult: function() {
+                    loadMaps(116.397428, 39.90923);
+
+                    $('#search-address .wrapper').css('height', $(window).height() - 44);
+                    $('#textSearchMap').val('');
+                    $('#searchWrapper ul').html('');
+
+                    //TODO:加载历史记录
+
+                    $('#textSearchMap').focus(function() {
+                        searchAddressClass.showSearchAddressPanel();
+                    }).on('input', function() {
+                        searchMap();
+                    });
+                },
+
+                //显示搜索结果面板
+                 showSearchAddressPanel: function() {
+                    $('#sarchCancelbtn').show();
+                    $('#closePanelBtn').hide();
+                    $('#searchWrapper').show();
+                    $('.map-panel').hide();
+                    if(_isInitsa) return;
+                    _isInitsa = true;
+
+
+                    //自定义滚动条
+                    var stY = 0, etY = 0;
+                    $('#searchWrapper').on('touchstart', function() {
+                        etY = $(this).scrollTop();
+                        stY = event.touches[0].pageY;
+                    });
+                    $('#searchWrapper').on('touchmove', function(event) {
+                        var scrollY = stY - event.touches[0].pageY;
+                        $(this).scrollTop(scrollY + etY);
+                    });
+                    /*
+                     setTimeout(function() {
+                     $('body').removeClass('forbid-scroll').off('touchmove');
+                     }, 600);
+                     */
+                },
+
+                //隐藏搜索结果面板
+                hideSearchAddressResult: function() {
+                    $('#sarchCancelbtn').hide();
+                    $('#closePanelBtn').show();
+                    $('#searchWrapper').hide();
+                    $('.map-panel').show();
+                    _mapScroll.refresh();
+                }
+
+        }
+        //输入关键词搜索地图
+        var searchMap = function(){
+            //输入关键词搜索地图
+            var text = $.trim($('#textSearchMap').val());
+            var placeSearch = new AMap.PlaceSearch({
+                pageSize: 20,
+                pageIndex: 1,
+                city: "深圳",
+            });
+            placeSearch.search(text, function(status, result) {
+                var list = [];
+                if(text.length <= 0) status = 'no_data';
+                if(status == 'complete') {
+                    list = result.poiList.pois;
+                }
+
+                var strHtml = '';
+                for(var i = 0; i < list.length; i++) {
+                    var name = list[i].name.replace(text, '<span class="sui-orange">' + text + '</span>');
+                    var address = list[i].address.replace(text, '<span class="sui-orange">' + text + '</span>');
+                    strHtml += '<li data-name="' + list[i].name + '" data-address="' + list[i].address + '" data-lat="' + list[i].location.lat + '" data-lng="' + list[i].location.lng + '">'+
+                        '<div class="sui-cell-map">'+
+                        '<h1>' + name + '</h1>'+
+                        '<h2>' + address + '</h2>'+
+                        '</div>'+
+                        '</li>';
+                }
+                $('#searchWrapper ul').html(strHtml);
+                //_myIScrollsa.refresh();
+                $('#searchWrapper li').off('tap').on('tap', function() {
+                    _map.panTo([$(this).data('lng'), $(this).data('lat')]);
+                    searchAddressClass.hideSearchAddressResult();
+                });
+            });
+        }
+
+        /***************************************************************************************************/
+        $(function() {
+            //header初始化da
+            $.headerInit();
+
+            $('.startTime').data('intervalminute','60');
+            $('.startTime').on('click', function() {
+                var _input = $(this);
+                initCityTimePicker(_input)
+            });
+
+            //提示目的地
+            $('.destination-box .icon-close').on('click', function () {
+                $('.destination-box').hide();
+            });
+            //TODO 需要从后台来的数据
+            var lat = '22.670256';
+            var lng = '113.818125';
+            var name = 'E(福永中心店)';
+            var address = '德丰路59-6号';
+            $('.destination-box .destination-tips').on('click', function () {
+                $('.end input').val($('.destination').text());
+
+                //写入到搜索框并搜索生成数据
+                searchStation();
+                $('#textSearchMap').val($('.end input').val());
+                //TODO 经纬度需是后台返回的
+//                loadMaps(parseFloat(lat), parseFloat(lng));
+//                loadMaps(116.397428, 39.90923);
+                loadMaps(parseFloat(lng),parseFloat(lat));
+                searchMap();
+                $('#searchWrapper').hide();
+
+//                $('#search-address').setPopupData({
+//                    lat: lat,
+//                    lng: lng,
+//                    name: name,
+//                    address: address
+//                });
+                $('.destination-box').hide();
+            });
+
+
+            //选择人数
+            $('#present_peopleNumber').parent().on('click', function() {
+                $.selectPicker({
+                    title:'选择出行人数',
+                    data:[
+                        {'value':1, text: '1人'},
+                        {'value':2, text: '2人'},
+                        {'value':3, text: '3人'},
+                        {'value':4, text: '4人'},
+                        {'value':5, text: '5人'},
+                        {'value':6, text: '6人'}
+                    ],
+                    current: $('#present_peopleNumber').data('value'),
+                    onChange: function(v, t) {
+                        var people = $('#present_peopleNumber');
+
+                        if(people.val() != t) {
+                            people.data('value', v).val(t).trigger('change');
+                        }
+                    }
+                });
+            });
+
+            /*
+            * 点击活动优惠 - 弹出层
+            * 点击其他地方 - 隐藏弹出层
+            * */
+            $(window).on('click.discounts.tips', function (e) {
+                var $el = $('.activity .discounts'),
+                    $tips = $el.find('.tips');
+
+                //未显示或者元素不存在，则返回
+                if($('.activity').css('display') != 'block' || $tips.length < 1) {
+                    return;
+                }
+
+                if(e.target.outerHTML == $el[0].outerHTML || ($(e.target).parents('.discounts').length > 0 && $(e.target).parents('.discounts')[0].outerHTML == $el[0].outerHTML)) {
+                    if($(e.target).parents('.tips').length == 0) {
+                        var toggle = $el.data('toggle');
+
+                        if(!toggle) {
+                            $tips.show();
+                            $el.data('toggle', true);
+                        } else {
+                            $tips.hide();
+                            $el.data('toggle', false);
+                        }
+                    }
+                } else {
+                    $tips.hide();
+                    $el.data('toggle', false);
+                }
+            });
+
+            // tab 切换
+            $('#tabs .tab-head li').on('click', function() {
+                var index = $(this).index();
+                $('#tabs .tab-head li').removeClass('active');
+                $(this).addClass('active');
+                $('#tabs .tab-contents .content').hide();
+                $('#tabs .tab-contents .content').eq(index).show();
+            });
+
+            // 交换 出发地 / 目的地
+            $('.switch-btn').on('click', function() {
+                var start = $(this).prev().find('.start input');
+                var end = $(this).prev().find('.end input');
+                var tmp = start.val();
+                start.val(end.val());
+                end.val(tmp);
+            });
+
+            // ================================= 选择地址相关 ===================================
+
+            // 拼车 - 选择地址
+            var searchStation = function(){
+                console.log('调用的searchStation()方法')
+                $('#present .search-station li').on('click', function() {
+                    var _this = $(this).find('.select-city-btn');
+
+                    //起始图标
+                    var opIcon = '';
+                    if(_this.parents('.start').length == 1) {
+                        opIcon = '../../dist/images/rent/icon_marker.png';
+                    } else if(_this.parents('.end').length == 1) {
+                        opIcon = '../../dist/images/rent/icon_marker_end.png';
+                    }
+
+                    $('.amap-icon img').attr('src', opIcon);
+
+
+                    $('#search-address').popup('push', function() {
+                        if(_this.val().length <= 0) {
+                            searchAddressClass.showSearchAddressPanel();
+                            searchAddressClass.showSearchAddressResult();
+                        }
+                        $('#sarchCancelbtn').on('click', function() {
+                            searchAddressClass.hideSearchAddressResult();
+                        });
+
+                        if(_isInitsa) return;
+                        _isInitsa = true;
+                        setTimeout(function() {
+                            $('#search-address .wrapper').css('height', $(window).height() - 44);
+                            var _myIScrollsa = new IScroll('#searchWrapper');
+                        }, 300);
+                    }, function(data) {
+                        _this.val(data.name);
+                        var startAddr = $('#present .start input').val();
+                        var endAddr = $('#present .end input').val();
+                        if(startAddr && endAddr) {
+                            $('#carType').show();
+                            $('#present .callButton').prop('disabled', false);
+                        }
+
+                        showSharingCarTime();
+                    });
+                }).backtrack({
+                    cancel: '#search-address .cancel',
+                    event: 'click'
+                });
+            };
+            searchStation();
+
+
+            // 包车 - 选择地址
+            $('#reservation .select-city-btn').on('click', function() {
+                var _this = $(this);
+                $('#search-address').popup('push', function() {
+                    if(_isInitsa) return;
+                    _isInitsa = true;
+                    setTimeout(function() {
+                        $('#search-address .wrapper').css('height', $(window).height() - 44);
+                        var _myIScrollsa = new IScroll('#searchWrapper');
+                    }, 300);
+                }, function(data) {
+                    _this.val(data);
+                    showCharterCarTime();
+                });
+            });
+
+            //关闭地址查询
+            $('#search-address .cancel').on('click', function() {
+                $('#search-address').closePopup(function() {
+                    if(_myIScrollsa) {
+                        _myIScrollsa.destroy();
+                        _myIScrollsa = null;
+                    }
+                });
+            });
+
+            //点击地址返回数据
+            $('#search-address .wrapper li:not(.remove-history)').on('click', function() {
+                var data = $(this).find('h1').text();
+                $('#search-address').setPopupData(data);
+                $('#search-address .cancel').triggerHandler('click');
+            });
+
+            // 打开选择城市
+            var _isInitsc = false, _myIScrollsc;
+            $('#setCityButton').on('click', function() {
+                var _this = $(this);
+                $('#select-Citys').popup('push', function() {
+                    if(_isInitsc) return;
+                    _isInitsc = true;
+                    setTimeout(function() {
+                        $('#select-Citys .wrapper').css('height', $(window).height() - 44);
+                        var _myIScrollsc = new IScroll('#cityWrapper');
+                    }, 300);
+                }, function(data) {
+                    _this.text(data);
+                });
+
+            }).backtrack({
+                cancel: '#select-Citys .cancel',
+                event: 'click'
+            });
+
+            // ================================= 选择城市相关 ===================================
+
+            // 选择城市
+            $('#select-Citys .wrapper li').on('click', function() {
+                var data = $(this).text();
+                $('#select-Citys').setPopupData(data);
+                $('#select-Citys .cancel').triggerHandler('click');
+            });
+
+            // 关闭选择城市
+            $('#select-Citys .cancel').on('click', function() {
+                $('#select-Citys').closePopup(function() {
+                    if(_myIScrollsc) {
+                        _myIScrollsc.destroy();
+                        _myIScrollsc = null;
+                    }
+                });
+            });
+            
+            //城际约租车规则
+            $('.inter-rule').on('click', function () {
+                $('#interRule').popup('popup', function() {
+                    var $el = $('#interRule');
+                    if($el.data('isInitsc')) return;
+                    $el.data('isInitsc', true);
+
+                    setTimeout(function() {
+                        $el.find('.listWrapper').css('height', $(window).height() - $el.find('.btn.primary').height() - 15);
+                        new IScroll('#interRule .listWrapper');
+                        $el.data('isInitsc', false);
+                    }, 300);
+                });
+            }).backtrack({
+                cancel: '#interRule .close-popup',
+                event: 'click'
+            });
+
+            //选择包车类型
+            $('.charter li').on('click', function () {
+                var self = $(this),
+                   siblings = self.siblings(),
+                   input = self.find('input');
+
+                //不可选
+                if(self.hasClass('disabled')) {
+                    return
+                }
+
+                //this
+                self.addClass('active');
+                input.prop('checked', true);
+
+                //siblings
+                siblings.removeClass('active');
+                siblings.find('input').prop('checked', false);
+
+                //获取已选的值
+                console.log($('[name=charterType]:checked').val())
+            });
+
+            //出行人数 <= 4，四类都可以选择
+            //出行人数 > 4，只有拼车和包车-七座商务座可以选择
+            $('#present_peopleNumber').on('change.charter', function () {
+                var self = $(this),
+                    li = $('.charter li');
+
+                if(self.data('value') <= 4) {
+                    li.removeClass('disabled');
+                } else {
+                    li.eq(1).addClass('disabled');
+                    li.eq(2).addClass('disabled');
+                }
+            });
+
+            $('#addPerson').on('click',function () {
+                var _this = $(this);
+                $('#personList').popup('push', function() {
+                    if(_isInitsa) return;
+                    _isInitsa = true;
+                    setTimeout(function() {
+                        $('#personList .personArr').css('height', $(window).height() - 44);
+                        var _myIScrollsa = new IScroll('.personArr');
+                    }, 300);
+                }, function(data) {
+                    _this.val(data);
+                });
+            })
+
+            $('#editPerson').on('click',function () {
+                var _this = $(this);
+                $('#editPersonPopup').popup('push', function() {
+                    if(_isInitsa) return;
+                    _isInitsa = true;
+                }, function(data) {
+                    _this.val(data);
+                });
+            })
+
+        });
+
+        ///////////////////////////////////// 拼车流程 //////////////////////////////////////////////
+        // 2.拼车:显示人数 - 出发时间
+        function showSharingCarTime() {
+
+            var startAddr = $('#present .start input').val();
+            var endAddr = $('#present .end input').val();
+            if(!startAddr || !endAddr) {
+                return;
+            }
+
+            // TODO: 城市未开通提示
+            // $('#present .warn-tip').show();
+            // return;
+
+            // hideBackgroundImge();
+
+            $('#present .trip-parameter').show();
+        }
+
+        // 3.拼车 ： 显示价格
+        function showSharingCarPrice() {
+            var peopleNumber = $('#present_peopleNumber').val();
+            var startTime = $('#present_startTime').val();
+
+            if(!peopleNumber || !startTime) {
+                return;
+            }
+
+            $('#present .charter').show();
+            $('#present .activity').show();
+            $('.message').show();
+            $('#present .callButton').prop('disabled', false);
+        }
+
+        ///////////////////////////////////// 包车流程 //////////////////////////////////////////////
+        // 2.包车:显示人数 - 出发时间
+        function showCharterCarTime() {
+
+            var startAddr = $('#reservation .start input').val();
+            var endAddr = $('#reservation .end input').val();
+            if(!startAddr || !endAddr) {
+                return;
+            }
+
+            // TODO: 城市未开通提示
+            // $('#reservation .warn-tip').show();
+            // return;
+
+            hideBackgroundImge();
+            $('#reservation .trip-parameter').show();
+        }
+
+        // 3.选择车型
+        function showCharterCarType() {
+            var peopleNumber = $('#reservation_peopleNumber').val();
+            var startTime = $('#reservation_startTime').val();
+
+            if(!peopleNumber || !startTime) {
+                return;
+            }
+
+            $('#carType').show();
+
+            $('input[name="carType"]').on('change', function() {
+                showCharterCarPrice();
+            });
+        }
+
+        // 4.包车 ： 显示价格
+        function showCharterCarPrice() {
+            $('#reservation .charter').show();
+            $('#reservation .activity').show();
+            $('#reservation .message').show();
+            $('#reservation .callButton').prop('disabled', false);
+        }
+
+        //字数统计
+        $('#message-1').on('input', function() {
+            var length = $(this).val().length;
+            if(length <= 40) {
+                $(this).next('div').attr('class', 'message-length').text(length + '/40');
+            } else {
+                /*$(this).next('div').attr('class', 'sui-red').text('字数太多了。');*/
+            }
+        });
+
+
+
+    </script>
+</body>
+</html>

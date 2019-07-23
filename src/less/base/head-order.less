@@ -1,0 +1,118 @@
+// 订单详情好多页面都有这个，单独抽出来打包
+.order-info {
+	position: relative;
+    min-height: 1.64rem;
+	background-color: #fff;
+
+    .call-tel {
+        width: 1rem;
+        height: 1rem;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0.23rem;
+        margin: auto 0;
+        background: url(../../images/common/icon_tel.png) center no-repeat;
+        background-size: 100% 100%;
+
+        &:active {
+            background-color: rgba(0, 0, 0, .1);
+        }
+    }
+
+    .call-tel-disabled {
+        background-image: url(../../images/common/icon_tel_dis.png);
+
+        &:active {
+            background-color: #fff;
+        }
+    }
+}
+
+.driver-info {
+    padding-right: 1.44rem;
+
+    dl {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.22rem 0 0.22rem 0.22rem;
+
+        dt img {
+            width: 1.205rem;
+            height: 1.21rem;
+            border-radius: 100%;
+        }
+
+        dd {
+            flex: 1;
+            margin-left: 0.215rem;
+            font-size: 0.28rem;
+            color: #323232;
+
+            .attribute {
+                font-size: 0.24rem;
+                color: #999;
+            }
+
+            .starbar {
+                display: flex;
+                align-self: center;
+                width: 1.74rem;
+                margin-top: 0.1rem;
+                position: relative;
+
+                i {
+                    flex: 1;
+                    display: block;
+                    height: 0.3rem;
+                    margin-left: 0.06rem;
+                    background: url(../../images/common/icon_star.png) top left no-repeat;
+                    background-size: 100% auto;
+
+                    &:first-child {
+                        margin-left: 0;
+                    }
+                }
+
+                .star {
+                    background-position: bottom left
+                }
+
+                .star-half {
+                    background-position: center left
+                }
+            }
+
+            .grade {
+                border: 1px #ffa800 solid;
+                color: #ffa800;
+                padding: 0 0.06rem;
+                border-radius: 1rem;
+                position: absolute;
+                height: 0.28rem;
+                line-height: 0.28rem;
+                left: 1.8rem;
+                top: 0;
+
+                &:before {
+                    content: '';
+                    display: inline-block;
+                    width: 0.22rem;
+                    height: 0.24rem;
+                    position: absolute;
+                    left: 0.02rem;
+                    top: 0;
+                    bottom: 0;
+                    margin: auto 0;
+                    background: url(../../images/common/icon_grade.png) center no-repeat;
+                    background-size: 100% 100%;
+                }
+
+                span {
+                    padding: 0 0.08rem 0 0.24rem;
+                }
+            }
+        }  
+    }
+}

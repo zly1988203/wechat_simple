@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>预约包车</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/rent/time-picker.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/rent/select-picker.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/reservationCar/index.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/font-style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<!--顶部-->
+<header class="header">
+    <div id="menuArmrest" class="avatar"></div>
+    <div class="nav">
+        <div class="thumb"></div>
+        <div class="list-bar">
+            <div class="content">
+                <i class="icon"></i>
+                <ul class="list">
+                    <li data-icon="car" data-href="../hailing/index.html" class="active" >预约包车</li>
+                    <li data-icon="bus" data-href="../travel/index.html">旅游班线</li>
+                    <li data-icon="bus" data-href="../bus/bus.html">上下班</li>
+                    <li data-icon="car" data-href="../rent/appointment.html">城际约租车</li>
+                    <li data-icon="bus" data-href="../coach/index.html">汽车票</li>
+                    <li data-icon="car" data-href="../hailing/index.html" >网约车</li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- 广告位 -->
+<div class="vrt">
+    <!-- src：引入运营平台广告接口 -->
+    <script src=""></script>
+</div>
+
+<div class="microsoft  notice">
+上帝发誓的方式地方的水电费撒旦放松的方式对发生的
+</div>
+
+<div class="search-form">
+    <div class="tab-contents">
+        <div id="dvtabs" class="tabs">
+            <div id="tabOne" class="tab-item active">
+               <span>单程</span>
+            </div>
+            <div id="tabTwo" class="tab-item">
+               <span>往返</span>
+            </div>
+            <input type="hidden" id="tabWay" value="1">
+        </div>
+        <div id="present">
+            <div class="search-station">
+                <ul class="sui-list">
+                    <li>
+                        <div class="control start">
+                            <i class="icon-point"></i>
+                            <input id="startAddr" type="text" class="select-city-btn" placeholder="请您选择上车地点" readonly />
+                        </div>
+                    </li>
+                    <li>
+                        <div class="control end">
+                            <i class="icon-point"></i>
+                            <input id="endAddr" type="text" class="select-city-btn" placeholder="您在哪下车" readonly />
+                        </div>
+                    </li>
+                </ul>
+                <div class="exchange"></div>
+
+            </div>
+            <div class="present-time sui-border-b">
+                <i class="icon-date"></i>
+                <!-- data-now:默认时间；data-filter:需要显示的时间段；data-interval:最大可选数 data-level 可选的级别 -->
+                <input type="text" id="present_startTime" class="startWeekTime"  placeholder="请选择何时出发" readonly value="现在出发" data-date="" data-time="now" data-minute=""   data-interval="5" data-intervalminute="0"/>
+            </div>
+            <div id="dvEndTime" class="present-time sui-border-b undisplay">
+                <i class="icon-date"></i>
+                <!-- data-now:默认时间；data-filter:需要显示的时间段；data-interval:最大可选数 data-level 可选的级别 -->
+                <input type="text" id="present_endTime" class="startWeekTime"  placeholder="请选择何时返程" readonly value="" data-date="" data-time="09" data-minute="00"   data-interval="5" data-intervalminute="0"/>
+            </div>
+            <!--出行人数和出发时间-->
+            <div class="trip-parameter">
+                <ul class="sui-list controls">
+                    <li>
+                        <div class="present-people">
+                            <i class="icon-people"></i>
+                            <input id="present_peopleNumber" type="number" placeholder="出行人数"  min="1" step="1" max="999999" value=""/>
+                        </div>
+
+                    </li>
+                    <li>
+                        <div class="present-phone">
+                            <i class="icon-phone"></i>
+                            <input type="text"  id="present_phone" placeholder="电话号码" />
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="message">
+    <div class="container">
+        <div class="title">备注</div>
+        <label class="message-area" for="present_remark">
+            <textarea id="present_remark" placeholder="备注" maxlength="100"></textarea>
+            <div class="message-length">0/100</div>
+        </label>
+    </div>
+</div>
+<div class="tips">为了确保您包车服务需求能及时响应，请填写各项信息</div>
+<input type="hidden" id="isShow" value="1">
+<div id="resbtn" class="search-btn">立即报价</div>
+
+<!--查询地址-->
+<div id="search-address" class="sui-popup-container">
+    <div class="sui-popup-mask"></div>
+    <div class="sui-popup-modal">
+        <div class="search-bar">
+            <div class="search-bar-inner">
+                <div class="tools-control">
+                    <div id="setCityButton" class="set-city">深圳</div>
+                    <div class="serach-input">
+                        <input type="text" placeholder="请输入搜索关键字" />
+                    </div>
+                </div>
+                <button  type="button" class="cancel">取消</button>
+            </div>
+        </div>
+
+        <div id="searchWrapper" class="wrapper">
+            <div class="content">
+                <ul id="searchResult" class="sui-list">
+                    <!--<li class="sui-border-b">
+                        <div class="sui-cell-map">
+                            <h1>中交出行科技有限公司</h1>
+                            <h2>深圳市南山区科园路创业投资大厦8楼802</h2>
+                        </div>
+                    </li>
+                    <li class="sui-border-b">
+                        <div class="sui-cell-map">
+                            <h1>中交出行科技有限公司</h1>
+                            <h2>深圳市南山区科园路创业投资大厦8楼802</h2>
+                        </div>
+                    </li>
+                    <li class="sui-border-b">
+                        <div class="sui-cell-map">
+                            <h1>深圳虚拟大学园管理服务中心</h1>
+                            <h2>高新园南四道19深圳虚拟大学园2层</h2>
+                        </div>
+                    </li>-->
+                </ul>
+
+                <div class="gather">
+                    <!-- 当前位置 -->
+                    <div class="current" id="currentAddress" style="display: none;">
+                        <h4 class="title">当前位置</h4>
+                        <div class="station-group">
+                            <span id="currentAddressDetail" data-lng="" data-lat=""></span>
+                        </div>
+                    </div>
+
+                    <!-- 历史记录 -->
+                    <div class="history">
+                        <h4 class="title">历史记录</h4>
+                        <div class="station-group">
+                            <span>深圳市南山区创业投资大厦</span>
+                            <span>深圳北站</span>
+                            <span>创业投资大厦</span>
+                            <span>坪洲地铁站</span>
+                            <span>北京天安门广场</span>
+                        </div>
+                    </div>
+
+                    <!-- 地区推荐 -->
+                    <div class="recommend">
+                        <h4 class="title">地区推荐</h4>
+
+                        <h5 class="subtitle">珠海市</h5>
+                        <div class="station-group">
+                            <span>全部地区</span>
+                            <span>香洲区</span>
+                            <span>斗门区</span>
+                            <span>金湾区</span>
+                        </div>
+
+                        <h5 class="subtitle">深圳市</h5>
+                        <div class="station-group">
+                            <span>全部地区</span>
+                            <span>福田区</span>
+                            <span>南山区</span>
+                            <span>罗湖区</span>
+                            <span>宝安区</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="remove-history">清空历史记录</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--选择城市-->
+<div id="select-Citys" class="sui-popup-container">
+    <div class="sui-popup-mask"></div>
+    <div class="sui-popup-modal">
+        <div class="search-bar sui-border-b">
+            <div class="search-bar-inner">
+                <div class="tools-control search-city">
+                    <!--<div class="serach-input sui-border">
+                        <input type="text" placeholder="城市中文名或拼音" />
+                    </div>-->
+                    请选择城市
+                </div>
+                <button  type="button" class="cancel">取消</button>
+            </div>
+        </div>
+
+        <!-- 字母检索 -->
+        <ul class="nav-city">
+            <li><a href="#city1">A</a></li>
+            <li><a href="#city2">B</a></li>
+            <li><a href="#city3">C</a></li>
+            <li><a href="#city4">D</a></li>
+        </ul>
+
+        <div id="cityWrapper" class="wrapper">
+            <div class="content">
+                <div class="current-city">当前定位城市：深圳市</div>
+                <div class="sui-list-title" id="city1">A</div>
+                <ul class="sui-list">
+                    <li>广州</li>
+                    <li>深圳</li>
+                    <li>珠海</li>
+                    <li>汕头</li>
+                    <li>佛山</li>
+                    <li>韶关</li>
+                    <li>东莞</li>
+                    <li>清远</li>
+                </ul>
+                <div class="sui-list-title" id="city2">B</div>
+                <ul class="sui-list">
+                    <li>广州</li>
+                    <li>深圳</li>
+                    <li>珠海</li>
+                    <li>汕头</li>
+                    <li>佛山</li>
+                    <li>韶关</li>
+                    <li>东莞</li>
+                    <li>清远</li>
+                </ul>
+                <div class="sui-list-title" id="city3">C</div>
+                <ul class="sui-list">
+                    <li>广州</li>
+                    <li>深圳</li>
+                    <li>珠海</li>
+                    <li>汕头</li>
+                    <li>佛山</li>
+                    <li>韶关</li>
+                    <li>东莞</li>
+                    <li>清远</li>
+                </ul>
+                <div class="sui-list-title" id="city4">D</div>
+                <ul class="sui-list">
+                    <li>广州</li>
+                    <li>深圳</li>
+                    <li>珠海</li>
+                    <li>汕头</li>
+                    <li>佛山</li>
+                    <li>韶关</li>
+                    <li>东莞</li>
+                    <li>清远</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="cover undisplay"></div>
+<div id="reservationInfo" class="resInfo undisplay">
+    <header>
+        <span>您的预约包车服务</span>
+        <i class="icon-close"></i>
+    </header>
+    <section>
+        <div class="resItem">
+            <span>行程:</span>
+            <span id="resWay">单程</span>
+        </div>
+        <div class="decoration"></div>
+        <div class="resItem">
+            <span>出发地:</span>
+            <span id="startPlace">深圳市科技园地理大厦</span>
+        </div>
+        <div class="resItem">
+            <span>目的地:</span>
+            <span id="endPalce">广州市火车站</span>
+        </div>
+        <div class="decoration"></div>
+        <div class="resItem">
+            <span>出发时间:</span>
+            <span id="startTime">2018-05-23 19:36</span>
+        </div>
+        <div id="returnItem" class="resItem">
+            <span>返程时间:</span>
+            <span id="returnTime">2018-05-25 13:36</span>
+        </div>
+        <div class="decoration"></div>
+        <div class="resItem">
+            <span>乘车:</span>
+            <span id="personNumb">2人</span>
+            <span>电话:</span>
+            <span id="personPhone">15625487625</span>
+        </div>
+        <div class="decoration"></div>
+        <div class="resItem">
+            <span>备注:</span>
+            <span id="remark"  class="remark">说的放松的方式地方上的sdfsdfds
+                放松的方式对发生的撒旦放松的方式对发生的上的放松地方上的发生的发生的
+                撒地方上的上的发生的发生的说的放松的方式地方上的放松的方式对发生的
+                上的发生的发生的所发生的</span>
+        </div>
+        <div class="decoration"></div>
+        <div id="submitInfo" class="submitBtn">确认提交</div>
+    </section>
+
+</div>
+<div id="msgBox" class="msg-alert undisplay">
+    <div class="content">
+        预约提交成功，工作人员稍后与你联系，请稍等。
+    </div>
+    <div class="btn-konw">知道了</div>
+</div>
+<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.3&key=65b7cb5e8c694cb822cd32791319b348"></script>
+<script src="../../dist/javascripts/zepto.min.js"></script>
+<script src="../../dist/javascripts/simpleui.min.js"></script>
+<!--<script src="../../dist/javascripts/time-picker.min.js"></script>-->
+<script src="../../dist/javascripts/select-picker.min.js"></script>
+<script src="../../dist/javascripts/vectors.min.js"></script>
+<script src="../../src/js/vectors.js"></script>
+<script src="../../src/js/time-picker.js"></script>
+<script src="../../src/js/weekTime-picker.js"></script>
+<script src="../../src/js/pageUtils.js"></script>
+<script src="../../src/js/reservationCar/index.js"></script>
+
+</body>
+</html>

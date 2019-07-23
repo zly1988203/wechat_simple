@@ -1,0 +1,361 @@
+.search-bar {
+  height: .8rem;
+  background: #F2F2F2;
+  box-shadow: 0 0 20px 0 rgba(0,0,0,0.10);
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9;
+  width: 100%;
+  .search-bar-inner {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    padding: .2rem;
+    .tools-control {
+      height: auto;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+      border-right: 1px solid #ccc;
+     .set-city {
+       width: 1.5rem;
+        margin-right: .2rem;
+        text-align: center;
+        padding-right: .5rem;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        position: relative;
+        line-height: .4rem;
+        font-size: .28rem;
+       font-family: PingFangSC-Regular;
+       color: #999999;
+       border-right: 1px solid #ccc;
+      }
+
+     .set-city:after {
+        content: "";
+        display: block;
+        -webkit-transform: rotate(135deg);
+        transform: rotate(135deg);
+        height: .1rem;
+        width: .1rem;
+        border-width: 2px 2px 0 0;
+        border-color: #333;
+        border-style: solid;
+        position: absolute;
+        right: .2rem;
+        top: 0;
+        bottom: 0;
+        margin: auto 0;
+        border-radius: 0;
+      }
+
+      .set-city-html{
+        position: absolute;
+        width: auto;
+        left: 0;
+        top: 0.88rem;
+        background: #f2f2f2;
+        padding: 0.1rem;
+      }
+
+      .serach-input {
+        border-left: 0 none;
+        border-radius: 4px;
+        margin-right: .2rem;
+        width: 3.8rem;
+        input {
+          font-size: .28rem;
+          color: #999;
+          line-height: .4rem;
+          border: none;
+          background: #f2f2f2;
+        }
+        input::-webkit-input-placeholder {
+          font-size: 0.28rem;
+          color: #CCCCCC;
+        }
+      }
+    }
+
+   .cancel {
+      font-size: .28rem;
+      color: #999999;
+      margin-left: 0.2rem;
+    }
+
+  }
+}
+
+.map-panel {
+  position: relative;
+  height: 100%;
+  padding-top: .88rem;
+  box-sizing: border-box;
+
+
+
+  #mapContainer {
+    width: 100%;
+    height: 7.5rem;
+
+    #currLocation {
+      width: 1rem;
+      height: 1rem;
+      background: url(../../images/newInnerCity/icon_currlocation.png) 50% no-repeat;
+      background-size: 100% 100%;
+      right: .08rem;
+      position: absolute;
+      bottom: 0;
+      z-index: 500;
+    }
+
+  }
+  .map-wrapper {
+    left: 0;
+    width: 100%;
+    height: 5rem;
+    overflow: hidden;
+    background-color: #fff;
+    bottom: 0;
+    z-index: 500;
+
+  }
+
+  .map-wrapper li {
+    padding: 0;
+    margin-left: .22rem;
+    background: transparent;
+    border-bottom: 1px solid #F2F2F2;
+    .sui-cell-map-result {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: justify;
+      -webkit-justify-content: space-between;
+      justify-content: space-between;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+
+      .left {
+        padding: .19rem 0 .12rem;
+        margin-right: .22rem;
+        width: auto;
+        max-width: 97%;
+
+        h1 {
+          position: relative;
+          padding-left: .56rem;
+          font-size: .28rem;
+          color: #999999;
+          height: .42rem;
+          line-height: .42rem;
+        }
+
+        h1:before{
+          content: "";
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          margin: auto 0;
+          width: .34rem;
+          height: .34rem;
+          background: url(../../images/rent/icon_address.png) no-repeat 50%;
+          background-size: 100% 100%;
+        }
+
+      }
+
+      .left p {
+        margin-top: .09rem;
+        font-size: .24rem;
+        color: #CCCCCC;
+      }
+
+      .right {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        flex: 1;
+        text-align: right;
+        display: none;
+
+       button {
+          display: inline-block;
+          width: 0.85rem;
+          height: 0.83rem;
+          text-align: center;
+          background: #6392FE;
+          box-shadow: 0 0 20px 0 rgba(61,59,238,0.30);
+          border-radius: 6px;
+          font-size: .28rem;
+          color: #fff;
+         margin-right: 0.2rem;
+        }
+      }
+
+    }
+  }
+
+ .map-wrapper li.active {
+    background-color: #F2F2F2;
+    margin-left: 0;
+    padding-left: .22rem;
+   .left{
+     h1 {
+       color: #333333;
+     }
+     p{
+       color: #333333;
+     }
+   }
+   .right {
+     display: block!important;
+   }
+  }
+}
+
+ .wrapper {
+  width: 100%;
+  margin-top: .9rem;
+  overflow: hidden;
+  .content {
+    padding-bottom: .22rem;
+
+    ul li {
+      position: relative;
+      padding-left: .58rem;
+      background: transparent;
+      border-bottom: 1px solid #e6e6e6;
+
+      :before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: .02rem;
+        margin: auto 0;
+        width: .34rem;
+        height: .34rem;
+        background: url(../../images/newInnerCity/icon-adrs.png) no-repeat 50%;
+        background-size: 100% 100%;
+      }
+
+      .sui-cell-map .imp-blue{
+        color: #6392fe;
+      }
+
+      .sui-cell-map .address {
+        font-size: .28rem;
+        color: #333333;
+        line-height: .4rem;
+      }
+
+      .sui-cell-map .city-area {
+        margin-top: .05rem;
+        font-size: .24rem;
+        line-height: .33rem;
+        color: #CCCCCC;
+        opacity: .66;
+      }
+    }
+
+    .gather {
+      padding: 0 .11rem;
+
+      .place{
+        border: 1px solid #CCCCCC;
+        border-radius: 0.06rem;
+        font-size: 0.24rem;
+        color: #aaa;
+        padding: 0.05rem ;
+        display: flex;
+        margin-right: 0.2rem;
+        .icon-place{
+          background: url("../../images/newInnerCity/didian.png") no-repeat 50%;
+          background-size: 100% 100%;
+          width: 0.14rem;
+          height: 0.26rem;
+          display: block;
+          margin-top: 0.01rem;
+        }
+        span{
+          margin-left: 0.1rem;
+        }
+      }
+
+
+      .title{
+        font-family: PingFangSC-Regular;
+        font-size: 0.2rem;
+        color: #999999;
+      }
+      .current{
+
+        .station-group{
+          margin-top: 0.2rem;
+          span{
+            height: 0.5rem;
+            opacity: 0.6;
+            background: #6392FE;
+            box-shadow: 0 0 0.2rem 0 rgba(227,227,227,0.40);
+            border-radius: 0.06rem;
+            font-size: 0.28rem;
+            color: #FFFFFF;
+            padding: 0.1rem;
+          }
+        }
+      }
+
+      .history{
+        border-bottom: 1px solid #F2F2F2;
+        display: flex;
+      }
+
+      .recommend{
+        .subtitle{
+          font-family: PingFangSC-Regular;
+          font-size: 0.28rem;
+          color: #333333;
+        }
+        .area-list{
+          .station-group{
+            margin-top: 0.2rem;
+            .city-area{
+              height: 0.5rem;
+              opacity: 0.6;
+              background: #6392FE;
+              box-shadow: 0 0 0.2rem 0 rgba(227,227,227,0.40);
+              border-radius: 0.06rem;
+              font-size: 0.28rem;
+              color: #FFFFFF;
+              padding: 0.1rem;
+            }
+
+            .area-place{
+              display: flex;
+              margin: 0.2rem;
+            }
+          }
+        }
+
+      }
+    }
+    .gather>div {
+      padding: 0 .12rem .22rem;
+      overflow: hidden;
+      -webkit-transition: all .3s;
+      transition: all .3s;
+    }
+
+  }
+}

@@ -1,0 +1,48 @@
+body{
+  text-align:center;
+  width: 7.5rem;
+}
+
+@keyframes around{
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.transition{
+
+  margin:0 auto;
+  position: relative;
+  .img-tip{
+    margin:2.6rem auto 0;
+    width: .98rem;
+    height:1rem;
+    background: url("../../images/newInnerCity/loading.png") no-repeat;
+    background-size: 100% 100%;
+    animation:around 3s linear infinite;
+  }
+  .tran-tip{
+    margin: .4rem auto;
+    span{
+      font-size: .28rem;
+      color: #6392FE;
+    }
+  }
+  .return{
+    position: relative;
+    top:6.01rem;
+    margin:0 auto;
+    width: 3.45rem;
+    height:.75rem;
+    font-size: .28rem;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    background: #6392FE;
+    box-shadow: 0 0 .20rem 0 rgba(61,59,238,0.31);
+    border-radius: .06rem;
+    line-height: .75rem;
+  }
+}

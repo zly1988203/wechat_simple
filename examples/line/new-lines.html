@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>中交出行</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/fy-datepicker.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/bus/bus.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/line/new-lines.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div class="all-content">
+
+    <div class="main">
+        <div class="title"></div>
+        <div class="tips"><a href="#">线路开通说明<i>&gt;</i></a></div>
+        <!-- 线路开通说明 -->
+        <div class="tips-info-content" style="display: none">
+            <div class="tips-info">
+                <a class="close"></a>
+                <p>
+                    1.<br/>
+                    1.<br/>
+                    1.<br/>
+                </p>
+            </div>
+        </div>
+        <div class="line-info">
+            <form>
+                <ul>
+                    <li>
+                        <div class="station start">
+                            <input id="startAddr" type="text" class="select-city-btn" placeholder="请选择出发地" readonly />
+                        </div>
+                    </li>
+                    <li>
+                        <div class="station end">
+                            <input id="endAddr" type="text" class="select-city-btn" placeholder="请选择目的地" readonly />
+                        </div>
+                    </li>
+                    <li>
+                        <div class="info-date">
+                            <label>出发日期</label><input id="startTime" class="trip-time" type="text" value="" readonly />
+                        </div>
+                    </li>
+                    <li>
+                        <label class="info-flag" for="returnFlag">
+                            <span><input type="checkbox" id="returnFlag"/></span>
+                            <label for="returnFlag">需要返程</label>
+                        </label>
+                    </li>
+                    <li style="display: none">
+                        <div class="info-date return-date">
+                            <label>返程日期</label><input id="returnTime" class="trip-time" type="text"  value="" readonly />
+                        </div>
+                    </li>
+                    <li>
+                        <div class="info-phone">
+                            <label>联系手机号</label><input id="phoneNO" class="phone-num" type="number" value="" oninput="if(value.length>11)value=value.slice(0,11)"/>
+                        </div>
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </div>
+
+    <!--提交按钮-->
+    <div class="btn-commit">
+        <button id="commit"></button>
+    </div>
+
+
+
+    <!-- 选择日期 -->
+    <div id="select-date" class="sui-popup-container" data-trigger="">
+        <div class="sui-popup-mask"></div>
+        <div class="sui-popup-modal">
+            <div class="date"></div>
+            <div class="btn-group">
+                <div class="btn primary cancel">返回</div>
+            </div>
+        </div>
+    </div>
+
+    <!--查询地址-->
+    <div id="search-address" class="sui-popup-container">
+        <div class="sui-popup-mask"></div>
+        <div class="sui-popup-modal">
+            <div class="search-bar">
+                <div class="search-bar-inner">
+                    <div class="tools-control">
+                        <div id="setCityButton" class="set-city">深圳</div>
+                        <div class="serach-input">
+                            <input type="text" placeholder="请输入搜索关键字" />
+                        </div>
+                    </div>
+                    <button  type="button" class="cancel">取消</button>
+                </div>
+            </div>
+
+            <div id="searchWrapper" class="wrapper">
+                <div class="content">
+                    <ul id="searchResult" class="sui-list">
+                        <!--<li class="sui-border-b">
+                            <div class="sui-cell-map">
+                                <h1>中交出行科技有限公司</h1>
+                                <h2>深圳市南山区科园路创业投资大厦8楼802</h2>
+                            </div>
+                        </li>
+                        <li class="sui-border-b">
+                            <div class="sui-cell-map">
+                                <h1>中交出行科技有限公司</h1>
+                                <h2>深圳市南山区科园路创业投资大厦8楼802</h2>
+                            </div>
+                        </li>
+                        <li class="sui-border-b">
+                            <div class="sui-cell-map">
+                                <h1>深圳虚拟大学园管理服务中心</h1>
+                                <h2>高新园南四道19深圳虚拟大学园2层</h2>
+                            </div>
+                        </li>-->
+                    </ul>
+
+                    <div class="gather">
+                        <!-- 当前位置 -->
+                        <div class="current">
+                            <h4 class="title">当前位置</h4>
+                            <div class="station-group">
+                                <span>创业投资大厦</span>
+                            </div>
+                        </div>
+
+                        <!-- 历史记录 -->
+                        <div class="history">
+                            <h4 class="title">历史记录</h4>
+                            <div class="station-group">
+                                <span>深圳市南山区创业投资大厦</span>
+                                <span>深圳北站</span>
+                                <span>创业投资大厦</span>
+                                <span>坪洲地铁站</span>
+                                <span>北京天安门广场</span>
+                            </div>
+                        </div>
+
+                        <!-- 地区推荐 -->
+                        <div class="recommend">
+                            <h4 class="title">地区推荐</h4>
+
+                            <h5 class="subtitle">珠海市</h5>
+                            <div class="station-group">
+                                <span>全部地区</span>
+                                <span>香洲区</span>
+                                <span>斗门区</span>
+                                <span>金湾区</span>
+                            </div>
+
+                            <h5 class="subtitle">深圳市</h5>
+                            <div class="station-group">
+                                <span>全部地区</span>
+                                <span>福田区</span>
+                                <span>南山区</span>
+                                <span>罗湖区</span>
+                                <span>宝安区</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="remove-history">清空历史记录</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--选择城市-->
+    <div id="select-Citys" class="sui-popup-container">
+        <div class="sui-popup-mask"></div>
+        <div class="sui-popup-modal">
+            <div class="search-bar sui-border-b">
+                <div class="search-bar-inner">
+                    <div class="tools-control search-city">
+                        <!--<div class="serach-input sui-border">
+                            <input type="text" placeholder="城市中文名或拼音" />
+                        </div>-->
+                        请选择城市
+                    </div>
+                    <button  type="button" class="cancel">取消</button>
+                </div>
+            </div>
+
+            <!-- 字母检索 -->
+            <ul class="nav-city">
+                <li><a href="#city1">A</a></li>
+                <li><a href="#city2">B</a></li>
+                <li><a href="#city3">C</a></li>
+                <li><a href="#city4">D</a></li>
+            </ul>
+
+            <div id="cityWrapper" class="wrapper">
+                <div class="content">
+                    <div class="current-city">当前定位城市：深圳市</div>
+                    <div class="sui-list-title" id="city1">A</div>
+                    <ul class="sui-list">
+                        <li>广州</li>
+                        <li>深圳</li>
+                        <li>珠海</li>
+                        <li>汕头</li>
+                        <li>佛山</li>
+                        <li>韶关</li>
+                        <li>东莞</li>
+                        <li>清远</li>
+                    </ul>
+                    <div class="sui-list-title" id="city2">B</div>
+                    <ul class="sui-list">
+                        <li>广州</li>
+                        <li>深圳</li>
+                        <li>珠海</li>
+                        <li>汕头</li>
+                        <li>佛山</li>
+                        <li>韶关</li>
+                        <li>东莞</li>
+                        <li>清远</li>
+                    </ul>
+                    <div class="sui-list-title" id="city3">C</div>
+                    <ul class="sui-list">
+                        <li>广州</li>
+                        <li>深圳</li>
+                        <li>珠海</li>
+                        <li>汕头</li>
+                        <li>佛山</li>
+                        <li>韶关</li>
+                        <li>东莞</li>
+                        <li>清远</li>
+                    </ul>
+                    <div class="sui-list-title" id="city4">D</div>
+                    <ul class="sui-list">
+                        <li>广州</li>
+                        <li>深圳</li>
+                        <li>珠海</li>
+                        <li>汕头</li>
+                        <li>佛山</li>
+                        <li>韶关</li>
+                        <li>东莞</li>
+                        <li>清远</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../../dist/javascripts/zepto.min.js"></script>
+<script src="../../dist/javascripts/simpleui.min.js"></script>
+<script src="../../dist/javascripts/vectors.min.js"></script>
+<!--<script src="../../dist/javascripts/fy-datePicker.min.js"></script>-->
+<script src="../../src/js/fy-datePicker.js"></script>
+<script>
+    $(function(){
+
+        //需要返程
+        var _checked = false;//需要返程选项是否选中
+        var initDateStatus = false;//已经初始化标志
+
+        $('.info-flag').on('click',function () {
+            _checked = $('#returnFlag').prop('checked');
+            console.log('是否需要返程：' + _checked)
+            if(_checked){
+                $('#returnTime').val("");//清空缓存日期
+                //返程日期显示
+                if($.trim($('#returnTime').val()).length > 0){
+                    $('.return-date').parent().show().css('opacity','1');
+                }else{
+                    $('.return-date').parent().show().css('opacity','0.4');
+                }
+
+                //自身样式改变
+                $(this).parents('li').addClass('active');
+                $(this).children('span').addClass('active');
+            }else{
+                //返程日期隐藏
+                $('.return-date').parent().hide();
+                $('#startTime').removeClass('input-error');//去掉错误提示样式
+                $(this).parents('li').removeClass('active');
+                $(this).children('span').removeClass('active');
+            }
+        });
+
+        //申请开通按钮点击事件
+        $('#commit').on('click',function () {
+
+            // 获取填写信息
+            //getInfo();
+            var _startAddr = $.trim($('#startAddr').val());
+            var _endAddr = $.trim($('#endAddr').val());
+            var _startTime = $.trim($('#startTime').val());
+            var _returnTime = $.trim($('#returnTime').val());
+            var _phoneNO = $.trim($('#phoneNO').val());
+            console.log('出发地：' + _startAddr + '。字符长度' + _startAddr.length);
+            console.log('目的地：' + _endAddr + '。字符长度' + _endAddr.length);
+            console.log('出发日期：' + _startTime + '。字符长度' + _startTime.length);
+            console.log('返程日期：' + _returnTime + '。字符长度' + _returnTime.length);
+            console.log('手机号：' + _phoneNO + '。字符长度' + _phoneNO.length);
+
+            if(_startAddr.length==0){
+                $.toast('请选择出发地');
+                return;
+            }
+            if(_endAddr.length==0){
+                $.toast('请选择目的地');
+                return;
+            }
+            if(_startTime.length==0){
+                $.toast('请选择出发地时间');
+                return;
+            }
+            // 选中返程才有校验
+            if(_checked){
+                if(_returnTime.length==0){
+                   $.toast('请选择返程时间');
+                   return;
+                }
+            }
+            if(_phoneNO.length==0){
+                $.toast('请输入手机号');
+                return;
+            }
+
+            var _html = '';
+            if(_checked){
+                //需要返程
+                _html = '<div class="dialog-content">'+
+                        '<ul>'+
+                            '<li>'+
+                                '<dl class="sui-cell-default">' +
+                                    '<dt class="">出发地</dt>'+
+                                    '<dd class="value">'+ _startAddr +'</dd>'+
+                                '</dl>'+
+                            '</li>'+
+                            '<li>'+
+                                '<dl class="sui-cell-default">' +
+                                    '<dt class="">目的地</dt>'+
+                                    '<dd class="value">'+ _endAddr +'</dd>'+
+                                '</dl>'+
+                            '</li>'+
+                            '<li>'+
+                                '<dl class="sui-cell-default">' +
+                                    '<dt class="">出发日期</dt>'+
+                                    '<dd class="value">'+ _startTime +'</dd>'+
+                                '</dl>'+
+                            '</li>'+
+                            // 勾选返程，才展示返程信息，否则不展示
+                            '<li>'+
+                                '<dl class="sui-cell-default">' +
+                                    '<dt class="">返程日期</dt>'+
+                                    '<dd class="value">' + _returnTime+ '</dd>'+
+                                '</dl>'+
+                            '</li>'+
+                            '<li>'+
+                                '<dl class="sui-cell-default">' +
+                                    '<dt class="">联系手机</dt>'+
+                                    '<dd class="value">' + _phoneNO + '</dd>'+
+                                '</dl>'+
+                            '</li>'+
+                        '</ul>'+
+                    '</div>'
+            }else{
+            //不需要返程
+            _html = '<div class="dialog-content">'+
+                    '<ul>'+
+                        '<li>'+
+                            '<dl class="sui-cell-default">' +
+                                '<dt class="">出发地</dt>'+
+                                '<dd class="value">'+ _startAddr +'</dd>'+
+                            '</dl>'+
+                        '</li>'+
+                        '<li>'+
+                            '<dl class="sui-cell-default">' +
+                                '<dt class="">目的地</dt>'+
+                                '<dd class="value">'+ _endAddr +'</dd>'+
+                            '</dl>'+
+                        '</li>'+
+                        '<li>'+
+                            '<dl class="sui-cell-default">' +
+                                '<dt class="">出发日期</dt>'+
+                                '<dd class="value">'+ _startTime +'</dd>'+
+                            '</dl>'+
+                        '</li>'+
+                        '<li>'+
+                            '<dl class="sui-cell-default">' +
+                                '<dt class="">联系手机</dt>'+
+                                '<dd class="value">' + _phoneNO + '</dd>'+
+                            '</dl>'+
+                        '</li>'+
+                    '</ul>'+
+                '</div>'
+            }
+
+            $.confirm(_html, function() {
+                //TODO 点击确定按钮之后的处理
+                console.log('ok');
+            });
+
+            //清除弹框横线
+            $('.sui-dialog-bd').removeClass('sui-border-b');
+        });
+
+        //线路开通说明
+        $('.tips a').on('click',function(){
+            $('.tips-info-content').css('display','block');
+            //关闭按钮
+            $('.close').on('click',function(){
+                $('.tips-info-content').hide();
+            });
+        });
+        //点击线路开通说明空白部分，线路开通说明消失
+        $('.tips-info-content').on('click',function(){
+            $(this).hide();
+        });
+        //阻止事件冒泡
+        $('.tips-info').on('click',function (event) {
+            event.stopPropagation();
+        });
+
+//        手机号输入样式改变
+       $('#phoneNO').on('input',function () {
+            var _this = this;
+            var _elVal = $.trim($(_this).val());
+            console.log('值：'+_elVal);
+            console.log('长度：'+$.trim(_elVal.length));
+            if(_elVal.length > 0){
+                $(_this).parents('li').addClass('active');
+                $(this).addClass('input-error');
+                //校验手机号 1开头的11位
+                if((_elVal.length == 11) && (_elVal[0] == '1')){
+                    $(this).removeClass('input-error');
+                }
+            }else{
+                $(_this).parents('li').removeClass('active');
+            }
+        });
+
+        /*创建随机数据*/
+        function createData(monthDrr) {
+            var result = [];
+
+            monthDrr.forEach(function (item, index) {
+                var _n = 0,
+                    _MAX = new Date(2018, item, 0).getDate();
+
+                var arr = [];
+                //创建数组
+                for(var i = 0; i < _MAX; i++) {
+                    _n = parseInt(Math.random().toFixed(2) * 10) + i + index;
+
+                    if(_n <= _MAX) {
+                        arr.push(_n);
+                    }
+                }
+
+                //去重
+                for(var n = 0; n < arr.length; n++) {
+                    for(var m = 0; m < arr.length; m++) {
+                        if(arr[n] == arr[m]) {
+                            arr.splice(m, 1);
+                        }
+                    }
+                }
+
+                //排序
+                arr.sort(function () {
+                    return -1;
+                });
+
+                //填充数据
+                for(var l = 0; l < arr.length; l++) {
+                    var _result = {
+                        date: '2018-' + item + '-' + arr[l],
+                        state: 'select',
+                        comment : '备注'
+                    };
+
+                    if(parseInt(2 * Math.random())) {
+                        _result.comment = '备注';
+                    }
+
+                    /*switch(parseInt(4 * Math.random()) + 1) {
+                        case 1:
+                            _result.state = 'select';
+                            break;
+                        case 2:
+                            _result.state = 'readonly';
+                            break;
+                        case 3:
+                            _result.state = 'disabled';
+                            break;
+                    }*/
+                    _result.state = 'select';
+                    result.push(_result);
+                }
+            });
+
+            return result;
+        }
+
+        /*选择日期*/
+        $('.trip-time').on('click',function () {
+            var trigger = $(this);
+            var  parent = $('#select-date'),
+                cancel = parent.find('.cancel');
+            var init = function () {
+                //只初始化一次
+                if(!initDateStatus) {
+                    initDateStatus = true;
+                    parent.find('.date').datePicker({
+                        dateBase: '2018-1-10',//当前月份
+                        weekend: false,
+                        multiple: false,
+                        after: 12,//从当前月份开始，可点击下个月的月份数
+                        gather: createData([1,2,3,10,11,12]),//当前可选日期的月份
+                        selectCallback: function (data) {
+                            //TODO
+                            var d = data.selectData[0].date;
+                            var val = d.year + '-' + d.month + '-' + d.day;
+
+                            //是否是今天
+                            var today = new Date();
+                            if(today.getFullYear() == d.year && today.getMonth() + 1 == d.month && today.getDate() == d.day) {
+                                val += '(今天)';
+                            }
+
+                            parent.setPopupData(val);
+                            cancel.triggerHandler('click');
+                        }
+                    });
+                }
+            };
+            parent.popup('modal', init, function (data) {
+                trigger.val(data);
+                $(trigger).parents('li').css('opacity','1');
+
+                // 校验日期 返程日期不能早于出发日期
+                var _startTime = $('#startTime').val();
+                var start = new Date(_startTime.replace("-", "/").replace("-", "/"));
+                var _end = $('#returnTime').val();
+                var end = new Date(_end.replace("-", "/").replace("-", "/"));
+                if ((end.length != 0) && (start > end)){
+                    $.toast('返程日期不能早于出发日期');
+                    $(trigger).addClass('input-error');
+                }else{
+                    $('#startTime').removeClass('input-error');
+                    $('#returnTime').removeClass('input-error');
+                }
+
+            });
+
+            //返回
+            $('#select-date .cancel').on('click', function () {
+                parent.closePopup();
+            });
+        });
+        // ================================= 选择地址相关 ===================================
+
+        // 选择地址
+        var _isInitsa = false, _myIScrollsa;
+        $('.select-city-btn').on('click', function() {
+            var _this = $(this);
+            $('#search-address').popup('push', function() {
+                if(_isInitsa) return;
+                _isInitsa = true;
+                setTimeout(function() {
+                    $('#search-address .wrapper').css('height', $(window).height() - 44);
+                    _myIScrollsa = new IScroll('#searchWrapper');
+                }, 300);
+            }, function(data) {
+                _this.val(data);
+                $(_this).parents('li').addClass('active');
+
+                //校验目的地 检查选择的地址是否相同
+                var _startAddr = $('#startAddr').val();
+                var _endAddr = $('#endAddr').val();
+                if(_startAddr == _endAddr){
+                    $.toast('出发地与目的地不能相同');
+                    $(_this).addClass('input-error');
+                }else{
+                    $('#startAddr').removeClass('input-error');
+                    $('#endAddr').removeClass('input-error');
+                }
+            });
+        }).backtrack({
+            cancel: '#search-address .cancel',
+            event: 'click'
+        });
+        //关闭地址查询
+        $('#search-address .cancel').on('click', function() {
+            $('#search-address').closePopup(function() {
+                if(_myIScrollsa) {
+                    _isInitsa = false;
+                    _myIScrollsa.destroy();
+                    _myIScrollsa = null;
+                }
+            });
+        });
+
+        //点击地址返回数据
+        var targetType = isAndroid() ? 'tap' : 'click';
+
+        $('#search-address .wrapper li:not(.remove-history)').on(targetType, function() {
+            var data = $(this).find('h1').text();
+            $('#search-address').setPopupData(data);
+            $('#search-address .cancel').triggerHandler('click');
+        });
+
+        //选择当前位置返回首页
+        $('#search-address .current .station-group span').on(targetType, function () {
+            var data = $(this).text();
+            $('#search-address').setPopupData(data);
+            $('#search-address .cancel').triggerHandler('click');
+        });
+
+        //点击历史记录返回首页
+        $('#search-address .history .station-group span').on(targetType, function () {
+            var data = $(this).text();
+            $('#search-address').setPopupData(data);
+            $('#search-address .cancel').triggerHandler('click');
+        });
+
+        //点击地区推荐返回首页
+        $('#search-address .recommend .station-group span').on(targetType, function () {
+            var data = $(this).parent().prev('.subtitle').text() + ' · ' + $(this).text();
+
+            $('#search-address').setPopupData(data);
+            $('#search-address .cancel').triggerHandler('click');
+        });
+
+        // 打开选择城市
+        var _isInitsc = false, _myIScrollsc;
+        $('#setCityButton').on('click', function() {
+            var _this = $(this);
+            $('#select-Citys').popup('push', function() {
+                if(_isInitsc) return;
+                _isInitsc = true;
+
+                setTimeout(function() {
+                    $('#select-Citys .wrapper').css('height', $(window).height() - 44);
+                    var _myIScrollsc = new IScroll('#cityWrapper');
+
+                    retrieveWord(function (el) {
+                        _myIScrollsc.scrollToElement(el.attr('href'));
+                    });
+                }, 300);
+            }, function(data) {
+                _this.text(data);
+            });
+
+        }).backtrack({
+            cancel: '#select-Citys .cancel',
+            event: 'click'
+        });
+
+        /* 字母快速检索 */
+        function retrieveWord(callback) {
+            var $city = $('.nav-city'),
+                $city_li = $city.find('li');
+            var city_h = 0;
+
+            $city_li.each(function () {
+                city_h += $(this).height();
+            });
+
+            $city.css('height', city_h);
+
+            $('.nav-city a').on('click', function (e) {
+                e.preventDefault();
+
+                if(callback instanceof Function) {
+                    callback($(this));
+                }
+            });
+        }
+
+        // ================================= 选择城市相关 ===================================
+
+        // 选择城市
+        $('#select-Citys .wrapper li').on('click', function() {
+            var data = $(this).text();
+            $('#select-Citys').setPopupData(data);
+            $('#select-Citys .cancel').triggerHandler('click');
+        });
+
+        // 关闭选择城市
+        $('#select-Citys .cancel').on('click', function() {
+            $('#select-Citys').closePopup(function() {
+                if(_myIScrollsc) {
+                    _myIScrollsc.destroy();
+                    _myIScrollsc = null;
+                }
+            });
+        });
+
+        //关键词搜索结果 - new (动态生成HTML并绑定事件)
+        $('.serach-input input').on('input', function() {
+            var self = $(this);
+            var len = self.val().length;
+            var strHtml = '';
+
+            var gather = $('#searchResult').siblings();
+            if($.trim(self.val()) != '') {
+                //内容不为空，隐藏下面的信息
+                gather.hide();
+            } else {
+                gather.show();
+            }
+
+            for(var i = 0; i < len; i++) {
+                strHtml += '<li class="sui-border-b">' +
+                    '<div class="sui-cell-map">' +
+                    '<h1>'+i+'中交出行</h1>' +
+                    '<h2>深圳市南山区粤海街道科园路创业投资大厦8楼</h2>' +
+                    '</div>' +
+                    '</li>';
+            }
+
+            $('#searchResult').html(strHtml).children('li').off('click').on('click', function() {console.log('result')
+                var addr = $(this).find('h1').text();
+
+                $('#search-address').setPopupData(addr);
+                $('#search-address .cancel').triggerHandler('click');
+            });
+
+            // 这句不能少，否则超出屏幕不能滚动。
+            if(_myIScrollsa) _myIScrollsa.refresh();
+        });
+
+        /*
+        * 清空历史记录
+        * */
+        $('.remove-history').on('click', function () {
+            var history = $('.gather .history'),
+                station_group = history.find('.station-group');
+            var time = 300;
+
+            history.slideUp(time);
+            setTimeout(function () {
+                station_group.html('');
+            }, time);
+        });
+
+
+
+    })
+
+</script>
+</body>
+</html>

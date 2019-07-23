@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>查询线路结果</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/commutingBus/searchLineResult.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <div class="main-content">
+        <div class="result-line-list">
+            <ul id="resultList">
+                <!-- <li class="line-item">
+                    <div class="line-top">
+                        <div>LXC123</div>
+                        <p>总步行 1.8KM</p>
+                    </div>
+                    <div class="line-middle" data-toggle="false">
+                        <div class="station-list">
+                            <div class="station-item get-on">
+                                <div class="item-name">站点名称1</div>
+                                <div class="item-type">起点</div>
+                            </div>
+                            <div class="station-gray">
+                                <div class="station-item get-on gray">
+                                    <div class="item-name">站点名称站点名称站点名称2</div>
+                                    <div class="item-time">（约18：20）</div>
+                                    <div class="item-type">起点</div>
+                                    <div class="item-distance">1.5km</div>
+                                </div>
+                                <div class="station-item get-on gray">
+                                    <div class="item-name">站点名称站点名称站点名称2</div>
+                                    <div class="item-time">（约18：20）</div>
+                                    <div class="item-type">起点</div>
+                                    <div class="item-distance">1.5km</div>
+                                </div>
+                                <div class="station-item get-off gray">
+                                    <div class="item-name">站点名称站点名称站点名称3</div>
+                                    <div class="item-time">（约18：20）</div>
+                                    <div class="item-type">起点</div>
+                                </div>
+                                <div class="station-item get-off gray">
+                                    <div class="item-name">站点名称站点名称站点名称3</div>
+                                    <div class="item-time">（约18：20）</div>
+                                    <div class="item-type">起点</div>
+                                </div>
+                            </div>
+                            <div class="station-item get-off">
+                                <div class="item-name">站点名称站点名称站点名称4</div>
+                                <div class="item-time">（约18：20）</div>
+                                <div class="item-type">起点</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line-bottom">
+                        <div class="services-group">
+                            <span>豪华大巴</span><span>豪华大巴</span><span>豪华大巴</span><span>豪华大巴</span><span>豪华大巴</span><span>豪华大巴</span><span>豪华大巴</span><span>豪华大巴</span><span>豪华大巴</span>
+                            <span>豪华大巴</span><span>豪华大巴</span><span>豪华大巴</span><span>豪华大巴</span>
+                        </div>
+                    </div>
+                    <div class="lineInfoBox">
+                        <div class="lineInfo flex ac jcs">
+                            <div>8:00</div>
+                            <div class="price flex ac">
+                                <p>￥45</p>
+                                <div class="bargainPrice">特价￥35</div>
+                                <span><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
+                            </div>
+                        </div>
+                        <div class="lineInfo flex ac jcs">
+                            <div>8:00</div>
+                            <div class="price flex ac">
+                                <p>￥45</p>
+                                <div class="bargainPrice">特价￥35</div>
+                                <span><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
+                            </div>
+                        </div>
+                        <div class="moreLineInfo">更多</div>
+                    </div>
+                </li>
+                <li class="line-item sell-out">
+                    <div class="line-top">
+                        <div>LXC123</div>
+                        <p>总步行 1.8KM</p>
+                    </div>
+                    <div class="line-middle">
+                        <div class="station-list">
+                            <div class="station-item get-on">
+                                <div class="item-name">站点名称1</div>
+                                <div class="item-type">起点</div>
+                            </div>
+                            <div class="station-gray">
+                                <div class="station-item get-on-gray gray">
+                                    <div class="item-name">站点名称站点名称站点名称2</div>
+                                    <div class="item-time">（约18：20）</div>
+                                    <div class="item-type">起点</div>
+                                </div>
+                                <div class="station-item get-off-gray gray">
+                                    <div class="item-name">站点名称站点名称站点名称3</div>
+                                    <div class="item-time">（约18：20）</div>
+                                    <div class="item-type">起点</div>
+                                </div>
+                            </div>
+                            <div class="station-item get-off">
+                                <div class="item-name">站点名称站点名称站点名称4</div>
+                                <div class="item-time">（约18：20）</div>
+                                <div class="item-type">起点</div>
+                            </div>
+                        </div>
+                        <div class="flex-bar">
+                            <div class="switch-o switch-t"></div>
+                            <div class="switch-btn">全部</div>
+                            <div class="switch-o switch-b"></div>
+                        </div>
+                    </div>
+                    <div class="line-bottom">
+                        <div class="services-group">
+                            <span>豪华大巴</span><span>豪华大巴</span><span>豪华大巴</span>
+                        </div>
+                    </div>
+                </li> -->
+            </ul>
+        </div>
+
+        <div class="no-line-box">
+            <div class="no-line"></div>
+            <div class="no-line-tips">暂时没有找到合适的班次</div>
+        </div>
+    </div>
+
+    <div class="handle-list">
+        <div class="handle" id="goBack">返回</div>
+    </div>
+
+    <script src="../../dist/javascripts/zepto.min.js"></script>
+    <script src="../../dist/javascripts/simpleui.min.js"></script>
+    <script src="../../dist/javascripts/vectors.min.js"></script>
+    <script src="../../src/js/commutingBus/serverApi.js"></script>
+    <script src="../../src/js/commutingBus/searchLineResult.js"></script>
+</body>
+</html>

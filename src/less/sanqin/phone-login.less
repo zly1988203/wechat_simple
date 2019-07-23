@@ -1,0 +1,191 @@
+@charset "utf-8";
+@import "../base/variable.less";
+
+html {
+    min-height: 100%;
+    background: #F8D53F url(../../images/bus/login-bg.png) no-repeat center;
+    background-size: 100% 100%;
+}
+
+body {
+    padding-bottom: 40px;
+    background-color: transparent;
+}
+
+.logo {
+    width: 84px;
+    height: 84px;
+    background: url(../../images/bus/logo.png) center no-repeat;
+    background-size: 100% auto;
+    margin: 48px auto 0;
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.form {
+    margin-top: 20px;
+    padding: 0 35px;
+
+    .text {
+        height: 22px;
+        padding: 14px 0 14px 40px;
+        margin-top: 20px;
+        position: relative;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+
+        &:first-child {
+            margin-top: 0;
+        }
+
+        &:before {
+            content: '';
+            display: block;
+            width: 16px;
+            height: 23px;
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            margin: auto 0;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+
+        input {
+            display: block;
+            width: 100%;
+            margin: 0;
+            border: 0;
+            background-color: transparent;
+            color: #fff;
+            line-height: 22px;
+
+            &::-webkit-input-placeholder {
+                color: rgba(255, 255, 255, 0.5);
+            }
+            &::-moz-placeholder {
+                color: rgba(255, 255, 255, 0.5);
+            }
+        }
+    }
+
+    .mobile:before {
+        background-image: url(../../images/bus/icon_mobilephone.png);
+    }
+
+    .verifycode {
+        &:before {
+            width: 18px;
+            height: 22px;
+        }
+
+        .text-box {
+            margin-right: 110px;
+            border-right: 1px rgba(255, 255, 255, 0.4) solid;
+            height: 24px;
+
+            input {
+                width: 90%;
+            }
+        }
+
+        button {
+            width: 110px;
+            height: 30px;
+            line-height: 30px;
+            color: #fff;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto 0;
+
+            &:not(:disabled):active{
+                .btn-active-default();
+            }
+
+            &:disabled {
+                .btn-disabled-default();
+                color: #fff;
+            }
+        }
+
+        &:before {
+            background-image: url(../../images/bus/icon_verificationcode.png);
+        }
+    }
+    
+    .disclaimer {
+        display: none;
+        text-align: center;
+        margin: 15px 0;
+        color: #825730;
+        font-size:14px;
+        opacity: 0.5;
+    }
+    
+    .submit-btn {
+        position: relative;
+        margin-top: 20px;
+        width: 100%;
+        height: 50px;
+        font-size: 16px;
+        color: #6e98f8;
+        border-radius: 50px;
+        background-color: #fbf1c5;
+        overflow: hidden;
+
+        &:after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+
+        &:active::after {
+            content: '';
+        }
+    }
+}
+
+#disclaimer  {
+    line-height: 25px;
+
+    p {
+        margin: 15px 0;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 16px;
+        display: block;
+        padding-bottom: 8px;
+        color: #333;
+    }
+
+    .content {
+        padding-top: 8px;
+        color: #666;
+    }
+
+    .close {
+        display: block;
+        width: 48px;
+        height: 48px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: url(../../images/bus/nav_close.png) center no-repeat;
+        background-size: 18px auto;
+    }
+
+    button {
+        width: 100%;
+        height: 35px;
+        .btn-style();
+    }
+}

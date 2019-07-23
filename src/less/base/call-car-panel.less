@@ -1,0 +1,177 @@
+// 网约车顶部的样式
+.call-car-panel {
+    height: 44px;
+    position: relative;
+	background-color:white;
+    &:before {
+        content: '';
+        width: 1px;
+        height: 26px;
+        position: absolute;
+        left: 44px;
+        top: 9px;
+        background-color: #E0E0E0;
+    }
+    &:after {
+        content: '';
+        width: 1px;
+        height: 26px;
+        position: absolute;
+        right: 44px;
+        top: 9px;
+        background-color: #E0E0E0;
+    }
+    .avatar {
+        position: absolute;
+		z-index:2;
+        width: 44px;
+        height: 44px;
+        background: url(../../images/taxi/nav_personal.png) center no-repeat;
+        background-size: 15px auto;
+    }
+    .server-list {
+        padding-left: 44px;
+        padding-right: 44px;
+        position: relative;
+        .bar {
+            width: 100%;
+            height: 44px;
+            overflow: hidden;
+            position: relative;
+            -webkit-mask-box-image: linear-gradient(90deg,transparent 3%,#fff 5%,#fff 95%,transparent 98%);
+            .content {
+                position: absolute;
+                height: 44px;
+            }
+        }
+    }
+    ul {
+        width: 100%;
+        margin: 0 auto;
+        visibility:hidden;
+        li {
+            float: left;
+            padding-left:15px;
+            height: 44px;
+            span {
+                display: inline-block;
+                height: 40px;
+                line-height: 40px;
+                color: #999;
+                border-bottom: 2px #fff solid;
+                .nowrap();
+            }
+            &.active span {
+                color: #00BAFF;
+                border-bottom: 2px #00BAFF solid;
+            }
+        }
+        .reddot{
+            position: relative;
+            &:after {
+                content: '';
+                position: absolute;
+                display: block;
+                width: 8px;
+                height: 8px;
+                background-color: #f74c31;
+                border-radius: 5px;
+                right: 3px;
+                top: 8px;
+            }
+        }
+    }
+    .more {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 44px;
+        height: 44px;
+        background: url(../../images/taxi/icon_more.png) center no-repeat;
+        background-size: 15px auto;
+    }
+    
+}
+
+//项目列表
+.server-panel {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background-color: white;
+    z-index: 1010;
+    .title {
+        height: 44px;
+        line-height: 44px;
+        font-size: 16px;
+        text-align: center;
+    }
+    ul {
+        li {
+            float: left;
+            width: 33.333%;
+            height: 75px;
+            text-align: center;
+            position: relative;
+            &:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 99%;
+                height: 99%;
+                border-right: 1px #f0f0f0 solid;
+                border-bottom: 1px #f0f0f0 solid;
+            }
+            &:nth-child(3), &:nth-child(6) {
+                &:before {
+                    border-right: 0;
+                }
+            }
+        }
+    }
+    .icon {
+        padding-top: 18px;
+        font-size: 13px;
+        color: #999;
+        &:before {
+            display: block;
+            content: '';
+            width: 100%;
+            height: 17px;
+            margin-bottom: 8px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 41px auto;
+        }
+    }
+    .icon-1:before {
+        background-image: url(../../images/taxi/icon_city_trip.png);
+    }
+    .icon-2:before {
+        background-image: url(../../images/taxi/icon_intercity.png);
+    }
+    .icon-3:before {
+        background-image: url(../../images/taxi/icon_taxi.png);
+    }
+    .icon-4:before {
+        background-image: url(../../images/taxi/icon_bus.png);
+    }
+}
+.server-panel-mask {
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0; 
+    background: rgba(0,0,0,.5);
+}
+.no-line {
+    .server-list {
+        padding-right: 0;
+    }
+    &:after {
+        display: none;
+    }
+}

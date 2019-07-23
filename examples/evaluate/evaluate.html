@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>中交出行</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../../dist/stylesheets/base/vectors.2.css">
+    <link rel="stylesheet" href="../../dist/stylesheets/evaluate/evaluate.css">
+</head>
+
+<body>
+
+    <div class="evaluate">
+        <div class="title">您的评价将帮助我们提升服务品质</div>
+
+        <div class="content">
+            <div class="item" style="display: block;">
+                <h2>综合评价</h2>
+                <div class="star" data-size="max"><input type="hidden" id="start1"></div>
+            </div>
+            <div class="item">
+                <h4 class="caption">司机服务</h4>
+                <div class="star"><input type="hidden" id="start2"></div>
+                <div class="tag">
+                    <span data-value="卫生很好">卫生很好</span>
+                    <span data-value="行驶平稳">行驶平稳</span>
+                    <span data-value="态度好">态度好</span>
+                    <span data-value="准时到站">准时到站</span>
+                    <input type="hidden" id="tag1">
+                </div>
+            </div>
+            <div class="item">
+                <h4 class="caption">车辆体验</h4>
+                <div class="star"><input type="hidden" id="start3"></div>
+                <div class="tag">
+                    <span data-value="卫生很好">卫生很好</span>
+                    <span data-value="行驶平稳">行驶平稳</span>
+                    <span data-value="态度好">态度好</span>
+                    <span data-value="准时到站">准时到站</span>
+                    <input type="hidden" id="tag2">
+                </div>
+            </div>
+            <div class="item">
+                <h4 class="caption">准点情况</h4>
+                <div class="star"><input type="hidden" id="start4"></div>
+                <div class="tag">
+                    <span data-value="卫生很好">卫生很好</span>
+                    <span data-value="行驶平稳">行驶平稳</span>
+                    <span data-value="态度好">态度好</span>
+                    <span data-value="准时到站">准时到站</span>
+                    <input type="hidden" id="tag3">
+                </div>
+            </div>
+        </div>
+        
+        <div class="custom">
+            <div class="item">
+                <h4 class="caption">其他意见</h4>
+                <label class="message-area" for="message-1">
+                    <textarea id="message-1" data-max="200" placeholder="其他意见和建议（内容匿名，可放心填写）" maxlength="200"></textarea>
+                    <div class="message-length">0/200</div>
+                </label>
+            </div>
+            <div class="item">
+                <h4 class="caption">上传照片</h4>
+                <div class="upload-img">
+                    <div class="preview">
+                        <span class="close"></span>
+                        <img src="https://gss0.bdstatic.com/7051cy89RcgCncy6lo7D0j9wexYrbOWh7c50/zhidaoribao/2017/0801/hou.jpg">
+                    </div>
+                    <div class="preview">
+                        <span class="close"></span>
+                        <img src="https://gss0.bdstatic.com/7051cy89RcgCncy6lo7D0j9wexYrbOWh7c50/zhidaoribao/2017/0801/hou.jpg">
+                    </div>
+                    <div class="preview">
+                        <span class="close"></span>
+                        <img src="https://gss0.bdstatic.com/7051cy89RcgCncy6lo7D0j9wexYrbOWh7c50/zhidaoribao/2017/0801/hou.jpg">
+                    </div>
+
+                    <div class="choose"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="btn-group">
+            <div class="btn primary">提交评价</div>
+        </div>
+    </div>
+
+    <script src="../../dist/javascripts/zepto.min.js"></script>
+    <script src="../../dist/javascripts/simpleui.min.js"></script>
+    <script src="../../dist/javascripts/vectors.min.js"></script>
+    <script>
+        $(function() {
+            /*
+            * star
+            * */
+            $('.star').each(function (index) {
+               var $el = $(this);
+
+               for(var i = 0; i < 5; i++) {
+                   $el.append('<span></span>');
+               }
+
+               if($el.data('size') == "max") {
+                   $el.addClass('max');
+               }
+
+               //绑定事件
+               $el.children('span').on('click', function () {
+                   var $child = $(this);
+
+                   $child.nextAll('span').removeClass('active');
+                   $child.prevAll('span').addClass('active');
+                   $child.addClass('active');
+
+                   //存储
+                   $child.siblings('input').val($el.children('span.active').length);
+               });
+
+               //第一次点击综合评价
+               if(index == 0) {
+                   $el.children('span').one('click.action', function () {
+                       $(this).parents('.item').nextAll().show();
+                       $('.custom').show();
+                       $('.btn-group').show();
+                   });
+               }
+
+               //开启标签
+                $el.children('span').one('click.tag', function () {
+                   $(this).parent().next('.tag').show();
+                });
+            });
+
+            /*
+            * tag
+            * */
+            $('.tag span').on('click', function () {
+                var $el = $(this),
+                    $input = $el.siblings('input');
+                var _value = $el.data('value'),
+                    _VAL = $input.val();
+
+                //选中 或 取消
+                if(!$el.data('lock')) {
+                    $el.data('lock', true);
+                    $el.addClass('active');
+
+                    //add
+                    if($.trim(_VAL) == "") {
+                        $input.val(_value);
+                    } else if($input.val().indexOf(_value) < 0) {
+                        $input.val(_VAL + "," + _value);
+                    }
+                } else {
+                    $el.data('lock', false);
+                    $el.removeClass('active');
+
+                    //remove
+                    var _index = $input.val().indexOf(_value);
+                    if(_index >= 0) {
+                        var reg = "";
+                        if(_index == 0) {
+                            reg = new RegExp(_value + ",?", "gi");
+                        } else {
+                            reg = new RegExp(",?" + _value, "gi");
+                        }
+
+                        _VAL = _VAL.replace(reg, "");
+                        $input.val(_VAL);
+                    }
+                }
+            });
+
+            //字数统计
+            $('#message-1').on('input', function() {
+                var length = $(this).val().length;
+                var _MAX = $(this).data('max');
+
+                if(length <= _MAX) {
+                    $(this).next('div').attr('class', 'message-length').text(length + '/' + _MAX);
+                } else {
+                    /*$(this).next('div').attr('class', 'sui-red').text('字数太多了');*/
+                }
+            });
+
+            /*
+            * 上传图片
+            * */
+            $('.preview .close').on('click', function () {
+               //删除图片
+                $(this).parent().remove();
+            });
+        });
+    </script>
+</body>
+</html>

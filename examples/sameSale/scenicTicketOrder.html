@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>景区门票</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/sameSale/scenicTicketOrder.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div class="lump ticket-name-content">
+    <div class="info">黄山风景区</div>
+</div>
+
+<div class="lump ticket-info-content">
+    <ul>
+        <li>
+            <div class="left">订单状态</div>
+            <div class="right price">已支付</div>
+        </li>
+        <li>
+            <div class="left">订单编号</div>
+            <div class="right">ORCJ010002200202002002020</div>
+        </li>
+        <li>
+            <div class="left">下单时间</div>
+            <div class="right">2018-06-15   10:26:32</div>
+        </li>
+        <li>
+            <div class="left">订单总额</div>
+            <div class="right">￥<span>10.00</span></div>
+        </li>
+        <li>
+            <div class="left">购票张数</div>
+            <div class="right">成人票1张，儿童票1张</div>
+        </li>
+
+    </ul>
+</div>
+<div class="explainBox">
+    <p>使用地址<span>黄山市黄山风景区</span></p>
+    <p>使用地址<span>黄山市黄山风景区</span></p>
+</div> 
+<div class="lump ticket-info-content">
+    <ul>
+        <li>
+            <div class="left">使用时间</div>
+            <div class="right">2018-06-15（周四）</div>
+        </li>
+        <li>
+            <div class="left">使用方法</div>
+            <div class="right">通过刷二代身份证或平台发送的二维码验票进入园区，无需取票</div>
+        </li>
+        <li>
+            <div class="left">取票地址</div>
+            <div class="right">黄山市黄山风景区前台大街窗口</div>
+        </li>
+        <li>
+            <div class="left">使用地址</div>
+            <div class="right">黄山市黄山风景区各个风景区入口</div>
+        </li>
+        <li>
+            <div class="left">退改说明</div>
+            <div class="right">门票未使用可退票</div>
+        </li>
+    </ul>
+</div>
+
+<div class="lump role-info-content">
+    <div class="role-name sui-border-b">联系人</div>
+    <ul>
+        <li class="flex">
+            <div class="contacts">王小瑞</div>
+            <div>
+                <div class="line-item">
+                    <div class="name">手机号</div><div class="value">16888888888</div>
+                </div>
+                <div class="line-item">
+                    <div class="name">身份证</div><div class="value">362************027</div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<div class="lump role-info-content">
+    <div class="role-name sui-border-b">游客</div>
+    <ul>
+        <li class="sui-border-b">
+            <div class="line-item">
+                <div class="name">王小瑞</div>
+            </div>
+            <div class="line-item">
+                <div class="name">王小瑞 <span>16811111111</span></div>
+            </div>
+            <div class="line-item flex jcs">
+                <div class="name">身份证 <span>362************027</span></div>
+                <div class="status wait-check to-check active">验票</div>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<div class="lump role-info-content">
+    <div class="role-name sui-border-b">门票号</div>
+    <ul>
+        <li class="sui-border-b">
+            <div class="line-item">
+                <div class="name">票号</div>
+            </div>
+            <div class="line-item flex jcs">
+                <div class="name">6033000410</div>
+                <div class="status wait-check to-check active">验票</div>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<div class="btn-bar" style="display:none;">
+    <div class="button refund">退票</div>
+    <div class="button active">再次购买</div>
+</div>
+
+<div class="btn-bar">
+    <div class="button refund">取消订单</div>
+    <div class="button active">确认支付<span>10.00</span>元</div>
+</div>
+
+<!--检票弹窗-->
+<div class="popup-container-detail" id="qrCodePropup" style="display: none">
+    <div class="check-content">
+        <div><i class="icon-close"></i></div>
+        <div class="order-info">
+            <div class="name">黄山风景区门票</div>
+            <div class="time">2019/10/10（周四）入园</div>
+
+        </div>
+        <div class="order-check">
+            <div class="prompt">向验票员/扫码机展示二维码验票</div>
+            <div class="qr-code" id="qrcode"></div>
+            <div class="person-info sui-border-b">联系人：王小瑞  362531********0027</div>
+            <div class="check-info">
+                <div class="info-header">票种/票价/张数</div>
+                <div class="info-data">成人票/¥100*1张，儿童票/¥50*1张</div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../../dist/javascripts/zepto.min.js"></script>
+<script src="../../dist/javascripts/simpleui.min.js"></script>
+<script src="../../dist/javascripts/vectors.min.js"></script>
+<script src="../../dist/javascripts/qrcode.min.js"></script>
+<script src="../../src/js/scenic/scenic-ticket-info.js"></script>
+
+</body>
+</html>

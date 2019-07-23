@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>中交出行</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/bus/payment-2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/bus/passenger.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <div class="ticket-tips">距离乘车时间不足30分钟，请您确保能够及时乘车。</div>
+
+    <div class="ticket-info sui-border-b">
+        <div class="time">8:36</div>
+        <div class="station">
+            <div class="start">深圳湾创业投资大厦</div>
+            <div class="end">深圳会展中心</div>
+        </div>
+        <div class="ticket-rule" data-trigger-rule="#ticketRule">取票/退票规则</div>
+    </div>
+
+    <!-- 取票/退票规则 - 使用规则 -->
+    <div id="ticketRule" class="sui-popup-container">
+        <div class="sui-popup-mask"></div>
+        <div class="sui-popup-modal">
+            <div class="rule-content">
+                <div class="close cancel"></div>
+                <h1>取票/退票规则</h1>
+                <div class="rule-bar">
+                    <div class="content">
+                        <P>缺少文案</P>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--
+      如果不需要向右的箭头，去掉li.class=sui-cell-link即可
+      文案提示：您当前没有可用优惠券
+    -->
+    <ul class="coupon-btn sui-list">
+        <li class="sui-border-b">
+            <div class="name">购票天数</div>
+            <div class="value">2天</div>
+        </li>
+        <li class="sui-border-b">
+            <div class="name">票价总额</div>
+            <div class="value text-red">11元</div>
+        </li>
+        <li class="sui-border-b">
+            <div class="name">特价优惠 <span class="special-tips">8.8折 2张</span></div>
+            <div class="value text-red">-2元</div>
+        </li>
+        <!-- 不使用优惠券时：去掉sui-cell-link -->
+        <li class="sui-border-b sui-cell-link coupon-toggle">
+            <div class="name">优惠金额</div>
+            <div class="value text-red">-2元</div>
+            <!--<div class="value text-gray">不使用优惠券</div>-->
+        </li>
+    </ul>
+
+    <!-- 交通意外险 -->
+    <ul class="coupon-btn sui-list">
+        <li class="sui-cell-link insurance-toggle">
+            <div class="name" style="display: block">
+                交通意外险
+                <p class="tips">推荐选择 全程保障 可保25万</p>
+            </div>
+            <div class="value text-red">5元 x 2人</div>
+            <!-- 提示文字 -->
+            <!--<div class="value text-gray">不购买保险</div>-->
+        </li>
+    </ul>
+
+    <!-- 选择优惠券 -->
+    <div id="couponList" class="sui-popup-container">
+        <div class="sui-popup-mask"></div>
+        <div class="sui-popup-modal">
+
+            <div class="wrapper listWrapper">
+                <div class="content">
+                    <div class="rule-btn">
+                        <span>使用规则</span>
+                    </div>
+
+                    <div class="popup-list coupon-list">
+
+                        <div class="item blue">
+                            <div class="left">
+                                <div class="main">
+                                    <h4>城际班车券</h4>
+                                    <p>有效期至2016-12-31</p>
+                                </div>
+                                <div class="info">限线路 深圳-珠海，湛江专线限线路 深圳-珠海，湛江专线限线路 深圳-珠海，湛江专线限线路 深圳-珠海，湛江专线</div>
+                            </div>
+                            <div class="right">
+                                <div class="main"><i>&yen;</i>2</div>
+                                <div class="info">满100元可使用</div>
+                            </div>
+                        </div>
+                        <div class="item orange">
+                            <div class="left">
+                                <div class="main">
+                                    <h4>城际约租车</h4>
+                                    <p>有效期至2016-12-31</p>
+                                </div>
+                                <div class="info">限线路 深圳-珠海，湛江专线</div>
+                            </div>
+                            <div class="right">
+                                <div class="main"><i>&yen;</i>5</div>
+                                <div class="info">满100元可使用</div>
+                            </div>
+                        </div>
+                        <div class="item green">
+                            <div class="left">
+                                <div class="main">
+                                    <h4>出租车券</h4>
+                                    <p>有效期至2016-12-31</p>
+                                </div>
+                                <div class="info">限线路 深圳-珠海，湛江专线限线路 深圳-珠海，湛江专线限线路 深圳-珠海，湛江专线限线路 深圳-珠海，湛江专线限线路 深圳-珠海，湛江专线</div>
+                            </div>
+                            <div class="right">
+                                <div class="main">9.5<i>折</i></div>
+                                <div class="info">最高抵扣10元</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!--
+                没有乘车人
+
+                1. 删除div.listWrapper标签
+            -->
+            <!--<div class="not-data" style="background-image: url(../../dist/images/common/icon_no_ticket.png);">您当前没有可用优惠券</div>-->
+            <div class="footer-fixed">
+                <div class="btn-group">
+                    <div id="closeCoupon" class="btn primary">不使用优惠券</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 优惠券 - 使用规则 -->
+    <div id="ruleContent" class="sui-popup-container">
+        <div class="sui-popup-mask"></div>
+        <div class="sui-popup-modal">
+            <div class="rule-content">
+                <div class="close-popup close" data-target="ruleContent"></div>
+                <h1>优惠券使用规则</h1>
+                <P>缺少文案</P>
+            </div>
+        </div>
+    </div>
+
+    <!-- 选择交通意外险 -->
+    <div id="insuranceList" class="sui-popup-container">
+        <div class="sui-popup-mask"></div>
+        <div class="sui-popup-modal">
+
+            <div class="wrapper listWrapper">
+                <div class="content">
+                    <div class="popup-list insurance-list">
+
+                        <div class="item green">
+                            <div class="left">
+                                <div class="head">
+                                    <div class="content">
+                                        <h4>太平洋5元保险</h4>
+                                        <p>100000元意外伤害，5000元意外医疗。</p>
+                                    </div>
+                                    <div class="price"><span>5</span>元/份</div>
+                                </div>
+                                <div class="state insurance-rule">保险说明</div>
+                            </div>
+                        </div>
+                        <div class="item green">
+                            <div class="left">
+                                <div class="head">
+                                    <div class="content">
+                                        <h4>印度洋30元保险</h4>
+                                        <p>100000元意外伤害，5000元意外医疗。</p>
+                                    </div>
+                                    <div class="price"><span>30</span>元/份</div>
+                                </div>
+                                <div class="state insurance-rule">保险说明</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-fixed">
+                <div class="btn-group">
+                    <div id="closeInsurance" class="btn primary">不购买保险</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 保险 - 说明 -->
+    <div id="insuranceRule" class="sui-popup-container">
+        <div class="sui-popup-mask"></div>
+        <div class="sui-popup-modal">
+            <div class="rule-content">
+                <div class="close-popup close" data-target="insuranceRule"></div>
+                <h1>保险说明</h1>
+                <P>缺少文案</P>
+            </div>
+        </div>
+    </div>
+    
+    <ul class="payment-way sui-list sui-border-tb">
+		<li>
+            <div class="icon icon-1">微信支付<em>（推荐）</em></div>
+            <input type="radio" name="pay" class="frm-radio" checked />
+        </li>
+	</ul>
+
+    <div class="btn-group">
+        <div class="btn primary">确认支付20元</div>
+    </div>
+    
+    <script src="../../dist/javascripts/zepto.min.js"></script>
+    <script src="../../dist/javascripts/simpleui.min.js"></script>
+    <script src="../../dist/javascripts/vectors.min.js"></script>
+    <script>
+    // 绑定滚动条
+    var _myIScroll;
+    var bindScroll = function() {
+        if(_myIScroll) {
+            _myIScroll.destroy();
+        }
+        setTimeout(function() {
+            $('.listWrapper').css('height', ($(window).height() - 74) + 'px');
+            _myIScroll = new IScroll('.listWrapper');
+        }, 300);
+    }
+
+    /*
+    * 优惠券 - 操作
+    * */
+    function couponHandle() {
+        // 打开选择优惠券
+        $('.coupon-toggle').on('click', function() {
+            $('#couponList').popup('modal', function() {
+                //优惠券信息最多显示两行，然后显示更多，点击更多弹窗显示详情
+                $('.coupon-list .item .left .info').each(function () {
+                    resetStringLength($(this));
+                });
+
+                bindScroll();
+            });
+        });
+
+        // 不使用优惠券
+        $('#closeCoupon').on('click', function() {
+            $('#couponList').closePopup();
+        });
+
+        // 选中优惠券
+        $('.coupon-list .item').on('click', function() {
+            $('#couponList').closePopup();
+        });
+
+        // 显示使用规则
+        $('.rule-btn').on('click', function() {
+            $('#ruleContent').popup('push');
+        });
+
+        /*
+         *
+         * 优惠券信息显示更多：
+         *   获取两行文本可显示的长度，然后截取
+         *
+         * */
+        function resetStringLength(obj) {
+            //只计算一次
+            if(!obj.data('resetStringLength')) {
+                //上锁
+                obj.data('resetStringLength', true);
+
+                //元素是否显示
+                if(obj.css('display') != 'none' && !obj.is(':hidden') && obj.is(':visible')) {
+                    //存储旧数据
+                    var objData = {
+                        width: obj.width(),
+                        fontSize:  parseFloat(obj.css('font-size').replace('px', '')),
+                        text: obj.text()
+                    };
+
+                    //获取新长度，并重新填充数据
+                    var newLength = objData.width / objData.fontSize * 2 - 6;
+
+                    //少于两行的长度，则不裁剪
+                    if(newLength > objData.text.length) {
+                        return false;
+                    }
+
+                    var __more = $('<span>更多></span>');
+                    obj.text(objData.text.slice(0, newLength) + '...');
+                    obj.append(__more);
+
+                    //阻止冒泡
+                    obj.on('click', function (e) {
+                        e.stopPropagation();
+                    });
+
+                    //查看更多
+                    __more.on('click', function (e) {
+                        //阻止冒泡
+                        e.stopPropagation();
+
+                        $.dialog({
+                            title: '',
+                            text: '',
+                            html: '<p style="font-size: 16px; max-height: 300px; overflow-y: auto;">' + objData.text + '</p>',
+                            autoClose: false,
+                            buttons: [{
+                                text: '知道了',
+                                onClick: function() {
+                                    $('.sui-mask').css('z-index', 1000);
+                                    $.closeDialog();
+                                }
+                            }]
+                        });
+
+                        $('.sui-mask').css('z-index', 8001);
+                    });
+
+                    return objData;
+                } else {
+                    //解锁
+                    obj.data('resetStringLength', false);
+
+                    setTimeout(function () {
+                        resetStringLength(obj);
+                    }, 10);
+                }
+            }
+        }
+    }
+
+    /*
+    * 交通意外险 - 操作
+    * */
+    function insuranceHandle() {
+        // 打开选择交通意外险
+        $('.insurance-toggle').on('click', function() {
+            $('#insuranceList').popup('modal', function() {
+                bindScroll();
+            });
+        });
+
+        // 不使用交通意外险
+        $('#closeInsurance').on('click', function() {
+            $('#insuranceList').closePopup();
+        });
+
+        // 选中交通意外险
+        $('.insurance-list .item').on('tap', function() {
+            $('#insuranceList').closePopup();
+        });
+
+        // 显示保险说明
+        $('.insurance-rule').on('tap', function(e) {
+            e.stopPropagation();
+            $('#insuranceRule').popup('push');
+        });
+    }
+
+    $(function() {
+        couponHandle();
+        insuranceHandle();
+
+        //规则
+        $.ruleInit();
+
+        // 选择支付方式
+        $('.payment-way li').off('click').on('click', function() {
+            $(this).find('input').prop('checked', true);
+        });
+
+        //返回键
+        back();
+    });
+
+    function back() {
+        if (window.history && window.history.pushState) {
+            var href = window.location.href;
+            var level = -1;
+
+            history.pushState({page: 1}, 'page', href);
+
+            //点击返回键
+            $(window).on('popstate', function() {
+                history.go(level);
+            });
+
+            //弹窗层，返回0
+            $('#selectPassengerButton, .coupon-toggle, .insurance-toggle, .ticket-rule').on('click.back', function () {
+                level = 0;
+            });
+
+            //关闭弹窗层，返回0
+            $('#selectButton, #closeCoupon, #closeInsurance').on('click.back', function () {
+                level = -1;
+            });
+        }
+    }
+    </script>
+</body>
+</html>

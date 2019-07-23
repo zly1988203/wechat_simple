@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>中交出行</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/bus/payment-2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/bus/passenger.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <div class="ticket-tips">距离乘车时间不足30分钟，请您确保能够及时乘车。</div>
+
+    <div class="ticket-info">
+        <div class="time">1月2日 8:36 <span class="distribution">合作线路</span></div>
+        <div class="station">
+            <div class="start">深圳湾创业投资大厦</div>
+            <div class="end">深圳会展中心</div>
+        </div>
+        <div class="ticket-rule" data-trigger-rule="#ticketRule">取票/退票规则</div>
+    </div>
+
+    <!-- 取票/退票规则 - 使用规则 -->
+    <div id="ticketRule" class="sui-popup-container">
+        <div class="sui-popup-mask"></div>
+        <div class="sui-popup-modal">
+            <div class="rule-content">
+                <div class="close cancel"></div>
+                <h1>取票/退票规则</h1>
+                <div class="rule-bar">
+                    <div class="content">
+                        <P>缺少文案</P>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--乘车人列表-->
+    <div id="passengerList" class="sui-popup-container">
+        <div class="sui-popup-mask"></div>
+        <div class="sui-popup-modal">
+            <!--乘车列表-->
+            <div class="wrapper listWrapper">
+                <div class="content">
+
+                    <div class="passenger-list-wrapper">
+                        <ul class="sui-list sui-list-cover sui-border-b">
+                            <li class="sui-cell-centerlink add-btn addPassengerButton">添加乘车人</li>
+                        </ul>
+                        <ul class="passenger-list sui-list sui-list-cover">
+                            <!--
+                                data-select：是否选中
+                                data-name：  姓名
+                                data-phone： 手机号码
+                                data-code：  身份证号码
+                            -->
+                            <li class="sui-border-b" data-select="false" data-name="牛嘎嘎" data-phone="151180303494" data-code="440681*********5913">
+                                <div class="name">
+                                    <input type="checkbox" class="frm-checkbox" />
+                                </div>
+                                <div class="info">
+                                    <h4>牛嘎嘎</h4>
+                                    <p><em>手机号</em>151180303494</p>
+                                    <p><em>身份证</em>440681*********5913</p>
+                                </div>
+                                <div class="handle">
+                                    <i class="icon-edit editPassengerButton"></i>
+                                </div>
+                            </li>
+                            <li data-select="false" data-name="李梅梅" data-phone="151180303494" data-code="440681*********5913">
+                                <div class="name">
+                                    <input type="checkbox" class="frm-checkbox" />
+                                </div>
+                                <div class="info">
+                                    <h4>李梅梅</h4>
+                                    <p><em>手机号</em>151180303494</p>
+                                    <p><em>身份证</em>440681*********5913</p>
+                                </div>
+                                <div class="handle">
+                                    <i class="icon-edit editPassengerButton"></i>
+                                </div>
+                            </li>
+                            <li data-select="false" data-name="我是谁" data-phone="13654585236" data-code="">
+                                <div class="name">
+                                    <input type="checkbox" class="frm-checkbox" />
+                                </div>
+                                <div class="info">
+                                    <h4>我是谁</h4>
+                                    <p><em>手机号</em>13654585236</p>
+                                    <p><em>身份证</em><span class="text-red">请补全身份信息</span></p>
+                                </div>
+                                <div class="handle">
+                                    <i class="icon-edit editPassengerButton"></i>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!--
+                        没有乘车人
+
+                        1. 将ul.passenger-list 标签里的内容清空
+                        2. 隐藏div.btn-bar标签
+
+                        备注：添加一个乘客之后，把div.not-data标签清除，显示div.btn-bar标签
+                    -->
+                    <!--<div class="not-data" style="background-image: url(../../dist/images/common/icon_no_rider.png);">您当前还未添加乘车人</div>-->
+
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <div id="selectButton" class="btn primary">完成</div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--添加乘车人-->
+    <div id="addPassenger" class="sui-popup-container">
+        <div class="sui-popup-mask"></div>
+        <div class="sui-popup-modal">
+
+            <div class="add-passenger-wrapper">
+                <ul class="form sui-list sui-list-cover">
+                    <li class="sui-border-b">
+                        <label>姓名</label>
+                        <input type="text" id="addPassengerName" placeholder="请输入姓名" />
+                    </li>
+                    <li class="sui-border-b">
+                        <label>手机号</label>
+                        <input type="text" id="addPassengerPhone" placeholder="请输入手机号" />
+                    </li>
+                    <li class="sui-border-b">
+                        <label>身份证</label>
+                        <input type="text" id="addPassengerCode" placeholder="请输入身份证" />
+                    </li>
+                </ul>
+            </div>
+
+            <div class="btn-group">
+                <div id="cancelAddButton" class="btn default">取消</div>
+                <div id="submitAddButton" class="btn primary">确定</div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--编辑乘车人-->
+    <div id="editPassenger" class="sui-popup-container">
+        <div class="sui-popup-mask"></div>
+        <div class="sui-popup-modal">
+
+            <div class="edit-passenger-wrapper">
+                <ul class="form sui-list sui-list-cover">
+                    <li class="sui-border-b">
+                        <label>姓名</label>
+                        <input type="text" id="editPassengerName" placeholder="请输入姓名" />
+                    </li>
+                    <li class="sui-border-b">
+                        <label>手机号</label>
+                        <input type="text" id="editPassengerPhone" placeholder="请输入手机号" />
+                    </li>
+                    <li class="sui-border-b">
+                        <label>身份证</label>
+                        <input type="text" id="editPassengerCode" placeholder="请输入身份证" />
+                    </li>
+                </ul>
+            </div>
+
+            <div class="btn-group">
+                <div id="submitEditButton" class="btn primary">确定</div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--
+      如果不需要向右的箭头，去掉li.class=sui-cell-link即可
+      文案提示：您当前没有可用优惠券
+    -->
+    <ul class="coupon-btn sui-list">
+        <!-- 不需要乘车信息 start -->
+        <li class="passenger-list">
+            <div class="name">
+                <h4>乘车人数<span>（最多5位）</span></h4>
+            </div>
+            <div class="value operation">
+                <div class="handle-plus">
+                    <i class="icon-minus"></i>
+                    <span class="txt">1</span>
+                    <i class="icon-plus"></i>
+                </div>
+            </div>
+        </li>
+        <!-- end -->
+
+        <li>
+            <div class="name">票价总额</div>
+            <div class="value text-red">11元</div>
+        </li>
+        <!-- 保险 -->
+        <li class="insurance-row">
+            <div class="name">出行保障 <p>保险说明</p></div>
+            <div class="insurance on" data-action="true">
+                <div class="txt">
+                    <h4>2元保险</h4>
+                    <p>最高保10万</p>
+                </div>
+                <div class="count"><i>x</i>2份</div>
+            </div>
+            <div class="value text-red">4元</div>
+        </li>
+        <!-- 选择乘车人 -->
+        <li class="insurance-passenger">
+            <!-- 乘车人 -->
+            <div id="passengerWrapper" class="passenger">
+                <div class="head">
+                    <h4>选择添加乘车人</h4>
+                    <div class="handle-plus">
+                        <i id="selectPassengerButton" class="icon-plus"></i>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="item">
+                        <div class="handle-minus"></div>
+                        <div class="name">牛嘎嘎</div>
+                        <div class="info">
+                            <p><span class="label">手机号</span>13632145546</p>
+                            <p><span class="label">身份证</span>362531********0027</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="handle-minus"></div>
+                        <div class="name">李梅梅</div>
+                        <div class="info">
+                            <p><span class="label">手机号</span>13632145546</p>
+                            <p><span class="label">身份证</span>362531********0027</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="name">特价优惠 <span class="special-tips">8.8折 2张</span></div>
+            <div class="value text-red">-2元</div>
+        </li>
+        <li class="sui-cell-link coupon-toggle" style="display: none;">
+            <div class="name">优惠金额</div>
+            <div class="value text-red">-2元</div>
+        </li>
+        <!-- 合作线路不支持使用优惠券 -->
+        <li>
+            <div class="name">优惠金额</div>
+            <div class="value text-gray">合作线路不支持使用优惠券</div>
+        </li>
+    </ul>
+
+    <!-- 保险说明 -->
+    <div id="insuranceExplain">
+        <div class="mask"></div>
+        <div class="explain">
+            <h4>保险说明</h4>
+            <div class="content scroll-bar">
+                <p>读取该险种配置中的，保险说明并展示，浮层形式，不要离开当前页面</p>
+                <p>读取该险种配置中的，保险说明并展示，浮层形式，不要离开当前页面</p>
+                <p>读取该险种配置中的，保险说明并展示，浮层形式，不要离开当前页面</p>
+                <p>读取该险种配置中的，保险说明并展示，浮层形式，不要离开当前页面</p>
+                <p>读取该险种配置中的，保险说明并展示，浮层形式，不要离开当前页面</p>
+                <p>读取该险种配置中的，保险说明并展示，浮层形式，不要离开当前页面</p>
+                <p>读取该险种配置中的，保险说明并展示，浮层形式，不要离开当前页面</p>
+                <p>读取该险种配置中的，保险说明并展示，浮层形式，不要离开当前页面</p>
+                <p>读取该险种配置中的，保险说明并展示，浮层形式，不要离开当前页面</p>
+                <p>读取该险种配置中的，保险说明并展示，浮层形式，不要离开当前页面</p>
+                <p>读取该险种配置中的，保险说明并展示，浮层形式，不要离开当前页面</p>
+                <p>读取该险种配置中的，保险说明并展示，浮层形式，不要离开当前页面</p>
+                <p>读取该险种配置中的，保险说明并展示，浮层形式，不要离开当前页面</p>
+                <p>读取该险种配置中的，保险说明并展示，浮层形式，不要离开当前页面</p>
+                <p>读取该险种配置中的，保险说明并展示，浮层形式，不要离开当前页面</p>
+                <p>读取该险种配置中的，保险说明并展示，浮层形式，不要离开当前页面</p>
+                <p>读取该险种配置中的，保险说明并展示，浮层形式，不要离开当前页面</p>
+                <p>读取该险种配置中的，保险说明并展示，浮层形式，不要离开当前页面</p>
+                <p>读取该险种配置中的，保险说明并展示，浮层形式，不要离开当前页面</p>
+                <p>读取该险种配置中的，保险说明并展示，浮层形式，不要离开当前页面</p>
+                <p>读取该险种配置中的，保险说明并展示，浮层形式，不要离开当前页面</p>
+                <p>读取该险种配置中的，保险说明并展示，浮层形式，不要离开当前页面</p>
+                <p>读取该险种配置中的，保险说明并展示，浮层形式，不要离开当前页面</p>
+                <p>读取该险种配置中的，保险说明并展示，浮层形式，不要离开当前页面</p>
+                <p>读取该险种配置中的，保险说明并展示，浮层形式，不要离开当前页面</p>
+                <p>读取该险种配置中的，保险说明并展示，浮层形式，不要离开当前页面</p>
+            </div>
+            <div class="btn primary">确定</div>
+        </div>
+    </div>
+
+    <!--保险v2.0start-->
+    <div class="insurance-container">
+        <div class="insurance-title">
+            <div class="title">出行保障<span>（为自己和家人添一份安心）</span></div>
+            <div class="unit">3元</div>
+        </div>
+        <div id="wrapper">
+            <div class="content">
+            <!--<div class="insurance-content content">-->
+                <ul>
+                    <li class="insurance-item active">
+                        <div class="desc">3万保障</div>
+                        <div class="amount"><span class="unit-price">￥3</span> X <span class="count">1份</span></div>
+                        <div class="detail-btn">详情</div>
+                    </li>
+                    <li class="insurance-item">
+                        <div class="desc">3万保障</div>
+                        <div class="amount"><span class="unit-price">￥3</span> X <span class="count">1份</span></div>
+                        <div class="detail-btn">详情</div>
+                    </li>
+                    <li class="insurance-item">
+                        <div class="desc">3万保障</div>
+                        <div class="amount"><span class="unit-price">￥3</span> X <span class="count">1份</span></div>
+                        <div class="detail-btn">详情</div>
+                    </li>
+                    <li class="insurance-item">
+                        <div class="desc">3万保障</div>
+                        <div class="amount"><span class="unit-price">￥3</span> X <span class="count">1份</span></div>
+                        <div class="detail-btn">详情</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--备注-->
+    <div class="comment-container">
+        <div class="comment" id="commentBtn">备注</div>
+        <div class="commentText">选填</div>
+    </div>
+    <!--备注弹出框-->
+    <div id="popupCommentInfo" class="sui-popup-container comment-info-container">
+        <div class="sui-popup-mask"></div>
+        <div class="sui-popup-modal">
+            <!--内容开始-->
+            <div class="close"><img src="../../src/images/newInnerCity/icon-left.png"/></div>
+            <div class="commit">
+                <label for="message-2">
+                    <textarea id="message-2" placeholder="其他意见和建议（内容匿名，可放心填写）" maxlength="40"></textarea>
+                </label>
+                <div class="message-length">0/40</div>
+            </div>
+            <div class="btn-group">
+                <div class="btn">确定</div>
+            </div>
+            <!--内容结束-->
+        </div>
+    </div>
+    <!--保险详情弹出-->
+    <div class="popup-container" id="insuranceDetail" style="display: none">
+        <div class="content">
+            <div class="main-content">
+                <div class="title sui-border-b">保险说明</div>
+                <div class="main">
+                    1、保险名称:太平洋乘客人身意外伤害综合保险<br/>
+                    2、保险费、保额对照:<br/>
+                    方案一: 保费1元，保额意外伤害2万、意外伤害医疗0.2万<br/>
+                    方案二: 保费2元，保额意外伤害3万、意外伤害医疗0.3万<br/>
+                    方案三: 保费3元，保额意外伤害4万、意外伤害医疗0.4万<br/>
+                    方案四: 保费4元，保额意外伤害5万、意外伤害医疗0.5万<br/>
+                    方案五: 保费5元，保额意外伤害6万、意外伤害医疗0.6万<br/>
+                </div>
+            </div>
+            <div class="close"></div>
+        </div>
+    </div>
+    <!--保险v2.0end-->
+
+
+    <!-- 备注 -->
+    <div class="commit-bar" style="display: none">
+        <h4>备注</h4>
+        <div class="commit">
+            <label for="message-1">
+                <textarea id="message-1" placeholder="其他意见和建议（内容匿名，可放心填写）" maxlength="40"></textarea>
+                <div class="message-length">0/40</div>
+            </label>
+        </div>
+    </div>
+
+    <!-- 选择优惠券 -->
+    <div id="couponList" class="sui-popup-container">
+        <div class="sui-popup-mask"></div>
+        <div class="sui-popup-modal">
+
+            <div class="wrapper listWrapper">
+                <div class="content">
+                    <div class="rule-btn">
+                        <span>使用规则</span>
+                    </div>
+
+                    <div class="popup-list coupon-list">
+                        <div class="item blue">
+                            <div class="left">
+                                <div class="main">
+                                    <h4>城际班车券</h4>
+                                    <p>有效期至2016-12-31</p>
+                                </div>
+                                <div class="info">限线路 深圳-珠海，湛江专线限线路 深圳-珠海，湛江专线限线路 深圳-珠海，湛江专线限线路 深圳-珠海，湛江专线</div>
+                            </div>
+                            <div class="right">
+                                <div class="main"><i>&yen;</i>2</div>
+                                <div class="info">满100元可使用</div>
+                            </div>
+                        </div>
+                        <div class="item orange">
+                            <div class="left">
+                                <div class="main">
+                                    <h4>城际约租车</h4>
+                                    <p>有效期至2016-12-31</p>
+                                </div>
+                                <div class="info">限线路 深圳-珠海，湛江专线</div>
+                            </div>
+                            <div class="right">
+                                <div class="main"><i>&yen;</i>5</div>
+                                <div class="info">满100元可使用</div>
+                            </div>
+                        </div>
+                        <div class="item green">
+                            <div class="left">
+                                <div class="main">
+                                    <h4>出租车券</h4>
+                                    <p>有效期至2016-12-31</p>
+                                </div>
+                                <div class="info">限线路 深圳-珠海，湛江专线限线路 深圳-珠海，湛江专线限线路 深圳-珠海，湛江专线限线路 深圳-珠海，湛江专线限线路 深圳-珠海，湛江专线</div>
+                            </div>
+                            <div class="right">
+                                <div class="main">9.5<i>折</i></div>
+                                <div class="info">最高抵扣10元</div>
+                            </div>
+                        </div>
+                        <div class="item blue">
+                            <div class="left">
+                                <div class="main">
+                                    <h4>城际班车券</h4>
+                                    <p>有效期至2016-12-31</p>
+                                </div>
+                                <div class="info">限线路 深圳-珠海，湛江专线限线路 深圳-珠海，湛江专线限线路 深圳-珠海，湛江专线限线路 深圳-珠海，湛江专线</div>
+                            </div>
+                            <div class="right">
+                                <div class="main"><i>&yen;</i>2</div>
+                                <div class="info">满100元可使用</div>
+                            </div>
+                        </div>
+                        <div class="item orange">
+                            <div class="left">
+                                <div class="main">
+                                    <h4>城际约租车</h4>
+                                    <p>有效期至2016-12-31</p>
+                                </div>
+                                <div class="info">限线路 深圳-珠海，湛江专线</div>
+                            </div>
+                            <div class="right">
+                                <div class="main"><i>&yen;</i>5</div>
+                                <div class="info">满100元可使用</div>
+                            </div>
+                        </div>
+                        <div class="item green">
+                            <div class="left">
+                                <div class="main">
+                                    <h4>出租车券</h4>
+                                    <p>有效期至2016-12-31</p>
+                                </div>
+                                <div class="info">限线路 深圳-珠海，湛江专线限线路 深圳-珠海，湛江专线限线路 深圳-珠海，湛江专线限线路 深圳-珠海，湛江专线限线路 深圳-珠海，湛江专线</div>
+                            </div>
+                            <div class="right">
+                                <div class="main">9.5<i>折</i></div>
+                                <div class="info">最高抵扣10元</div>
+                            </div>
+                        </div>
+                        <div class="item blue">
+                            <div class="left">
+                                <div class="main">
+                                    <h4>城际班车券</h4>
+                                    <p>有效期至2016-12-31</p>
+                                </div>
+                                <div class="info">限线路 深圳-珠海，湛江专线限线路 深圳-珠海，湛江专线限线路 深圳-珠海，湛江专线限线路 深圳-珠海，湛江专线</div>
+                            </div>
+                            <div class="right">
+                                <div class="main"><i>&yen;</i>2</div>
+                                <div class="info">满100元可使用</div>
+                            </div>
+                        </div>
+                        <div class="item orange">
+                            <div class="left">
+                                <div class="main">
+                                    <h4>城际约租车</h4>
+                                    <p>有效期至2016-12-31</p>
+                                </div>
+                                <div class="info">限线路 深圳-珠海，湛江专线</div>
+                            </div>
+                            <div class="right">
+                                <div class="main"><i>&yen;</i>5</div>
+                                <div class="info">满100元可使用</div>
+                            </div>
+                        </div>
+                        <div class="item green">
+                            <div class="left">
+                                <div class="main">
+                                    <h4>出租车券</h4>
+                                    <p>有效期至2016-12-31</p>
+                                </div>
+                                <div class="info">限线路 深圳-珠海，湛江专线限线路 深圳-珠海，湛江专线限线路 深圳-珠海，湛江专线限线路 深圳-珠海，湛江专线限线路 深圳-珠海，湛江专线</div>
+                            </div>
+                            <div class="right">
+                                <div class="main">9.5<i>折</i></div>
+                                <div class="info">最高抵扣10元</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--
+                没有乘车人
+
+                1. 删除div.listWrapper标签
+            -->
+            <!--<div class="not-data" style="background-image: url(../../dist/images/common/icon_no_ticket.png);">您当前没有可用优惠券</div>-->
+            <div class="footer-fixed">
+                <div class="btn-group">
+                    <div id="closeCoupon" class="btn primary">不使用优惠券</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 优惠券 - 使用规则 -->
+    <div id="ruleContent" class="sui-popup-container">
+        <div class="sui-popup-mask"></div>
+        <div class="sui-popup-modal">
+            <div class="rule-content">
+                <div class="close-popup close" data-target="ruleContent"></div>
+                <h1>优惠券使用规则</h1>
+                <P>缺少文案</P>
+            </div>
+        </div>
+    </div>
+
+    <!-- 支付方式 -->
+    <ul class="payment-way sui-list sui-border-tb">
+		<li>
+            <div class="icon icon-1">微信支付<em>（推荐）</em></div>
+            <input type="radio" name="pay" class="frm-radio" checked />
+        </li>
+		<li>
+            <div class="icon icon-2">上车支付</div>
+            <input type="radio" name="pay" class="frm-radio" />
+        </li>
+	</ul>
+
+    <div class="btn-group">
+        <div class="btn default">确认支付20元</div>
+        <div class="btn primary">分享后15元</div>
+    </div>
+    
+    <script src="../../dist/javascripts/zepto.min.js"></script>
+    <script src="../../dist/javascripts/simpleui.min.js"></script>
+    <script src="../../dist/javascripts/vectors.min.js"></script>
+    <script>
+        //-- -------保险v2.0start-------- --
+        var insuranceScroll = new IScroll('#wrapper', {
+            scrollX: true,
+            scrollY: false,
+            mouseWheel: true
+        });
+        $('.insurance-container li').on('click',function () {
+            $(this).addClass('active').siblings().removeClass('active');
+            insuranceScroll.scrollToElement($(this)[0], 500, false, false, IScroll.utils.ease.circular);
+        });
+        $('#wrapper .detail-btn').on('click',function (e) {
+            $('#insuranceDetail').show();
+            e.stopPropagation();//阻止事件冒泡
+        });
+        var _height = $('#wrapper .content').height();
+        $('#wrapper').css({'height': _height});
+
+        $('#commentBtn').on('click',function () {
+            $('#popupCommentInfo').popup('push');
+        });
+        $('#popupCommentInfo .close').on('click',function () {
+            $('#popupCommentInfo').closePopup();
+        });
+        $('#popupCommentInfo .btn').on('click',function () {
+            $('#popupCommentInfo').closePopup();
+        });
+        $('#insuranceDetail .close').on('click',function () {
+           $('#insuranceDetail').hide();
+        });
+
+        //-- -------保险v2.0end-------- --
+
+    // 绑定滚动条
+    var _myIScroll;
+    var bindScroll = function(el) {
+        if(_myIScroll) {
+            _myIScroll.destroy();
+        }
+        setTimeout(function() {
+            _myIScroll = new IScroll(el + ' .listWrapper');
+        }, 300);
+    }
+
+    $('.listWrapper').each(function () {
+        $(this).css('height', ($(window).height() - 74) + 'px');
+    });
+
+    /*
+    * 乘客 - 操作
+    * */
+    function passengerHandle() {
+        // 打开选择乘车人列表
+        $('#selectPassengerButton').on('click', function() {
+            $('#passengerList').popup('modal', function() {
+                bindScroll('#passengerList');  //加载滚动条
+            });
+        });
+
+        //点击内容区，自动选中或取消
+        function triggerCheckbox($el) {
+            var $input = $el.prev('.name').find('input[type=checkbox]');
+
+            if($input.prop('checked')) {
+                $input.prop('checked', false);
+            } else {
+                $input.prop('checked', true);
+            }
+
+            changeSelect($input);
+        }
+
+        $('#passengerList .passenger-list li .info').on('click', function () {
+            triggerCheckbox($(this));
+        });
+
+        /*
+        * 更新select状态
+        * */
+        function changeSelect(el) {
+            el.parents('li').data('select', el.prop('checked'));
+        }
+
+        //选择乘客 - 更新select状态
+        $('.passenger-list input[type=checkbox]').on('change', function () {
+            changeSelect($(this));
+        });
+
+        //确定选择
+        $('#selectButton').on('click', function() {
+            var _html = '';
+
+            $('.passenger-list li').each(function () {
+                var el = $(this);
+
+                if(el.data('select')) {
+                    _html += '<div class="item">' +
+                        '<div class="handle-minus"></div>' +
+                        '<div class="name">' + el.data('name') + '</div>' +
+                        '<div class="info">' +
+                        '<p><span class="label">手机号</span>' + el.data('phone') + '</p>' +
+                        '<p><span class="label">身份证</span>' + el.data('code') + '</p>' +
+                        '</div>' +
+                        '</div>';
+                }
+            });
+
+            //更新选中的乘客
+            $('#passengerWrapper .content').html('').append(_html);
+
+            $('#passengerList').closePopup();
+        });
+
+        /*
+        * 添加乘客
+        * */
+        // 打开添加界面
+        $('.addPassengerButton').on('click', function() {
+            $('#addPassenger').popup('push', function() {
+                $('#addPassengerName').val('');
+                $('#addPassengerPhone').val('');
+                $('#addPassengerCode').val('');
+            })
+        });
+
+        //取消添加
+        $('#cancelAddButton').on('click', function () {
+            $('#addPassenger').closePopup();
+        });
+
+        //提交添加
+        $('#submitAddButton').on('click', function() {
+            //TODO: 提交添加
+            var name = $('#addPassengerName').val();
+            var phone = $('#addPassengerPhone').val();
+            var code = $('#addPassengerCode').val();
+
+            //验证表单
+            if($.trim(name) == '') {
+                $.toastError('姓名不能为空');
+                return false;
+            }
+
+            if($.trim(phone) == '') {
+                $.toastError('手机号不能为空');
+                return false;
+            } else if(!isPoneAvailable(phone)) {
+                $.toastError('手机号不正确');
+                return false;
+            }
+
+            if($.trim(code) == '') {
+                $.toastError('身份证不能为空');
+                return false;
+            } else if(!isCardNo(code)) {
+                $.toastError('身份证不正确');
+                return false;
+            }
+
+            //创建标签
+            var $strLi = $('<li class="sui-border-b" data-select="true" data-name="' + name + '" data-phone="' + phone + '" data-code="' + code + '"></li>'),
+                $strName = $('<div class="name"><input type="checkbox" class="frm-checkbox" checked /></div>'),
+                $strInfo = $('<div class="info"><h4>' + name + '</h4><p><em>手机号</em>' + phone + '</p><p><em>身份证</em>' + code + '</p></div>'),
+                $strHandle = $('<div class="handle"><i class="icon-edit editPassengerButton"></i></div>');
+
+            //合并标签
+            $strLi.append($strName).append($strInfo).append($strHandle);
+
+            //添加到父元素里
+            $('#passengerList .passenger-list').append($strLi);
+
+            //绑定 - 更新乘客选择
+            $strName.find('input[type=checkbox]').on('change', function () {
+                changeSelect($(this));
+            });
+
+            //绑定 - 编辑乘客
+            $strHandle.find('.editPassengerButton').on('click', function () {
+                editHandle($(this));
+            });
+
+            //绑定 - 点击内容区，自动选中或取消
+            $strInfo.on('click', function () {
+                triggerCheckbox($(this));
+            });
+
+            if(_myIScroll) {
+                _myIScroll.refresh();   // 刷新滚动条
+            }
+
+            $('#addPassenger').closePopup();
+        });
+
+        /*
+        * 编辑乘客
+        * */
+        //编辑操作
+        function editHandle(el) {
+            var $parent = el.parents('li');
+            var _name  = $parent.data('name'),
+                _phone = $parent.data('phone'),
+                _code  = $parent.data('code');
+
+            $('#editPassenger').popup('push', function() {
+                $('#editPassengerName').val(_name);
+                $('#editPassengerPhone').val(_phone);
+                $('#editPassengerCode').val(_code);
+
+                //设置触发的元素
+                $('#editPassenger').data('trigger', $parent.index());
+            });
+        }
+
+        // 打开编辑界面
+        $('.editPassengerButton').on('click', function() {
+            editHandle($(this));
+        });
+
+        //关闭编辑
+        $('#submitEditButton').on('click', function () {
+            var targetZindex = $('#editPassenger').data('trigger'),
+                _target = $('.passenger-list li').eq(targetZindex);
+            var _editName = $('#editPassengerName').val(),
+                _phoneName = $('#editPassengerPhone').val(),
+                _codeName = $('#editPassengerCode').val();
+
+            //验证表单
+            if($.trim(_editName) == '') {
+                $.toastError('姓名不能为空');
+                return false;
+            }
+
+            if($.trim(_phoneName) == '') {
+                $.toastError('手机号不能为空');
+                return false;
+            } else if(!isPoneAvailable(_phoneName)) {
+                $.toastError('手机号不正确');
+                return false;
+            }
+
+            if($.trim(_codeName) == '') {
+                $.toastError('身份证不能为空');
+                return false;
+            } else if(!isCardNo(_codeName)) {
+                $.toastError('身份证不正确');
+                return false;
+            }
+
+            //更新 - 存储数据
+            _target.data('name', _editName)
+                .data('phone', _phoneName)
+                .data('code', _codeName);
+
+            //更新 - 展示数据
+            _target.find('.info h4').text(_editName);
+            _target.find('.info p:first').html('</h4><p><em>手机号</em>' + _phoneName);
+            _target.find('.info p:last').html('</h4><p><em>身份证</em>' + _codeName);
+
+            $('#editPassenger').closePopup();
+        });
+
+        //乘客人数运算
+        if($('.handle-plus .txt').text() == 1) {
+            $('.operation .icon-minus').addClass('out');
+        } else if($('.handle-plus .txt').text() == 5) {
+            $('.operation .icon-plus').addClass('out');
+        }
+
+        $('.operation .icon-minus').on('click', function () {
+            //减
+            var el = $(this);
+
+            if(!el.data('clock')) {
+                el.data('clock', true);
+
+                var _v = parseInt(el.next().text());
+
+                if(_v == 5) {
+                    el.siblings('.icon-plus').removeClass('out');
+                }
+
+                if(_v == 1) {
+                    //TODO
+//                    $.alert('人数至少为1');
+                } else {
+                    el.next().text(_v - 1);
+
+                    if(el.next().text() == 1) {
+                        el.addClass('out');
+                    }
+                }
+
+                el.data('clock', false);
+            }
+        });
+
+        $('.operation .icon-plus').on('click', function () {
+            //加
+            var el = $(this);
+
+            if(!el.data('clock')) {
+                el.data('clock', true);
+
+                var _v = parseInt(el.prev().text());
+
+                if(_v == 1) {
+                    el.siblings('.icon-minus').removeClass('out');
+                }
+
+                if(_v == 5) {
+                    //TODO
+//                    $.alert('人数最多5位');
+                } else {
+                    el.prev().text(_v + 1);
+
+                    if(el.prev().text() == 5) {
+                        el.addClass('out');
+                    }
+                }
+
+                el.data('clock', false);
+            }
+        });
+    }
+
+    /*
+    * 优惠券 - 操作
+    * */
+    function couponHandle() {
+        // 打开选择优惠券
+        $('.coupon-toggle').on('click', function() {
+            $('#couponList').popup('modal', function() {
+                //优惠券信息最多显示两行，然后显示更多，点击更多弹窗显示详情
+                $('.coupon-list .item .left .info').each(function () {
+                    resetStringLength($(this));
+                });
+
+                bindScroll('#couponList');
+            });
+        });
+
+        // 不使用优惠券
+        $('#closeCoupon').on('click', function() {
+            $('#couponList').closePopup();
+        });
+
+        // 选中优惠券
+        $('.coupon-list .item').on('click', function() {
+            $('#couponList').closePopup();
+        });
+
+        // 显示使用规则
+        $('.rule-btn').on('click', function() {
+            $('#ruleContent').popup('push');
+        });
+
+        /*
+         *
+         * 优惠券信息显示更多：
+         *   获取两行文本可显示的长度，然后截取
+         *
+         * */
+        function resetStringLength(obj) {
+            //只计算一次
+            if(!obj.data('resetStringLength')) {
+                //上锁
+                obj.data('resetStringLength', true);
+
+                //元素是否显示
+                if(obj.css('display') != 'none' && !obj.is(':hidden') && obj.is(':visible')) {
+                    //存储旧数据
+                    var objData = {
+                        width: obj.width(),
+                        fontSize:  parseFloat(obj.css('font-size').replace('px', '')),
+                        text: obj.text()
+                    };
+
+                    //获取新长度，并重新填充数据
+                    var newLength = objData.width / objData.fontSize * 2 - 6;
+
+                    //少于两行的长度，则不裁剪
+                    if(newLength > objData.text.length) {
+                        return false;
+                    }
+
+                    var __more = $('<span>更多></span>');
+                    obj.text(objData.text.slice(0, newLength) + '...');
+                    obj.append(__more);
+
+                    //阻止冒泡
+                    obj.on('click', function (e) {
+                        e.stopPropagation();
+                    });
+
+                    //查看更多
+                    __more.on('click', function (e) {
+                        //阻止冒泡
+                        e.stopPropagation();
+
+                        $.dialog({
+                            title: '',
+                            text: '',
+                            html: '<p style="font-size: 16px; max-height: 300px; overflow-y: auto;">' + objData.text + '</p>',
+                            autoClose: false,
+                            buttons: [{
+                                text: '知道了',
+                                onClick: function() {
+                                    $('.sui-mask').css('z-index', 1000);
+                                    $.closeDialog();
+                                }
+                            }]
+                        });
+
+                        $('.sui-mask').css('z-index', 8001);
+                    });
+
+                    return objData;
+                } else {
+                    //解锁
+                    obj.data('resetStringLength', false);
+
+                    setTimeout(function () {
+                        resetStringLength(obj);
+                    }, 10);
+                }
+            }
+        }
+    }
+
+    /*
+    * 保险操作
+    * */
+    function insuranceHandle() {
+        var $row = $('.insurance-row .insurance'),
+            $explain = $('.insurance-row .name'),
+            $insuranceExplain = $('#insuranceExplain'),
+            $plus = $('.handle-plus');
+        var $count = $row.find('.count'),
+            $count_txt = $plus.find('.txt');
+
+        //购买/取消 保险
+        $row.on('click', function () {
+            var self = $(this)
+
+            if(!self.data('action')) {
+                //购买
+                self.addClass('on').removeClass('off').data('action', true);
+                $('.insurance-passenger').show();
+                countHandler();
+            } else {
+                //取消
+                self.addClass('off').removeClass('on').data('action', false);
+                $('.insurance-passenger').hide();
+                countHandler(0);
+            }
+        });
+
+        //购买人数
+        countHandler();
+        $plus.find('i').on('click.insurance', function () {
+            countHandler();
+        });
+
+        //计算保险份数和保险价格
+        function countHandler(count_txt) {
+            var t = 0;
+
+            if(!count_txt && count_txt != 0) {
+                t = $count_txt.text()
+            }
+
+            $count.html('<i>x</i>' + t + '份');
+            $row.siblings('.value').text(t + '元');
+        }
+
+        //保险说明
+        $explain.on('click', function () {
+            //显示
+            $insuranceExplain.show();
+        });
+
+        $insuranceExplain.find('.mask').on('touchstart', function (e) {
+            //禁止拖动
+            e.preventDefault();
+        });
+
+        $insuranceExplain.find('.btn').on('click', function () {
+            //隐藏
+            $insuranceExplain.hide();
+        })
+    }
+
+    $(function() {
+        passengerHandle();
+        couponHandle();
+        insuranceHandle();
+
+        //规则
+        $.ruleInit();
+
+        // 选择支付方式
+        $('.payment-way li').off('click').on('click', function() {
+            $(this).find('input').prop('checked', true);
+        });
+
+        //字数统计
+        $('#message-1').on('input', function() {
+            var length = $(this).val().length;
+            if(length <= 40) {
+                $(this).next('div').attr('class', 'message-length').text(length + '/40');
+            } else {
+                /*$(this).next('div').attr('class', 'sui-red').text('字数太多了。');*/
+            }
+        });
+
+        //返回键
+        back();
+    });
+
+    function back() {
+        if (window.history && window.history.pushState) {
+            var href = window.location.href;
+            var level = -1;
+
+            history.pushState({page: 1}, 'page', href);
+
+            //点击返回键
+            $(window).on('popstate', function() {
+                history.go(level);
+            });
+
+            //弹窗层，返回0
+            $('#selectPassengerButton, .coupon-toggle, .insurance-toggle, .ticket-rule').on('click.back', function () {
+                level = 0;
+            });
+
+            //关闭弹窗层，返回-1
+            $('#selectButton, #closeCoupon, #closeInsurance').on('click.back', function () {
+                level = -1;
+            });
+        }
+    }
+    </script>
+</body>
+</html>

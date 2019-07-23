@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>中交出行</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="../../dist/stylesheets/base/vectors.2.css">
+    <link href="../../dist/stylesheets/my/myorder.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<div class="tab">
+		<div class="tab-bar">
+			<div class="content">
+				<ul>
+					<li data-tab="1">定制班线</li>
+					<li class="active" data-tab="6">旅游班线</li>
+					<li data-tab="5">上下班</li>
+					<li data-tab="2">城际约租车</li>
+					<li data-tab="3">出租车</li>
+					<li data-tab="4">汽车票</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="order-container">
+		<!--<div class="order-item">
+			<div class="head">
+				<span class="text-gray">下单时间：2017-04-27 15:34:28</span>
+				<span class="status status-orange">待支付</span>
+			</div>
+			<div class="content">
+				<div class="time">1月2日 8:36 <span class="text-gray">（共2张）</span></div>
+				<div class="row">
+					<div class="address">
+						<span class="start">深圳湾创业投资大厦</span>
+						<span class="end">深圳会展中心</span>
+					</div>
+					<div class="price"><span class="text-gray">实付</span><i>&yen;</i>6.5</div>
+				</div>
+			</div>
+		</div>-->
+    </div>
+	
+	<script src="../../dist/javascripts/zepto.min.js"></script>
+	<script src="../../dist/javascripts/simpleui.min.js"></script>
+	<script src="../../dist/javascripts/vectors.min.js"></script>
+	<script>
+		$(function () {
+            //请求列表数据
+			/*
+			 * param
+			 *
+			 *   存储数据，第一次切换才请求，之后都使用缓存里的数据
+			 *   如果刷新，缓存就会被清理，需要重新请求
+			 *
+			 * */
+            var listData = {
+                tab1: '',
+                tab2: '',
+                tab3: '',
+                tab4: '',
+                tab5: '',
+                tab6: ''
+            };
+            //tab请求锁
+            var orderClock = true;
+
+            function getList(t) {
+                //请求tab类型
+                var T = t;
+                var _type = '';
+
+                switch (T) {
+                    case 1:
+                        _type = 'tab1';
+                        break;
+                    case 2:
+                        _type = 'tab2';
+                        break;
+                    case 3:
+                        _type = 'tab3';
+                        break;
+                    case 4:
+                        _type = 'tab4';
+                        break;
+                    case 5:
+                        _type = 'tab5';
+                        break;
+                    case 6:
+                        _type = 'tab6';
+                        break;
+                }
+
+                //如果已经请求过了，则退出
+                if(listData[_type] != '') {
+                    full(listData[_type]);
+                    return false;
+                }
+
+                //清空数据并显示loading
+                $('.order-container').html('').loading();
+
+                //模拟请求
+                setTimeout(function(){
+                    //存储ajax请求到的数据
+					if(Math.random() < 0.8) {
+					    if(_type == 'tab1' || _type == 'tab3' || _type == 'tab5' || _type == 'tab6') {
+                            listData[_type] = [
+                                {
+                                    orderTime: '2017-04-27 15:34:28',
+                                    status: '待支付',
+                                    date: '1月2日 8:36',
+                                    count: parseInt(Math.random() * 10),
+                                    start: '深圳湾创业投资大厦',
+                                    end: '深圳会展中心',
+                                    price: parseFloat(Math.random() * 100).toFixed(2)
+                                },
+                                {
+                                    orderTime: '2017-04-27 15:34:28',
+                                    status: '上车支付',
+                                    date: '1月2日 8:36',
+                                    count: parseInt(Math.random() * 10),
+                                    start: '深圳湾创业投资大厦',
+                                    end: '深圳会展中心',
+                                    price: parseFloat(Math.random() * 100).toFixed(2)
+                                },
+                                {
+                                    orderTime: '2017-04-27 15:34:28',
+                                    status: '全部退票',
+                                    date: '1月2日 8:36',
+                                    count: parseInt(Math.random() * 10),
+                                    start: '深圳湾创业投资大厦',
+                                    end: '深圳会展中心',
+                                    price: parseFloat(Math.random() * 100).toFixed(2)
+                                },
+                                {
+                                    orderTime: '2017-04-27 15:34:28',
+                                    status: '部分退票',
+                                    date: '1月2日 8:36',
+                                    count: parseInt(Math.random() * 10),
+                                    start: '深圳湾创业投资大厦',
+                                    end: '深圳会展中心',
+                                    price: parseFloat(Math.random() * 100).toFixed(2)
+                                },
+                                {
+                                    orderTime: '2017-04-27 15:34:28',
+                                    status: '已关闭',
+                                    date: '1月2日 8:36',
+                                    count: parseInt(Math.random() * 10),
+                                    start: '深圳湾创业投资大厦',
+                                    end: '深圳会展中心',
+                                    price: parseFloat(Math.random() * 100).toFixed(2)
+                                },
+                                {
+                                    orderTime: '2017-04-27 15:34:28',
+                                    status: '已支付',
+                                    date: '1月2日 8:36',
+                                    count: parseInt(Math.random() * 10),
+                                    start: '深圳湾创业投资大厦',
+                                    end: '深圳会展中心',
+                                    price: parseFloat(Math.random() * 100).toFixed(2)
+                                }
+                            ];
+						} else if(_type == 'tab2') {
+                            listData[_type] = [
+                                {
+                                    people: parseInt(Math.random() * 10),
+                                    status: '等待接单',
+                                    date: '1月2日 8:36',
+                                    start: '软件产业基地（学府路）',
+                                    end: '西乡客运站',
+                                    price: parseFloat(Math.random() * 100).toFixed(2)
+                                },
+                                {
+                                    people: parseInt(Math.random() * 10),
+                                    status: '待支付',
+                                    date: '1月2日 8:36',
+                                    start: '软件产业基地（学府路）',
+                                    end: '西乡客运站',
+                                    price: parseFloat(Math.random() * 100).toFixed(2)
+                                },
+                                {
+                                    people: parseInt(Math.random() * 10),
+                                    status: '进行中',
+                                    date: '1月2日 8:36',
+                                    start: '软件产业基地（学府路）',
+                                    end: '西乡客运站',
+                                    price: parseFloat(Math.random() * 100).toFixed(2)
+                                },
+                                {
+                                    people: parseInt(Math.random() * 10),
+                                    status: '待执行',
+                                    date: '1月2日 8:36',
+                                    start: '软件产业基地（学府路）',
+                                    end: '西乡客运站',
+                                    price: parseFloat(Math.random() * 100).toFixed(2)
+                                },
+                                {
+                                    people: parseInt(Math.random() * 10),
+                                    status: '已完成',
+                                    date: '1月2日 8:36',
+                                    start: '软件产业基地（学府路）',
+                                    end: '西乡客运站',
+                                    price: parseFloat(Math.random() * 100).toFixed(2)
+                                },
+                                {
+                                    people: parseInt(Math.random() * 10),
+                                    status: '已取消',
+                                    date: '1月2日 8:36',
+                                    start: '软件产业基地（学府路）',
+                                    end: '西乡客运站',
+                                    price: parseFloat(Math.random() * 100).toFixed(2)
+                                },
+                                {
+                                    people: parseInt(Math.random() * 10),
+                                    status: '已退款',
+                                    date: '1月2日 8:36',
+                                    start: '软件产业基地（学府路）',
+                                    end: '西乡客运站',
+                                    price: parseFloat(Math.random() * 100).toFixed(2)
+                                }
+							];
+						} else if(_type == 'tab4'){
+                            listData[_type] = [
+                                {
+                                    orderTime: '2017-04-27 15:34:28',
+                                    status: '待支付',
+                                    date: '1月2日(星期一) 8:36',
+                                    count: parseInt(Math.random() * 10),
+                                    start: '深圳湾创业投资大厦',
+                                    end: '深圳会展中心',
+                                    price: parseFloat(Math.random() * 100).toFixed(2)
+                                },
+                                {
+                                    orderTime: '2017-04-27 15:34:28',
+                                    status: '待出票',
+                                    date: '1月2日(星期一) 8:36',
+                                    count: parseInt(Math.random() * 10),
+                                    start: '深圳湾创业投资大厦',
+                                    end: '深圳会展中心',
+                                    price: parseFloat(Math.random() * 100).toFixed(2)
+                                },
+                                {
+                                    orderTime: '2017-04-27 15:34:28',
+                                    status: '已出票',
+                                    date: '1月2日(星期一) 8:36',
+                                    count: parseInt(Math.random() * 10),
+                                    start: '深圳湾创业投资大厦',
+                                    end: '深圳会展中心',
+                                    price: parseFloat(Math.random() * 100).toFixed(2)
+                                },
+                                {
+                                    orderTime: '2017-04-27 15:34:28',
+                                    status: '已关闭',
+                                    date: '1月2日(星期一) 8:36',
+                                    count: parseInt(Math.random() * 10),
+                                    start: '深圳湾创业投资大厦',
+                                    end: '深圳会展中心',
+                                    price: parseFloat(Math.random() * 100).toFixed(2)
+                                },
+                                {
+                                    orderTime: '2017-04-27 15:34:28',
+                                    status: '出票失败',
+                                    date: '1月2日(星期一) 8:36',
+                                    count: parseInt(Math.random() * 10),
+                                    start: '深圳湾创业投资大厦',
+                                    end: '深圳会展中心',
+                                    price: parseFloat(Math.random() * 100).toFixed(2)
+                                },
+                                {
+                                    orderTime: '2017-04-27 15:34:28',
+                                    status: '部分退票',
+                                    date: '1月2日(星期一) 8:36',
+                                    count: parseInt(Math.random() * 10),
+                                    start: '深圳湾创业投资大厦',
+                                    end: '深圳会展中心',
+                                    price: parseFloat(Math.random() * 100).toFixed(2)
+                                },
+								{
+									orderTime: '2017-04-27 15:34:28',
+									status: '全部退票',
+									date: '1月2日(星期一) 8:36',
+									count: parseInt(Math.random() * 10),
+									start: '深圳湾创业投资大厦',
+									end: '深圳会展中心',
+									price: parseFloat(Math.random() * 100).toFixed(2)
+								}
+                            ];
+						}
+					} else {
+					    //empty
+                        listData[_type] = [];
+					}
+
+                    full(listData[_type]);
+                }, 1000);
+
+                //填充数据并关闭loading
+                function full(oData) {
+                    var _html = '';
+                    var _statusClass= '';
+
+                    if(oData.length > 0) {
+                        if(_type == 'tab1') {
+                            _html += '<div class="custom">';
+
+                            for(var i = 0; i < oData.length; i++) {
+                                /*
+                                * 状态对应颜色
+                                *
+                                * 	status-orange：橙色，status-green：绿色，status-primary：黑色，status-gray：灰色
+                                *
+                                * */
+                                switch (oData[i].status) {
+                                    case '待支付':
+                                        _statusClass = ' status-orange';
+                                        break;
+                                    case '待执行':
+                                        _statusClass = ' status-orange';
+                                        break;
+                                    case '等待接单':
+                                        _statusClass = ' status-orange';
+                                        break;
+                                    case '进行中':
+                                        _statusClass = ' status-green';
+                                        break;
+                                    case '已支付':
+                                        _statusClass = ' status-green';
+                                        break;
+                                    case '上车支付':
+                                        _statusClass = ' status-orange';
+                                        break;
+                                    case '全部退票':
+                                        _statusClass = ' status-primary';
+                                        break;
+                                    case '部分退票':
+                                        _statusClass = ' status-primary';
+                                        break;
+                                    case '已关闭':
+                                        _statusClass = ' status-gray';
+                                        break;
+                                    default:
+                                        _statusClass = ' status-primary';
+                                }
+
+                                _html += '<div class="order-item" data-href="#' + i + '">' +
+											'<div class="head">' +
+												'<span class="text-gray">下单时间：' + oData[i].orderTime + '</span>' +
+												'<span class="status' + _statusClass + '">' + oData[i].status + '</span>' +
+											'</div>' +
+											'<div class="content">' +
+												'<div class="time">' + oData[i].date + '<span class="text-gray">（共' + oData[i].count + '张）</span></div>' +
+												'<div class="row">' +
+													'<div class="address">' +
+														'<span class="start">' + oData[i].start + '</span>' +
+														'<span class="end">' + oData[i].end + '</span>' +
+													'</div>' +
+													'<div class="price"><i>&yen;</i>' + oData[i].price + '</div>' +
+												'</div>' +
+											'</div>' +
+										'</div>';
+                            }
+						} else if(_type == 'tab2') {
+                            _html += '<div class="booked">';
+                            /*
+                            * waitHtml：等待中订单
+                            * underwayHtml：进行中订单
+                            * alreadyHtml：已预约订单
+                            * completedHtml：已完成订单
+                            * */
+                            var waitHtml = '<div class="group"><h4 class="title">等待中订单</h4>',
+								underwayHtml = '<div class="group"><h4 class="title">进行中订单</h4>',
+                                alreadyHtml = '<div class="group"><h4 class="title">已预约订单</h4>',
+                                completedHtml = '<div class="group"><h4 class="title">已完成订单</h4>';
+
+                            for(var i = 0; i < oData.length; i++) {
+                                /*
+                                * 状态对应颜色
+                                *
+                                * 	status-orange：橙色，status-green：绿色，status-primary：黑色，status-gray：灰色，status-red：红色，status-yellow：黄色
+                                *
+                                * */
+                                switch (oData[i].status) {
+                                    case '等待接单':
+                                        _statusClass = ' status-yellow';
+                                        break;
+                                    case '待支付':
+                                        _statusClass = ' status-red';
+                                        break;
+                                    case '进行中':
+                                        _statusClass = ' status-yellow';
+                                        break;
+                                    case '待执行':
+                                        _statusClass = ' status-yellow';
+                                        break;
+                                    case '已完成':
+                                        _statusClass = ' status-green';
+                                        break;
+                                    case '已取消':
+                                        _statusClass = ' status-gray';
+                                        break;
+                                    case '已退款':
+                                        _statusClass = ' status-primary';
+                                        break;
+                                    default:
+                                        _statusClass = ' status-primary';
+                                }
+
+                                //付款金额
+                                var priceHtml = '';
+                                if(oData[i].status == '等待接单' || oData[i].status == '进行中' || oData[i].status == '待执行' || oData[i].status == '已完成') {
+                                    priceHtml += '<div class="price"><span>实付</span><i>&yen;</i>' + oData[i].price + '</div>';
+								}
+
+                                var _tmpHtml = '<div class="order-item" data-href="#' + i + '">' +
+											'<div class="head">' +
+												'<span>城际约租车 （' + oData[i].people + '人）</span>' +
+												'<span class="status' + _statusClass + '">' + oData[i].status + '</span>' +
+											'</div>' +
+											'<div class="content">' +
+												'<div class="time">' + oData[i].date + '</div>' +
+													'<div class="row">' +
+														'<div class="address">' +
+															'<span class="start">' + oData[i].start + '</span>' +
+															'<span class="end">' + oData[i].end + '</span>' +
+														'</div>' +
+													priceHtml +
+												'</div>' +
+											'</div>' +
+										'</div>';
+
+								if(oData[i].status == '等待接单' || oData[i].status == '待支付') {
+                                    //等待中
+                                    waitHtml += _tmpHtml;
+								} else if(oData[i].status == '进行中') {
+                                    //进行中
+                                    underwayHtml += _tmpHtml;
+                                } else if(oData[i].status == '待执行') {
+                                    //已预约
+                                    alreadyHtml += _tmpHtml;
+                                } else if(oData[i].status == '已完成' || oData[i].status == '已取消' || oData[i].status == '已退款') {
+                                    //已完成
+                                    completedHtml += _tmpHtml;
+                                }
+                            }
+
+                            _html += (waitHtml + '</div>') + (underwayHtml + '</div>') + (alreadyHtml + '</div>') + (completedHtml + '</div>');
+                        } else if(_type == 'tab3') {
+                            _html += '<div class="order-empty">' +
+										'<i></i>' +
+										'<p>您当前没有订单</p>' +
+										'<div class="btn-group">' +
+											'<button class="btn primary">去购票</button>' +
+										'</div>' +
+									'</div>';
+						} else if(_type == 'tab4') {
+                            _html += '<div class="custom">';
+
+                            for(var i = 0; i < oData.length; i++) {
+                                /*
+                                * 状态对应颜色
+                                *
+                                * 	status-orange：橙色，status-green：绿色，status-primary：黑色，status-gray：灰色
+                                *
+                                * */
+                                switch (oData[i].status) {
+                                    case '待支付':
+                                        _statusClass = ' status-orange';
+                                        break;
+                                    case '待出票':
+                                        _statusClass = ' status-primary';
+                                        break;
+                                    case '已出票':
+                                        _statusClass = ' status-green';
+                                        break;
+                                    case '已关闭':
+                                        _statusClass = ' status-gray';
+                                        break;
+                                    case '出票失败':
+                                        _statusClass = ' status-gray';
+                                        break;
+                                    case '全部退票':
+                                        _statusClass = ' status-primary';
+                                        break;
+                                    case '部分退票':
+                                        _statusClass = ' status-primary';
+                                        break;
+                                    default:
+                                        _statusClass = ' status-primary';
+                                }
+
+                                _html += '<div class="order-item" data-href="#' + i + '">' +
+											'<div class="head">' +
+												'<span class="text-gray">下单时间：' + oData[i].orderTime + '</span>' +
+												'<span class="status' + _statusClass + '">' + oData[i].status + '</span>' +
+											'</div>' +
+											'<div class="content">' +
+												'<div class="time">' + oData[i].date + '<span>/' + oData[i].count + '人</span></div>' +
+												'<div class="row">' +
+													'<div class="address">' +
+														'<span class="start">' + oData[i].start + '</span>' +
+														'<span class="end">' + oData[i].end + '</span>' +
+													'</div>' +
+													'<div class="price"><i>&yen;</i>' + oData[i].price + '</div>' +
+												'</div>' +
+											'</div>' +
+										'</div>';
+                            }
+
+						} else if(_type == 'tab5') {
+                            //上下班
+                            _html += '<div class="custom">';
+
+                            for(var i = 0; i < oData.length; i++) {
+                                /*
+                                * 状态对应颜色
+                                *
+                                * 	status-orange：橙色，status-green：绿色，status-primary：黑色，status-gray：灰色
+                                *
+                                * */
+                                switch (oData[i].status) {
+                                    case '待支付':
+                                        _statusClass = ' status-orange';
+                                        break;
+                                    case '待执行':
+                                        _statusClass = ' status-orange';
+                                        break;
+                                    case '等待接单':
+                                        _statusClass = ' status-orange';
+                                        break;
+                                    case '进行中':
+                                        _statusClass = ' status-green';
+                                        break;
+                                    case '已支付':
+                                        _statusClass = ' status-green';
+                                        break;
+                                    case '上车支付':
+                                        _statusClass = ' status-orange';
+                                        break;
+                                    case '全部退票':
+                                        _statusClass = ' status-primary';
+                                        break;
+                                    case '部分退票':
+                                        _statusClass = ' status-primary';
+                                        break;
+                                    case '已关闭':
+                                        _statusClass = ' status-gray';
+                                        break;
+                                    default:
+                                        _statusClass = ' status-primary';
+                                }
+
+                                _html += '<div class="order-item" data-href="#' + i + '">' +
+											'<div class="head">' +
+												'<span class="text-gray">下单时间：' + oData[i].orderTime + '</span>' +
+												'<span class="status' + _statusClass + '">' + oData[i].status + '</span>' +
+											'</div>' +
+											'<div class="content">' +
+												'<div class="time">' + oData[i].date + '<span class="text-gray">（共' + oData[i].count + '天）</span></div>' +
+												'<div class="row">' +
+													'<div class="address">' +
+														'<span class="start">' + oData[i].start + '</span>' +
+														'<span class="end">' + oData[i].end + '</span>' +
+													'</div>' +
+													'<div class="price"><i>&yen;</i>' + oData[i].price + '</div>' +
+												'</div>' +
+											'</div>' +
+										'</div>';
+                            }
+                        } else if(_type == 'tab6') {
+                            _html += '<div class="custom">';
+
+                            for(var i = 0; i < oData.length; i++) {
+                                /*
+                                * 状态对应颜色
+                                *
+                                * 	status-orange：橙色，status-green：绿色，status-primary：黑色，status-gray：灰色
+                                *
+                                * */
+                                switch (oData[i].status) {
+                                    case '待支付':
+                                        _statusClass = ' status-orange';
+                                        break;
+                                    case '待执行':
+                                        _statusClass = ' status-orange';
+                                        break;
+                                    case '等待接单':
+                                        _statusClass = ' status-orange';
+                                        break;
+                                    case '进行中':
+                                        _statusClass = ' status-green';
+                                        break;
+                                    case '已支付':
+                                        _statusClass = ' status-green';
+                                        break;
+                                    case '上车支付':
+                                        _statusClass = ' status-orange';
+                                        break;
+                                    case '全部退票':
+                                        _statusClass = ' status-primary';
+                                        break;
+                                    case '部分退票':
+                                        _statusClass = ' status-primary';
+                                        break;
+                                    case '已关闭':
+                                        _statusClass = ' status-gray';
+                                        break;
+                                    default:
+                                        _statusClass = ' status-primary';
+                                }
+
+                                _html += '<div class="order-item" data-href="#' + i + '">' +
+                                    '<div class="head">' +
+                                    '<span class="text-gray">下单时间：' + oData[i].orderTime + '</span>' +
+                                    '<span class="status' + _statusClass + '">' + oData[i].status + '</span>' +
+                                    '</div>' +
+                                    '<div class="content">' +
+                                    '<div class="time">' + oData[i].date + '<span class="text-gray">（共' + oData[i].count + '张）</span></div>' +
+                                    '<div class="row">' +
+                                    '<div class="address">' +
+                                    '<span class="start">' + oData[i].start + '</span>' +
+                                    '<span class="end">' + oData[i].end + '</span>' +
+                                    '</div>' +
+                                    '<div class="price"><i>&yen;</i>' + oData[i].price + '</div>' +
+                                    '</div>' +
+                                    '</div>' +
+                                    '</div>';
+                            }
+                        }
+
+                        _html += '</div>';
+					} else {
+                        //empty
+                        _html += '<div class="order-empty">' +
+									'<i></i>' +
+									'<p>您当前没有订单</p>' +
+									'<div class="btn-group">' +
+										'<button class="btn primary">去购票</button>' +
+									'</div>' +
+								 '</div>';
+					}
+
+                    //当前请求的tab类型 == 当前点击的tab类型
+                    var _activeT = $('.tab ul li.active').data('tab');
+                    if(T == _activeT) {
+                        $('.order-container').html('').append(_html).hideLoading();
+
+                        //绑定点击链接事件
+                        $('[data-href]').on('click', function () {
+							window.location.href = $(this).data('href');
+                        });
+                    } else {
+                        getList(_activeT);
+                    }
+
+                    //解锁
+                    orderClock = true;
+                }
+            }
+
+            //滚动插件
+            var dateScroll = new IScroll('.tab-bar', {
+                scrollX: true,
+                scrollY: false,
+                mouseWheel: true
+            });
+
+            //tab切换
+            $('.tab ul li').on('click', function () {
+                var self = $(this);
+
+                self.addClass('active').siblings().removeClass('active');
+                dateScroll.scrollToElement(self[0], 500, true, true, IScroll.utils.ease.circular);
+
+                //under
+                under(self);
+
+                //切换列表
+                if(orderClock) {
+                    orderClock = false;
+
+                    var _tab = self.data('tab');
+                    getList(_tab);
+                }
+            });
+
+            //under
+			function under(self) {
+			    var under = $('.tab .under');
+
+			    var auto = setInterval(function () {
+					if(self.width() > 0) {
+					    clearInterval(auto);
+
+					    //取缓存 - 宽度
+						if(localStorage.getItem('under-width')) {
+                            under.width(under_w);
+						} else {
+                            under.width(under_w);
+						}
+
+                        //设置尺寸
+                        var w = self.width(),
+                            fsize = parseFloat($('html').css('font-size'));
+                        var under_w = w / fsize * 0.9 + 'rem';
+                        under.width(under_w);
+
+                        //设置缓存 - 宽度
+                        localStorage.setItem('under-width', under_w);
+
+                        //取缓存 - 定位
+                        if(localStorage.getItem('under-left')) {
+                            under.css('left', localStorage.getItem('under-left'));
+                        } else {
+                            under.css('left', 0);
+                        }
+
+                        //定位
+                        var surplus = w * 0.1 / fsize / 2;
+                        surplus += self.position().left / fsize;
+                        surplus += 'rem';
+
+                        under.css('left', surplus);
+
+                        //设置缓存 - 宽度
+                        localStorage.setItem('under-left', surplus);
+					}
+                }, 600);
+            }
+
+            init();
+        });
+
+		function init() {
+		    var $tab = $('.tab');
+
+            //under
+            $tab.find('.tab-bar .content').append('<div class="under"></div>');
+
+            //tab的active
+            $tab.find('ul li.active').click();
+        }
+	</script>
+</body>
+</html>

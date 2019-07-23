@@ -1,0 +1,151 @@
+.date-container{
+  box-shadow: 0 0 0.2rem 0 rgba(0,0,0,0.10);
+  .header{
+    height: 1rem;
+    background: #F2F2F2;
+    text-align: center;
+    line-height: 1rem;
+    font-size: 0.32rem;
+    color: #6392FE;
+    letter-spacing: 0;
+  }
+  .content{
+    background: #FFFFFF;
+    padding: 0 0.2rem;
+    font-family: PingFangSC-Medium;
+    font-size: 0.28rem;
+    //height: 7.53rem;
+    //overflow-y: scroll;
+    //星期
+    .week-box{
+      ul{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        li{
+          flex-basis: 12%;
+          margin: 0 0.05rem;
+          text-align: center;
+          height: 0.74rem;
+          line-height: 0.74rem;
+          color: #999999;
+          &:first-child{
+            color: #6392FE;
+          }
+          &:last-child{
+            color: #6392FE;
+          }
+        }
+      }
+    }
+
+    //日历
+    .date-box{
+      ul{
+        li{
+          padding: 0.09rem 0 0.5rem;
+          //border-bottom: 1px solid #F2F2F2;;
+          table{
+            width: 100%;
+            font-size: 0.28rem;
+            thead{
+              color: #333333;
+              th{
+                text-align: center;
+              }
+            }
+            tbody{
+              tr{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                td{
+                  flex-basis: 12%;
+                  margin: 0.16rem 0.05rem;
+                  text-align: center;
+                  padding: 0.05rem 0;
+                  border-radius: 0.06rem;
+                  p,span{
+                    display: block;
+                    height: 0.25rem;
+                    font-size: 0.18rem;
+                    color: #999;
+                  }
+                  em{
+                    height: 0.4rem;
+                    line-height: 0.4rem;
+                  }
+
+                  &:active{
+                    background: #6392FE;
+                    color: #fff;
+                    p,span{
+                      color: #fff;
+                    }
+                  }
+                }
+                td.hide{
+                  //不显示
+                  opacity: 0;
+                }
+                .on-sale{
+                  //  有票
+                  span{
+                    color: #6392FE;
+                  }
+                  &:active{
+                    box-shadow: 0 0 0.1rem 0 rgba(61,59,238,0.30);
+                    p,span{
+                      color: #fff;
+                    }
+                  }
+                }
+                .festival{
+                  //节假日
+                  box-shadow: 0 0 0.1rem 0 rgba(0,0,0,0.10);
+                  position: relative;
+                  i{
+                    width: 0.17rem;
+                    height:0.17rem;
+                    padding: 0.03rem;
+                    line-height: 0.2rem;
+                    border-radius: 0.17rem;
+                    font-size: 0.14rem;
+                    text-align: center;
+                    border: 0.01rem solid #999;
+                    color: #999;
+                    position: absolute;
+                    left: -0.07rem;
+                    top: -0.07rem;
+                  }
+
+                  &:active{
+                    i{
+                      background: #FFFFFF;
+                      border: 1px solid #6392FE;
+                      color: #6392FE;
+                    }
+                  }
+                }
+                //.festival-active{
+                //  //选中
+                //  box-shadow: 0 0 0.1rem 0 rgba(61,59,238,0.30);
+                //  background: #6392FE;
+                //  color: #FFFFFF;
+                //  span{
+                //    color: #fff;
+                //  }
+                //  i{
+                //    background: #FFFFFF;
+                //    border: 1px solid #6392FE;
+                //    color: #6392FE;
+                //  }
+                //}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

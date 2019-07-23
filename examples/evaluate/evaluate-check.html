@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>中交出行</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../../dist/stylesheets/evaluate/evaluate-check.css">
+</head>
+
+<body>
+
+    <div class="evaluate-check">
+        <div class="title">您的评价将帮助我们提升服务品质</div>
+
+        <div class="content">
+            <div class="item">
+                <h2 class="caption">综合评价</h2>
+                <div class="star" data-level="3"></div>
+                <div class="tag">
+                    <span data-value="卫生很好">卫生很好</span>
+                    <span data-value="行驶平稳">行驶平稳</span>
+                    <span data-value="态度好">态度好</span>
+                    <span data-value="准时到站">准时到站</span>
+                    <span data-value="停靠准确">停靠准确</span>
+                    <span data-value="行驶平稳">行驶平稳</span>
+                    <input type="hidden" id="tag1">
+                </div>
+            </div>
+            <div class="message">
+                <div class="thumb"><img src="https://gss0.bdstatic.com/7051cy89RcgCncy6lo7D0j9wexYrbOWh7c50/zhidaoribao/2017/0801/hou.jpg"></div>
+                <div class="thumb"><img src="https://gss0.bdstatic.com/7051cy89RcgCncy6lo7D0j9wexYrbOWh7c50/zhidaoribao/2017/0801/hou.jpg"></div>
+                <div class="thumb"><img src="https://gss0.bdstatic.com/7051cy89RcgCncy6lo7D0j9wexYrbOWh7c50/zhidaoribao/2017/0801/hou.jpg"></div>
+                <div class="details">司机真帅，定位很准。服务态度也很好，准时到站，车内空气清晰。</div>
+            </div>
+            <div class="reply">
+                <div class="headline">客服回复</div>
+                <div class="msg">
+                    <p>感谢您的评价，我们将会改善不断改善我们的服务质量。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../dist/javascripts/zepto.min.js"></script>
+    <script src="../../dist/javascripts/simpleui.min.js"></script>
+    <script src="../../dist/javascripts/vectors.min.js"></script>
+    <script>
+        $(function() {
+            /*
+            * star
+            * */
+            $('.star').each(function (index) {
+                var $el = $(this);
+                var _level = Number($el.data('level'));
+
+                if(isNaN(_level)) {
+                    throw '星级错误'
+                }
+
+                var _html = '';
+                for(var i = 0; i < 5; i++) {
+                    if(i < _level) {
+                        _html = '<span class="active"></span>'
+                    } else {
+                        _html = '<span></span>'
+                    }
+
+                    $el.append(_html);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

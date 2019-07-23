@@ -1,0 +1,219 @@
+@charset "utf-8";
+.text-red {
+    color: #FE6666;
+}
+.text-gray {
+    font-size: 0.32rem;
+    color: #9b9b9b;
+}
+
+.passenger-list-wrapper {
+    background-color: #fff;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.05);
+    padding: 0 10px;
+
+    .passenger-handle {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 5px 0;
+
+        li {
+            flex: 1;
+            border-top: 0 none;
+            background: transparent;
+            border-left: 1px solid rgba(230, 230, 230, 0.5);
+
+            &:first-child {
+                border-left: 0 none;
+            }
+        }
+    }
+
+    .passenger-list {
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            color: #666;
+
+            .name {
+                align-self: flex-start;
+                margin-right: 15px;
+            }
+
+            .info {
+                flex: 3;
+                margin-right: 10px;
+
+                h4 {
+                    min-height: 24px;
+                    margin: 6px 0 8px;
+                    font-size: 16px;
+                    color: #333;
+                }
+
+                p {
+                    font-size: 16px;
+                    color: #333;
+
+                    em {
+                        margin-right: 10px;
+                    }
+                }
+            }
+
+            .handle {
+                align-self: center;
+                margin-right: 5px;
+
+                .icon-edit {
+                    display: inline-block;
+                    width: 19px;
+                    height: 20px;
+                    background: url(../../images/bus/icon-edit.png) no-repeat center;
+                    background-size: 100% 100%;
+                }
+            }
+        }
+    }
+}
+
+#passengerList {
+    .wrapper {
+        width: 100%;
+        overflow: hidden;
+    }
+}
+
+.add-btn {
+    padding: 20px 0;
+    font-size: 16px;
+    color: #333;
+
+    &:before {
+        content: '';
+        display: inline-block;
+        margin-right: 8px;
+        width: 25px;
+        height: 25px;
+        background: url(../../images/bus/icon-plus.png) center no-repeat;
+        background-size: 100% 100%;
+        vertical-align: middle;
+    }
+}
+
+.del-btn {
+    padding: 20px 0;
+    font-size: 16px;
+    color: #333;
+
+    &:before {
+        content: '';
+        display: inline-block;
+        margin-right: 8px;
+        width: 25px;
+        height: 25px;
+        background: url(../../images/bus/icon-del.png) center no-repeat;
+        background-size: 100% 100%;
+        vertical-align: bottom;
+    }
+}
+
+#addPassenger {
+    .form {
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10px;
+
+            label {
+                flex: 1;
+                font-size: 16px;
+                color: #333;
+            }
+
+            input {
+                flex: 3;
+                border: 0;
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+.add-passenger-wrapper {
+    margin: 10px;
+    box-shadow: 0 2px 6px 0 rgba(0,0,0,0.10);
+    border-radius: 3px;
+}
+
+#editPassenger {
+    .form {
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10px;
+
+            label {
+                flex: 1;
+                font-size: 16px;
+                color: #333;
+            }
+
+            input {
+                flex: 3;
+                border: 0;
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+.edit-passenger-wrapper {
+    margin: 10px;
+    box-shadow: 0 2px 6px 0 rgba(0,0,0,0.10);
+    border-radius: 3px;
+}
+
+/*倒计时*/
+.count-down {
+    background: #ff6b6b;
+    padding: 8px;
+    font-size: 14px;
+    color: #F3F4F5;
+    text-align: center;
+}
+
+.frm-checkbox {
+    width: 36px;
+    height: 36px;
+    border: 0;
+    appearance: none;
+    outline: 0;
+    margin-right: 2px;
+    vertical-align: middle;
+    background: 0 0;
+    position: relative;
+
+    &:before {
+        content: '';
+        display: block;
+        width: 36px;
+        height: 36px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-image: url(../../images/bus/icon_checkbox_bar.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
+
+    &:checked:before {
+        background-image: url(../../images/bus/icon_checkbox_bar_select.png);
+    }
+}

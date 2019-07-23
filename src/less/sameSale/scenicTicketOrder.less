@@ -1,0 +1,256 @@
+body{
+    background: #F3F4F5;
+    font-family: PingFangSC-Regular;
+  }
+  .explainBox{
+    p{
+      background: #FFFFFF;
+      width: 100%;
+      padding: 0 .22rem;
+      box-sizing: border-box;
+      display: flex;
+      color: #333333;
+      padding-bottom: .1rem;
+      span{
+        width: 60%;
+        margin-left: .2rem;
+        text-align: right;
+        color: #9b9b9b;
+        margin-left: 20%;
+      }
+    }
+  }
+  .lump{
+    background: #FFFFFF;
+    box-shadow: 0 0.02rem 0.02rem 0 rgba(0,0,0,0.05);
+    margin-top: 0.22rem;
+  }
+  
+  .ticket-name-content{
+    margin-top: 0;
+    padding: 0.3rem 0.22rem;
+    .info{
+      font-size: 0.32rem;
+      color: #333333;
+    }
+  }
+  
+  .ticket-info-content{
+    padding: 0.22rem;
+    ul{
+      li{
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-top: 0.2rem;
+        &:first-child{
+          margin-top: 0;
+        }
+        .left{
+          font-size: 0.28rem;
+          color: #4A4A4A;
+          min-width: 1.5rem;
+        }
+        .right{
+          font-size: 0.28rem;
+          color: #9B9B9B;
+          text-align: right;
+        }
+        .price{
+          color: #FE6666;
+        }
+  
+      }
+    }
+  }
+  
+  .role-info-content{
+    font-size: 0.28rem;
+    color: #333333;
+    .contacts{
+        padding-right: .5rem;
+    }
+    .role-name{
+      padding: 0.28rem 0.22rem;
+    }
+    ul{
+      li{
+        padding: 0.22rem;
+        position: relative;
+        .line-item{
+          width: 100%;
+          display: flex;
+          margin-top: 0.1rem;
+          span{
+              font-size: .28rem;
+              padding-left: .5rem;
+          }
+  
+          &:first-child{
+            margin-top: 0;
+          }
+          .value{
+            margin-left: 0.36rem;
+          }
+          .status{
+            width: .88rem;
+            border: 1px solid #f9f9f9;
+            box-shadow: 0.02rem rgba(0,0,0,0.05);
+            text-align: center;
+            padding: .05rem;
+            border-radius: .1rem;
+            font-size: .24rem;
+            color: #fff;
+            background: #6392FE;
+          }
+        }
+  
+      }
+    }
+  }
+  
+  .btn-bar{
+    margin-top: 0.6rem;
+    background: rgba(255,255,255,0.90);
+    box-shadow: 0.04rem 0 0.04rem 0 rgba(0,0,0,0.10);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0.2rem 0;
+    .button{
+      width: 50%;
+      height: 1rem;
+      line-height: 1rem;
+      font-size: 0.38rem;
+      color: #CCCCCC;
+      text-align: center;
+      background: #FFFFFF;
+      border: 1px solid #CCCCCC;
+      border-radius: 1rem;
+      &:active{
+        background: #6392FE;
+        color: #FFFFFF;
+      }
+    }
+    .active{
+      background: #6392FE;
+      color: #FFFFFF;
+    }
+    .back{
+      padding: 0 0.4rem;
+    }
+    .refund{
+      width: 2.52rem;
+  
+    }
+    .to-check{
+      width: 3.52rem;
+    }
+  }
+//   检票弹窗
+.popup-container-detail{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+    z-index: 999;
+    top: 0;
+    left: 0;
+    .detail-content{
+      margin: 3.92rem 0.22rem 0;
+      background: #FFFFFF;
+      box-shadow: 0 0 0.1rem 0 rgba(0,0,0,0.10);
+      border-radius: 0.08rem;
+      padding: 0.22rem;
+      .detail-box{
+        .detail-item{
+          &:first-child{
+            margin-top: 0;
+          }
+          display: flex;
+          margin-top: 0.1rem;
+          .name{
+            flex: 1;
+            font-size: 0.32rem;
+            color: #333333;
+          }
+          .value{
+            flex: 1;
+            text-align: right;
+            font-size: 0.32rem;
+            color: #FE6666;
+            span{
+              padding: 0 0.22rem;
+            }
+          }
+        }
+      }
+    }
+  
+    .check-content{
+      background: #FFFFFF;
+      box-shadow: 0 0 0.1rem 0 rgba(0,0,0,0.10);
+      border-radius: 0.08rem;
+      margin: 1.2rem auto;
+      width: 7.06rem;
+      .icon-close{
+        width: 0.7rem;
+        height: 0.7rem;
+        background: url("../../images/coach/icon-close.png") no-repeat;
+        background-size: 100%;
+        position: absolute;
+        right: 0.2rem;
+        top: 0.2rem;
+      }
+      .order-info{
+        background: #6392FE;
+        border-radius: 0.08rem 0.08rem 0 0;
+        font-size: 0.32rem;
+        color: #FFFFFF;
+        padding: 0.22rem;
+      }
+      .order-check{
+        text-align: center;
+        margin: 0 auto;
+        .prompt{
+          font-family: PingFangSC-Medium;
+          font-size: 0.32rem;
+          color: #333333;
+          margin: 0.2rem 0 0.3rem;
+        }
+        .qr-code{
+          width: 3rem;
+          height: 3rem;
+          background: #FFFFFF;
+          border: 1px solid #CCCCCC;
+          border-radius: 0.04rem;
+          margin: auto;
+          img{
+            width: 3rem;
+            height: 3rem;
+          }
+        }
+  
+        .person-info{
+          font-family: PingFangSC-Regular;
+          font-size: 0.28rem;
+          color: #333333;
+          margin: 0.2rem 0.2rem 0;
+          padding-bottom: 0.29rem;
+        }
+  
+        .check-info{
+          padding: 0.21rem 0 0.22rem;
+          .info-header{
+            font-size: 0.28rem;
+            color: #999999;
+          }
+          .info-data{
+            font-size: 0.32rem;
+            color: #333333;
+            margin-top: 0.1rem;
+          }
+        }
+      }
+    }
+  }

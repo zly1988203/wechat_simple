@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2018，你的专属出行记忆 - 乐乘巴士</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/conclusion-Year/conclusion-year.css" rel="stylesheet" type="text/css">
+</head>
+<style>
+    .bg{
+        background: url("../../dist/images/conclusion-Year/step4.png") fixed bottom  center no-repeat;
+        /*-webkit-background-size: cover;*/
+        /*-moz-background-size: cover;*/
+        /*-o-background-size: cover;*/
+        background-size: 100% 100%;
+    }
+
+    .content{
+        margin-top: 2.5rem;
+    }
+
+    .header{
+        display: flex;
+        margin-left: 0.75rem;
+        margin-right: 0.75rem;
+    }
+    .header img{
+        width: 0.9rem;
+        height: 0.9rem;
+        border-radius: 0.9rem;
+    }
+
+    .header .user{
+        margin: 0.2rem;
+    }
+
+    .header .user .name{
+        font-size: 0.24rem;
+        color: #333333;
+        text-align: center;
+    }
+
+</style>
+<body class="bg">
+<section class="content">
+    <div>过去一年里 <span>心灵线</span> 共有 <span>55</span> 班次</div>
+    <div>载着 <span>765</span> 位乘客穿梭于这个城市</div>
+    <div>茫茫人海中，Ta们曾与你擦肩而过？</div>
+</section>
+<div class="header">
+    <div class="user">
+        <img src="../../dist/images/conclusion-Year/user1.png">
+        <div class="name">蓄势待发</div>
+    </div>
+    <div class="user">
+        <img src="../../dist/images/conclusion-Year/user2.png">
+        <div class="name">蓄势待发</div>
+    </div>
+    <div class="user">
+        <img src="../../dist/images/conclusion-Year/user3.png">
+        <div class="name">蓄势待发</div>
+    </div>
+    <div class="user">
+        <img src="../../dist/images/conclusion-Year/user4.png">
+        <div class="name">蓄势待发</div>
+    </div>
+
+</div>
+
+<div class="qrcode">
+    <img src="../../dist/images/conclusion-Year/trial.jpg">
+</div>
+<div class="next-step">
+    <img src="../../dist/images/conclusion-Year/icon-next.png">
+</div>
+<div class="tech-suport">
+    中交出行提供技术支持
+    <div class="suport-str">
+
+    </div>
+</div>
+
+</body>
+<script src="../../dist/javascripts/zepto.min.js"></script>
+<script>
+    $('.next-step').on('click',function () {
+        window.location.href='step5.html';
+    })
+</script>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>中交出行</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/distribution/hunter-v2.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="all-container">
+    <div class="poster-container">
+        <div class="poster-box" id="poster">
+            <img src="../../dist/images/distribution/v2.0/poster-bg-1-1.png" id="poster_bg"/>
+            <div id="avatar" class="avatar">
+                <img src="data:image/png;base64,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"/>
+            </div>
+            <div class="tips c-blue"><span id="userName"></span>请你来坐车</div>
+            <div class="company-des">
+                <div class="remark c-blue">
+                    华美出行：合规车辆、专业司机为您
+                    服务。省钱车券只发三天，手慢无。
+                </div>
+            </div>
+            <div class="company-box">
+                <div class="OR-box">
+                    <img src="/res/images/distribution/trial.jpg"/>
+                </div>
+                <p>扫描二维码</p>
+                <!--<p id="proName">进入中交出行CS</p>-->
+            </div>
+        </div>
+        <div class="more"></div>
+    </div>
+    <div class="poster-switch-box">
+        <div class="switch clearfloat">
+            <div class="item active" data-index="1"></div>
+            <div class="item" data-index="2"></div>
+            <div class="item" data-index="3"></div>
+            <div class="item" data-index="4"></div>
+            <div class="item" data-index="5"></div>
+        </div>
+        <div class="notice">
+            <span class="notice-btn">收益须知</span>
+        </div>
+    </div>
+
+    <!--更多方式弹窗-->
+    <div id="more_popup" class="popup-container" style="display: none">
+        <div class="popup-box">
+            <div class="type-box">
+                <div class="type">
+                    <h4>方式一</h4>
+                    <p>微信右上角分享</p>
+                    <p>点击微信右上角三个点“...”通过【发给朋友】【分享到朋友圈】推广</p>
+                </div>
+                <div class="type">
+                    <h4>方式二</h4>
+                    <p>复制一下链接推广 <span class="copy-btn">复制链接</span></p>
+                    <textarea id="hunterUrl" class="hunter-url" readonly>www：4561SSS4545645484textarea4561SSS4545645484t4561SSS4545645484textarea4561SSS4545645484textareaextarea.chuxin.com</textarea>
+                </div>
+            </div>
+            <div class="close-btn sui-border-t">关闭</div>
+        </div>
+    </div>
+    <!--收益须知弹窗-->
+    <div id="notice_popup" class="popup-container" style="display: none">
+        <div class="popup-box">
+            <div class="notice-box">
+                <div class="title">收益须知</div>
+                <div class="img"></div>
+                <div class="notice-content">
+                    <p>1.您每成功邀请一位好友购买将获得支付金额的一定比例作为奖励</p><br/>
+                    <p>2.奖励金额定时结算存入“赚取赏金”，请前往“个人中心”进行查看</p><br/>
+                    <p>3.结算时，好友退单将不计入奖励</p><br/>
+                    <p>4.您每成功邀请一位好友购买将获得支付金额的一定比例作为奖励</p><br/>
+                    <p>5.奖励金额定时结算存入“赚取赏金”，请前往“个人中心”进行查看</p><br/>
+                    <p>6.结算时，好友退单将不计入奖励</p><br/>
+                    <p>7.您每成功邀请一位好友购买将获得支付金额的一定比例作为奖励</p><br/>
+                    <p>8.奖励金额定时结算存入“赚取赏金”，请前往“个人中心”进行查看</p><br/>
+                    <p>9.结算时，好友退单将不计入奖励</p>
+                </div>
+            </div>
+            <div class="close-btn sui-border-t">关闭</div>
+        </div>
+    </div>
+</div>
+
+<div id="canvas-box"></div>
+<div id="img-box"></div>
+<script src="../../dist/javascripts/zepto.min.js"></script>
+<script src="../../dist/javascripts/simpleui.min.js"></script>
+<script src="../../dist/javascripts/vectors.min.js"></script>
+<script src="../../dist/javascripts/html2canvas.min.js"></script>
+<script src="../../dist/javascripts/clipboard.min.js"></script>
+<script src="../../dist/javascripts/distributionPlatform/sharePlatform.min.js"></script>
+<script>
+
+</script>
+</body>
+</html>

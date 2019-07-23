@@ -1,0 +1,150 @@
+@charset "utf-8";
+.introduce {
+  padding-bottom: 1.44rem;
+
+  .head {
+    padding-bottom: 0.22rem;
+
+    .thumb {
+      width: 100%;
+      height: 0;
+      padding-top: 50%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: auto 100%;
+    }
+
+    h4 {
+      padding: 0.22rem 0.22rem 0;
+      font-size: 0.32rem;
+      color: #333;
+    }
+
+    .line-label {
+      margin: -0.01rem 0.22rem 0;
+      line-height: 0.4rem;
+
+      & > * {
+        display: inline-block;
+        font-size: 0.22rem;
+        color: #333333;
+        background-color: #E4E4E4;
+        padding: 0 0.1rem;
+        margin-top: 0.15rem;
+        border-radius: 0.1rem;
+      }
+    }
+  }
+
+  .nav {
+    margin-left: -0.043rem;
+    border-top: 0.01rem solid #DFDFDF;
+    border-bottom: 0.01rem solid #DFDFDF;
+    background: #fff;
+    height: 1rem;
+    position: relative;
+    left: 0;
+    right: 0;
+    z-index: 15;
+
+    &.isStuck {
+      border: 0.01rem solid #F3F4F5;
+      box-shadow: 0 0 0.14rem 0 rgba(0,0,0,0.10);
+    }
+
+    li {
+      float: left;
+      margin-left: 0.493rem;
+      height: 1rem;
+      position: relative;
+
+      a {
+        display: block;
+        font-size: 0.32rem;
+        line-height: 1rem;
+        color: #999;
+      }
+
+      &.active {
+        a {
+          color: #6392FE;
+        }
+
+        &:after {
+          content: '';
+          position: absolute;
+          bottom: -0.02rem;
+          left: 0;
+          right: 0;
+          height: 0.08rem;
+          background: #6392FE;
+          border-radius: 1rem;
+        }
+      }
+    }
+  }
+
+  .page-wrapper {
+    .page {
+      padding: 0.4rem 0 0.6rem;
+      margin: 0 0.45rem;
+      border-bottom: 0.01rem solid #DFDFDF;
+
+      &:last-child {
+        border-bottom: 0 none;
+        padding-bottom: 0.2rem;
+      }
+
+      & > * {
+        margin-top: 0.1rem;
+      }
+
+      h5 {
+        position: relative;
+        margin-top: 0;
+        padding-left: 0.59rem;
+        font-size: 0.32rem;
+        color: #FFAE00;
+        line-height: 0.45rem;
+
+        &:before {
+          content: '';
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          margin: auto 0;
+          width: 0.44rem;
+          height: 0.44rem;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+        }
+      }
+
+      /* 标题icon */
+      &#page1 h5:before {
+        background-image: url(../../images/travel/icon_page1.png);
+      }
+      &#page2 h5:before {
+        background-image: url(../../images/travel/icon_page2.png);
+      }
+      &#page3 h5:before {
+        background-image: url(../../images/travel/icon_page3.png);
+      }
+      &#page4 h5:before {
+        background-image: url(../../images/travel/icon_page4.png);
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      p {
+        font-size: 0.28rem;
+        color: #333;
+      }
+    }
+  }
+}

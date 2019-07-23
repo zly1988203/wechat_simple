@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>加载失败</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/newInnerCity/loading-fail.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+ <div class="fail-detail">
+     <div class="img-tip"></div>
+     <div class="mes-tip"><span>页面加载失败，请稍后再试</span></div>
+     <div class="retry">重试</div>
+ </div>
+
+ <script src="../../dist/javascripts/zepto.min.js"></script>
+ <script src="../../dist/javascripts/simpleui.min.js"></script>
+ <script src="../../dist/javascripts/vectors.min.js"></script>
+ <script src="../../dist/javascripts/backtrack.min.js"></script>
+ <script>
+     $(function () {
+         $(".retry").click(function () {
+             window.location.reload; // 刷新当前页面
+         });
+     });
+ </script>
+
+</body>
+</html>

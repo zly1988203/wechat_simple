@@ -1,0 +1,331 @@
+.all-container{
+  background: #f3f4f5;
+  .poster-container{
+    background: #F3F4F5;
+    padding: 0.211rem 0 0.44rem;
+    position: relative;
+    //海报
+    .poster-box{
+      width: 4.8rem;
+      height: 8.5rem;
+      margin: 0 auto;
+      position: relative;
+      background: #FFFFFF;
+      box-shadow: 0 0.02rem 0.02rem 0 rgba(0,0,0,0.05);
+
+      img{
+        display: block;
+        width: 100%;
+        height:100%;
+      }
+      .avatar{
+        width: 0.9rem;
+        height: 0.9rem;
+        border-radius: 100%;
+        box-shadow: 0 0.02rem 0.04rem 0 rgba(0,0,0,0.20);
+        background: #fff;
+        position: absolute;
+        z-index: 3;
+        top: 0.22rem;
+        left:1.915rem;
+        img{
+          display: block;
+          width: 100%;
+          height: 100%;
+          border-radius: 100%;
+          margin: 0 auto;
+        }
+      }
+      .tips{
+        position: absolute;
+        z-index: 3;
+        font-size: 0.18rem;
+        color: #FFFFFF;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.50);
+        text-align: center;
+        top: 1.22rem;
+        width: 100%
+      }
+      .lines-box{
+        width: 3.56rem;
+        height: 1.68rem;
+        position: absolute;
+        top: 1.82rem;
+        left: 0.59rem;
+
+        img{
+          display: block;
+          width: 100%;
+          height: 100%;
+        }
+        .station{
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 1.1rem;
+          line-height: 1.1rem;
+          display: flex;
+          span{
+            font-size: 0.28rem;
+            color: #6392FE;
+            display: block;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+            flex: 1;
+            margin-left: 0.5rem;
+            padding: 0 0.2rem;
+          }
+          .start{
+            margin-left: 0;
+          }
+          .end{
+
+          }
+        }
+      }
+
+      .company-box{
+        position: absolute;
+        top: 4.28rem;
+        width: 100%;
+        text-align: center;
+        .OR-box{
+          width: 1.45rem;
+          height: 1.45rem;
+          background: #fff;
+          margin: 0 auto;
+          img{
+            display: block;
+            width: 100%;
+            height: 100%;
+          }
+        }
+        p{
+          margin-top: 0.122rem;
+          font-size: 0.2rem;
+          color: #FFFFFF;
+          text-shadow: 0 0.01rem 0.02rem rgba(0,0,0,0.50);
+          line-height: 0.28rem;
+        }
+
+      }
+    }
+    //更多
+    .more{
+      width: 1.42rem;
+      height: 1.42rem;
+      background: url("../../images/distribution/icon-more.png") center no-repeat;
+      background-size: 100% 100%;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+  }
+
+  .poster-switch-box{
+    background: #FFFFFF;
+    box-shadow: 0 0.02rem 0.02rem 0 rgba(0,0,0,0.10);
+    padding: 0.224rem 0 0.21rem;
+    //切换背景
+    .switch{
+      margin-left: 0.23rem;
+      .item{
+        height: 1.8rem;
+        width: 1.01rem;
+        background-size: 100% 100%;
+        margin-left: 0.5rem;
+        float: left;
+        position: relative;
+        &:first-child{
+          margin-left: 0;
+          background: url("../../images/distribution/poster-bg-1.png") center no-repeat;
+          background-size: 100% 100%;
+        }
+        &:nth-child(2){
+          background: url("../../images/distribution/poster-bg-2.png") center no-repeat;
+          background-size: 100% 100%;
+        }
+        &:nth-child(3){
+          background: url("../../images/distribution/poster-bg-3.png") center no-repeat;
+          background-size: 100% 100%;
+        }
+        &:nth-child(4){
+          background: url("../../images/distribution/poster-bg-4.png") center no-repeat;
+          background-size: 100% 100%;
+        }
+        &:nth-child(5){
+          background: url("../../images/distribution/poster-bg-5.png") center no-repeat;
+          background-size: 100% 100%;
+        }
+      }
+      .active{
+        &:after{
+          content: '';
+          display: block;
+          width: 1.01rem;
+          height: 1.8rem;
+          background: url("../../images/distribution/poster-check.png") center no-repeat;
+          background-size: 100% 100%;
+          position: absolute;
+          left: 0;
+          top: 0;
+        }
+      }
+    }
+
+    //收益须知
+    .notice{
+      margin-top: 0.49rem;
+      text-align: center;
+      .notice-btn{
+        padding-left: 0.46rem;
+        position: relative;
+        font-size: 0.24rem;
+        color: #999999;
+        line-height: 0.36rem;
+        display: inline-block;
+        &:before{
+          content: '';
+          display: block;
+          width: 0.36rem;
+          height: 0.36rem;
+          background: url("../../images/distribution/icon-notice.png") center no-repeat;
+          background-size: 100% 100%;
+          position: absolute;
+          left: 0 ;
+          top: 0;
+        }
+
+      }
+    }
+  }
+
+  .popup-container{
+    position: fixed;
+    display: block;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background: rgba(0,0,0,0.3);
+    top: 0;
+    left: 0;
+    padding-top: 1.656rem;
+
+    .popup-box{
+      background: #FFFFFF;
+      border-radius: 0.2rem;
+      width: 6.6rem;
+      margin:  0 auto;
+
+      //分享方式
+      .type-box{
+        width: 5.6rem;
+        margin: 0 0.46rem 0  0.54rem;
+        padding: 0.33rem 0 0.33rem;
+        .type{
+          font-size: 0.32rem;
+          color: #333333;
+          position: relative;
+          //padding-bottom: 0.9rem;
+          margin: 0.9rem 0 0;
+          &:first-child{
+            margin: 0;
+          }
+
+          .copy-btn{
+            display: block;
+            position: absolute;
+            right: -0.24rem;
+            top: 0.1rem;
+            background: #6392FE;
+            border-radius: 1rem;
+            padding: 0 0.34rem ;
+            font-size: 0.28rem;
+            height: 0.4rem;
+            line-height: 0.4rem;
+            color: #FFFFFF;
+            &:active{
+              background: #014BFA;
+            }
+          }
+          &:before{
+            content: '';
+            display: block;
+            width: 0.15rem;
+            height: 0.15rem;
+            border-radius: 0.15rem;
+            background: #6392FE;
+            position: absolute;
+            top: 0.15rem;
+            left: -0.32rem;
+          }
+
+          .hunter-url{
+            width: 100%;
+            height: 1.8rem;
+            border: none;
+            line-height: 0.45rem;
+          }
+        }
+      }
+      //收益须知
+      .notice-box{
+        padding: 0.416rem 0.39rem 0.702rem;
+        .title{
+          font-size: 0.36rem;
+          color: #333333;
+          text-align: center;
+        }
+        .img{
+          width: 5.3rem;
+          height: 1.52rem;
+          background: url("../../images/distribution/notice-img.png") center no-repeat;
+          background-size: 100% 100%;
+          margin: 0.438rem auto 0.67rem;
+        }
+        .notice-content{
+          font-size: 0.28rem;
+          color: #333333;
+          max-height: 3.2rem;
+          overflow: scroll;
+        }
+
+      }
+      //关闭
+      .close-btn{
+        margin-top: 0.06rem;
+        font-size: 0.38rem;
+        color: #6392FE;
+        padding: 0.2rem 0;
+        text-align: center;
+      }
+    }
+
+
+  }
+}
+
+/*清除浮动代码*/
+.clearfloat:after{display:block;clear:both;content:"";visibility:hidden;height:0}
+.clearfloat{zoom:1}
+
+#img-box{
+  img{
+    display: block;
+    width: 4.74rem;
+    height: 8.43rem;
+    margin:0 auto;
+  }
+}
+
+//复制样式
+.copy-s{
+  //background: #6392fe;
+  //color: #fff;
+}
+
+canvas{
+  display: none;
+}

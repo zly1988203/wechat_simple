@@ -1,0 +1,255 @@
+html{
+  min-width: 100%;
+  min-height: 100%;
+}
+body{
+  min-width: 100%;
+  min-height: 100%;
+}
+
+body{
+  background: url(../../images/line/bk_pic@2x.png) 50% no-repeat;
+  background-size: 100% 100%;
+}
+.all-content{
+  height:12.06rem;
+
+  .main{
+    height: 10.92rem;
+    background: url("../../images/line/bk_success_content@2x.png") center no-repeat;
+    background-size: 100% 100%;
+    margin: 0 auto;
+    padding-top:1.14rem;
+
+    .header{
+      margin: 0 auto;
+      text-align: center;
+      padding-top: 0.25rem;
+
+      .success{
+        width: 2.55rem;
+        height:0.68rem;
+        background: url("../../images/line/bk_success@2x.png") center no-repeat;
+        background-size: 100% 100%;
+        position: relative;
+        margin: 0 auto;
+
+        &:before{
+          content: '';
+          display: inline-block;
+          width: 1.02rem;
+          height: 1.03rem;
+          background: url("../../images/line/icon_success@2x.png") center no-repeat;
+          background-size:  100% 100%;
+          position: absolute;
+          left: -1.1rem;
+          top: -0.18rem;
+        }
+
+      }
+      .success-tips{
+        width: 5.82rem;
+        height:0.42rem;
+        background: url("../../images/line/bk_success_tips@2x.png") center no-repeat;
+        background-size: 100% 100%;
+        margin: 0.35rem auto 0;
+      }
+    }
+
+    .tips{
+      text-align: center;
+      font-size: 0.3rem;
+      line-height: 0.42rem;
+      letter-spacing: 0;
+      margin-top: 0.745rem;
+      a{
+        color: #FFE5B7;
+        &:active{
+          color: #FFF;
+        }
+        i{
+          margin-left: 0.1rem;
+        }
+      }
+    }
+    //线路开通说明
+    .tips-info-content{
+      background: rgba(0,0,0,0.80);
+      width:100%;
+      height:100%;
+      position: fixed;
+      z-index: 999;
+      top: 0;
+      left: 0;
+      padding-top: 1.24rem;
+
+      .tips-info{
+        width: 4.98rem;
+        height: 6.6rem;
+        background: url("../../images/line/bk_tips_info@2x.png") center no-repeat;
+        background-size: 100% 100%;
+        margin: 0 auto;
+        padding: 1.2rem 0.9rem;
+        position: relative;
+
+        .close{
+          display: inline-block;
+          width: 0.68rem;
+          height: 0.8rem;
+          background: url("../../images/line/bk_close@2x.png") center no-repeat;
+          background-size: 100%;
+          position: absolute;
+          right:0.81rem;
+          top: -0.05rem;
+        }
+
+        p{
+          font-size: 0.32rem;
+          color: #4B4B4B;
+          line-height: 0.6rem;
+          height: 85%;
+          width: 95%;
+          overflow: scroll;
+        }
+      }
+    }
+
+    //车企二维码
+    .company-info{
+      margin-top: .745rem;
+      .QR-code{
+        width: 2.5rem;
+        height: 2.5rem;
+        background: rgba(255,255,255,0.7);
+        margin: 0 auto;
+        border-radius: 0.2rem;
+        padding: 0.15rem;
+
+        img{
+          width: 100%;
+          height: 100%;
+          border-radius: 0.1rem;
+          background: #fff;
+        }
+      }
+      p{
+        margin-top: 0.4rem; ;
+        font-size: 0.36rem;
+        color: #FEDC8E;
+        letter-spacing: 0;
+        line-height: 0.6rem;
+        text-shadow: 0 0.02rem 0.04rem rgba(0,0,0,0.50);
+      }
+
+    }
+  }
+
+  //分享按钮
+  .btn-group{
+    padding: 0;
+    button{
+      width: 6.8rem;
+      height: 1.06rem;
+      background: url("../../images/line/bk_sharebtn_clickable@2x.png") center no-repeat;
+      background-size: 100%;
+      margin: 0 auto;
+
+      &:active{
+        background: url("../../images/line/bk_sharebtn_unclickable@2x.png") center no-repeat;
+        background-size: 100%;
+      }
+    }
+  }
+  /*分享提示*/
+  .sharing-tips{
+    background: rgba(0,0,0,0.80);
+    width:100%;
+    height:100%;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+
+    .sharing-title{
+      width: 100%;
+      height: 4.26rem;
+      background: url("../../images/line/share-tips@2x.png") center no-repeat;
+      background-size: 100% 100%;
+      margin-top: 0.08rem;
+    }
+  }
+}
+
+//重写弹窗样式
+.sui-dialog{
+  width: 6.78rem;
+  height: 7.33rem;
+  background: url("../../images/line/bk_dialog@2x.png") center no-repeat;
+  background-size: 100% 100%;
+
+  .sui-dialog-hd{
+    font-size: 0;
+  }
+
+  .sui-dialog-bd{
+    .sui-dialog-text{
+      padding: 1.43rem 0.865rem 0 0.65rem;
+      .dialog-content{
+        ul{
+          li{
+            .sui-cell-default{
+              dt{
+                font-size: 0.32rem;
+                color: #4B4B4B;
+                line-height: 0.6rem;
+                text-align: left;
+              }
+              dd{
+                font-size: 0.32rem;
+                color: #4B4B4B;
+                line-height: 0.6rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .sui-dialog-ft{
+    width: 4.9rem;
+    height: 1.07rem;
+    margin: 0.65rem auto 0;
+
+    button{
+      font-size: 0;
+      width: 2.45rem;
+      height: 100%;
+
+      &:active {
+        background-color: transparent!important;
+      }
+
+      &:first-child{
+        background: url("../../images/line/bk_cancel_clickable@2x.png") center no-repeat;
+        background-size: 100%;
+
+        &:active{
+          background: url("../../images/line/bk_cancel_unclickable@2x.png") center no-repeat;
+          background-size: 100%;
+        }
+      }
+      &:last-child{
+        background: url("../../images/line/bk_ok_clickable@2x.png") center no-repeat;
+        background-size: 100%;
+
+        &:active{
+          background: url("../../images/line/bk_ok_unclickable@2x.png") center no-repeat;
+          background-size: 100%;
+        }
+      }
+
+    }
+  }
+}
+

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>城际约租车</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/newInnerCity/index.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<!--顶部-->
+<header class="header">
+    <div id="menuArmrest" class="avatar"></div>
+    <div class="nav">
+        <div class="thumb"></div>
+        <div class="list-bar">
+            <div class="content">
+                <i class="icon"></i>
+                <ul class="list">
+                    <li data-icon="bus" data-href="../bus/bus.html">定制班线</li>
+                    <li data-icon="bus" data-href="../travel/index.html">旅游班线</li>
+                    <li data-icon="bus" data-href="../bus/bus.html">上下班</li>
+                    <li  data-icon="car" data-href="../rent/appointment.html">城际约租车</li>
+                    <li class="active" data-icon="car" data-href="../newInnerCity/index.html">新城际约租车</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div id="tabs" class="tabs-panel">
+    <div class="tab-contents">
+        <div id="present" class="content">
+            <div class="search-station">
+                <ul class="sui-list form">
+                    <div class="v-line"></div>
+                    <li>
+                        <div class="control start">
+                            <input type="text" id="startAddr" class="select-city-btn" placeholder="你从哪上车" readonly />
+                        </div>
+                    </li>
+                    <div class="bottom-line"></div>
+                    <li>
+                        <div class="control end">
+                            <input type="text" id="endAddr" class="select-city-btn" placeholder="你要去哪儿" readonly />
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="switch-btn"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="his-order">
+    <div class="content">
+        <div class="location"></div>
+        <div class="startAdrs">
+            <div class="adrs">创业投资大厦八楼</div>
+            <div class="area">深圳市南山区</div>
+        </div>
+        <div class="center-line">
+            <div class="arrow"></div>
+        </div>
+        <div class="endAdrs">
+            <div class="adrs">东莞东站金贝大厦</div>
+            <div class="area">东莞市东城区</div>
+        </div>
+        <div class="btn-list">
+            <div class="call-car">叫车</div>
+            <div class="back">返程</div>
+        </div>
+    </div>
+    <div class="line"></div>
+    <div class="content">
+        <div class="location"></div>
+        <div class="startAdrs">
+            <div class="adrs">创业投资大厦八楼</div>
+            <div class="area">深圳市南山区</div>
+        </div>
+        <div class="center-line">
+            <div class="arrow"></div>
+        </div>
+        <div class="endAdrs">
+            <div class="adrs">东莞东站金贝大厦</div>
+            <div class="area">东莞市东城区</div>
+        </div>
+        <div class="btn-list">
+            <div class="call-car">叫车</div>
+            <div class="back">返程</div>
+        </div>
+    </div>
+</div>
+
+<div class="foot">
+
+    <div class="order-box">
+        <header>
+            <div class="border-weight"></div>
+            <div class="title">当前行程</div>
+            <div class="nav-right"> </div>
+        </header>
+        <div class="content">
+            <div class="startAdrs">
+                <div class="adrs">创业投资大厦八楼</div>
+                <div class="area">深圳市南山区</div>
+            </div>
+            <div class="center-line">
+                <div class="des">行程中</div>
+                <div class="line"></div>
+            </div>
+            <div class="endAdrs">
+                <div class="adrs">东莞东站金贝大厦</div>
+                <div class="area">东莞市东城区</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="order-box">
+        <header>
+            <div class="border-weight"></div>
+            <div class="title">预约行程</div>
+            <div class="nav-right"> </div>
+        </header>
+        <div class="content">
+            <div class="startAdrs">
+                <div class="adrs">科技园东方大厦</div>
+                <div class="area">深圳市南山区</div>
+            </div>
+            <div class="center-line">
+                <div class="des">行程中</div>
+                <div class="line"></div>
+            </div>
+            <div class="endAdrs">
+                <div class="adrs">虹桥国际机场</div>
+                <div class="area">上海市</div>
+            </div>
+        </div>
+    </div>
+    <!-- 广告位 -->
+    <div class="vrt">
+        <!-- src：引入运营平台广告接口 -->
+        <script src=""></script>
+    </div>
+</div>
+
+<!--查询地址-->
+<div id="search-address" class="sui-popup-container">
+    <div class="sui-popup-mask"></div>
+    <div class="sui-popup-modal">
+        <div class="search-bar sui-border-b">
+            <div class="search-bar-inner">
+                <div class="serach-input">
+                        <input type="text" id="textSearchMap" placeholder="区域名称/地址" />
+                    </div>
+                <button  type="button" id="sarchCancelbtn" class="cancel">取消</button>
+            </div>
+        </div>
+
+
+        <div id="searchWrapper" class="wrapper">
+            <div class="content">
+
+                <ul id="mapResult" class="sui-list sui-border-tb">
+                </ul>
+
+                <div class="gather">
+                    <!-- 当前位置 -->
+                    <div class="current">
+                        <span class="title">当前位置</span>
+                        <div class="station-group">
+                            <span>创业投资大厦</span>
+                        </div>
+                    </div>
+
+                    <!-- 历史记录 -->
+                    <div class="history">
+                            <div class="place"><i class="icon-place"></i><span>深圳市南山区创业投资大厦</span></div>
+                            <div class="place"><i class="icon-place"></i><span>深圳北站</span></div>
+                            <!--<div><i class="icon-place"></i>坪洲地铁站</div>-->
+                            <!--<div><i class="icon-place"></i>北京天安门广场</div>-->
+                    </div>
+
+                    <!-- 地区推荐 -->
+                    <div class="recommend">
+                        <span class="title">地区推荐</span>
+                        <div class="area-list">
+                            <h5 class="subtitle">珠海市</h5>
+                            <div class="station-group">
+                                <span class="city-area">香洲区</span>
+                                <div class="area-place">
+                                    <div class="place"><i class="icon-place"></i><span>深圳市南山区创业投资大厦</span></div>
+                                    <div class="place"><i class="icon-place"></i><span>深圳北站</span></div>
+                                    <div class="place"><i class="icon-place"></i><span>深圳北站</span></div>
+                                    <div class="place"><i class="icon-zan"></i><span>深圳北站</span></div>
+                                </div>
+                                <span class="city-area">斗门区</span>
+                                <span class="city-area">金湾区</span>
+                            </div>
+
+                            <h5 class="subtitle">深圳市</h5>
+                            <div class="station-group">
+                                <span class="city-area">福田区</span>
+                                <span class="city-area">南山区</span>
+                                <span class="city-area">罗湖区</span>
+                                <span class="city-area">宝安区</span>
+
+                                <span class="city-area">福田区</span>
+                                <span class="city-area">南山区</span>
+
+                                <span class="city-area">福田区</span>
+                                <span class="city-area">南山区</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="../../dist/javascripts/zepto.min.js"></script>
+<script src="../../dist/javascripts/simpleui.min.js"></script>
+<script src="http://webapi.amap.com/maps?v=1.3&key=1ef3b0f40d2caf5da6f206ded594e5c7"></script>
+<script src="../../src/js/vectors.js"></script>
+<script src="../../src/js/newInnerCity/index.js"></script>
+</body>
+</html>

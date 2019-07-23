@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>中交出行</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/hailing/order-status.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<div id="order-detail">
+    <div id="allmap"></div>
+
+    <div class="order-detail-container">
+        <div class="station-content">
+            <div class="time">2017-12-21&emsp;13:00</div>
+            <div class="station">
+                <span class="start">深圳宝安中心汽车站</span>
+                <span class="end">东莞鹏程新村</span>
+            </div>
+        </div>
+        <!--订单状态-->
+        <div class="payment-content sui-border-b"></div>
+        <!--订单状态 已支付 -->
+        <!--<div class="payment-content sui-border-b" style="display: none">-->
+            <!--<div class="time">2017-12-21&nbsp;13:00</div>-->
+            <!--<div class="price">已支付&emsp;23元</div>-->
+            <!--&lt;!&ndash; 未评价 &ndash;&gt;-->
+            <!--<div class="evaluate-btn evaluate-wait" data-href="index">去评价</div>-->
+            <!--&lt;!&ndash;已评价&ndash;&gt;-->
+            <!--<div class="evaluate-btn evaluated" style="display: none">已评价</div>-->
+        <!--</div>-->
+
+        <!--订单状态 取消订单 -->
+        <!--<div class="payment-content sui-border-b" style="display: none">
+            <div class="time">2017-12-21&nbsp;13:00</div>
+            &lt;!&ndash;乘客取消订单&ndash;&gt;
+            <div class="cancel" style="display: none">已被您取消该次行程</div>
+            &lt;!&ndash;司机取消订单&ndash;&gt;
+            <div class="cancel">已被司机李师傅取消该次行程</div>
+        </div>-->
+
+        <!--订单状态 待支付 -->
+       <!-- <div class="payment-content sui-border-b">
+            <div class="pay-wait">待支付&emsp;23元</div>
+            <div class="btn primary pay-btn">立即支付</div>
+            <div class="tips">请及时支付以免影响下次行程</div>
+        </div>-->
+
+        <div class="customer-service" data-href="tel:12345678">联系客服</div>
+    </div>
+
+</div>
+
+<script src="../../dist/javascripts/zepto.min.js"></script>
+<script src="../../dist/javascripts/simpleui.min.js"></script>
+<script src="../../dist/javascripts/vectors.min.js"></script>
+<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.4&key=12ba70f263fabfb44ae2f95fea0f2bdf"></script>
+<script type="text/javascript">
+    //强制使用https
+    var AMapUIProtocol = 'https:';  //注意结尾包括冒号
+</script>
+<!--引入UI组件库（1.0版本） -->
+<script src="https://webapi.amap.com/ui/1.0/main.js"></script>
+<script src="../../dist/javascripts/communicate.min.js"></script>
+<script>
+    $(function() {
+        //map
+        AMapUI.loadUI(['overlay/SimpleMarker'], function (SimpleMarker) {
+            initMap(SimpleMarker)
+        });
+        function initMap(SimpleMarker) {
+            var map = new AMap.Map('allmap', {
+                resizeEnable: true,
+                zoom: 16,
+                center: [113.939428, 22.528159]
+            });
+        }
+
+        /* 动态生成订单详情 */
+        var order_status = '1';//订单状态 0-未支付，1-已支付未评价，2-已支付已评价，3-乘客取消订单，4-司机取消订单
+        var _html = '';
+        if(order_status == 0){
+            _html += '<div class="pay-wait">待支付&emsp;23元</div>' +
+                '<div class="btn primary pay-btn">立即支付</div>' +
+                '<div class="tips">请及时支付以免影响下次行程</div>';
+        }
+        else if(order_status == 1){
+            _html += '<div class="time">2017-12-21&nbsp;13:00</div>' +
+                '<div class="price">已支付&emsp;23元</div>' +
+                '<div class="evaluate-btn evaluate-wait" onclick="gofeedback()">去评价</div>';
+        }
+        else if(order_status == 2){
+            _html += '<div class="time">2017-12-21&nbsp;13:00</div>' +
+                '<div class="price">已支付&emsp;23元</div>' +
+                '<div class="evaluate-btn evaluated">已评价</div>';
+        }
+        else if(order_status == 3){
+            _html += '<div class="time">2017-12-21&nbsp;13:00</div>' +
+                '<div class="cancel">已被您取消该次行程</div>'
+        }
+        else if(order_status == 4){
+            _html += '<div class="time">2017-12-21&nbsp;13:00</div>' +
+                '<div class="cancel">已被司机李师傅取消该次行程</div>'
+        }
+        $('.payment-content').append(_html);
+    });
+
+    // var passiveSupported = false;
+    // var options = Object.defineProperty({}, "passive", {
+    //     get: function() {
+    //         passiveSupported = true;
+    //     }
+    // });
+    // window.addEventListener("click",function () {
+    //     location.href = "/index.html"
+    // },options)
+
+    //点击事件才可以跳转，data-href方式不行
+    var gofeedback = function () {
+        location.href = "/index.html"
+    }
+
+</script>
+</body>
+</html>

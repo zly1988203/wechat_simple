@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>中交出行</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/fy-datepicker.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/bus/line-list-2.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <header>
+        <ul class="ola-date">
+            <li class="ola-prev ola-disabled" id="preDay"><span>前一天</span></li>
+            <li class="ola-current"><label for="startTime"><span><i>2015-06-16</i><input type="text" id="startTime" data-date="" readonly /></span></label></li>
+            <li class="ola-next" id="nextDay"><span>后一天</span></li>
+        </ul>
+    </header>
+
+    <!-- 选择日期 -->
+    <div id="select-date" class="sui-popup-container" data-trigger="">
+        <div class="sui-popup-mask"></div>
+        <div class="sui-popup-modal">
+            <div class="date"></div>
+            <div class="btn-group">
+                <div class="btn primary cancel">返回</div>
+            </div>
+        </div>
+    </div>
+
+    <ul class="ola-list-box">
+        <!-- 旅游班线 -->
+        <li class="lineItem">
+            <div class="travel" data-href="../travel/line-introduce.html">
+                <div class="thumb" style="background-image:url(https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2634846866,171705924&fm=27&gp=0.jpg);"></div>
+                <h4>长春-哈尔滨万达冰灯节，包含2日往返车票、冰灯节1日畅玩通票，两日丰盛主餐</h4>
+            </div>
+            <div class="ola-head sui-border-b">
+                <!--有标签时-->
+                <div class="line-labels">
+                    <span class="distribution">合作线路</span>
+                    <span class="discount-name">特价优惠</span>
+                    <span class="discount-name">分享立减</span>
+                    <span class="discount-name">买满有礼</span>
+                    <span class="discount-name">分享有礼</span>
+                    <span class="discount-name">送返程券</span>
+                </div>
+                <div class="ola-label">
+                    <span>有WIFI</span>
+                    <span>漯河车队 联系电话：18655567778</span>
+                    <span>有厕所</span>
+                </div>
+            </div>
+            <ul class="sui-list-link ola-ticket">
+                <li class="ola-ticket-item sui-border-b" data-href="#">
+                    <div class="ola-ticket-info">
+                        <h4>8:00</h4>
+                        <i>剩5张</i>
+                        <span class="special-icon">特价</span>
+                    </div>
+                    <div class="ola-ticket-btn"><em class="original">10.00元</em>5元</div>
+                </li>
+                <li class="ola-ticket-item sui-border-b" data-href="#">
+                    <div class="ola-ticket-info">
+                        <h4>9:00</h4>
+                        <i>剩1张</i>
+                    </div>
+                    <div class="ola-ticket-btn">5.5元<em>起</em></div>
+                </li>
+                <!-- 售馨：sell-out -->
+                <li class="ola-ticket-item sui-border-b sell-out" data-href="#">
+                    <div class="ola-ticket-info">
+                        <h4>9:00</h4>
+                        <i>已售馨</i>
+                        <span class="special-icon">特价</span>
+                    </div>
+                    <div class="ola-ticket-btn">5.5元<em>起</em></div>
+                </li>
+                <li class="ola-ticket-item sui-border-b" data-href="#">
+                    <div class="ola-ticket-info">
+                        <h4>9:00</h4>
+                        <i>剩1张</i>
+                    </div>
+                    <div class="ola-ticket-btn">5.5元<em>起</em></div>
+                </li>
+                <li class="ola-ticket-item sui-border-b" data-href="#">
+                    <div class="ola-ticket-info">
+                        <h4>9:00</h4>
+                        <i>剩1张</i>
+                    </div>
+                    <div class="ola-ticket-btn">5.5元<em>起</em></div>
+                </li>
+                <li class="ola-ticket-item sui-border-b" data-href="#">
+                    <div class="ola-ticket-info">
+                        <h4>9:00</h4>
+                        <i>剩1张</i>
+                    </div>
+                    <div class="ola-ticket-btn">5.5元<em>起</em></div>
+                </li>
+            </ul>
+            <div class="all show-all">显示全部</div>
+        </li>
+
+        <!-- 旅游班线：已售馨 -->
+        <li class="lineItem no-stock">
+            <div class="travel" data-href="#">
+                <div class="thumb" style="background-image:url(https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2634846866,171705924&fm=27&gp=0.jpg);"></div>
+                <h4>长春-哈尔滨万达冰灯节，包含2日往返车票、冰灯节1日畅玩通票，两日丰盛主餐</h4>
+            </div>
+            <div class="ola-head sui-border-b">
+                <!--有标签时-->
+                <div class="line-labels">
+                    <span class="distribution">合作线路</span>
+                    <span class="discount-name">特价优惠</span>
+                    <span class="discount-name">分享立减</span>
+                    <span class="discount-name">买满有礼</span>
+                    <span class="discount-name">分享有礼</span>
+                    <span class="discount-name">送返程券</span>
+                </div>
+                <div class="ola-label">
+                    <span>有WIFI</span>
+                    <span>漯河车队 联系电话：18655567778</span>
+                    <span>有厕所</span>
+                </div>
+            </div>
+            <ul class="sui-list-link ola-ticket">
+                <li class="ola-ticket-item sui-border-b" data-href="#">
+                    <div class="ola-ticket-info">
+                        <h4>8:00</h4>
+                        <i>剩5张</i>
+                        <span class="special-icon">特价</span>
+                    </div>
+                    <div class="ola-ticket-btn"><em class="original">10.00元</em>5元</div>
+                </li>
+                <li class="ola-ticket-item sui-border-b" data-href="#">
+                    <div class="ola-ticket-info">
+                        <h4>9:00</h4>
+                        <i>剩1张</i>
+                    </div>
+                    <div class="ola-ticket-btn">5.5元<em>起</em></div>
+                </li>
+                <!-- 售馨：sell-out -->
+                <li class="ola-ticket-item sui-border-b sell-out" data-href="#">
+                    <div class="ola-ticket-info">
+                        <h4>9:00</h4>
+                        <i>已售馨</i>
+                        <span class="special-icon">特价</span>
+                    </div>
+                    <div class="ola-ticket-btn">5.5元<em>起</em></div>
+                </li>
+                <li class="ola-ticket-item sui-border-b" data-href="#">
+                    <div class="ola-ticket-info">
+                        <h4>9:00</h4>
+                        <i>剩1张</i>
+                    </div>
+                    <div class="ola-ticket-btn">5.5元<em>起</em></div>
+                </li>
+                <li class="ola-ticket-item sui-border-b" data-href="#">
+                    <div class="ola-ticket-info">
+                        <h4>9:00</h4>
+                        <i>剩1张</i>
+                    </div>
+                    <div class="ola-ticket-btn">5.5元<em>起</em></div>
+                </li>
+                <li class="ola-ticket-item sui-border-b" data-href="#">
+                    <div class="ola-ticket-info">
+                        <h4>9:00</h4>
+                        <i>剩1张</i>
+                    </div>
+                    <div class="ola-ticket-btn">5.5元<em>起</em></div>
+                </li>
+            </ul>
+            <div class="all show-all">显示全部</div>
+        </li>
+
+        <li class="lineItem">
+            <div class="ola-head sui-border-b">
+                <!--有标签时-->
+                <div class="line-labels">
+                    <span class="distribution">合作线路</span>
+                    <span class="discount-name">特价优惠</span>
+                    <span class="discount-name">分享立减</span>
+                    <span class="discount-name">买满有礼</span>
+                    <span class="discount-name">分享有礼</span>
+                    <span class="discount-name">送返程券</span>
+                </div>
+                <div class="ola-label">
+                    <span>有WIFI</span>
+                    <span>漯河车队 联系电话：18655567778</span>
+                    <span>有厕所</span>
+                </div>
+            </div>
+            <ul class="sui-list-link ola-ticket">
+                <li class="ola-ticket-item sui-border-b" data-href="#">
+                    <div class="ola-ticket-info">
+                        <h4>8:00</h4>
+                        <i>剩5张</i>
+                        <span class="special-icon">特价</span>
+                    </div>
+                    <div class="ola-ticket-btn"><em class="original">10.00元</em>5元</div>
+                </li>
+                <li class="ola-ticket-item sui-border-b" data-href="#">
+                    <div class="ola-ticket-info">
+                        <h4>9:00</h4>
+                        <i>剩1张</i>
+                    </div>
+                    <div class="ola-ticket-btn">5.5元<em>起</em></div>
+                </li>
+                <!-- 售馨：sell-out -->
+                <li class="ola-ticket-item sui-border-b sell-out" data-href="#">
+                    <div class="ola-ticket-info">
+                        <h4>9:00</h4>
+                        <i>已售馨</i>
+                        <span class="special-icon">特价</span>
+                    </div>
+                    <div class="ola-ticket-btn">5.5元<em>起</em></div>
+                </li>
+                <li class="ola-ticket-item sui-border-b" data-href="#">
+                    <div class="ola-ticket-info">
+                        <h4>9:00</h4>
+                        <i>剩1张</i>
+                    </div>
+                    <div class="ola-ticket-btn">5.5元<em>起</em></div>
+                </li>
+                <li class="ola-ticket-item sui-border-b" data-href="#">
+                    <div class="ola-ticket-info">
+                        <h4>9:00</h4>
+                        <i>剩1张</i>
+                    </div>
+                    <div class="ola-ticket-btn">5.5元<em>起</em></div>
+                </li>
+                <li class="ola-ticket-item sui-border-b" data-href="#">
+                    <div class="ola-ticket-info">
+                        <h4>9:00</h4>
+                        <i>剩1张</i>
+                    </div>
+                    <div class="ola-ticket-btn">5.5元<em>起</em></div>
+                </li>
+            </ul>
+            <div class="all show-all">显示全部</div>
+        </li>
+
+        <!-- 热门推荐和历史进入，没有营销标签情况时显示 -->
+        <li class="lineItem">
+            <div class="ola-head sui-border-b">
+                <!--无标签时-->
+                <div class="ola-station">
+                    <div class="ola-label">
+                        <span>漯河车队 联系电话：18655567778 我实在是编不出了</span>
+                        <span>最多三十个字</span>
+                        <span>有厕所</span>
+                    </div>
+                </div>
+            </div>
+            <ul class="sui-list-link ola-ticket">
+                <li class="ola-ticket-item sui-border-b" data-href="#">
+                    <div class="ola-ticket-info">
+                        <h4>8:00</h4>
+                        <i>剩5张</i>
+                    </div>
+                    <div class="ola-ticket-btn">5.5元<em>起</em></div>
+                </li>
+            </ul>
+        </li>
+
+        <!-- 无可售：全部置灰 -->
+        <li class="lineItem no-stock">
+            <div class="ola-head sui-border-b">
+                <!-- 有标签时-->
+                <div class="line-labels" >
+                    <span class="distribution">合作线路</span>
+                    <span class="discount-name">十一国庆搞活动买满送</span>
+                    <span class="discount-name">十一国庆搞活动买满送</span>
+                    <span class="discount-name">十一国庆搞活动买满送</span>
+                </div>
+                <!--无标签时-->
+                <div class="ola-station">
+                    <div class="ola-label ola-label-gray">
+                        <span>有WIFI</span>
+                        <span>漯河车队 联系电话：18655567778</span>
+                        <span>有厕所</span>
+                    </div>
+                </div>
+            </div>
+            <div class="no-stock-status">无可售班次</div>
+        </li>
+    </ul>
+
+    <div class="empty-page">
+        <div class="empty-main">
+            <i style="padding-top: 43.07%; background-image: url(../../dist/images/common/icon_defect_line.png);"></i>
+            <p>暂时没有找到合适的线路<br>换个地点再试试吧。</p>
+            <div class="btn primary">回到首页</div>
+        </div>
+    </div>
+
+<script src="../../dist/javascripts/zepto.min.js"></script>
+<script src="../../dist/javascripts/simpleui.min.js"></script>
+<script src="../../dist/javascripts/vectors.min.js"></script>
+<script src="../../dist/javascripts/zepto.scrollTo.min.js"></script>
+<script src="../../dist/javascripts/fy-datePicker.min.js"></script>
+<script>
+    $(function() {
+        $('.ola-icon-back').bind('click', function(){
+            var href = $(this).data('href');
+            if(href && href != '#'){
+                location.href = href;
+            }
+        });
+        $('.ola-foot-item').on('click', function () {
+            var href = $(this).data('href');
+            if (href && href != '#') {
+                location.href = href;
+            }
+        });
+
+        //switch全部
+        $('.show-all').on('click', function () {
+            var el = $(this);
+
+            //show
+            el.data('clock', true);
+            el.addClass('somersault');
+            el.siblings('.ola-ticket').addClass('slideToggle');
+
+            el.remove();
+        });
+
+        //选择日期
+        selectDate();
+    });
+
+    /*创建随机数据*/
+    function createData(monthDrr) {
+        var result = [];
+
+        monthDrr.forEach(function (item, index) {
+            var _n = 0,
+                _MAX = new Date(2017, item, 0).getDate();
+
+            var arr = [];
+            //创建数组
+            for(var i = 0; i < _MAX; i++) {
+                _n = parseInt(Math.random().toFixed(2) * 10) + i + index;
+
+                if(_n <= _MAX) {
+                    arr.push(_n);
+                }
+            }
+
+            //去重
+            for(var n = 0; n < arr.length; n++) {
+                for(var m = 0; m < arr.length; m++) {
+                    if(arr[n] == arr[m]) {
+                        arr.splice(m, 1);
+                    }
+                }
+            }
+
+            //排序
+            arr.sort(function () {
+                return -1;
+            });
+
+            //填充数据
+            for(var l = 0; l < arr.length; l++) {
+                var _result = {
+                    date: '2017-' + item + '-' + arr[l],
+                    state: 'select'
+                };
+
+                if(parseInt(2 * Math.random())) {
+                    _result.comment = '备注';
+                }
+
+                /*switch(parseInt(4 * Math.random()) + 1) {
+                    case 1:
+                        _result.state = 'select';
+                        break;
+                    case 2:
+                        _result.state = 'readonly';
+                        break;
+                    case 3:
+                        _result.state = 'disabled';
+                        break;
+                }*/
+                _result.state = 'select';
+                result.push(_result);
+            }
+        });
+
+        return result;
+    }
+
+    /* 选择日期 */
+    function selectDate() {
+        var trigger = $('.ola-date .ola-current span i'),
+            parent = $('#select-date'),
+            cancel = parent.find('.cancel');
+        var initDateStatus = false;
+
+        var init = function () {
+            //只初始化一次
+            if(!initDateStatus) {
+                initDateStatus = true;
+                parent.find('.date').datePicker({
+                    dateBase: '2017-10-10',
+                    weekend: false,
+                    multiple: false,
+                    gather: createData([10, 11, 12]),
+                    selectCallback: function (data) {
+                        //TODO
+                        var d = data.selectData[0].date;
+                        var val = d.year + '-' + d.month + '-' + d.day;
+
+                        parent.setPopupData(val);
+                        cancel.triggerHandler('click');
+                    }
+                });
+            }
+        };
+
+        //弹出层
+        trigger.on('click', function () {
+            var self = $(this);
+
+            parent.popup('modal', init, function (data) {
+                console.log(data)
+                trigger.text(data).siblings('#startTime').val(data);
+            });
+        }).backtrack({
+            cancel: '#select-date .cancel'
+        });
+
+        //返回
+        $('#select-date .cancel').on('click', function () {
+            parent.closePopup();
+        });
+    }
+</script>
+</body>
+</html>

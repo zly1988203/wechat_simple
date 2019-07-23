@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择日期</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/swiper.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/commutingBus/chooseDate.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/zjcx-datePicker.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="chooseDate" class="content">
+    <div class="order-head">
+        <div class="head-panle">
+            <div class="head">
+                <div class="time"></div>
+                <div class="line-name"></div>
+                <div class="license-plate"></div>
+            </div>
+            <div class="station">
+                <div class="station-item departure">南山区深圳市南山区深圳创业投资大厦</div>
+                <div class="station-item arrival">番禺区广州市番禺区广州南站</div>
+            </div>
+        </div>
+
+    </div>
+
+    <!--日历控件-->
+    <div class="date-picker-container">
+        <!--星期-->
+        <div class="weeks-box"></div>
+        <!--月份-->
+        <div class="months-box">
+            <div class="swiper-container">
+                <div class="swiper-wrapper"></div>
+                <div class="swiper-scrollbar"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="btn-footer">
+        <div class="back-btn">返回</div>
+        <div class="confirm-btn">确定</div>
+    </div>
+
+</div>
+
+<script src="../../dist/javascripts/zepto.min.js"></script>
+<script src="../../dist/javascripts/simpleui.min.js"></script>
+<script src="../../dist/javascripts/vectors.min.js"></script>
+<script src="../../src/js/base/swiper.js"></script>
+<script src="../../src/js/base/zjcx-datePicker.js"></script>
+<script src="../../src/js/commutingBus/serverApi.js"></script>
+<script src="../../src/js/commutingBus/chooseDate.js"></script>
+</body>
+</html>

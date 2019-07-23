@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>区域</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/newInnerCity/areaLocation.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="search-bar">
+    <div class="search-bar-inner">
+        <div class="tools-control">
+            <div id="setCityButton" class="set-city">深圳南山区</div>
+            <div class="serach-input">
+                <input type="text" id="textSearchMap" placeholder="输入地点" />
+            </div>
+        </div>
+        <button  type="button" class="cancel">取消</button>
+    </div>
+</div>
+<div class="map-panel">
+    <div id="mapContainer"><div id="currLocation"></div></div>
+    <div id="mapWrapper" class="map-wrapper">
+        <div class="content">
+            <ul id="mapResult" class="sui-list">
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="searchWrapper" class="wrapper">
+    <div class="content">
+        <ul class="sui-list">
+        </ul>
+    </div>
+</div>
+
+<script src="../../dist/javascripts/zepto.min.js"></script>
+<script src="../../dist/javascripts/simpleui.min.js"></script>
+<script src="http://webapi.amap.com/maps?v=1.3&key=1ef3b0f40d2caf5da6f206ded594e5c7"></script>
+<script src="../../src/js/vectors.js"></script>
+<script src="../../src/js/newInnerCity/areaLocation.js"></script>
+</body>
+</html>

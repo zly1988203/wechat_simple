@@ -1,0 +1,158 @@
+@charset "utf-8";
+
+.ticket-info {
+  .head {
+    display: flex;
+    align-items: center;
+
+    .time {
+      flex: 1;
+    }
+
+    .amount {
+      margin-left: 0.22rem;
+      font-size: 0.28rem;
+      color: #999;
+      line-height: 0.4rem;
+    }
+  }
+
+  .station {
+    .end {
+      padding-bottom: 0.22rem;
+    }
+  }
+
+  .tips {
+    margin: 0.22rem 0 0;
+
+    h4 {
+      font-size: 0.24rem;
+      font-weight: bold;
+      color: #424242;
+      line-height: 0.33rem;
+    }
+
+    p {
+      font-size: 0.24rem;
+      color: #424242;
+      margin: 0.18rem 0 0;
+    }
+  }
+
+  .ticket-rule {
+    height: auto;
+    padding: 0.22rem 0;
+    line-height: 0.4rem;
+  }
+}
+
+.rule-content{
+  font-size: 0.32rem;
+  color: #666666;
+  line-height: 0.5rem;
+  p{
+    text-indent: 0.64rem;
+  }
+  h6{
+    font-size: 0.32rem;
+    color: #333333;
+  }
+}
+
+.new-btn-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  padding: 0.22rem;
+  background: #FFFFFF;
+  box-shadow: 0 0.02rem 0.02rem 0 rgba(0,0,0,0.05);
+  border-top: 0.01rem solid #f1f1f1;
+  .new-btn-box{
+    background: #6392FE;
+    border-radius: 1rem;
+    display: flex;
+    padding: 0.24rem 0;
+
+    .detail-btn{
+      flex: 1;
+      font-size: 0.38rem;
+      color: #FFFFFF;
+      position: relative;
+      padding-left: 0.86rem;
+      &:before{
+        content: '';
+        display: block;
+        width: 0.5rem;
+        height: 0.5rem;
+        position: absolute;
+        left: 0.25rem;
+        top: 0;
+        background: url("../../images/coach/icon-top.png") center no-repeat;
+        background-size: 100% 100%;
+      }
+    }
+    .detail-open{
+      &:before{
+        background: url("../../images/coach/icon-bottom.png") center no-repeat;
+        background-size: 100% 100%;
+      }
+    }
+    button{
+      flex: 1;
+      font-size: 0.38rem;
+      color: #FFFFFF;
+      text-align: center;
+    }
+  }
+}
+
+.popup-container{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.3);
+  z-index: 99;
+  .detail-content{
+    background: #FFFFFF;
+    box-shadow: 0 0 0.1rem 0 rgba(0,0,0,0.10);
+    border-radius: 0.08rem;
+    position: absolute;
+    bottom: 1.67rem;
+    margin: 0 0.22rem;
+    padding: 0.22rem;
+    .title{
+      font-size: 0.32rem;
+      color: #999999;
+      text-align: center;
+    }
+    .detail-box{
+      margin-top: 0.44rem;
+      .detail-item{
+        display: flex;
+        .name{
+          color: #333333;
+        }
+        .detail{
+          color: #FE6666;
+          text-align: right;
+        }
+        div{
+          flex: 1;
+          font-size: 0.32rem;
+        }
+      }
+    }
+    .tips{
+      background: rgba(254,102,102,0.1);
+      border-radius: 0.04rem;
+      font-size: 0.24rem;
+      color: rgba(254,102,102,0.6);
+      padding: 0.07rem;
+      margin-top: 0.35rem;
+    }
+  }
+}

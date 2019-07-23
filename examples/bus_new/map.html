@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>中交出行</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/fy-datepicker.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/bus_new/bus.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/bus_new/select-citys.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+
+<!--查询地址-->
+<div id="search-address" class="popup-container">
+    <div class="popup-mask"></div>
+    <div class="popup-modal">
+        <div class="search-bar">
+            <div class="search-bar-inner">
+                <div class="tools-control">
+                    <div id="setCityButton" class="set-city">乌鲁木齐市</div>
+                    <div class="search-input">
+                        <i class="icon-search"></i>
+                        <input type="text" placeholder="区域名称/地址" />
+                    </div>
+                </div>
+                <button  type="button" class="cancel">关闭</button>
+            </div>
+        </div>
+
+        <div id="searchWrapper" class="wrapper">
+            <div class="content">
+                <ul id="searchResult" class="sui-list" hidden>
+                    <li class="sui-border-b">
+                        <div class="sui-cell-map">
+                            <h1>中交出行科技有限公司</h1>
+                            <h2>深圳市南山区科园路创业投资大厦8楼802</h2>
+                        </div>
+                    </li>
+                    <li class="sui-border-b">
+                        <div class="sui-cell-map">
+                            <h1>中交出行科技有限公司</h1>
+                            <h2>深圳市南山区科园路创业投资大厦8楼802</h2>
+                        </div>
+                    </li>
+                    <li class="sui-border-b">
+                        <div class="sui-cell-map">
+                            <h1>深圳虚拟大学园管理服务中心</h1>
+                            <h2>高新园南四道19深圳虚拟大学园2层</h2>
+                        </div>
+                    </li>
+                    <li class="sui-border-b">
+                        <div class="sui-cell-map">
+                            <h1>深圳虚拟大学园管理服务中心</h1>
+                            <h2>高新园南四道19深圳虚拟大学园2层</h2>
+                        </div>
+                    </li>
+                    <li class="sui-border-b">
+                        <div class="sui-cell-map">
+                            <h1>深圳虚拟大学园管理服务中心</h1>
+                            <h2>高新园南四道19深圳虚拟大学园2层</h2>
+                        </div>
+                    </li>
+                    <li class="sui-border-b">
+                        <div class="sui-cell-map">
+                            <h1>深圳虚拟大学园管理服务中心</h1>
+                            <h2>高新园南四道19深圳虚拟大学园2层</h2>
+                        </div>
+                    </li>
+                    <li class="sui-border-b">
+                        <div class="sui-cell-map">
+                            <h1>深圳虚拟大学园管理服务中心</h1>
+                            <h2>高新园南四道19深圳虚拟大学园2层</h2>
+                        </div>
+                    </li>
+                    <li class="sui-border-b">
+                        <div class="sui-cell-map">
+                            <h1>深圳虚拟大学园管理服务中心</h1>
+                            <h2>高新园南四道19深圳虚拟大学园2层</h2>
+                        </div>
+                    </li>
+                    <li class="sui-border-b">
+                        <div class="sui-cell-map">
+                            <h1>深圳虚拟大学园管理服务中心</h1>
+                            <h2>高新园南四道19深圳虚拟大学园2层</h2>
+                        </div>
+                    </li>
+                    <li class="sui-border-b">
+                        <div class="sui-cell-map">
+                            <h1>深圳虚拟大学园管理服务中心</h1>
+                            <h2>高新园南四道19深圳虚拟大学园2层</h2>
+                        </div>
+                    </li>
+                    <li class="sui-border-b">
+                        <div class="sui-cell-map">
+                            <h1>深圳虚拟大学园管理服务中心</h1>
+                            <h2>高新园南四道19深圳虚拟大学园2层</h2>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="gather">
+                    <!-- 当前位置 -->
+                    <div class="current" id="currentAddress">
+                        <h4 class="title">当前定位：</h4>
+                        <div class="station-group">
+                            <span id="currentAddressDetail" data-lng="" data-lat="">深圳湾创业投资大厦</span>
+                        </div>
+                    </div>
+
+                    <!-- 历史记录 -->
+                    <div class="history">
+                        <h4 class="title">历史地点</h4>
+                        <div class="station-group-history">
+                            <div class="address">
+                                <div class="address-name">深圳北站</div>
+                                <div class="address-detail">广东省深圳市宝安区XXX路234号XXX大厦</div>
+                            </div>
+                            <div class="address">
+                                <div class="address-name">深圳北站</div>
+                                <div class="address-detail">广东省深圳市宝安区</div>
+                            </div>
+                            <div class="address">
+                                <div class="address-name">深圳北站</div>
+                                <div class="address-detail">广东省深圳市宝安区</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 地区推荐 -->
+                    <div class="recommend">
+                        <h4 class="title">按地区找线路</h4>
+
+                        <h5 class="subtitle">珠海市</h5>
+                        <div class="station-group">
+                            <span>全部地区</span>
+                            <span>香洲区</span>
+                            <span>斗门区</span>
+                            <span>金湾区</span>
+                        </div>
+
+                        <h5 class="subtitle">深圳市</h5>
+                        <div class="station-group">
+                            <span>全部地区</span>
+                            <span>福田区</span>
+                            <span>南山区</span>
+                            <span>罗湖区</span>
+                            <span>宝安区</span>
+                        </div>
+                        <h5 class="subtitle">深圳市</h5>
+                        <div class="station-group">
+                            <span>全部地区</span>
+                            <span>福田区</span>
+                            <span>南山区</span>
+                            <span>罗湖区</span>
+                            <span>宝安区</span>
+                        </div>
+                        <h5 class="subtitle">深圳市</h5>
+                        <div class="station-group">
+                            <span>全部地区</span>
+                            <span>福田区</span>
+                            <span>南山区</span>
+                            <span>罗湖区</span>
+                            <span>宝安区</span>
+                        </div>
+                        <h5 class="subtitle">深圳市</h5>
+                        <div class="station-group">
+                            <span>全部地区</span>
+                            <span>福田区</span>
+                            <span>南山区</span>
+                            <span>罗湖区</span>
+                            <span>宝安区</span>
+                        </div>
+                        <h5 class="subtitle">深圳市</h5>
+                        <div class="station-group">
+                            <span>全部地区</span>
+                            <span>福田区</span>
+                            <span>南山区</span>
+                            <span>罗湖区</span>
+                            <span>宝安区</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!--<div class="remove-history">清空历史记录</div>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--选择城市-->
+<div id="select-Citys" class="popup-container">
+    <!--<div id="select-Citys" class="sui-popup-container">-->
+    <div class="popup-mask"></div>
+    <!--<div class="sui-popup-mask"></div>
+    <div class="sui-popup-modal">-->
+    <div class="popup-modal">
+        <div class="search-bar sui-border-b">
+            <div class="search-bar-inner">
+                <!--<div class="tools-control search-city">
+                    &lt;!&ndash;<div class="serach-input sui-border">
+                        <input type="text" placeholder="城市中文名或拼音" />
+                    </div>&ndash;&gt;
+                    请选择城市
+                </div>
+                <button  type="button" class="cancel">取消</button>-->
+                <div class="tools-control">
+                    <div class="search-input">
+                        <i class="icon-search"></i>
+                        <input type="text" placeholder="区域名称/地址" />
+                    </div>
+                </div>
+                <button  type="button" class="cancel">关闭</button>
+            </div>
+        </div>
+
+        <!-- 字母检索 -->
+        <ul class="nav-city">
+            <li><a href="#city1">A</a></li>
+            <li><a href="#city2">B</a></li>
+            <li><a href="#city3">C</a></li>
+            <li><a href="#city4">D</a></li>
+        </ul>
+        <div id="cityWrapper" class="wrapper">
+            <div class="pop-special">L</div>
+            <div class="content">
+                <div class="current-city">当前定位所在城市：<span>深圳</span></div>
+                <div class="sui-list-title" id="city1">A</div>
+                <ul class="sui-list">
+                    <li>广州</li>
+                    <li>深圳</li>
+                    <li>珠海</li>
+                    <li>汕头</li>
+                    <li>佛山</li>
+                    <li>韶关</li>
+                    <li>东莞</li>
+                    <li>清远</li>
+                </ul>
+                <div class="sui-list-title" id="city2">B</div>
+                <ul class="sui-list">
+                    <li>广州</li>
+                    <li>深圳</li>
+                    <li>珠海</li>
+                    <li>汕头</li>
+                    <li>佛山</li>
+                    <li>韶关</li>
+                    <li>东莞</li>
+                    <li>清远</li>
+                </ul>
+                <div class="sui-list-title" id="city3">C</div>
+                <ul class="sui-list">
+                    <li>广州</li>
+                    <li>深圳</li>
+                    <li>珠海</li>
+                    <li>汕头</li>
+                    <li>佛山</li>
+                    <li>韶关</li>
+                    <li>东莞</li>
+                    <li>清远</li>
+                </ul>
+                <div class="sui-list-title" id="city4">D</div>
+                <ul class="sui-list">
+                    <li>广州</li>
+                    <li>深圳</li>
+                    <li>珠海</li>
+                    <li>汕头</li>
+                    <li>佛山</li>
+                    <li>韶关</li>
+                    <li>东莞</li>
+                    <li>清远</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--侧边栏菜单-->
+<!--<div id="sideMenu" class="sui-popup-container">
+    <div class="sui-popup-mask"></div>
+    <div class="sui-popup-modal">
+        <div class="head" data-url="#">
+            <div class="avatar" style="background-image:url(../../dist/images/common/avatar_driver.png);"></div>
+            <div class="mobile">13800138000</div>
+        </div>
+        <ul class="sui-list">
+            <li data-url="#"><div class="sui-cell-icons"><span class="sui-cell-icon icon-myorder"></span> 订单</div></li>
+            <li data-url="#"><div class="sui-cell-icons"><span class="sui-cell-icon icon-ticket"></span> 车票</div></li>
+            <li data-url="#"><div class="sui-cell-icons"><span class="sui-cell-icon icon-coupon"></span> 优惠</div></li>
+            <li data-url="#"><div class="sui-cell-icons badge-hot"><span class="sui-cell-icon icon-activity"></span> 活动</div></li>
+            <li data-url="#"><div class="sui-cell-icons"><span class="sui-cell-icon icon-config"></span> 设置</div></li>
+            <li data-url="#"><div class="sui-cell-icons"><span class="sui-cell-icon icon-suggest"></span> 反馈建议</div></li>
+            <li data-url="#"><div class="sui-cell-icons"><span class="sui-cell-icon icon-conversion"></span> 奖品兑换</div></li>
+            <li data-url="#"><div class="sui-cell-icons"><span class="sui-cell-icon icon-ranking"></span> 员工排行榜</div></li>
+        </ul>
+        <div class="foot">
+            <div class="item" data-href="tel:123456789">
+                <span class="icon icon-contact"></span>
+                <p>联系客服</p>
+            </div>
+            <div class="item" data-href="#">
+                <span class="icon icon-invite"></span>
+                <p>邀请有礼</p>
+            </div>
+        </div>
+    </div>
+</div>-->
+
+<script src="../../dist/javascripts/zepto.min.js"></script>
+<!--<script src="../../dist/javascripts/simpleui.min.js"></script>-->
+<script src="../../dist/javascripts/vectors.min.js"></script>
+<script src="../../dist/javascripts/fy-datePicker.min.js"></script>
+
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js?v=${version!}"></script>
+<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.3&key=65b7cb5e8c694cb822cd32791319b348"></script>
+</body>
+</html>

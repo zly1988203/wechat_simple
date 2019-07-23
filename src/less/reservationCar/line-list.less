@@ -1,0 +1,525 @@
+@charset "utf-8";
+header {
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+  top: 0;
+
+  #wrapper{
+    position: relative;
+    .content{
+      position: absolute;
+      .ola-date{
+        background-color: #fff;
+        box-shadow: 0 0.04rem 0.04rem 0 rgba(0,0,0,0.10);
+        font-size: 0;
+        white-space: nowrap;
+
+        li{
+          display: inline-block;
+          position: relative;
+          width: 1.15rem;
+          height: 100%;
+          text-align: center;
+          letter-spacing: -0.31px;
+          color: #333333;
+          padding: 0.05rem 0;
+
+          .weeks{
+            font-size: 0.24rem;
+            line-height: 0.33rem;
+          }
+          .date{
+            font-size: 0.2rem;
+            line-height: 0.28rem;
+          }
+          .message{
+            font-size: 0.24rem;
+            line-height: 0.33rem;
+          }
+          //有票
+          .on-sale{
+            color: #6392FE;
+          }
+          //售罄
+          .sell-out{
+            color: #FE6363;
+          }
+        }
+        .active{
+          color: #ffffff;
+          background: #6392FE;
+          .message{
+            color: #ffffff;
+          }
+        }
+      }
+    }
+  }
+
+  /*全部日历*/
+  .all-date-btn{
+    background: #FFFFFF;
+    box-shadow: -0.06rem 0 0.04rem 0 rgba(0,0,0,0.10);
+    display: inline-block;
+    width: 1rem;
+    position: fixed;
+    right: 0;
+    top: 0;
+    text-align: center;
+    font-size: 0.24rem;
+    color: #333333;
+    letter-spacing: -0.31px;
+    height: 1rem;//TODO 重置
+    &:active{
+      background: #6392FE;
+      color: #fff;
+    }
+  }
+}
+
+.ola-list-box {
+  margin-top: 1.22rem;
+
+  li.lineItem {
+    background-color: #fff;
+    margin: 0.22rem 0.22rem 0 0.22rem;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.10);
+    border-radius: 3px;
+    position: relative;
+
+    .ola-head {
+      padding: 0.18rem 0.22rem;
+
+
+      .line-labels{
+        width:5.4rem;
+        min-height: 0.55rem;
+        display: inline-block;
+
+        span {
+          border-radius: 0.1rem;
+          font-size: 0.2rem;
+          display: inline-block;
+          height: 0.35rem;
+          padding:0 0.07rem;
+          margin-bottom: 0.14rem;
+          margin-right: 0.1rem;
+        }
+
+        .discount-name{
+          border: 0.01rem solid #FE6666;
+          background: rgba(254,102,102,0.10);
+          color: #FE6666;
+        }
+
+        /*.label-right{
+          font-size: 0.28rem;
+          color: #333333;
+          line-height: 0.4rem;
+          position: absolute;
+          right:0.22rem;
+        }*/
+
+        .distribution {
+          background: rgba(177, 201, 255, 0.41);
+          border: 0.01rem solid #6392FE;
+          color: #6392FE;
+        }
+      }
+
+      .duration{
+        font-size: 0.28rem;
+        color: #FFFFFF;
+        width: 1.62rem;
+        height: 0.47rem;
+        text-align: center;
+        background: url("../../images/reservationCar/duration-bg.png") center no-repeat;
+        background-size: 100% 100%;
+        position: absolute;
+        right: -0.04rem;
+        top: 0.16rem;
+      }
+    }
+
+    .ola-label {
+      position: relative;
+      line-height: 0.4rem;
+
+      & > * {
+        display: inline-block;
+        font-size: 0.22rem;
+        color: #333333;
+        background-color: #E4E4E4;
+        padding: 0 0.1rem;
+        margin-right: 0.1rem;
+        margin-top: 0.15rem;
+        border-radius: 0.1rem;
+      }
+    }
+
+    .ola-label-gray{
+      & > * {
+        font-size: 0.22rem;
+        color: #999999;
+        background: rgba(228,228,228,0.31);
+      }
+    }
+
+    .ola-tips {
+      margin-bottom: 0.22rem;
+      font-size: 0.28rem;
+      color: #333;
+      height:0.4rem;
+      line-height: 0.4rem;
+      text-align: right;
+    }
+
+    .ola-station {
+      position: relative;
+
+      .ola-station-item {
+        display: flex;
+        align-items: flex-start;
+        margin-top: 0.13rem;
+        position: relative;
+        padding-left: 0.38rem;
+
+        &:first-child {
+          margin-top: 0;
+        }
+
+        &:before {
+          content: '';
+          position: absolute;
+          top: 0.16rem;
+          bottom: 0;
+          left: 0;
+          width: 0.16rem;
+          height: 0.16rem;
+          border-radius: 100%;
+        }
+
+        &:nth-child(1)::before {
+          background: #25CE5F;
+        }
+        &:nth-child(2)::before {
+          background: #FE6666;
+        }
+
+        /*竖线*/
+        &:first-child::after {
+          content: '';
+          position: absolute;
+          top: 0.4rem;
+          left: 0.06rem;
+          bottom: -0.22rem;
+          z-index: 6;
+          width: 0;
+          height: auto;
+          border: 1px solid #ccc;
+        }
+
+        .ola-station-info {
+          flex: 1.5;
+          text-align: left;
+          margin-right: 0.22rem;
+
+          & > * {
+            display: inline-block;
+            line-height: 0.45rem;
+            vertical-align: text-top;
+          }
+
+          h4 {
+            font-size: 0.32rem;
+            color: #333;
+            font-weight: normal;
+          }
+
+          i {
+            margin-left: 0.06rem;
+            font-size: 0.28rem;
+            white-space: nowrap;
+
+            &.starting {
+              font-size: 0.22rem;
+              color: #999999;
+
+            }
+
+            &.ending {
+              font-size: 0.22rem;
+              color: #999999;
+            }
+
+            &.pathway {
+              font-size: 0.22rem;
+              color: #999999;
+            }
+          }
+        }
+
+        .ola-station-distance {
+          flex: 1;
+          padding-top: 0.04rem;
+          text-align: right;
+          font-size: 0.22rem;
+          color: #999;
+          line-height: 0.4rem;
+          white-space: nowrap;
+        }
+
+        .ola-tips {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    .ola-ticket {
+      padding: 0 0.22rem;
+      max-height: 3.75rem;
+      overflow-y: hidden;
+
+      &.slideToggle {
+        height: auto;
+        max-height: 100%;
+        transition: all 0.6s;
+      }
+
+      .ola-ticket-item {
+        padding: 0.33rem 0;
+        padding-right: 0.4rem!important;
+        display: flex;
+        align-items: center;
+
+        &:after {
+          right: 0.08rem;
+        }
+
+        &:last-child {
+          background-image: none;
+        }
+
+        .ola-ticket-info {
+          flex: 1;
+
+          & > * {
+            display: inline-block;
+            vertical-align: middle;
+          }
+
+          h4 {
+            font-size: 0.32rem;
+            color: #333;
+          }
+
+          i {
+            margin: -0.04rem 0 0 0;
+            padding: 0 0.16rem;
+            font-size: 0.28rem;
+            color: #F27D4A;
+          }
+
+          .special-icon{
+            font-size: 0.2rem;
+            line-height: 0.28rem;
+            color: #FFFFFF;
+            background: #FE6666;
+            border-radius: 0.03rem;
+            margin: -0.04rem 0 0 0;
+            padding: 0.01rem 0.06rem;
+          }
+        }
+
+        .ola-ticket-btn {
+          display: inline-block;
+          margin-left: 0.22rem;
+          text-align: right;
+          font-size: 0.42rem;
+          color: #FE6666;
+          line-height: 0.59rem;
+          height: 0.59rem;
+          overflow: hidden;
+          font-family: "Microsoft YaHei", Arial;
+
+          i {
+            font-size: 14px;
+            color: #FE6666;
+          }
+
+          em {
+            display: inline-block;
+            margin-top: -0.06rem;
+            margin-left: 0.12rem;
+            font-size: 0.28rem;
+            color: #9b9b9b;
+            vertical-align: middle;
+          }
+
+          .original{
+            text-decoration: line-through;
+            margin-left: 0;
+            margin-right: 0.12rem;
+          }
+        }
+
+        /*售馨*/
+        &.sell-out {
+          .ola-ticket-info {
+            h4,i{
+              color: #ccc;
+            }
+
+            .special-icon{
+              background: #CCCCCC;
+            }
+          }
+
+          .ola-ticket-btn {
+            color: #ccc;
+
+            i,em {
+              color: #ccc;
+            }
+          }
+        }
+      }
+    }
+
+    .all {
+      height: 1.015rem;
+      line-height: 1.015rem;
+      text-align: center;
+      font-size: 0.28rem;
+      color: #9b9b9b;
+
+      &:after {
+        content: '';
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 0.13rem;
+        width: 0.3rem;
+        height: 0.18rem;
+        background: url("../../images/bus/button-whole.png") no-repeat center;
+        background-size: 100% 100%;
+
+        transform: rotateZ(360deg);
+        transition: all 0.26s;
+      }
+    }
+
+    .somersault {
+      &:after {
+        transform: rotateZ(180deg);
+      }
+    }
+
+    /*无可售班次*/
+    &.no-stock {
+      .ola-head{
+        .duration{
+          background: url("../../images/reservationCar/duration-out-bg.png") center no-repeat;
+          background-size: 100% 100%;
+        }
+      }
+
+      .ola-tips {
+        color: #999;
+      }
+
+      .line-labels{
+        .label-right{
+          color: #999;
+        }
+
+        .distribution, .discount-name {
+          color: #999;
+          background: rgba(228,228,228,0.31);
+          border: 0.01rem solid #999;
+        }
+      }
+
+      .ola-label {
+        & > * {
+          color: #999;
+          background: rgba(228,228,228,0.31);
+        }
+      }
+
+      .ola-station {
+        &:before {
+          border-color: #a5a5a5;
+        }
+
+        .ola-station-item {
+          &:before {
+            background: #9a9a9a!important;
+            border-radius: 100%;
+          }
+
+          .ola-station-info {
+            h4,i {
+              color: #A5A5A5!important;
+            }
+          }
+        }
+      }
+
+      .no-stock-status {
+        height: 0.995rem;
+        line-height: 0.995rem;
+        font-size: 0.32rem;
+        color: #999;
+        text-align: center;
+      }
+
+      .ola-ticket-item {
+        .ola-ticket-info, .ola-ticket-info > *, .ola-ticket-btn, .ola-ticket-btn > * {
+          color: #999!important;
+        }
+
+        .special-icon {
+          color: #fff!important;
+          background: #ccc!important;
+        }
+      }
+    }
+  }
+}
+
+/**************************
+        empty
+***************************/
+.empty-page {
+  padding: 2.9rem 0.22rem 0.6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #BCBBC4;
+  font-size: 0.28rem;
+
+  .empty-main {
+    width: 100%;
+
+    i {
+      display: block;
+      height: 0;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: auto 100%;
+      margin: 0 auto 0.39rem;
+    }
+
+    p {
+      font-size: 0.28rem;
+      color: #999;
+    }
+
+    .btn {
+      margin: 0.6rem auto 0;
+      width: 3.42rem;
+    }
+  }
+}

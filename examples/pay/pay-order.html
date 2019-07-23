@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>中交出行</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/pay/pay-order.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+    <div class="pay-order">
+        <div class="title">中交出行</div>
+
+        <!-- 司机、车辆信息：如果不含车辆信息和司机信息，就去掉这个元素 -->
+        <div class="vehicle-info">
+            <p>张师傅-粤B12330</p>
+        </div>
+
+        <!-- 输入消费金额 -->
+        <div class="price">
+            <input type="hidden" id="price">
+            <div class="txt">¥</div>
+        </div>
+
+        <!--键盘-->
+        <div class="keyboard-box">
+            <div class="tip-title">中交出行 | 提供技术支持服务</div>
+
+            <table class="keyboard">
+                <tr>
+                    <td class="number">1</td>
+                    <td class="number">2</td>
+                    <td class="number">3</td>
+                    <td class="backspace"></td>
+                </tr>
+                <tr>
+                    <td class="number">4</td>
+                    <td class="number">5</td>
+                    <td class="number">6</td>
+                    <!-- 金额为空：empty -->
+                    <td class="pay-btn lock" rowspan="3">确认<br>支付</td>
+                </tr>
+                <tr>
+                    <td class="number">7</td>
+                    <td class="number">8</td>
+                    <td class="number">9</td>
+                </tr>
+                <tr>
+                    <td class="clear">清空</td>
+                    <td class="number">0</td>
+                    <td class="number">.</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script src="../../dist/javascripts/zepto.min.js"></script>
+    <script src="../../dist/javascripts/simpleui.min.js"></script>
+    <script src="../../dist/javascripts/common.min.js"></script>
+
+    <script>
+    $(function() {
+        init();
+
+        //点击数字键
+        $('.number').on('click', function() {
+            var $price = $('#price');
+            var num = $(this).text();
+
+            var ponitIndex = $price.val().lastIndexOf(".");
+
+            if(ponitIndex > 0 && (num == '.' || $price.val().length - ponitIndex > 2)) {
+                return;
+            }
+
+            $price
+                .val($price.val() + '' + num)
+                .next(".txt").text('¥' + $price.val());
+
+            togglePay();
+        });
+
+        //点击退格
+        $('.backspace').on('click', function() {
+            var $price = $('#price');
+            var text = '' + $price.val();
+            if(text.length <= 0) return;
+
+            var num = text.slice(0, text.length - 1);
+            $price.val(num);
+
+            $price.next(".txt").text('¥' + $price.val());
+
+            togglePay();
+        });
+
+        //清空
+        $('.clear').on('click', function() {
+            var $price = $('#price');
+            if(('' + $price.val()).length <= 0) return;
+
+            $price.val('');
+            $price.next(".txt").text('¥');
+
+            togglePay();
+        });
+
+        //确认支付
+        $('.pay-btn').on('click', function() {
+            var $el = $(this);
+
+            if($el.data('lock')) {
+                var money = $('#price').val();
+                console.log(money);
+            }
+        });
+
+        //是否锁定支付按钮
+        function togglePay() {
+            var $pay_btn = $('.pay-btn'),
+                $price = $('#price');
+
+            //为空，增加样式
+            if($.trim($price.val()) == '') {
+                $pay_btn.addClass('lock').data('lock', false);
+            } else {
+                $pay_btn.removeClass('lock').data('lock', true);
+            }
+        }
+    });
+
+    /*
+    * 初始化
+    * */
+    function init() {
+        var $pay_order = $('.pay-order'),
+            $keyboard_box = $('.keyboard-box');
+        var el_h = $pay_order.height() + $keyboard_box.height();
+        var window_h = $(window).height();
+
+        if(el_h >= window_h) {
+            $keyboard_box.css({
+                'position': 'relative',
+                'margin-top': '50px'
+            });
+        }
+    }
+    </script>
+</body>
+</html>

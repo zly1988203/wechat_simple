@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>中交出行</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/hailing/wait.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/hailing/evaluate.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<div id="wait-instant">
+    <header>
+        <div class="info">
+            <div class="avatar" style="background-image: url(../../dist/images/common/avatar_driver.png)"></div>
+            <div class="content">
+                <h4>王师傅 · 江苏客运认证网约车司机</h4>
+                <div class="second">
+                    <span>白色 · 别克君越</span>
+                    <span>粤BDE990</span>
+                </div>
+                <div class="starbar">
+                    <div class="grade"><span>4.0</span></div>
+                    <i class="star"></i>
+                    <i class="star"></i>
+                    <i class="star"></i>
+                    <i class="star"></i>
+                    <i></i>
+                </div>
+            </div>
+            <div class="tel" data-tel="12345678"></div>
+        </div>
+        <div class="journey-info">
+            <div class="end">
+                <div class="title">目的地</div>
+                <div class="content">
+                    <h4>深圳市 花园路283号沙河街道某某小区花园路283号沙河街道某某小区</h4>
+                    <p>已行驶：23分钟3秒</p>
+                </div>
+            </div>
+            <!--已支付-->
+            <div class="pay-success">
+                <div class="pay-info"><span>您已支付车费23元</span></div>
+                <p>如您需开发票，请下车时及时向司机索要</p>
+            </div>
+        </div>
+        <div class="evaluate-container evaluated">
+        <div class="star-box">
+            <div class="star-info">匿名评价司机</div>
+            <div class="star" data-size="max">
+                <input type="hidden" id="star1"/>
+                <span class="active"></span>
+                <span class="active"></span>
+                <span class="active"></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="tag">
+                <span data-value="服务好态度棒" class="active">服务好态度棒</span>
+                <span data-value="车内整洁">车内整洁</span>
+                <span data-value="驾驶平稳">驾驶平稳</span>
+            </div>
+            <div class="others">其他建议：<p>服务态度很好，但是车内有其他陌生人服务态度很好，但是车内有其他陌生人服务态度很好，但是车内有其他陌生人服务态度很好，但是车内有其他陌生人服务态度很好，但是车内有其他陌生人</p></div>
+            <div class="star-info">您的评价会让我们做的更好</div>
+        </div>
+        <div class="evaluate-box" style="display: none">
+            <div class="tag">
+                <div class="tag-tips">请选择标签</div>
+                <span data-value="服务好态度棒" class="active">服务好态度棒</span>
+                <span data-value="车内整洁">车内整洁</span>
+                <span data-value="驾驶平稳">驾驶平稳</span>
+                <span data-value="活地图认路准">活地图认路准</span>
+                <span data-value="不是订单显示车辆">不是订单显示车辆</span>
+                <span data-value="车内有其他陌生人">车内有其他陌生人</span>
+                <span data-value="车内有其他陌生人">车内有其他陌生人</span>
+                <input type="hidden" id="tag1">
+            </div>
+            <div class="others">
+                <label class="message-area" for="message-1">
+                    <textarea id="message-1" data-max="200" placeholder="其他意见和建议（内容匿名，可放心填写）" maxlength="200"></textarea>
+                    <div class="message-length">0/200</div>
+                </label>
+            </div>
+        </div>
+    </div>
+    </header>
+    <div id="allmap"></div>
+
+    <div class="btn-group">
+        <div class="btn">我的订单</div>
+        <div class="btn">再次约车</div>
+    </div>
+
+
+
+<script src="../../dist/javascripts/zepto.min.js"></script>
+<script src="../../dist/javascripts/simpleui.min.js"></script>
+<script src="../../dist/javascripts/vectors.min.js"></script>
+<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.4&key=cc84bbc40681d10bdf6a924b2caf31d5&plugin=AMap.Driving"></script>
+<script type="text/javascript">
+    //强制使用https
+    var AMapUIProtocol = 'https:';  //注意结尾包括冒号
+</script>
+<!--引入UI组件库（1.0版本） -->
+<script src="https://webapi.amap.com/ui/1.0/main.js"></script>
+<script src="../../dist/javascripts/communicate.min.js"></script>
+<script>
+    $(function() {
+        //map
+        AMapUI.loadUI(['overlay/SimpleMarker'], function (SimpleMarker) {
+            initMap(SimpleMarker)
+        })
+        function initMap(SimpleMarker) {
+            var map = new AMap.Map('allmap', {
+                resizeEnable: true,
+                zoom: 16,
+                center: [113.939428, 22.528159]
+            });
+
+            /**
+             *@param policy         驾车路线规划策略
+             *@param map            AMap.Map对象, 展现结果的地图实例
+             *@param hideMarkers    是否隐藏线路规划点图标
+             */
+            var driving = new AMap.Driving({
+                policy: AMap.DrivingPolicy.LEAST_TIME,
+                map: map,
+                hideMarkers: true
+            });
+
+            /**
+             *@param    origin          起点
+             *@param    destination     目的地
+             *@param    waypoints       途径点：也许有，也许没有，可以选填{waypoints: waypoints}
+             */
+            var origin = new AMap.LngLat(113.870999, 22.572401),
+                destination = new AMap.LngLat(113.937839, 22.522394),
+                waypoints = [new AMap.LngLat(113.870732, 22.568868), new AMap.LngLat(113.880646, 22.560853), new AMap.LngLat(113.887276, 22.554591), new AMap.LngLat(113.894679, 22.547418), new AMap.LngLat(113.897962, 22.537132), new AMap.LngLat(113.92354, 22.523952), new AMap.LngLat(113.942465, 22.518382)]
+
+            driving.search(origin, destination, function (status, result) {
+                if(status == 'complete') {
+                    //规划成功 - 标注点
+                    // markerPoints(waypoints)
+                    markerPoints(origin, 'start')
+                    markerPoints(destination, 'end')
+
+                    //设置起点为中心点
+                    map.setCenter(origin)
+                } else if(status == 'no_data') {
+                    //返回0结果
+                } else if(status == 'error') {
+                    //规划错误
+                    console.log(status)
+                    console.log(result)
+                }
+            });
+
+            /**
+             *@param    position    坐标
+             *@param    icon        图标
+             *@param    offset      图标偏移量
+             */
+            function markerPoints(points, mark) {
+                if(points instanceof Array) {
+                    //途径点
+                    for (var i = 0; i < points.length; i++) {
+                        new AMap.Marker({
+                            map: map,
+                            position: points[i],
+                            icon: new AMap.Icon({
+                                image: "../../dist/images/bus/map-4.png",
+                                size: new AMap.Size(26, 26),  //图标大小
+                                imageSize: new AMap.Size(13, 13),
+                                imageOffset: new AMap.Pixel(0, 0)
+                            }),
+                            offset: new AMap.Pixel(0, 0)
+                        })
+                    }
+                } else if(typeof points == 'object' && typeof mark == 'string') {
+                    //起点和目的地
+                    new AMap.Marker({
+                        map: map,
+                        position: points,
+                        icon: new AMap.Icon({
+                            image: "../../dist/images/bus/map-" + mark + ".png",
+                            size: new AMap.Size(50, 72),  //图标大小
+                            imageSize: new AMap.Size(25, 36),
+                            imageOffset: new AMap.Pixel(0, 0)
+                        })
+                    })
+                }
+            }
+        }
+
+        //拨打电话
+        $('.tel').on('click.tel', function() {
+            var tel = $(this).data('tel')
+
+            $.alert('您的电话号码已做加密处理，<br />联系司机师傅，请您通过页面按键拨打。', '温馨提示', ['知道了'], function() {
+                window.location.href = 'tel:' + tel
+            })
+        });
+    });
+</script>
+</body>
+</html>

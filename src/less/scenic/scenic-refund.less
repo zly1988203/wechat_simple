@@ -1,0 +1,109 @@
+body{
+  background: #F3F4F5;
+  font-family: PingFangSC-Regular;
+}
+.lump{
+  background: #FFFFFF;
+  box-shadow: 0 0.02rem 0.02rem 0 rgba(0,0,0,0.05);
+  margin-top: 0.22rem;
+}
+
+.ticket-info-content{
+  color: #4A4A4A;
+  margin-top: 0;
+  .content-name{
+    font-size: 0.28rem;
+    padding: 0.28rem 0.22rem;
+  }
+  ul{
+    li{
+      font-size: 0.32rem;
+      padding: 0.4rem 0.22rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .value{
+        color: #9B9B9B;
+      }
+      .price{
+        color: #FE6666;
+      }
+      span{
+        font-size: 0.2rem;
+        color: #3F3F3F;
+      }
+    }
+  }
+}
+
+.refund-info-content{
+  font-size: 0.28rem;
+  color: #333333;
+
+  .content-name{
+    padding: 0.28rem 0.22rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .ticket-rule{
+      color: #6392FE;
+    }
+  }
+  ul{
+    padding: 0.25rem 0;
+    li{
+      padding: 0.15rem 0.22rem;
+      display: flex;
+      align-items: center;
+      .check-icon{
+        width: 0.36rem;
+        height: 0.36rem;
+        margin-right: 0.44rem;
+        background: #FFFFFF;
+        border-radius: 100%;
+        box-shadow: 0 0 0.2rem 0 rgba(61,59,238,0.30);
+      }
+
+    }
+    .active{
+      .check-icon{
+        background: url("../../images/scenic/icon-choosed.png") center no-repeat;
+        background-size: 100% 100%;
+        border: none;
+      }
+    }
+  }
+}
+
+.btn-bar{
+  margin-top: 0.6rem;
+  background: rgba(255,255,255,0.90);
+  box-shadow: 0.04rem 0 0.04rem 0 rgba(0,0,0,0.10);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0.2rem 0;
+  .button{
+    height: 1rem;
+    line-height: 1rem;
+    font-size: 0.38rem;
+    color: #CCCCCC;
+    text-align: center;
+    background: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 1rem;
+    flex: 1;
+    margin-left: 0.2rem;
+    &:first-child{
+      margin-left: 0;
+    }
+    &:active{
+      background: #6392FE;
+      color: #FFFFFF;
+    }
+  }
+  .active{
+    background: #6392FE;
+    color: #FFFFFF;
+  }
+}

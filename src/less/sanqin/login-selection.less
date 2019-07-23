@@ -1,0 +1,148 @@
+@charset "utf-8";
+@import "../base/variable.less";
+
+html {
+  min-height: 100%;
+  background: #F8D53F url(../../images/bus/login-bg.png) no-repeat center;
+  background-size: 100% 100%;
+}
+
+body {
+  padding-bottom: 0.96rem;
+  background-color: transparent;
+}
+
+.logo {
+  width: 1.68rem;
+  height: 1.68rem;
+  background: url(../../images/bus/logo.png) center no-repeat;
+  background-size: 100% auto;
+  margin: 0.96rem auto 0;
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.form {
+  margin-top: 1.67rem;
+
+ .wechat-select{
+   text-align: center;
+
+    #wechatButton{
+      width: 3.8rem;
+      line-height: 1rem;
+      font-size: 0.36rem;
+      color: #FFFFFF;
+      background-image: url(../../images/sanqin/wechat-btn.png);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+
+      &:before{
+        content: '';
+        display: inline-block;
+        vertical-align:middle;
+        width: 0.61rem;
+        height: 0.47rem;
+        background-image: url(../../images/sanqin/icon-weichat.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        margin-right: 0.11rem;
+        margin-bottom: 0.05rem;
+      }
+    }
+  }
+  .or{
+    font-size: 0.28rem;
+    color: #BC9637;
+    text-align:center;
+    margin: 0.22rem 0;
+  }
+
+  .phone-select{
+    text-align: center;
+
+    p{
+      font-size: 0.32rem;
+      color: #997825;
+      border-bottom: 2px solid #9B7A25;;
+      display: inline-block;
+      text-align: center;
+
+      &:before{
+        content: '';
+        display: inline-block;
+        vertical-align:middle;
+        width: 0.223rem;
+        height: 0.32rem;
+        background-image: url(../../images/sanqin/icon-phone.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        color: #997825;
+        margin-right: 0.077rem;
+        margin-bottom: 0.05rem;
+      }
+    }
+  }
+
+  .disclaimer {
+    text-align: center;
+    margin: 0.99rem 0;
+
+    .open-popup{
+      font-size: 0.24rem;
+      color: #825730;
+      opacity: 0.5;
+    }
+
+    .copyright{
+      font-size: 0.18rem;
+      color: #BC9637;
+    }
+  }
+}
+
+#disclaimer  {
+  line-height: 25px;
+
+  p {
+    margin: 15px 0;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 16px;
+    display: block;
+    padding-bottom: 8px;
+    color: #333;
+  }
+
+  .content {
+    padding-top: 8px;
+    color: #666;
+
+    img {
+      max-width: 100%;
+      height: auto!important;
+    }
+  }
+
+  .close {
+    display: block;
+    width: 48px;
+    height: 48px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: url(../../images/bus/nav_close.png) center no-repeat;
+    background-size: 18px auto;
+  }
+
+  button {
+    width: 100%;
+    height: 35px;
+    .btn-style();
+  }
+}

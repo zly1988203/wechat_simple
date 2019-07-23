@@ -1,0 +1,53 @@
+/*订单详情中的取票/退票规则样式*/
+.rule-content {
+  padding: 0.3rem;
+  line-height: 0.5rem;
+  color:#666;
+
+  .close {
+    display: block;
+    width: 0.96rem;
+    height: 0.96rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: url(../../images/bus/nav_close.png) center no-repeat;
+    background-size: 0.36rem auto;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 0.32rem;
+    display: block;
+    padding-bottom: 0.16rem;
+    color: #333;
+  }
+
+  .popup-banner{
+    width:6.6rem;
+    height: 3.5rem;
+    margin: 0 auto;
+    background: url("../../images/coach/ticket-rule-test.gif") center no-repeat;
+    background-size: 100%;
+    position: relative;
+
+    &:after{
+      content: '';
+      display: block;
+      width: 6rem;
+      height: 0.02rem;
+      background: #CCCCCC;
+      border:0.01rem solid #CCCCCC;
+      border-radius: 0.04rem;
+      position:absolute;
+      bottom: -0.5rem;
+      left:0.3rem;
+    }
+  }
+
+  p {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+
+  }
+}

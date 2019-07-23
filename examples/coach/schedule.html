@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>中交出行</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/fy-datepicker.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/coach/schedule.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <header>
+        <!--<ul class="ola-date">
+            <li class="ola-prev" id="preDay"><span>前一天</span></li>
+            <li class="ola-current"><span><input type="text" id="startTime" data-date="" readonly  /></span></li>
+            <li class="ola-next" id="nextDay"><span>后一天</span></li>
+        </ul>-->
+        <ul class="ola-date">
+            <li class="ola-prev" id="preDay"><span>前一天</span></li>
+            <li class="ola-current"><label for="date"><span><i>2015-06-16</i><input type="text" id="date" data-date="" readonly /></span></label></li>
+            <li class="ola-next" id="nextDay"><span>后一天</span></li>
+        </ul>
+    </header>
+    <div class="main">
+        <!--无行程页面-->
+        <div class="no-schedule-container"  style="display: none">
+            <div class="no-schedule-icon"></div>
+            <div class="no-schedule-tips">当前日期没有行程</div>
+        </div>
+
+        <!--有行程页面-->
+        <ul class="ola-list-box">
+            <li class="schedule-item">
+                <div class="schedule-name custom-line custom-line-bgc">定制班线</div>
+                <div class="lineItem custom-line">
+                    <div class="ticket-info border-dotted-b border-shadow">
+                        <div class="left-line custom-line-bgc"></div>
+                        <div class="row">
+                            <span class="time">8:36</span>
+                            <span class="licence">粤B1233</span>
+                            <span class="icon-list icon-img" data-href="#"></span>
+                            <span class="icon-view-map icon-img" data-href="#"></span>
+                            <span class="icon-phone icon-img" data-href="#"></span>
+                        </div>
+                        <div class="station">
+                            <div class="start">软件产业基地（学府路）软件产业基地软件产业基地软件产业基地软件产业</div>
+                            <div class="end">西乡客运站西乡客运站西乡客运站西乡客运站西乡客运站西乡客运站</div>
+                        </div>
+                    </div>
+                    <ul class="ola-ticket">
+                        <li class="ola-ticket-item border-dotted-b border-shadow" data-href="#">
+                            <div class="left-line-li custom-line-bgc"></div>
+                            <div class="ticket-checking-info">
+                                <div class="checking-item">
+                                    <div class="checking-code">验票码<span>0068</span></div>
+                                </div>
+                            </div>
+                            <!-- 状态图标-- success：已验票，refund：已退票，out：已过期，wait：待乘车 -->
+                            <div class="icon-ticket-state">
+                                <div class="state-icon wait"></div>
+                            </div>
+                        </li>
+                        <li class="ola-ticket-item border-dotted-b border-shadow" data-href="#">
+                            <div class="left-line-li custom-line-bgc"></div>
+                            <div class="ticket-checking-info">
+                                <div class="checking-item">
+                                    <div class="checking-code">验票码<span>0070</span></div>
+                                </div>
+                            </div>
+                            <!-- 状态图标-- success：已验票，refund：已退票，out：已过期，wait：待乘车 -->
+                            <div class="icon-ticket-state">
+                                <div class="state-icon refund"></div>
+                            </div>
+                        </li>
+                        <li class="ola-ticket-item border-shadow" data-href="#">
+                            <div class="left-line-li custom-line-bgc"></div>
+                            <div class="ticket-checking-info">
+                                <div class="checking-item">
+                                    <div class="seat-number">座位号<span>03</span></div>
+                                    <div class="checking-code">验票码<span>0068</span></div>
+                                </div>
+                                <button>立即评价</button>
+                            </div>
+                            <!-- 状态图标-- success：已验票，refund：已退票，wait：待乘车, out：已过期，-->
+                            <div class="icon-ticket-state">
+                                <div class="state-icon success"></div>
+                            </div>
+                        </li>
+                        <!-- 品牌支持 -->
+                        <li class="ola-ticket-item border-shadow brand">
+                            <img class="brand-logo" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1514206877543&di=1d627a6ef48e65053968f5ac5af4f67f&imgtype=0&src=http%3A%2F%2Fimg.fuwo.com%2Fliuliang%2F1706%2F21%2F9ab642be55dd11e798f800163e010ef1.jpg" />
+                            <div class="brand-content">京东双十二有好货</div>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="schedule-item">
+                <div class="schedule-name custom-line introduce-line-bgc">旅游班线</div>
+                <div class="lineItem custom-line">
+                    <div class="ticket-info border-dotted-b border-shadow">
+                        <div class="left-line introduce-line-bgc"></div>
+                        <div class="row">
+                            <span class="time">8:36</span>
+                            <span class="licence">粤B1233</span>
+                            <span class="icon-list icon-img" data-href="#"></span>
+                            <span class="icon-view-map icon-img" data-href="#"></span>
+                            <span class="icon-phone icon-img" data-href="#"></span>
+                        </div>
+                        <div class="station">
+                            <div class="start">软件产业基地（学府路）软件产业基地软件产业基地软件产业基地软件产业</div>
+                            <div class="end">西乡客运站西乡客运站西乡客运站西乡客运站西乡客运站西乡客运站</div>
+                        </div>
+                    </div>
+                    <ul class="ola-ticket">
+                        <li class="ola-ticket-item border-dotted-b border-shadow" data-href="#">
+                            <div class="left-line-li introduce-line-bgc"></div>
+                            <div class="ticket-checking-info">
+                                <div class="checking-item">
+                                    <div class="checking-code">验票码<span>0068</span></div>
+                                </div>
+                            </div>
+                            <!-- 状态图标-- success：已验票，refund：已退票，out：已过期，wait：待乘车 -->
+                            <div class="icon-ticket-state">
+                                <div class="state-icon wait"></div>
+                            </div>
+                        </li>
+                        <li class="ola-ticket-item border-dotted-b border-shadow" data-href="#">
+                            <div class="left-line-li introduce-line-bgc"></div>
+                            <div class="ticket-checking-info">
+                                <div class="checking-item">
+                                    <div class="checking-code">验票码<span>0070</span></div>
+                                </div>
+                            </div>
+                            <!-- 状态图标-- success：已验票，refund：已退票，out：已过期，wait：待乘车 -->
+                            <div class="icon-ticket-state">
+                                <div class="state-icon refund"></div>
+                            </div>
+                        </li>
+                        <li class="ola-ticket-item border-shadow" data-href="#">
+                            <div class="left-line-li introduce-line-bgc"></div>
+                            <div class="ticket-checking-info">
+                                <div class="checking-item">
+                                    <div class="seat-number">座位号<span>03</span></div>
+                                    <div class="checking-code">验票码<span>0068</span></div>
+                                </div>
+                                <button>立即评价</button>
+                            </div>
+                            <!-- 状态图标-- success：已验票，refund：已退票，wait：待乘车, out：已过期，-->
+                            <div class="icon-ticket-state">
+                                <div class="state-icon success"></div>
+                            </div>
+                        </li>
+                        <!-- 品牌支持 -->
+                        <li class="ola-ticket-item border-shadow brand">
+                            <img class="brand-logo" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1514206877543&di=1d627a6ef48e65053968f5ac5af4f67f&imgtype=0&src=http%3A%2F%2Fimg.fuwo.com%2Fliuliang%2F1706%2F21%2F9ab642be55dd11e798f800163e010ef1.jpg" />
+                            <div class="brand-content">京东双十二有好货</div>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="schedule-item">
+                <div class="schedule-name to-from-work-bgc">上下班</div>
+                <div class="lineItem to-from-work">
+                    <div class="ticket-info border-dotted-b border-shadow">
+                        <div class="left-line to-from-work-bgc"></div>
+                        <div class="row">
+                            <span class="time">8:36</span>
+                            <span class="licence">粤B1233</span>
+                            <span class="icon-list icon-img" data-href="#"></span>
+                            <span class="icon-view-map icon-img" data-href="#"></span>
+                            <span class="icon-phone icon-img icon-phone-disable" data-href="#"></span>
+                        </div>
+                        <div class="station">
+                            <div class="start">软件产业基地（学府路）基地软件产业基地软件产业基地软件产</div>
+                            <div class="end">西乡客运站</div>
+                        </div>
+                    </div>
+                    <ul class="ola-ticket">
+                        <li class="ola-ticket-item border-shadow" data-href="#">
+                            <div class="left-line-li to-from-work-bgc"></div>
+                            <div class="ticket-checking-info">
+                                <div class="checking-item">
+                                    <div class="checking-code">验票码<span>0068</span></div>
+                                </div>
+                                <button>立即评价</button>
+                            </div>
+                            <!-- 状态图标-- success：已验票，refund：已退票，wait：待乘车, out：已过期，-->
+                            <div class="icon-ticket-state">
+                                <button>出示车票</button>
+                            </div>
+                        </li>
+                        <!-- 品牌支持 -->
+                        <li class="ola-ticket-item border-shadow brand">
+                            <img class="brand-logo" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1514206877543&di=1d627a6ef48e65053968f5ac5af4f67f&imgtype=0&src=http%3A%2F%2Fimg.fuwo.com%2Fliuliang%2F1706%2F21%2F9ab642be55dd11e798f800163e010ef1.jpg" />
+                            <div class="brand-content">京东双十二有好货</div>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="schedule-item">
+                <div class="schedule-name  intercity-renting-bgc">城际约租车</div>
+                <div class="lineItem intercity-renting">
+                    <div class="ticket-info border-shadow">
+                        <div class="left-line intercity-renting-bgc"></div>
+                        <div class="row">
+                            <span class="time">8:36</span>
+                            <span class="licence">粤B1233</span>
+                            <span class="icon-list icon-img" data-href="#"></span>
+                            <span class="icon-phone icon-img" data-href="#"></span>
+                        </div>
+                        <div class="station">
+                            <div class="start">软件产业基地（学府路）</div>
+                            <div class="end">西乡客运站</div>
+                        </div>
+                    </div>
+                    <ul class="ola-ticket">
+                        <!-- 品牌支持 -->
+                        <li class="ola-ticket-item border-shadow brand">
+                            <img class="brand-logo" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1514206877543&di=1d627a6ef48e65053968f5ac5af4f67f&imgtype=0&src=http%3A%2F%2Fimg.fuwo.com%2Fliuliang%2F1706%2F21%2F9ab642be55dd11e798f800163e010ef1.jpg" />
+                            <div class="brand-content">京东双十二有好货</div>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="schedule-item">
+                <div class="schedule-name coach-ticket-bgc">汽车票</div>
+                <div class="lineItem coach-ticket">
+                    <div class="ticket-info border-dotted-b border-shadow">
+                        <div class="left-line coach-ticket-bgc"></div>
+                        <div class="row">
+                            <span class="time">8:36</span>
+                            <span class="licence">粤B1233</span>
+                            <span class="icon-list icon-img" data-href="#"></span>
+                            <span class="icon-phone icon-img" data-href="#"></span>
+                        </div>
+                        <div class="station">
+                            <div class="start">软件产业基地（学府路）</div>
+                            <div class="end">西乡客运站</div>
+                        </div>
+                    </div>
+                    <ul class="ola-ticket">
+                        <li class="ola-ticket-item border-shadow" data-href="#">
+                            <div class="left-line-li coach-ticket-bgc"></div>
+                            <div class="ticket-checking-info">
+                                <div class="checking-item">
+                                    <div class="checking-tips">凭乘车人身份站到站点取票</div>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- 品牌支持 -->
+                        <li class="ola-ticket-item border-shadow brand">
+                            <img class="brand-logo" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1514206877543&di=1d627a6ef48e65053968f5ac5af4f67f&imgtype=0&src=http%3A%2F%2Fimg.fuwo.com%2Fliuliang%2F1706%2F21%2F9ab642be55dd11e798f800163e010ef1.jpg" />
+                            <div class="brand-content">京东双十二有好货</div>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+
+        <!-- 选择日期 -->
+        <div id="select-date" class="sui-popup-container" data-trigger="">
+            <div class="sui-popup-mask"></div>
+            <div class="sui-popup-modal">
+                <div class="date"></div>
+            </div>
+        </div>
+    </div>
+<script src="../../dist/javascripts/zepto.min.js"></script>
+<script src="../../dist/javascripts/simpleui.min.js"></script>
+<script src="../../dist/javascripts/vectors.min.js"></script>
+<script src="../../dist/javascripts/fy-datePicker.min.js"></script>
+<script>
+    $(function () {
+        //初始化行程默认日期
+        initStartDate();
+
+        selectDate();
+
+        //前一天点击事件
+        $('#preDay').on('click',function(){
+            //TODO
+            console.log('前一天');
+        });
+        //后一天点击事件
+        $('#nextDay').on('click',function(){
+            //TODO
+            console.log('后一天');
+        });
+    });
+
+    /*
+    初始化行程默认日期
+    */
+    function initStartDate(){
+        var _startTime = $('#startTime');
+        var initDate = new Date();
+
+        _startTime.val(initDate.getFullYear() + '-' + (initDate.getMonth()+1) + '-' + initDate.getDate());
+        reSetWidth(_startTime);
+    }
+    /*
+    * 选择日期
+    * */
+    function selectDate() {
+        var trigger = $('#date'),
+            parent = $('#select-date');
+        var initDateStatus = false;
+
+        var init = function () {
+            //只初始化一次
+            if(!initDateStatus) {
+                initDateStatus = true;
+                parent.find('.date').datePicker({
+                    dateBase: '2017-10-10',
+                    weekend: false,
+                    multiple: false,
+                    gather: createData([10, 11, 12]),
+                    selectCallback: function (data) {
+                        //TODO
+                        parent.closePopup(function () {
+                            var d = data.selectData[0].date;
+                            var val = d.year + '-' + d.month + '-' + d.day;
+
+                            trigger.val(val).siblings('i').text(val);
+                        });
+                    }
+                });
+            }
+        };
+
+        //弹出层
+        trigger.parent().on('click', function () {
+            var self = $(this);
+
+            parent.popup('pull', init);
+        });
+    }
+
+    //监听文字变化，重设宽度
+    function reSetWidth(o) {
+        var _html = $('<div>' + o.val() + '</div>');
+        _html.css({
+            position: 'absolute',
+            top: '-9999px',
+            zIndex: -9999,
+            paddingLeft: o.css('padding-left'),
+            paddingRight: o.css('padding-right'),
+            fontSize: o.css('font-size'),
+            fontWeight: o.css('font-weight'),
+            fontFamily: o.css('font-family')
+        });
+        o.after(_html);
+
+        var w = (_html.width() + 10) / parseFloat($('html').css('font-size')) + 'rem'
+        o.width(w);
+
+        _html.remove();
+    }
+
+    //创建随机数据
+    function createData(monthDrr) {
+        var result = [];
+
+        monthDrr.forEach(function (item, index) {
+            var _n = 0,
+                _MAX = new Date(2017, item, 0).getDate();
+
+            var arr = [];
+            //创建数组
+            for(var i = 0; i < _MAX; i++) {
+                _n = parseInt(Math.random().toFixed(2) * 10) + i + index;
+
+                if(_n <= _MAX) {
+                    arr.push(_n);
+                }
+            }
+
+            //去重
+            for(var n = 0; n < arr.length; n++) {
+                for(var m = 0; m < arr.length; m++) {
+                    if(arr[n] == arr[m]) {
+                        arr.splice(m, 1);
+                    }
+                }
+            }
+
+            //排序
+            arr.sort(function () {
+                return -1;
+            });
+
+            //填充数据
+            for(var l = 0; l < arr.length; l++) {
+                var _result = {
+                    date: '2017-' + item + '-' + arr[l],
+                    state: 'select'
+                };
+
+                if(parseInt(2 * Math.random())) {
+                    _result.comment = '备注';
+                }
+
+                /*switch(parseInt(4 * Math.random()) + 1) {
+                    case 1:
+                        _result.state = 'select';
+                        break;
+                    case 2:
+                        _result.state = 'readonly';
+                        break;
+                    case 3:
+                        _result.state = 'disabled';
+                        break;
+                }*/
+                _result.state = 'select';
+                result.push(_result);
+            }
+        });
+
+        return result;
+    }
+
+</script>
+</body>
+</html>

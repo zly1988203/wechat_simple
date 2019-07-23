@@ -1,0 +1,458 @@
+@charset "utf-8";
+@import "../base/head-order.less";
+@import "../base/order-detail.less";
+
+.payment {
+    padding-bottom: 2.2rem;
+}
+
+.payment-top {
+    padding: 0.15rem;
+    background-color: #999;
+
+    p {
+        font-size: 0.28rem;
+        color: #F3F4F5;
+        line-height: 0.4rem;
+        text-align: center;
+    }
+}
+
+.payment-list {
+    padding: 0 0.24rem;
+    background: #fff;
+
+    &:first-child {
+        margin-top: 0;
+    }
+
+    .title {
+        padding-top: 0.15rem;
+        font-size: 0.28rem;
+        line-height: 0.4rem;
+        color: #999;
+        text-align: left;
+    }
+
+    .head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.2rem 0;
+        line-height: 0.45rem;
+
+        .date {
+            flex: 1;
+            text-align: left;
+            font-size: 0.32rem;
+            line-height: 0.45rem;
+            color: #333;
+            white-space: nowrap;
+        }
+
+        .code {
+            padding-left: 0.54rem;
+            position: relative;
+            text-align: right;
+            font-size: 0.32rem;
+            color: #999;
+
+            &:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                margin: auto 0;
+                width: 0.429rem;
+                height: 0.44rem;
+                background: url("../../images/rent/iocn_people.png") no-repeat center;
+                background-size: 100% 100%;
+            }
+        }
+    }
+
+    .main {
+        display: flex;
+        vertical-align: middle;
+        align-items: center;
+
+        & > * {
+            flex: 1;
+        }
+
+        .info {
+            position: relative;
+
+            .info-item {
+                position: relative;
+                padding-left: 0.38rem;
+                text-align: left;
+                font-size: 0.32rem;
+                color: #333;
+                line-height: 0.45rem;
+                margin-top: 0.13rem;
+
+                &:first-child {
+                    margin-top: 0;
+                }
+
+                &:before {
+                    content: '';
+                    position: absolute;
+                    top: 0.13rem;
+                    left: 0;
+                    width: 0.16rem;
+                    height: 0.16rem;
+                    border-radius: 100%;
+                }
+
+                &.start:after {
+                    content: '';
+                    position: absolute;
+                    top: 0.37rem;
+                    bottom: -0.18rem;
+                    left: 0.05rem;
+                    z-index: 66;
+                    width: 0.04rem;
+                    margin: auto 0;
+                    background-color: #ccc;
+                    border-radius: 5px;
+                }
+
+                &.start:before {
+                    background: #25CE5F;
+                }
+                &.end:before {
+                    background: #FE6666;
+                }
+            }
+        }
+    }
+
+    .tips {
+        margin-top: 0.2rem;
+        padding: 0.15rem 0 0.2rem 0.4rem;
+        position: relative;
+        font-size: 0.28rem;
+        color: #999;
+        line-height: 0.4rem;
+        border-top: 1px solid #E6E6E6;
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0.25rem;
+            left: 0;
+            width: 0.3rem;
+            height: 0.23rem;
+            background: url(../../images/rent/icon_dialog.png) no-repeat center;
+            background-size: 100% 100%;
+        }
+    }
+}
+
+.payment-info {
+    margin: 0.22rem 0 0;
+    padding: 0 0.25rem 0 0.24rem;
+    border-top: 1px solid #E8E8E8;
+    border-bottom: 1px solid #E8E8E8;
+
+    .title {
+        margin-top: 0.15rem;
+        font-size: 0.28rem;
+        color: #999;
+        line-height: 0.4rem;
+    }
+
+    .price-container {
+        line-height: 1;
+        font-size: 0.36rem;
+        color: #999;
+
+        span {
+            font-size: 1.4rem;
+            line-height: 1.4rem;
+            color: #F27D4A;
+        }
+    }
+}
+
+.payment-info {
+    .detail-info {
+        margin-top: 0.223rem;
+        border-top: 1px solid #E6E6E6;
+
+        &:before, &:after {
+            content: normal;
+        }
+
+        .title-bar {
+            font-size: 0.28rem;
+            color: #999;
+            line-height: 0.4rem;
+            padding: 0.157rem 0;
+
+            &:after {
+                border-color: #999;
+                left: 7px;
+            }
+        }
+
+        .detail {
+            display: none;
+            padding: 0.2rem 0 0.28rem;
+            border-bottom: 1px solid #E6E6E6;
+
+            dl {
+                margin-top: 0.2rem;
+                line-height: 0.4rem;
+
+                &:first-child {
+                    margin-top: 0;
+                }
+
+                dt,dd {
+                    font-size: 0.28rem;
+                    color: #999;
+                    width: 50%;
+                }
+
+                dt {
+                    text-align: right;
+                }
+
+                dd {
+                    margin-left: 29.6%;
+                    text-align: left;
+                }
+
+                .dashed {
+                    flex: 1;
+                    position: relative;
+                    margin: 0 15px;
+
+                    &:before {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                        height: 1px;
+                        margin: auto 0;
+                        border-bottom: 1px dashed #999;
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+.pay-method {
+    background: #fff;
+    border-top: 1px solid #E9E9E9;
+    border-bottom: 1px solid #E9E9E9;
+    padding: 0 0.24rem 0 0.25rem;
+    margin-top: 0.24rem;
+
+    .title {
+        font-size: 0.28rem;
+        color: #999;
+        padding: 0.15rem 0;
+        line-height: 0.4rem;
+        border-bottom: 1px solid #E6E6E6;
+    }
+
+    label {
+        display: block;
+        overflow: hidden;
+        padding: 0.15rem 0;
+        position: relative;
+
+        span {
+            display: block;
+            float: left;
+            padding-left: 0.7rem;
+            font-size: 0.28rem;
+            color: #333;
+            line-height: 0.4rem;
+            height: 0.4rem;
+            background-size: auto 100%;
+            background-position: left center;
+            background-repeat: no-repeat;
+        }
+
+        input {
+            float: right;
+            appearance: none;
+            outline: 0;
+            vertical-align: middle;
+            border: 0;
+            display: block;
+            width: 0.35rem;
+            height: 0.35rem;
+            background-position:  top center ;
+            background-size: 100% auto;
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto 0;
+
+            &:checked {
+                background-position: bottom center;
+            }
+        }
+    }
+
+    .wechat span {
+        background-image: url("../../images/common/icon_wechat.png");
+    }
+    .later span {
+        background-image: url("../../images/common/icon_later_3x.png");
+    }
+}
+
+.pay-foot {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding-bottom: 0.16rem;
+    background: #fafafa;
+
+    .btn-group {
+        position: relative;
+    }
+
+    .link {
+        text-align: center;
+        font-size: 0.28rem;
+        color: #999;
+
+        &:before {
+            content: '';
+            display: inline-block;
+            vertical-align: middle;
+            width: 0.33rem;
+            height: 0.34rem;
+            margin-right: 0.1rem;
+            background: url("../../images/rent/icon_earphone.png") no-repeat center;
+            background-size: 100% 100%;
+        }
+
+        span {
+            vertical-align: middle;
+        }
+    }
+}
+
+.listWrapper {
+    overflow: auto;
+}
+
+/*.input-price-bar {
+    background-color: white;
+    margin: 20px 10px;
+    text-align: center;
+    padding: 20px 0;
+
+    .input-box {
+        position: relative;
+        width: 250px - 90px;
+        height: 44px;
+        margin:0 auto;
+        padding: 0 30px 0 60px;
+
+        div {
+            position: absolute;
+            line-height: 44px;
+            top: 0;
+            text-align: center;
+            font-size: 18px;
+            background-color: white;
+        }
+
+        .left {
+            left: 0;
+            width: 60px;
+        }
+
+        .right {
+            right: 0;
+            width: 45px;
+        }
+
+        input {
+            width: 100%;
+            border: 0;
+            padding: 0;
+            height: 20px;
+            line-height: 20px;
+            margin: 0;
+            margin-top: 11px;
+            text-align: center;
+            font-size: 18px;
+            color: #000;
+            text-indent: -15px;
+        }
+    }
+
+    .tips {
+        font-size: 12px;
+        color: #999;
+        padding-top: 10px;
+    }
+
+    .preferential {
+        color: #999;
+        border-top: 1px #e8e8e8 dashed;
+        margin-top: 8px;
+        padding-top: 8px;
+
+        dl {
+            min-height: 14px;
+            color: #ffa800;
+            padding: 0 15px;
+
+            dt {
+                float: left;
+            }
+
+            dd {
+                float: right;
+            }
+
+            .dashed {
+
+            }
+        }
+    }
+}*/
+
+#interRule {
+    h1 {
+        font-size: 0.28rem;
+        padding-bottom: 0.1rem;
+    }
+
+    .content {
+        p {
+            font-size: 0.28rem;
+
+            &:first-child {
+                margin-top: 0;
+            }
+
+            strong {
+                font-size: 0.28rem;
+            }
+        }
+    }
+
+    .sui-article .content {
+        padding-top: 0.1rem;
+    }
+}

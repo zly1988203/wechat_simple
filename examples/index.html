@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>中交出行</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+	<style>
+		.index-tabs > li {
+			margin-left: 0!important;
+			padding: 0!important;
+		}
+
+		.index-tabs > li > h4 {
+			padding: 10px 30px 10px 15px;
+			font-weight: normal;
+		}
+
+		.index-tabs > li.active > h4 {
+			background-color: #008bbf;
+			color: #fff;
+		}
+
+		.index-main, .index-main ul {
+			background-color: #fafafa;
+		}
+		
+		.index-tabs ul {
+			display: none;
+			margin-left: 15px;
+			overflow-y: hidden;
+			-webkit-transition: all 0.4s;
+			transition: all 0.4s;
+		}
+	</style>
+</head>
+
+<body>
+	<ul class="sui-list sui-border-b index-tabs">
+		<li data-target="/examples/index.html#/commutingBus">
+			<h4>定制通勤优化版本</h4>
+			<div class="index-main">
+				<ul class="sui-list sui-list-link">
+					<li data-href="bus/login.html">登录</li>
+					<li data-href="commutingBus/index.html">首页</li>
+					<li data-href="commutingBus/conmut_searchLineResult.html">查询结果页</li>
+					<li data-href="commutingBus/commut_shiftsDetail.html">班次详情</li>
+					<li data-href="commutingBus/commut_toAddOrder.html">下单页面</li>
+					<li data-href="commutingBus/commut_chooseDate.html">选择日期</li>
+					<li data-href="commutingBus/commut_lineMap.html">班次地图</li>
+					<li data-href="commutingBus/commut_checkTicket.html">验票页面</li>
+					<li data-href="../../dist/stylesheets/commutingBus/fonts/demo_index.html">图标字体</li>
+				</ul>
+			</div>
+		</li>
+
+		<li data-target="/examples/index.html#/index-tab-1">
+			<h4>黄山-三票同售</h4>
+			<div class="index-main">
+				<ul class="sui-list sui-list-link">
+					<li data-href="sameSale/orderList.html">订单列表</li>
+					<li data-href="sameSale/orderDetail.html">订单详情</li>
+					<li data-href="sameSale/scenicTicketOrder.html">门票订单</li>
+					<li data-href="sameSale/attMain.html">黄山风景区</li>
+				</ul>
+			</div>
+		</li>
+		<li data-target="#index-tab-2">
+			<h4>定制班线</h4>
+			<div class="index-main">
+				<ul class="sui-list sui-list-link">
+					<li data-href="bus/login.html">登录</li>
+					<li data-href="bus/bus.html">首页</li>
+					<li data-href="bus/line-list.html">线路班次列表</li>
+					<li data-href="bus/line-detail.html">线路详情</li>
+					<li data-href="bus/payment.html">订单支付</li>
+					<li data-href="bus/payment-wait.html">订单支付 - 待支付</li>
+					<li data-href="bus/payment-success.html">支付成功</li>
+					<li data-href="bus/insuranceList.html">交通意外险</li>
+					<li data-href="bus/insuranceRule.html">保险说明</li>
+				</ul>
+			</div>
+		</li>
+		<li data-target="#index-tab-2">
+			<h4>定制班线(优化)</h4>
+			<div class="index-main">
+				<ul class="sui-list sui-list-link">
+					<li data-href="bus_new/bus.html">首页</li>
+					<li data-href="bus_new/line-map.html">行程地图展示</li>
+					<li data-href="bus_new/bus_new.html">首页2</li>
+					<li data-href="bus_new/map.html">搜索</li>
+					<li data-href="bus_new/fyData2.html">日历</li>
+					<li data-href="bus_new/tripList.html">行程</li>
+					<li data-href="bus_new/searchLineResult.html">线路查询结果页</li>
+					<li data-href="bus_new/showTicket.html">验票</li>
+					<li data-href="bus_new/payment.html">订单支付</li>
+				</ul>
+			</div>
+		</li>
+		<li data-target="#index-tab-2">
+			<h4>我的</h4>
+			<div class="index-main">
+				<ul class="sui-list sui-list-link">
+					<li data-href="coach/e-invoice.html">电子发票</li>
+					<li data-href="my/myorder.html">订单</li>
+					<li data-href="my/order-detail.html">订单详情 - 已支付</li>
+					<li data-href="my/order-detail-pay.html">订单详情 - 上车支付</li>
+					<li data-href="my/order-detail-close.html">订单详情 - 已关闭</li>
+					<li data-href="my/order-detail-pending-payment.html">订单详情 - 待支付</li>
+					<li data-href="my/order-detail-refund.html">订单详情 - 全部退票/部分退票</li>
+					<li data-href="my/refund-ticket.html">退票</li>
+					<li data-href="my/check-station.html">查看站点</li>
+					<li data-href="my/my-ticket.html">我的车票</li>
+					<li data-href="my/show-ticket.html">车票详情 - 电子票</li>
+					<li data-href="my/my-ticket-empty.html">暂无车票</li>
+					<li data-href="my/contacts.html">紧急联系人</li>
+					<li data-href="my/contacts-add.html">紧急联系人 - 新增联系人</li>
+					<li data-href="my/user-guide.html">用户指南</li>
+					<li data-href="my/user-config.html">设置</li>
+					<li data-href="my/invite.html">邀请有礼</li>
+					<li data-href="my/suggest.html">反馈建议</li>
+					<li data-href="my/coupon.html">优惠券</li>
+					<li data-href="my/passenger.html">常用乘车人</li>
+				</ul>
+			</div>
+		</li>
+		<li data-target="#index-tab-3">
+			<h4>支付</h4>
+			<div class="index-main">
+				<ul class="sui-list sui-list-link">
+					<li data-href="pay/failure.html">班次列表（二维码被禁用）</li>
+					<li data-href="pay/success.html">支付成功（已关注公众号）</li>
+					<li data-href="pay/success-2.html">支付成功-线路（未关注公众号）</li>
+					<li data-href="pay/success-3.html">支付成功-收款（未关注公众号）</li>
+					<li data-href="pay/success-4.html">支付成功（未关注公众号）</li>
+					<li data-href="pay/pay-order.html">微信支付-未输入支付</li>
+				</ul>
+			</div>
+		</li>
+		<li data-target="#index-tab-4">
+			<h4>出租约车</h4>
+			<div class="index-main">
+				<ul class="sui-list sui-list-link">
+					<li data-href="rent/appointment.html">预约用车</li>
+					<li data-href="rent/order-payment.html">支付费用</li>
+					<li data-href="rent/scan-code-payment.html">扫码支付</li>
+					<li data-href="rent/order-wait.html">等待接单</li>
+					<li data-href="rent/driver-receive-inter.html">等待接驾</li>
+					<li data-href="rent/to-destination.html">前往目的地</li>
+					<li data-href="rent/order-detail.html">订单详情</li>
+					<li data-href="rent/order-refund.html">订单详情 - 已退款</li>
+					<li data-href="rent/order-cancel.html">订单详情 - 订单已取消</li>
+					<li data-href="rent/cancel-order-refund.html">取消订单并退款</li>
+				</ul>
+			</div>
+		</li>
+
+		<li data-target="#index-tab-44">
+			<h4>城际约租车</h4>
+			<div class="index-main">
+				<ul class="sui-list sui-list-link">
+					<li data-href="newInnerCity/index.html">首页-优化</li>
+					<li data-href="newInnerCity/areaLocation.html">电子覆盖区域-优化</li>
+					<li data-href="newInnerCity/innerCityService.html">叫车-优化</li>
+					<li data-href="newInnerCity/service-rules.html">约车规则-优化</li>
+					<li data-href="newInnerCity/market-rules.html">计价规则-优化</li>
+					<li data-href="newInnerCity/order-cancel.html">订单取消-优化</li>
+					<li data-href="newInnerCity/order.html">订单模板-优化</li>
+					<li data-href="newInnerCity/share-journey.html">分享行程-优化</li>
+					<li data-href="rent/order-payment.html">支付费用</li>
+					<li data-href="rent/scan-code-payment.html">扫码支付</li>
+					<li data-href="rent/order-wait.html">等待接单</li>
+					<li data-href="rent/driver-receive-inter.html">等待接驾</li>
+					<li data-href="rent/to-destination.html">前往目的地</li>
+					<li data-href="rent/order-detail.html">订单详情</li>
+					<li data-href="rent/order-refund.html">订单详情 - 已退款</li>
+					<li data-href="rent/order-cancel.html">订单详情 - 订单已取消</li>
+					<li data-href="rent/cancel-order-refund.html">取消订单并退款</li>
+					<li data-href="rent/new-order-payment.html">新立即支付</li>
+					<li data-href="rent/new-order-payment1.html">待应答</li>
+					<li data-href="rent/later-pay.html">稍后支付</li>
+					<li data-href="newInnerCity/loading-fail.html">加载失败</li>
+					<li data-href="newInnerCity/pay-transition.html">支付过渡页</li>
+                    <li data-href="newInnerCity/complaint-suggest.html">投诉建议</li>
+				</ul>
+			</div>
+		</li>
+
+		<li data-target="#index-tab-5" style="display: none">
+			<h4>评价</h4>
+			<div class="index-main">
+				<ul id="index-tab-5" class="sui-list sui-list-link">
+					<li data-href="evaluate/evaluate.html">评价</li>
+					<li data-href="evaluate/evaluate-success.html">评价 - 完成</li>
+					<li data-href="evaluate/evaluate-check.html">评价 - 查看</li>
+				</ul>
+			</div>
+		</li>
+		<li data-target="#index-tab-6" style="display: none">
+			<h4>三秦</h4>
+			<div class="index-main">
+				<ul class="sui-list sui-list-link">
+					<li data-href="sanqin/login-selection.html">选择登录方式</li>
+					<li data-href="sanqin/phone-login.html">手机登录</li>
+					<li data-href="sanqin/wechat-login.html">微信登录</li>
+					<li data-href="sanqin/myinfo.html">编辑资料</li>
+				</ul>
+			</div>
+		</li>
+		<li data-target="#index-tab-7" style="display: none">
+			<h4>买满有礼</h4>
+			<div class="index-main">
+				<ul class="sui-list sui-list-link">
+					<li data-href="activity/detail.html">活动详情</li>
+					<li data-href="activity/list.html">活动列表</li>
+					<li data-href="activity/detail-empty.html">活动详情-空</li>
+				</ul>
+			</div>
+		</li>
+		<li data-target="#index-tab-8">
+			<h4>汽车票</h4>
+			<div class="index-main">
+				<ul class="sui-list sui-list-link">
+					<li data-href="coach/index.html">首页</li>
+					<li data-href="coach/line-list.html">列表</li>
+					<li data-href="coach/line-list-01.html">列表-新日历</li>
+					<li data-href="coach/payment.html">确认订单</li>
+					<li data-href="coach/payment-01.html">确认订单-新</li>
+					<li data-href="coach/payment-success.html">支付成功</li>
+					<li data-href="coach/schedule.html">行程</li>
+					<li data-href="coach/order-detail.html">订单详情</li>
+				</ul>
+			</div>
+		</li>
+		<li data-target="#index-tab-9" style="display: none">
+			<h4>批量退票</h4>
+			<div class="index-main">
+				<ul class="sui-list sui-list-link">
+					<li data-href="batch/refund-ticket.html">退票（定制班线和汽车票）</li>
+					<li data-href="batch/refund-ticket-2.html">退票（通勤）</li>
+					<li data-href="batch/refund-detail.html">退票详情(汽车票)</li>
+				</ul>
+			</div>
+		</li>
+		<li data-target="#index-tab-10">
+			<h4>通勤</h4>
+			<div class="index-main">
+				<ul class="sui-list sui-list-link">
+					<li data-href="commuting/order-detail.html">订单详情-已支付</li>
+					<li data-href="commuting/order-detail-2.html">订单详情-待支付</li>
+					<li data-href="commuting/order-detail-3.html">订单详情-已关闭</li>
+					<li data-href="commuting/order-detail-4.html">订单详情-全部退票/部分退票</li>
+					<li data-href="commuting/line-detail.html">线路详情</li>
+					<li data-href="commuting/payment.html">订单支付</li>
+					<li data-href="commuting/payment-wait.html">订单支付 - 待支付</li>
+				</ul>
+			</div>
+		</li>
+		<li data-target="#index-tab-12">
+			<h4>旅游班线</h4>
+			<div class="index-main">
+				<ul class="sui-list sui-list-link">
+					<li data-href="travel/index.html">首页</li>
+					<li data-href="travel/line-list.html">线路班次列表</li>
+					<li data-href="travel/line-introduce.html">线路介绍</li>
+					<li data-href="travel/order-detail.html">订单详情-已支付</li>
+					<li data-href="travel/order-detail-close.html">订单详情-已关闭</li>
+					<li data-href="travel/order-detail-pay.html">订单详情-上车支付</li>
+					<li data-href="travel/order-detail-pending-payment.html">订单详情-待支付</li>
+					<li data-href="travel/order-detail-refund.html">订单详情-全部退票</li>
+				</ul>
+			</div>
+		</li>
+		<li data-target="#index-tab-13">
+			<h4>网约车</h4>
+			<div class="index-main">
+				<ul class="sui-list sui-list-link">
+					<li data-href="hailing/hailing.html">首页</li>
+					<li data-href="hailing/bill-rules.html">计费规则</li>
+					<li data-href="hailing/order-list.html">全部订单</li>
+					<li data-href="hailing/evaluate.html">评价</li>
+					<li data-href="hailing/evaluated.html">评价-完成</li>
+					<li data-href="hailing/wait-instant.html">等待接驾-即时</li>
+					<li data-href="hailing/journey.html">行程开始</li>
+					<li data-href="hailing/share.html">分享行程</li>
+					<li data-href="hailing/order-status.html">订单详情</li>
+				</ul>
+			</div>
+		</li>
+		<li data-target="#index-tab-14" style="display: none">
+			<h4>预约包车</h4>
+			<div class="index-main">
+				<ul class="sui-list sui-list-link">
+					<li data-href="reservationCar/index.html">首页</li>
+					<li data-href="reservationCar/line-list.html">线路班次列表</li>
+				</ul>
+			</div>
+		</li>
+
+		<li data-target="#index-tab-15" style="display: none">
+			<h4>分销系统</h4>
+			<div class="index-main">
+				<ul class="sui-list sui-list-link">
+					<li data-href="distribution/distribution.html">个人中心</li>
+					<li data-href="distribution/my-bounty.html">我的赏金</li>
+					<li data-href="distribution/bounty-hunter.html">去赚赏金</li>
+					<li data-href="distribution/questions.html">常见问题</li>
+					<li data-href="distribution/histroyRecord.html">历史记录</li>
+					<li data-href="distribution/sharePlatform.html">推广页面</li>
+					<li data-href="distribution/sharePlatform2.html">推广页面New</li>
+					<li data-href="distribution/hunter-normal.html">推广页面-无线路</li>
+					<li data-href="distribution/shareLine.html">推广页面-带线路</li>
+					<li data-href="distribution/shareLineV2.html">推广页面-第二版</li>
+				</ul>
+			</div>
+		</li>
+		<li data-target="#index-tab-16" style="display: none">
+			<h4>公共组件</h4>
+			<div class="index-main">
+				<ul class="sui-list sui-list-link">
+					<li data-href="common/iconPage.html">图标字体</li>
+					<li data-href="common/errorPage-404.html">404页面</li>
+					<li data-href="common/errorPage-500.html">500页面</li>
+				</ul>
+			</div>
+		</li>
+		<li data-target="#index-tab-17" style="display: none">
+			<h4>年终总结</h4>
+			<div class="index-main">
+				<ul class="sui-list sui-list-link">
+					<li data-href="summary/page_01.html">第一页</li>
+					<li data-href="summary/page_02.html">第二页</li>
+					<li data-href="summary/page_03.html">第三页</li>
+					<li data-href="summary/page_04.html">第四页</li>
+					<li data-href="summary/page_05.html">第五页</li>
+				</ul>
+			</div>
+		</li>
+
+		<li data-target="#index-tab-18" style="display: none">
+			<h4>年终总结</h4>
+			<div class="index-main">
+				<ul class="sui-list sui-list-link">
+					<li data-href="conclusion-Year/step1.html">年终总结</li>
+				</ul>
+			</div>
+		</li>
+		<li data-target="#index-tab-19" style="display: none">
+			<h4>运营先锋大赛</h4>
+			<div class="index-main">
+				<ul class="sui-list sui-list-link">
+					<li data-href="operation/operation.html">运营先锋大赛</li>
+				</ul>
+			</div>
+		</li>
+		<li data-target="#index-tab-20" style="display: none">
+			<h4>景区门票</h4>
+			<div class="index-main">
+				<ul class="sui-list sui-list-link">
+					<li data-href="scenic/scenic-ticket-info.html">门票信息</li>
+					<li data-href="scenic/scenic-refund.html">申请退票</li>
+				</ul>
+			</div>
+		</li>
+		<li data-target="#index-tab-11" style="display: none">
+			<h4>春运发起路线</h4>
+			<div class="index-main">
+				<ul class="sui-list sui-list-link">
+					<li data-href="line/new-lines.html">填写路线信息</li>
+					<li data-href="line/success.html">提交成功</li>
+				</ul>
+			</div>
+		</li>
+
+
+	</ul>
+	
+	<script src="../dist/javascripts/zepto.min.js"></script>
+	<script src="../dist/javascripts/simpleui.min.js"></script>
+	<script src="../dist/javascripts/vectors.min.js"></script>
+	<script>
+		/*
+		* 兼容移动端返回不刷新
+		* */
+		window.addEventListener('pageshow', function (e) {
+			if(e.persisted) {
+			    window.location.reload();
+			    console.log('persisted')
+			}
+        });
+
+
+
+		$(function () {
+			init();
+
+            $('.index-tabs > li').on('click', function () {
+				var self = $(this);
+
+                var _target = self.data('target');
+                window.location.hash = _target;
+
+                self.addClass('active');
+				if(!self.data('toggle')) {
+                    self.find('ul').height(self.data('height'));
+                    self.data('toggle', true);
+				} else {
+                    self.find('ul').height(0);
+                    self.data('toggle', false);
+				}
+
+				//other
+                self.siblings().removeClass('active').data('toggle', false).find('ul').height(0);
+            });
+
+            if(getQueryString() == '') {
+                $('.index-tabs > li').eq(0).click();
+            } else {
+                $('[data-target = "' + getQueryString() + '"]').click();
+            }
+        });
+
+		//初始化
+		function init() {
+            var parent = $('.index-tabs');
+
+            parent.children('li').each(function (index, item) {
+                var self = $(item),
+					ul = self.find('ul');
+
+				var copy = ul.clone(true);
+				copy.css({
+					'display': 'block',
+					'position': 'absolute',
+					'z-index': -9999,
+					'top': '-9999px'
+				});
+
+				ul.after(copy);
+                self.data('height', copy.height());
+
+                copy.remove();
+                ul.css({
+                    'display': 'block',
+					'height': 0
+				});
+            });
+        }
+
+        //获取锚点
+        function getQueryString() {
+            if(window.location.hash != '') {
+                return window.location.hash;
+            } else {
+                return '';
+            }
+        }
+	</script>
+</body>
+</html>

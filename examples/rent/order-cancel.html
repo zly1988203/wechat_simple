@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>进行中</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/rent/order-cancel.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div class="order-cancel">
+    <!-- 未安排司机 -->
+    <div class="driver-out">
+        <div class="thumb"></div>
+        <p>未安排司机</p>
+    </div>
+
+    <!-- 已安排司机 -->
+    <div class="order-info sui-border-b">
+        <div class="driver-info">
+            <dl>
+                <dt><img src="../../dist/images/common/avatar_driver.png" /></dt>
+                <dd>
+                    <div class="name">位师傅 · 粤BDE990</div>
+                    <div class="attribute">白色 · 现代朗动</div>
+                    <div class="starbar">
+                        <div class="grade"><span>3.5</span></div>
+                    </div>
+                </dd>
+            </dl>
+        </div>
+        <div class="call-tel"></div>
+    </div>
+
+    <div class="status">
+        <div class="thumb"></div>
+        <p>订单已取消</p>
+    </div>
+
+    <div class="cancel-foot">
+        <div class="btn-group">
+            <div class="btn primary">返回首页</div>
+        </div>
+        <div class="link">
+            <span data-href="tel:13800138000">联系客服</span>
+            |
+            <span data-href="suggest.html">投诉建议</span>
+        </div>
+    </div>
+</div>
+
+<script src="../../dist/javascripts/zepto.min.js"></script>
+<script src="../../dist/javascripts/simpleui.min.js"></script>
+<script src="../../dist/javascripts/vectors.min.js"></script>
+<script src="../../dist/javascripts/backtrack.min.js"></script>
+<script>
+    $(function () {
+        checkDriver(1);
+        //返回键控制
+        backtrack(function () {
+            var self = this;
+
+            //弹窗层，返回0
+            $('.star').on('click.back', function () {
+                self.setState(0);
+            });
+        }, function (data) {
+            this.go();
+        });
+    });
+
+
+    //显示司机信息：0-未派司机 1或其他-已派司机
+    function checkDriver(flag){
+        if(0==flag){
+            $('.driver-out').show();
+            $('.order-info').hide()
+        } else{
+            $('.driver-out').hide();
+            $('.order-info').show()
+            initStartbar();
+        }
+    }
+    //初始化已安排司机的星级
+    function initStartbar() {
+        //头部星级
+        var $startbar = $('.starbar'),
+            $grade = $startbar.find('.grade'),
+            level = $grade.find('span').text().split('.');
+        for(var i = 0; i < 5; i++) {
+            $startbar.append('<i></i>');
+        }
+        $startbar.find('i').each(function (index, item) {
+            if(index < level[0]) {
+                $(item).addClass('star');
+            }
+            //半星
+            if(index + 1 == level[0] && $(item).nextAll().length != 0 && level[1] > 0) {
+                $(item).next().addClass('star-half');
+            }
+        });
+    }
+
+</script>
+</body>
+</html>

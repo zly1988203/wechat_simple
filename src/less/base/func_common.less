@@ -1,0 +1,9 @@
+.double(@p:'width',@size:1px) {
+  @p: @size * 2;
+  transform: scale(0.5);
+}
+
+.border(@a:10px,@b:50px,@c:30px,@color:#000){
+  border:solid 1px @color;
+  box-shadow: @arguments;//指代的是 全部参数
+}

@@ -1,0 +1,169 @@
+@charset "utf-8";
+@import "../base/variable.less";
+
+@media only screen and (max-width: 720px), only screen and (max-device-width:720px) {
+  html,body {
+    font-size:15.36px;
+  }
+}
+@media only screen and (max-width: 640px), only screen and (max-device-width:640px) {
+  html,body {
+    font-size:13.653333333333334px;
+  }
+}
+@media only screen and (max-width: 600px), only screen and (max-device-width:600px) {
+  html,body {
+    font-size:12.8px;
+  }
+}
+@media only screen and (max-width: 540px), only screen and (max-device-width:540px) {
+  html,body {
+    font-size:11.52px;
+  }
+}
+@media only screen and (max-width: 480px), only screen and (max-device-width:480px) {
+  html,body {
+    font-size:10.24px;
+  }
+}
+@media only screen and (max-width: 414px), only screen and (max-device-width:414px) {
+  html,body {
+    font-size:8.832px;
+  }
+}
+@media only screen and (max-width: 400px), only screen and (max-device-width:400px) {
+  html,body {
+    font-size:8.533333333333333px;
+  }
+}
+@media only screen and (max-width: 375px), only screen and (max-device-width:375px) {
+  html,body {
+    font-size:8px;
+  }
+}
+@media only screen and (max-width: 360px), only screen and (max-device-width:360px) {
+  html,body {
+    font-size:7.68px;
+  }
+}
+@media only screen and (max-width: 320px), only screen and (max-device-width:320px) {
+  html,body {
+    font-size:6.826666666666667px;
+  }
+}
+
+// 侧边栏菜单
+#sideMenu {
+  .head {
+    height: 150px - 30px;
+    padding-top: 30px;
+    text-align: center;
+  }
+
+  .avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    margin: 0 auto;
+  }
+
+  .mobile {
+    padding-top: 8px;
+    font-size: 2rem;
+    color: #333;
+  }
+
+  .sui-list {
+    li {
+      border: 0 none;
+      background: transparent;
+
+      .sui-cell-icons {
+        line-height: 20px;
+        font-size: 2rem;
+        color: #333;
+
+        .sui-cell-icon {
+          top: 0;
+          bottom: 0;
+          margin: auto 0;
+          width: 16px;
+          height: 16px;
+          background-size: 100% 100%;
+        }
+      }
+    }
+  }
+
+  .foot {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #fff;
+
+    .item {
+      flex: 1;
+      text-align: center;
+
+      .icon {
+        display: block;
+        width: 35px;
+        height: 35px;
+        margin: 0 auto;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100% 100%;
+      }
+
+      p {
+        margin-top: 5px;
+        font-size: 1.75rem;
+        color: #999;
+      }
+    }
+  }
+
+  /* 订单 */
+  .icon-myorder {
+    background-image: data-uri('../../images/common/side/icon-order.png');
+  }
+  /* 车票 */
+  .icon-ticket {
+    background-image: data-uri('../../images/common/side/icon-ticket.png');
+  }
+  /* 优惠券 */
+  .icon-coupon {
+    background-image: data-uri('../../images/common/side/icon-coupon.png');
+  }
+  /* 邀请有礼 */
+  .icon-invite {
+    background-image: data-uri('../../images/common/side/icon-invite.png');
+  }
+  /* 联系客服 */
+  .icon-contact {
+    background-image: data-uri('../../images/common/side/icon-contact.png');
+  }
+  /* 设置 */
+  .icon-config {
+    background-image: data-uri('../../images/common/side/icon-set.png');
+  }
+  /* 反馈建议 */
+  .icon-suggest {
+    background-image: data-uri('../../images/common/side/icon-suggest.png');
+  }
+  /* 奖品兑换 */
+  .icon-conversion {
+    background-image: data-uri('../../images/common/side/icon-conversion.png');
+  }
+  /* 员工排行榜 */
+  .icon-ranking {
+    background-image: data-uri('../../images/common/side/icon-ranking.png');
+  }
+}

@@ -1,0 +1,199 @@
+@charset "utf-8";
+
+.evaluate-check {
+  padding-bottom: 0.82rem;
+
+  .title {
+    padding: 0.22rem 0.1rem;
+    font-size: 0.28rem;
+    color: #999;
+    text-align: center;
+    line-height: 0.4rem;
+  }
+
+  .caption {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &:before, &:after {
+      content: '';
+      flex: 1;
+      width: 0;
+      height: 0;
+      border-bottom: 1px dashed #ccc;
+    }
+
+    &:before {
+      margin-right: 0.26rem;
+    }
+
+    &:after {
+      margin-left: 0.26rem;
+    }
+  }
+
+  .content {
+    padding: 0.22rem 0.3rem 0;
+    background: #fff;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.10);
+    text-align: center;
+
+    .item {
+      padding-bottom: 0.44rem;
+
+      h2 {
+        font-size: 0.32rem;
+        font-weight: normal;
+        color: #666;
+        line-height: 0.45rem;
+      }
+
+      .star {
+        letter-spacing: -3px;
+        text-align: center;
+        overflow: hidden;
+
+        span {
+          display: inline-block;
+          letter-spacing: 0;
+          margin: 0.3rem 0.3rem 0 0;
+          width: 0.7rem;
+          height: 0.7rem;
+          background-image: url("../../images/evaluate/icon_star.png");
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: 100% 100%;
+
+          &:last-child {
+            margin-right: 0;
+          }
+
+          &.active {
+            background-image: url("../../images/evaluate/icon_star_active.png");
+          }
+        }
+      }
+
+      .tag {
+        letter-spacing: -3px;
+        text-align: left;
+
+        span {
+          display: inline-block;
+          letter-spacing: 0;
+          padding: 0.05rem 0.14rem;
+          font-size: 0.28rem;
+          color: #999;
+          line-height: 0.4rem;
+          border: 1px solid #EDEEF0;
+          border-radius: 0.15rem;
+          margin: 0.44rem 0.33rem 0 0;
+
+          &:last-child {
+            margin-right: 0;
+          }
+
+          &.active {
+            border-color: #F6A623;
+            background: #F6A623;
+            color: #fff;
+          }
+        }
+      }
+    }
+
+    .message {
+      border-top: 1px dashed #ccc;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 0.31rem 0;
+
+      .thumb {
+        flex: 0 1 2.06rem;
+        width: 2.06rem;
+        height: 1.32rem;
+        position: relative;
+        margin-right: 0.35rem;
+
+        &:nth-child(3) {
+          margin-right: 0;
+        }
+
+        img {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      .details {
+        flex: 1;
+        padding: 0.22rem 0.5rem 0.2rem;
+        min-width: 3rem;
+        font-size: 0.28rem;
+        color: #999;
+        text-align: left;
+        position: relative;
+
+        &:before, &:after {
+          font-size: 0.7rem;
+          height: 0.7rem;
+          line-height: 0.7rem;
+          color: #F6A623;
+          position: absolute;
+        }
+
+        &:before {
+          content: '“';
+          top: 0.16rem;
+          left: 0;
+        }
+
+        &:after {
+          content: '”';
+          bottom: -0.4rem;
+          right: 0;
+        }
+      }
+    }
+
+    .reply {
+      border-top: 1px dashed #ccc;
+      padding: 0.23rem 0 0.21rem;
+
+      .headline {
+        position: relative;
+        padding-left: 0.4rem;
+        font-size: 0.28rem;
+        color: #F6A623;
+        text-align: left;
+
+        &:before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          margin: auto 0;
+          width: 0.299rem;
+          height: 0.29rem;
+          background: url("../../images/evaluate/icon_earphone-2.png") no-repeat center;
+          background-size: 100% 100%;
+        }
+      }
+
+      .msg {
+        margin-top: 0.2rem;
+        font-size: 0.28rem;
+        color: #F6A623;
+        text-align: left;
+      }
+    }
+  }
+}

@@ -1,0 +1,167 @@
+@charset "utf-8";
+@import "../base/variable.less";
+
+html {
+  min-height: 100%;
+  background: #F8D53F url(../../images/sanqin/login-bg.png) no-repeat center;
+  background-size: 100% 100%;
+}
+
+body {
+  padding-bottom: 0.4rem;
+  background-color: transparent;
+}
+
+.banner {
+  width: 7.5rem;
+  height: 2.97rem;
+  background: url(../../images/sanqin/login-banner.png) center no-repeat;
+  background-size: 100% auto;
+  margin-top: 0.55rem;
+}
+
+.form {
+  margin-top: 0.44rem;
+  padding: 0 0.75rem;
+
+  .text {
+    height: 1rem;
+    width: 6rem;
+    margin-top: 0.4rem;
+    position: relative;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 0.1rem;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:before {
+      content: '';
+      display: block;
+      width: 0.32rem;
+      height: 0.46rem;
+      position: absolute;
+      left: 0.22rem;
+      top: 0;
+      bottom: 0;
+      margin: auto 0;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+    }
+
+    input {
+      position:absolute;
+      display: block;
+      width: 5.2rem;
+      margin: 0;
+      border: 0;
+      background-color: transparent;
+      color: #fff;
+      line-height: 0.45rem;
+
+      &::-webkit-input-placeholder {
+        color: rgba(255, 255, 255, 0.5);
+      }
+      &::-moz-placeholder {
+        color: rgba(255, 255, 255, 0.5);
+      }
+    }
+  }
+
+  .mobile{
+    input{
+      top:0.28rem;
+      left:0.8rem;
+    }
+  }
+  .mobile:before {
+    background-image: url(../../images/bus/icon_mobilephone.png);
+  }
+
+  .verifycode {
+    .text-box {
+      border-right: 1px rgba(255, 255, 255, 0.4) solid;
+      height:0.6rem;
+      width: 3.88rem;
+      position:absolute;
+      top: 0.2rem;
+
+      input{
+        width: 3rem;
+        top:0.075rem;
+        left:0.8rem;;
+      }
+    }
+
+    &:before {
+      width: 0.36rem;
+      height: 0.45rem;
+    }
+
+
+
+    button {
+      width: 1.6rem;
+      height: 0.45rem;
+      line-height: 0.45rem;
+      color: #fff;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0.22rem;
+      margin: auto 0;
+
+      &:not(:disabled):active{
+        .btn-active-default();
+      }
+
+      &:disabled {
+        .btn-disabled-default();
+        color: #fff;
+      }
+    }
+
+    &:before {
+      background-image: url(../../images/bus/icon_verificationcode.png);
+    }
+  }
+
+  .submit-btn {
+    position: relative;
+    margin-top: 0.4rem;
+    width: 6rem;
+    height: 1rem;
+    font-size: 0.38rem;
+    color: #6392FE;
+    border-radius: 0.5rem;
+    background-color: #fbf1c5;
+    overflow: hidden;
+  }
+}
+
+.skip-binding{
+  position: fixed;
+  width: 1.5rem;
+  height: 0.4rem;
+  bottom: 0.41rem;
+  right: 0.5rem;
+
+  #skip-binding-btn{
+    color: #C6AA32;
+    font-size: 0.28rem;
+  }
+  &:after{
+    content: '';
+    display: inline-block;
+    width: 0.24rem;
+    height:0.22rem;
+    background-image: url(../../images/sanqin/skip-binding.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    margin-left: 0.1rem;
+  }
+}
+

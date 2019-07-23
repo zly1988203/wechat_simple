@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <title>黄山风景区</title>
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/swiper.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/fy-datepicker.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/sameSale/attMain.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="main-container">
+    <!--banner轮播-->
+    <div class="att-banner">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="content">
+                        <div class="thumb">
+                            <img  src="../../src/images/sameSale/banner3.png"/>
+                        </div>
+                        <div class="att-title">1/3</div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="content">
+                        <div class="thumb">
+                            <img  src="../../src/images/sameSale/banner2.png"/>
+
+                        </div>
+                        <div class="att-title">2/3</div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="content">
+                        <div class="thumb">
+                            <img  src="../../src/images/sameSale/banner1.png"/>
+
+                        </div>
+                        <div class="att-title">3/3</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination" style="display: none"></div>
+        </div>
+    </div>
+
+    <!--景区门票-->
+    <div id="attractionsList" class="attractions-container">
+        <div class="att-header">
+            <div class="att-title">
+                景点门票 <span>（提前抢票轻松出行）</span>
+            </div>
+            <div class="att-total-price">
+                15元
+            </div>
+        </div>
+        <div class="att-body">
+            <div class="att-panle">
+                <div class="att-item">
+                    <div class="active"></div>
+                    <div class="item-banner">
+                        <img src="../../dist/images/bus/icon-att-banner.png">
+                    </div>
+                    <div class="item-content">
+                        <div class="item-name-price">
+                            <div class="item-name">
+                                黄山风景区门票
+                            </div>
+                            <div class="item-sell-price">
+                                ¥<em>150</em>起
+                            </div>
+                        </div>
+                        <div class="item-instructions">
+                            3月9号入园，截止至3月15号有效
+                        </div>
+                        <div class="item-others">
+                            <div class="item-others-left">
+                                <div class="item-tag">
+                                    不可退
+                                </div>
+                                <div class="item-readme">
+                                    <span></span> 购票须知<i></i>
+                                </div>
+                            </div>
+                            <div class="item-others-right">
+                                <div class="btn-buy">预定</div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="item-person-panle">
+                    <div class="item-person-info">
+                        <div class="person-info">
+                            <span class="person">成人票</span><span class="person-price">¥10</span>  x <span class="pserson-number">1</span> 张，
+                        </div>
+                        <div class="person-info">
+                            <span class="person">儿童票</span> <span class="person-price">¥5</span> x <span class="pserson-number">1</span> 张
+                        </div>
+                    </div>
+                    <div class="person-btn">
+                        <div class="btn-edit">修改</div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="att-panle">
+                <div class="att-item">
+                    <div class="active" style="display: none"></div>
+                    <div class="item-banner">
+                        <img src="../../dist/images/bus/icon-att-banner.png">
+                    </div>
+                    <div class="item-content">
+                        <div class="item-name-price">
+                            <div class="item-name">
+                                黄山风景区门票
+                            </div>
+                            <div class="item-sell-price">
+                                ¥<em>150</em>起
+                            </div>
+                        </div>
+                        <div class="item-instructions">
+                            3月9号入园，截止至3月15号有效
+                        </div>
+                        <div class="item-others">
+                            <div class="item-others-left">
+                                <div class="item-tag">
+                                    不可退
+                                </div>
+                                <div class="item-readme">
+                                    <span></span> 购票须知<i></i>
+                                </div>
+                            </div>
+                            <div class="item-others-right">
+                                <div class="btn-buy">预定</div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="load-more">
+                查看更多门票
+            </div>
+        </div>
+    </div>
+
+    <!--景区交通-->
+    <div id="attrTrans" class="attraction-transportation-content">
+        <div class="header sui-border-b">景区交通</div>
+        <div class="trans-body">
+            <div class="station">
+                <div class="station-item">
+                    <input placeholder="请选择出发站点" readonly/>
+                </div>
+                <div class="station-item">
+                    <input placeholder="请选择目的地" readonly/>
+                </div>
+            </div>
+            <div id="preBuyBtn" class="pre-buy-btn">预定</div>
+        </div>
+    </div>
+
+    <!--购票按钮-->
+    <div class="buy-bottom-content">
+        <div class="all-total-price">合计：<span>¥65.00元</span></div>
+        <div id="toPayBtn" class="to-pay-btn">去支付</div>
+    </div>
+
+
+</div>
+
+
+    <div id="collectPerson" class="collect-person-container" style="display: none">
+        <div class="coll-header">
+            <div class="coll-title">
+                取票人 <span>（仅需1位游客信息，用于接收短信信息）</span>
+            </div>
+        </div>
+        <div class="coll-body">
+            <div class="coll-item">
+                <div class="item-title">姓名</div>
+                <div class="item-input"><input type="text" id="collName"></div>
+                <div class="icon-clean"></div>
+            </div>
+            <div class="coll-item">
+                <div class="item-title">手机号</div>
+                <div class="item-input"><input type="text" id="collPhone"></div>
+                <div class="icon-clean"></div>
+            </div>
+            <div class="coll-item">
+                <div class="item-title">身份证</div>
+                <div class="item-input"><input type="text" id="collCardId"></div>
+                <div class="icon-clean"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="attOrderInfo" class="sui-popup-container"  style="display: none">
+        <div class="sui-popup-mask sui-popup-mask-visible" style="display: block;"></div>
+        <div class="sui-popup-modal">
+            <header>
+                <div class="head-left">
+                    <div class="btn-order-canle">取消</div>
+                </div>
+                <div class="head-right">
+                    <div class="btn-order-ok">确定</div>
+                </div>
+            </header>
+            <div class="order-content">
+                <div class="att-info">
+                    <div class="att-name">黄山风景区门票</div>
+                    <div class="att-tag-readme">
+                        <div class="tag-left">
+                            <div class="att-tags">有条件退</div>
+                        </div>
+                        <div class="tag-right">
+                            <div class="att-readme">购买须知</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="att-date">
+                    <div class="date-title">使用日期</div>
+                    <div id="btn-date" class="date-str">
+                        <span class="date-val">2019-03-22</span><i></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 成人票 -->
+            <div id="personTickets" class="person-panle">
+                <div class="person-body">
+                    <div class="person-type">
+                        <div class="head">
+                            <h4>成人票</h4>
+                            <div class="personPrice">
+                                <span class="priceTitle">单价：</span>
+                                <span class="priceSell">25元/人</span>
+                            </div>
+                            <div class="handle-plus">
+                                <i  class="icon-person-plus"></i>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <div class="item">
+                                <div class="handle-minus"></div>
+                                <div class="info">
+                                    <p><span class="label">牛嘎嘎</span>
+                                        <!--<span class="">单价：</span>-->
+                                        <!--<span>25元/人</span>-->
+                                    </p>
+                                    <p><span class="label">身份证</span>362531********0027</p>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="handle-minus"></div>
+                                <div class="info">
+                                    <p><span class="label">李梅梅</span></p>
+                                    <p><span class="label">身份证</span>362531********0027</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="personNumber" class="person-panle">
+                <div class="content">
+                    <div class="person-item">
+                        <div class="item-type">
+                            儿童票
+                        </div>
+                        <div class="item-number">
+                            <div class="reduce-number"></div>
+                            <div class="number-str">
+                                <div class="number-val">
+                                    <span>3</span>
+                                </div>
+
+                            </div>
+                            <div class="add-number"></div>
+                        </div>
+                    </div>
+                    <div class="person-item">
+                        <div class="item-type">
+                            成人票
+                        </div>
+                        <div class="item-number">
+                            <div class="reduce-number"></div>
+                            <div class="number-str">
+                                <div class="number-val">
+                                    3
+                                </div>
+                            </div>
+                            <div class="add-number"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="total-amount">
+                <div class="total-str">合计：</div>
+                <div class="total-val">300元</div>
+            </div>
+            <!-- 取票人 -->
+            <div id="collectTickets" class="passenger person-panle">
+                <div class="head sui-border-b">
+                    <div class="title">取票人<span class="prompt">（需要<span class="p-red">1位</span>游客信息，用于入园身份验证）</span></div>
+                </div>
+                <div class="content">
+                    <div class="item">
+                        <div class="info">
+                            <p><span class="label">李梅梅</span><span class="person-phone">13786542584</span></p>
+                            <p><span class="label">身份证</span><span class="person-cardId">362531********0027</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--乘车站点选择-->
+    <div id="stationListPopup" class="sui-popup-container station-list-popup">
+        <div class="sui-popup-mask"></div>
+        <div class="sui-popup-modal">
+            <!--内容开始-->
+            <div class="popup-header sui-border-b">
+                <div class="header-tips open-popup" data-target="ridingTips">乘车说明</div>
+                <div class="close-popup"></div>
+            </div>
+            <div class="station-list">
+                <ul>
+                    <li class="active sui-border-b">
+                        <div class="station-name">站点名1站站点名1站站点名1站站点名1站站点名1站站点名1站</div>
+                        <div class="station-checkbox"></div>
+                    </li>
+                    <li class="sui-border-b">
+                        <div class="station-name">站点名2站</div>
+                        <div class="station-checkbox"></div>
+                    </li>
+                    <li class="sui-border-b">
+                        <div class="station-name">站点名3站</div>
+                        <div class="station-checkbox"></div>
+                    </li>
+                    <li class="sui-border-b">
+                        <div class="station-name">站点名4站</div>
+                        <div class="station-checkbox"></div>
+                    </li>
+                </ul>
+            </div>
+            <div class="popup-btn-bar">
+                <div id="stationConfirm" class="confirm-btn">确定</div>
+            </div>
+            <!--内容结束-->
+        </div>
+    </div>
+
+
+    <!-- 乘车说明 -->
+    <div id="ridingTips" class="sui-popup-container riding-tips-popup">
+        <div class="sui-popup-mask"></div>
+        <div class="sui-popup-modal" style="height: 80%;">
+            <!--内容开始-->
+            <div class="popup-header sui-border-b">
+                <div class="header-tips open-popup">乘车说明</div>
+                <div class="close-popup" data-target="ridingTips"></div>
+            </div>
+            <div class="riding-content">
+                <p>针对黄山风景区的搭车说明</p>
+                <p>针对黄山风景区的搭车说明</p>
+                <p>针对黄山风景区的搭车说明</p>
+                <p>针对黄山风景区的搭车说明</p>
+                <p>针对黄山风景区的搭车说明</p>
+                <img src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1554447333&di=51190e2cb8a5b30da34d1af73c438e03&src=http://p1.ifengimg.com/fck/2018_01/4b3586c88209a81_w640_h429.jpg"/>
+            </div>
+            <!--内容结束-->
+        </div>
+    </div>
+
+    <!--景区车票-->
+    <div id="scenicBusTicket" class="sui-popup-container scenic-ticket-popup">
+        <div class="sui-popup-mask"></div>
+        <div class="sui-popup-modal">
+            <!--内容开始-->
+            <div class="popup-header sui-border-b">
+                <div class="header-tips open-popup">景区车票</div>
+                <div class="close-popup" data-target="scenicBusTicket"></div>
+            </div>
+            <div class="popup-content">
+                <div class="station-line">新国线换乘中心（汤口）<span></span> 慈光阁景区（黄山风景区前山入口）</div>
+                <div class="station-spec sui-border-b">
+                    <div class="labels"><span>有条件退</span><span>有条件退</span></div>
+                    <!--<div class="warm-prompt open-popup" data-target="warmPromptContent">温馨提示</div>-->
+                    <div class="warm-prompt open-popup" data-target="warmPromptContent">温馨提示</div>
+                </div>
+                <div class="depart-date-box">
+                    <div class="depart-tips">选择日期</div>
+                    <div class="depart-date">
+                        <input value="2019-01-03" readonly/>
+                        <i></i>
+                    </div>
+                </div>
+                <!--流水班-->
+                <div class="flowLine">班次<span>（流水班，购票后可随时上车）</span></div>
+                <!--非流水班-班次  -->
+                <div class="busLine">
+                    <div class="line-header sui-border-b">班车</div>
+                    <div id="wrapper">
+                        <div class="content">
+                            <ul>
+                                <li class="active">
+                                    <div class="time">9:00</div>
+                                    <div class="price">￥20</div>
+                                </li>
+                                <li>
+                                    <div class="time">9:00</div>
+                                    <div class="price">￥20</div>
+                                </li>
+                                <li>
+                                    <div class="time">9:00</div>
+                                    <div class="price">￥20</div>
+                                </li>
+                                <li>
+                                    <div class="time">9:00</div>
+                                    <div class="price">￥20</div>
+                                </li>
+                                <li>
+                                    <div class="time">9:00</div>
+                                    <div class="price">￥20</div>
+                                </li>
+                                <li>
+                                    <div class="time">9:00</div>
+                                    <div class="price">￥20</div>
+                                </li>
+                                <li>
+                                    <div class="time">9:00</div>
+                                    <div class="price">￥20</div>
+                                </li>
+                                <li>
+                                    <div class="time">9:00</div>
+                                    <div class="price">￥20</div>
+                                </li>
+                                <li>
+                                    <div class="time">9:00</div>
+                                    <div class="price">￥20</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ticket-list">
+                    <ul>
+                        <li class="sui-border-b">
+                            <div class="ticket-info">
+                                <div class="ticket-type">儿童票</div>
+                                <div class="unit-price">单价:<span>5元</span></div>
+                            </div>
+                            <div class="ticket-amount">
+                                <i class="less"></i>
+                                <div class="amount"><input value="1" readonly/></div>
+                                <i class="more"></i>
+                            </div>
+
+                        </li>
+                        <li class="sui-border-b">
+                            <div class="ticket-info">
+                                <div class="ticket-type">成人票</div>
+                                <div class="unit-price">单价:<span>5元</span></div>
+                            </div>
+                            <div class="ticket-amount">
+                                <i class="less"></i>
+                                <div class="amount"><input value="1" readonly/></div>
+                                <i class="more"></i>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="total-price">合计：<span>15元</span></div>
+                </div>
+
+                <div class="popup-btn-bar">
+                    <div id="busTicketConfirm" class="confirm-btn">确定</div>
+                </div>
+            </div>
+
+            <!--内容结束-->
+        </div>
+    </div>
+
+    <!--温馨提示-->
+    <div id="warmPromptContent" class="sui-popup-container riding-tips-popup">
+        <div class="sui-popup-mask"></div>
+        <div class="sui-popup-modal" style="height: 80%;">
+            <!--内容开始-->
+            <div class="popup-header sui-border-b">
+                <div class="header-tips">温馨提示</div>
+                <div class="close-popup" data-target="warmPromptContent"></div>
+            </div>
+            <div class="riding-content">
+                <p>温馨提示</p>
+                <p>温馨提示</p>
+                <p>温馨提示</p>
+                <p>温馨提示</p>
+                <p>温馨提示</p>
+                <img src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1554447333&di=51190e2cb8a5b30da34d1af73c438e03&src=http://p1.ifengimg.com/fck/2018_01/4b3586c88209a81_w640_h429.jpg"/>
+            </div>
+            <!--内容结束-->
+        </div>
+    </div>
+
+    <!-- 选择日期 -->
+    <div id="selectDate" class="sui-popup-container" style="display: none">
+        <div class="sui-popup-mask sui-popup-mask-visible" style="display: block;"></div>
+        <div class="sui-popup-modal">
+            <!-- 日历控件，先填充数据并输出 -->
+            <div class="datepicker-wrapper"></div>
+        </div>
+    </div>
+
+    <!-- 景区门票/索道票 -->
+    <div id="scenicSpotTicket" class="sui-popup-container scenic-ticket-popup">
+    <div class="sui-popup-mask"></div>
+    <div class="sui-popup-modal">
+        <!--内容开始-->
+        <div class="popup-header sui-border-b">
+            <div class="header-tips open-popup">景区门票/索道票</div>
+            <div class="close-popup" data-target="scenicSpotTicket"></div>
+        </div>
+        <div class="popup-content">
+            <div class="station-line">黄山景区门票</div>
+            <div class="station-spec sui-border-b">
+                <div class="labels"><span>有条件退</span><span>有条件退</span></div>
+                <div class="warm-prompt open-popup" data-target="warmPromptContent">温馨提示</div>
+            </div>
+            <div class="depart-date-box">
+                <div class="depart-tips">选择日期</div>
+                <div class="depart-date">
+                    <input value="2019-01-03" readonly/>
+                    <i></i>
+                </div>
+            </div>
+
+            <div class="ticket-list">
+                <ul>
+                    <li class="sui-border-b">
+                        <div class="ticket-info">
+                            <div class="ticket-type">儿童票</div>
+                            <div class="unit-price">单价:<span>5元</span></div>
+                        </div>
+                        <div class="ticket-amount">
+                            <i class="less"></i>
+                            <div class="amount"><input value="1" readonly/></div>
+                            <i class="more"></i>
+                        </div>
+
+                    </li>
+                    <li class="sui-border-b">
+                        <div class="ticket-info">
+                            <div class="ticket-type">成人票</div>
+                            <div class="unit-price">单价:<span>5元</span></div>
+                        </div>
+                        <div class="ticket-amount">
+                            <i class="less"></i>
+                            <div class="amount"><input value="1" readonly/></div>
+                            <i class="more"></i>
+                        </div>
+                    </li>
+                </ul>
+                <div class="total-price">合计：<span>15元</span></div>
+            </div>
+
+            <div class="popup-btn-bar">
+                <div id="spotTicketConfirm" class="confirm-btn">确定</div>
+            </div>
+        </div>
+
+        <!--内容结束-->
+    </div>
+</div>
+
+
+<script src="../../dist/javascripts/zepto.min.js"></script>
+<script src="../../dist/javascripts/simpleui.min.js"></script>
+<script src="../../dist/javascripts/vectors.min.js"></script>
+<!--<script src="../../dist/javascripts/zepto.scrollTo.min.js"></script>-->
+<script src="../../dist/javascripts/swiper.min.js"></script>
+<script src="../../dist/javascripts/fy-datePicker.min.js"></script>
+<script src="../../src/js/sameSale/attMain.js"></script>
+<!--<script src="../../dist/javascripts/sameSale/attMain.min.js"></script>-->
+</body>
+</html>

@@ -1,0 +1,238 @@
+@charset "utf-8";
+body {
+    padding-bottom: 1.68rem;
+}
+
+.ticket-info {
+    padding: 0.22rem;
+    background-color: #fff;
+    box-shadow: 0 0.02rem 0.04rem 0 rgba(0,0,0,0.05);
+
+    .row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 0.29rem;
+
+        .time {
+            font-size: 0.32rem;
+            color: #424242;
+        }
+
+        .other {
+            align-self: flex-start;
+            white-space: nowrap;
+            word-break: keep-all;
+            font-size: 0.28rem;
+            color: #999999;
+            letter-spacing: 0;
+        }
+    }
+}
+
+.head-title {
+    padding: 0.22rem 0 0.22rem 0.34rem;
+    font-size: 0.28rem;
+    line-height: 0.4rem;
+    color: #999;
+}
+
+/* 车票 */
+.ticket-box {
+    .ticket {
+        margin-top: 0.22rem;
+        min-height: 1.4rem;
+        display: flex;
+        justify-content: space-between;
+        background: #FFFFFF;
+        box-shadow: 0 0.02rem 0.02rem 0 rgba(0,0,0,0.05);
+
+        &:first-child {
+            margin-top: 0;
+        }
+
+        /* 加粗黑体 */
+        .text-bold {
+            font-size: 0.38rem;
+            line-height: 0.53rem;
+            color: #000;
+        }
+
+        /* 灰色 */
+        .text-gray {
+            font-size: 0.32rem;
+            line-height: 0.45rem;
+            color: #9B9B9B;
+        }
+
+        /* 左边距离70 */
+        .mrl-70 {
+            margin-left: 0.7rem;
+        }
+
+        .content {
+            flex: 1;
+            padding: 0 0.22rem;
+
+            label {
+                display: flex;
+                align-items: center;
+
+                .frm-checkbox {
+                    margin-right: 0.2rem;
+                }
+            }
+
+            .info {
+                flex: 1;
+                padding: 0.26rem 0 0.22rem;
+
+                ul {
+                    li {
+                        display: flex;
+                        align-items: baseline;
+                        justify-content: space-between;
+                        font-size: 0.32rem;
+                        color: #333;
+
+                        &:nth-child(2) {
+                            margin-top: 0.16rem;
+                        }
+
+                        .name {
+                            width: 1rem;
+                        }
+
+                        .value {
+                            flex: 1;
+                            margin-left: 0.36rem;
+                        }
+                    }
+                }
+            }
+
+            /* 垂直居中 */
+            &.vertical-middle {
+                align-self: center;
+            }
+
+            /* 垂直水平 */
+            &.center-middle {
+                align-self: center;
+
+                .info ul li:first-child {
+                    display: block;
+                    text-align: center;
+
+                    & > * {
+                        display: inline-block;
+                        vertical-align: middle;
+                    }
+                }
+            }
+        }
+
+        .right {
+            position: relative;
+            width: 2rem;
+            border-left: 1px dashed #e8e8e8;
+
+            &:before, &:after {
+                content: '';
+                position: absolute;
+                left: -8px;
+                z-index: 2;
+                width: 15px;
+                height: 15px;
+                border-top-left-radius: 100%;
+                border-top-right-radius: 100%;
+                background-color: #fafafa;
+            }
+
+            &:before {
+                top: -7.5px;
+                box-shadow: 0 1px 2px 0 inset rgba(0,0,0,0.025);
+                transform: rotate(-180deg);
+            }
+
+            &:after {
+                bottom: -7.5px;
+                box-shadow: 0 2px 2px 0 inset rgba(0,0,0,0.05);
+            }
+
+            .text {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                margin: auto;
+                width: 50px;
+                height: 50px;
+                text-align: center;
+
+                span {
+                    display: block;
+                    text-align: center;
+                }
+            }
+
+            .handle {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                margin: auto;
+                width: 50px;
+                height: 50px;
+                font-size: 16px;
+                color: #6392FE;
+                text-align: center;
+            }
+
+            .status {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                margin: auto;
+                width: 1.21rem;
+                height: 1.08rem;
+                background: no-repeat center;
+                background-size: 100% 100%;
+
+                &.success {
+                    background-image: url(../../images/my/icon-success.png);
+                }
+
+                &.refund {
+                    background-image: url(../../images/my/icon-refund.png);
+                }
+
+                &.out {
+                    background-image: url(../../images/my/icon-out.png);
+                }
+
+                &.wait {
+                    background-image: url(../../images/my/icon-wait.png);
+                }
+            }
+        }
+    }
+}
+
+.not-data {
+    margin-top: 30%;
+    padding-top: 180px;
+    background: top center no-repeat;
+    background-size: 138px auto;
+    text-align: center;
+    color: #999;
+}
+
+.btn-group {
+    background: rgba(255,255,255, 1);
+    box-shadow: 0.04rem 0 0.04rem 0 rgba(0,0,0,0.10);
+}

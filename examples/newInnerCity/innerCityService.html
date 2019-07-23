@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>叫车</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/rent/time-picker.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/rent/select-picker.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/newInnerCity/index.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/newInnerCity/innerCityService.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="information-container">
+        <div id="tabs" class="tabs-panel">
+            <div class="tab-contents">
+                <div id="present" class="content">
+                    <div class="search-station">
+                        <ul class="sui-list form">
+                            <div class="v-line"></div>
+                            <li>
+                                <div class="control start">
+                                    <input type="text" id="startAddr" class="select-city-btn" placeholder="你从哪上车" readonly />
+                                </div>
+                            </li>
+                            <div class="bottom-line"></div>
+                            <li>
+                                <div class="control end">
+                                    <input type="text" id="endAddr" class="select-city-btn" placeholder="你要去哪儿" readonly />
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="switch-btn"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="info-box">
+            <div class="info-item amount-box">
+                <!-- data-type 1-实名制选人数 0-非实名制选人数 -->
+                <input type="text" id="amount" class="amount" placeholder="人数" readonly value="" data-maxnumber="">
+                <!--选中的实名制乘客信息-->
+                <div id="personList">
+                    <!--<input type="hidden" data-id="" data-name="" data-idno="" />
+                    <input type="hidden" data-id="" data-name="" data-idno=""/>-->
+                </div>
+            </div>
+            <div class="info-item time-box">
+                <input type="text" id="present_startTime" class="startTime" placeholder="出发时间" readonly value="" data-date="" data-time=""   data-interval="5" data-intervalminute="60"/>
+            </div>
+        </div>
+        <div class="notes-box">
+            <div class="icon"></div>
+            <textarea class="notes" maxlength="40" placeholder="给司机留言"></textarea>
+            <input type="hidden" value="">
+        </div>
+    </div>
+
+    <div class="ola-maps" id="allmap">我的地图</div>
+    <div id="currLocation"></div>
+
+    <!--选择车型和提交按钮-->
+    <div class="confirm-container">
+        <div class="confirm-content">
+            <div class="vehicle-switch-box">
+                <!--<div class="vehicle-item">
+                    <div class="vehicle-info">
+                        <div class="name">拼车</div>
+                        <div class="stage-icon stage-first"><i></i></div>
+                    </div>
+                    <div class="price-box">
+                        <div class="price">一口价<span>34元&nbsp;&gt;</span></div>
+                    </div>
+                </div>
+                <div class="vehicle-item active">
+                    <div class="vehicle-info">
+                        <div class="name">舒适型</div>
+                        <div class="stage-icon stage-second"><i></i></div>
+                    </div>
+                    <div class="price-box">
+                        <div class="price">一口价<span>34元&nbsp;&gt;</span></div>
+                        <div class="coupon">券已抵扣2.3元</div>
+                    </div>
+                </div>
+                <div class="vehicle-item">
+                    <div class="vehicle-info">
+                        <div class="name">商务型</div>
+                        <div class="stage-icon stage-three"><i></i></div>
+                    </div>
+                    <div class="price-box">
+                        <div class="price">一口价<span>34元&nbsp;&gt;</span></div>
+                        <div class="coupon">券已抵扣2.3元</div>
+                    </div>
+                </div>
+                <div class="vehicle-item">
+                    <div class="vehicle-info">
+                        <div class="name">豪华型</div>
+                        <div class="stage-icon stage-four"><i></i></div>
+                    </div>
+                    <div class="price-box  special">
+                        <div class="price">特价<span>34元&nbsp;&gt;</span></div>
+                        <div class="coupon">一口价55元</div>
+                    </div>
+                </div>-->
+            </div>
+
+            <div class="btn-bar">
+                <button class="back" data-href="">返回</button>
+                <button class="confirm-btn">立即预约</button>
+                <div class="action-box">
+                    <!--<div class="action-item instead"><i></i>代人叫车</div>-->
+                    <div class="action-item tips-btn"><i></i>温馨提示</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--查询地址-->
+    <div id="search-address" class="sui-popup-container">
+        <div class="sui-popup-mask"></div>
+        <div class="sui-popup-modal">
+            <div class="search-bar sui-border-b">
+                <div class="search-bar-inner">
+                    <div class="serach-input">
+                        <input type="text" id="textSearchMap" placeholder="区域名称/地址" />
+                    </div>
+                    <button  type="button" id="sarchCancelbtn" class="cancel">取消</button>
+                </div>
+            </div>
+
+
+            <div id="searchWrapper" class="wrapper">
+                <div class="content">
+
+                    <ul id="mapResult" class="sui-list sui-border-tb">
+                    </ul>
+
+                    <div class="gather">
+                        <!-- 当前位置 -->
+                        <div class="current">
+                            <span class="title">当前位置</span>
+                            <div class="station-group">
+                                <span>创业投资大厦</span>
+                            </div>
+                        </div>
+
+                        <!-- 历史记录 -->
+                        <div class="history">
+                            <div class="place"><i class="icon-place"></i><span>深圳市南山区创业投资大厦</span></div>
+                            <div class="place"><i class="icon-place"></i><span>深圳北站</span></div>
+                            <!--<div><i class="icon-place"></i>坪洲地铁站</div>-->
+                            <!--<div><i class="icon-place"></i>北京天安门广场</div>-->
+                        </div>
+
+                        <!-- 地区推荐 -->
+                        <div class="recommend">
+                            <span class="title">地区推荐</span>
+                            <div class="area-list">
+                                <h5 class="subtitle">珠海市</h5>
+                                <div class="station-group">
+                                    <span class="city-area">香洲区</span>
+                                    <div class="area-place">
+                                        <div class="place"><i class="icon-place"></i><span>深圳市南山区创业投资大厦</span></div>
+                                        <div class="place"><i class="icon-place"></i><span>深圳北站</span></div>
+                                    </div>
+                                    <span class="city-area">斗门区</span>
+                                    <span class="city-area">金湾区</span>
+                                </div>
+
+                                <h5 class="subtitle">深圳市</h5>
+                                <div class="station-group">
+                                    <span class="city-area">福田区</span>
+                                    <span class="city-area">南山区</span>
+                                    <span class="city-area">罗湖区</span>
+                                    <span class="city-area">宝安区</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--温馨提示框-->
+    <div class="popup-container tips-container-popup" style="display:none;">
+        <div class="popup-main">
+            <div class="tips-box">
+                <div class="tips-title">温馨提示</div>
+                <div class="tips">
+                    <p>1、为不耽误您的行程，建议您预约航班起飞前3小时的车辆；</p><br/>
+                    <p>2、您下单成功后，请耐心等待，我们会在您出发前的一小时给您发送车辆及司机信息；</p><br/>
+                    <p>3、24小时在线约车服务，订单处理时间：7:00～17:00。如在17:00~次日7:00下单，订单将于次日7:00后处理；其他时间请直接拨打客服电话；</p><br/>
+                    <p>4、因超员限制，儿童亦需购票，1.2米以下购半票请联系客服，预留座位；</p><br/>
+                    <p>5、客服电话：0952-2013125</p><br/>
+                </div>
+                <div class="service-rules-btn" data-href="./service-rules.html">约车规则</div>
+            </div>
+            <div class="close"></div>
+        </div>
+    </div>
+
+    <!--费用详情-->
+    <div class="sui-popup-container price-detail-container">
+        <div class="sui-popup-mask"></div>
+        <div class="sui-popup-modal">
+            <!--内容开始-->
+            <div class="price-detail-title">价格详情</div>
+            <div id="closeButton" class="close-btn"></div>
+            <div class="price-detail-main">
+                <!--<div class="detail-box">
+                    <div class="detail-item"><div class="name">舒适型一口价</div><div class="number">30元</div></div>
+                    <div class="detail-item"><div class="name">人数</div><div class="number">3人</div></div>
+                </div>
+                <div class="coupon-box">
+                    <div class="coupon-item"><div class="name">优惠券</div><div class="number">-2.3元</div></div>
+                </div>-->
+            </div>
+            <div class="market-rules-btn">查看计价规则</div>
+        </div>
+    </div>
+
+    <!--计价规则-->
+    <div class="sui-popup-container market-rule-container">
+        <div class="sui-popup-mask"></div>
+        <div class="sui-popup-modal">
+            <!--内容开始-->
+            <!--<div class="price-detail-title">价格详情</div>-->
+            <!--<div id="" class="close-btn"></div>-->
+            <div class="back-btn close-btn" data-href=""></div>
+            <div class="market-title">计价规则</div>
+            <div class="market-content">
+                <ul>
+                    <li class="stage-type">
+                        <div class="stage-name">拼车</div>
+                        <ul>
+                            <li class="stage-item">
+                                <div class="unit-box"><div class="unit">每人</div><div class="price">10元</div></div>
+                                <div class="total">1人同行</div>
+                            </li>
+                            <li class="stage-item">
+                                <div class="unit-box"><div class="unit">每人</div><div class="price">10元</div></div>
+                                <div class="total">2人同行</div>
+                            </li>
+                            <li class="stage-item">
+                                <div class="unit-box"><div class="unit">每人</div><div class="price">10元</div></div>
+                                <div class="total">3人同行</div>
+                            </li>
+                            <li class="stage-item">
+                                <div class="unit-box"><div class="unit">每人</div><div class="price">10元</div></div>
+                                <div class="total">4人同行</div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="stage-type">
+                        <div class="stage-name">舒适型</div>
+                        <ul>
+                            <li class="stage-item">
+                                <div class="unit-box"><div class="unit">每人</div><div class="price">20元</div></div>
+                                <div class="total">1人同行</div>
+                            </li>
+                            <li class="stage-item">
+                                <div class="unit-box"><div class="unit">每人</div><div class="price">20元</div></div>
+                                <div class="total">2人同行</div>
+                            </li>
+                            <li class="stage-item">
+                                <div class="unit-box"><div class="unit">每人</div><div class="price">20元</div></div>
+                                <div class="total">3人同行</div>
+                            </li>
+                            <li class="stage-item">
+                                <div class="unit-box"><div class="unit">每人</div><div class="price">20元</div></div>
+                                <div class="total">4人同行</div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="stage-type">
+                        <div class="stage-name">豪华型</div>
+                        <ul>
+                            <li class="stage-item">
+                                <div class="unit-box"><div class="unit">每人</div><div class="price">30元</div></div>
+                                <div class="total">1人同行</div>
+                            </li>
+                            <li class="stage-item">
+                                <div class="unit-box"><div class="unit">每人</div><div class="price">30元</div></div>
+                                <div class="total">2人同行</div>
+                            </li>
+                            <li class="stage-item">
+                                <div class="unit-box"><div class="unit">每人</div><div class="price">30元</div></div>
+                                <div class="total">3人同行</div>
+                            </li>
+                            <li class="stage-item">
+                                <div class="unit-box"><div class="unit">每人</div><div class="price">30元</div></div>
+                                <div class="total">4人同行</div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+    <!--实名制选择人数-->
+    <div class="popup-container select-person-container" style="display: none">
+        <div class="select-person-main">
+            <div class="title-content">
+                <div class="close">取消</div>
+                <div class="title-box">
+                    <div class="title">选择乘车人(<span class="selected" data-value="0">0</span>/<span class="total" data-value="6">6</span>位)</div>
+                    <div class="title-tips">根据相关部门规定，需要乘车人实名制登记</div>
+                </div>
+                <div class="confirm-btn">确定</div>
+            </div>
+            <div class="person-content">
+                <div class="person-item" data-id="" data-name="张叉叉" data-idno="110101199003070935" data-selected="false">
+                    <div class="selection">
+                        <i></i>
+                        <div class="person-box">
+                            <div class="name">张叉叉</div>
+                            <div class="ID-No">身份证：110************935</div>
+                        </div>
+                    </div>
+                    <div class="edit-btn"></div>
+                </div>
+                <div class="person-item" data-id="" data-name="张啦啦" data-idno="210102199003071751" data-selected="false">
+                    <div class="selection">
+                        <i></i>
+                        <div class="person-box">
+                            <div class="name">张啦啦</div>
+                            <div class="ID-No">身份证：210************751</div>
+                        </div>
+                    </div>
+                    <div class="edit-btn"></div>
+                </div>
+            </div>
+            <div class="add-person"></div>
+        </div>
+        <!-- data-totle总座位数 data-selected选中的人数 -->
+        <input type="hidden" id="" value="" data-totle="6" data-selected="0"/>
+    </div>
+
+    <!--编辑/添加 实名制乘车人-->
+    <div class="popup-container edit-person-container" style="display: none">
+        <!--<div class="popup-main">
+            <div class="title-content">
+                <div class="close-edit">取消</div>
+                <div class="title">编辑乘车人</div>
+                <div class="confirm-btn">确定</div>
+            </div>
+            <div class="edit-box">
+                <div class="edit-item">
+                    <div class="name">姓名</div><input class="value" value="张萌萌" placeholder="请输入乘车人姓名"/>
+                </div>
+                <div class="edit-item">
+                    <div class="name">身份证</div><input class="value" value="1111111111" placeholder="请输入乘车人证件号码"/>
+                </div>
+            </div>
+        </div>-->
+    </div>
+
+
+    <!--框架弹框demo-->
+    <!--<div class="popup-container">
+        <div class="popup-main">
+            &lt;!&ndash;内容&ndash;&gt;
+        </div>
+    </div>-->
+
+    <script src="../../dist/javascripts/zepto.min.js"></script>
+    <script src="../../dist/javascripts/simpleui.min.js"></script>
+    <script src="../../dist/javascripts/vectors.min.js"></script>
+    <!--<script src="../../dist/javascripts/time-picker.min.js"></script>-->
+    <script src="../../src/js/time-picker.js"></script>
+    <script src="../../src/js/weekTime-picker.js"></script>
+    <script src="../../dist/javascripts/select-picker.min.js"></script>
+    <script src="../../src/js/intercity.js"></script>
+    <!--<script src="https://webapi.amap.com/maps?v=1.4.4&key=cc84bbc40681d10bdf6a924b2caf31d5"></script>-->
+    <script src="https://webapi.amap.com/maps?v=1.4.4&key=cc84bbc40681d10bdf6a924b2caf31d5&plugin=AMap.Driving"></script>
+<!--<script type="text/javascript" src="../../dist/javascripts/newInnerCity/innerCityService.min.js"></script>-->
+    <script src="../../src/js/newInnerCity/index.js"></script>
+    <script type="text/javascript" src="../../src/js/newInnerCity/innerCityService.js"></script>
+</body>
+</html>

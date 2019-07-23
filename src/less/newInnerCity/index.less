@@ -1,0 +1,473 @@
+.tabs-panel {
+  position: relative;
+  background-color: #fff;
+  //box-shadow: 0 2px 6px 0 rgba(0,0,0,.1);
+  border-radius: 3px;
+
+  .tab-contents {
+    padding: 0 .2rem 0 .4rem;
+    .search-station {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+      padding-bottom: 1px;
+      .sui-list {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        flex: 1;
+
+        .bottom-line {
+          border-bottom: 1px solid #f1f1f1;
+          margin-left: 0.4rem;
+        }
+
+        li {
+          margin-left: 0;
+          padding: .362rem 0 .35rem;
+          background: none;
+          .control {
+            padding-left: .37rem;
+            position: relative
+          }
+
+          .control:before {
+            content: "";
+            display: block;
+            width: .16rem;
+            height: .15rem;
+            position: absolute;
+            left: .05rem;
+            top: 0;
+            bottom: 0;
+            margin: auto 0;
+            border-radius: 100%
+          }
+
+          .control input {
+            display: block;
+            width: 100%;
+            border: 0;
+            font-size: 0.28rem;
+            color: #333333;
+          }
+          .start:before {
+            border: 0.03rem solid #6392FE;
+          }
+
+          .end:before {
+            border: 0.03rem solid #333333;
+          }
+          .end input::-webkit-input-placeholder {
+            font-size: 0.28rem;
+            color: #CCCCCC;
+          }
+
+        }
+
+      }
+
+      .v-line{
+        height: .6rem;
+        width: 1px;
+        background-color: #d3d2db;
+        float: left;
+        position: relative;
+        margin-top: .7rem;
+        margin-left: .13rem;
+      }
+
+      .switch-btn {
+        margin-left: .37rem;
+        width: .58rem;
+        height: .58rem;
+        background: url(../../images/common/header/icon-exchange.png) 50% no-repeat;
+        background-size: 100% 100%
+      }
+
+    }
+  }
+
+}
+
+.his-order{
+  margin: .22rem;
+  width: 7.1rem;
+  position: relative;
+  background-color: #fff;
+  box-shadow: 0 0 20px 0 rgba(227,227,227,0.40);
+  .content{
+    display: inline-flex;
+    margin: .2rem .2rem .2rem 0.2rem;
+    .location{
+      background: url("../../images/newInnerCity/location.png") no-repeat 50%;
+      background-size: 100% 100%;
+      width: 0.18rem;
+      height: 0.18rem;
+      margin-top: 0.3rem;
+    }
+
+    .adrs{
+      font-family: PingFangSC-Regular;
+      font-size: 0.24rem;
+      color: #666666;
+      letter-spacing: 0;
+      text-align: center;
+      overflow: hidden;
+      text-overflow:ellipsis;
+      white-space: nowrap;
+      width: 1.88rem;
+    }
+    .area{
+      font-family: PingFangSC-Regular;
+      font-size: 0.2rem;
+      color: #AAAAAA;
+      letter-spacing: 0;
+      text-align: center;
+      overflow: hidden;
+      text-overflow:ellipsis;
+      white-space: nowrap;
+      width: 1.88rem;
+    }
+    .startAdrs{
+      margin-left: .2rem;
+    }
+    .endAdrs{
+      //margin-left: 0.5rem;
+    }
+
+    .center-line{
+      margin-left: 0.2rem;
+      margin-right: 0.2rem;
+      .arrow{
+        background: url("../../images/newInnerCity/arrow_right.png") no-repeat 50%;
+        background-size: 100% 100%;
+        width: 0.45rem;
+        height: 0.1rem;
+        margin-top: 0.3rem;
+      }
+    }
+
+    .btn-list{
+      display: inline-flex;
+      margin-left: 0.1rem;
+      div{
+        background: #FFFFFF;
+        box-shadow: 0 0 0.2rem 0 rgba(210,210,210,0.40);
+        border-radius: 0.06rem;
+        font-family: PingFangSC-Regular;
+        font-size: 0.2rem;
+        color: #AAAAAA;
+        letter-spacing: 0;
+        text-align: center;
+        margin-left: 0.1rem;
+        margin-top: 0.3rem;
+        width: 0.7rem;
+        height: 0.4rem;
+      }
+
+    }
+
+  }
+  .line{
+    width: 90%;
+    border-bottom: 1px solid #F2F2F2;
+    float: right;
+  }
+}
+
+.order-box{
+  margin: .22rem;
+  width: 7.1rem;
+  position: relative;
+  background-color: #fff;
+  box-shadow: 0 0 20px 0 rgba(227,227,227,0.40);
+  header{
+    display: flex;
+    border-bottom: 1px solid #F2F2F2;
+
+    .border-weight{
+      border-left: .1rem solid #6392fe;
+      height: 0.25rem;
+      margin-top: 0.2rem;
+    }
+    .title{
+      font-family: PingFangSC-Regular;
+      font-size: 0.28rem;
+      color: #666666;
+      letter-spacing: 0;
+      margin: 0.1rem;
+      width: 90%;
+    }
+    .nav-right{
+      background: url("../../images/newInnerCity/jt_right.png") no-repeat 50%;
+      background-size: 100% 100%;
+      height: 0.2rem;
+      width: 0.15rem;
+      margin-top: 0.2rem;
+    }
+  }
+
+  .content{
+      display: inline-flex;
+      margin: .2rem .2rem .2rem 0.2rem;
+      .adrs{
+        font-family: PingFangSC-Regular;
+        font-size: 0.24rem;
+        color: #666666;
+        letter-spacing: 0;
+        text-align: center;
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
+        width: 1.98rem;
+      }
+      .area{
+        font-family: PingFangSC-Regular;
+        font-size: 0.2rem;
+        color: #AAAAAA;
+        letter-spacing: 0;
+        text-align: center;
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
+        width: 1.98rem;
+      }
+    .startAdrs{
+      margin-left: .4rem;
+    }
+    .endAdrs{
+      //margin-left: 0.5rem;
+    }
+
+    .center-line{
+      margin-left: 0.3rem;
+      margin-right: 0.3rem;
+      .des{
+        font-family: PingFangSC-Regular;
+        font-size: 0.2rem;
+        color: #6392FE;
+        letter-spacing: 0;
+        text-align: center;
+      }
+      .line{
+        background: url("../../images/newInnerCity/line.png") no-repeat 50%;
+        background-size: 100% 100%;
+        width: 1.42rem;
+        height: 0.1rem;
+      }
+    }
+
+  }
+
+}
+.foot{
+  //position: fixed;
+  margin-bottom: 0.1rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  .vrt{
+    margin-bottom: 0.1rem;
+  }
+}
+
+#search-address .search-bar {
+  background: #F2F2F2;
+  box-shadow: 0 0 20px 0 rgba(0,0,0,0.10);
+  height: 0.8rem;
+  .search-bar-inner {
+    display: flex;
+    padding: 0.25rem;
+    .serach-input {
+        border-left: 0 none;
+        border-radius: 4px;
+        margin-right: 0.2rem;
+        input {
+          font-size: .28rem;
+          color: #999;
+          line-height: .4rem;
+          border: 0;
+          width: 6rem;
+          background: #F2F2F2;
+        }
+        input::-webkit-input-placeholder {
+          font-size: 0.28rem;
+          color: #CCCCCC;
+        }
+      }
+
+    .cancel {
+      font-size: .28rem;
+      border-left: 1px solid  #CCCCCC;
+      width: 13.467%;
+      height: .4rem;
+      line-height: .4rem;
+      color: #999999;
+      letter-spacing: 0;
+      text-align: center;
+    }
+  }
+}
+
+#search-address .wrapper {
+  width: 100%;
+  margin-top: .1rem;
+  //overflow: hidden;
+  .content {
+    padding-bottom: .22rem;
+
+    ul li {
+      position: relative;
+      padding-left: .58rem;
+      background: transparent;
+      border-bottom: 1px solid #e6e6e6;
+
+     :before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: .02rem;
+        margin: auto 0;
+        width: .34rem;
+        height: .34rem;
+        background: url(../../images/newInnerCity/icon-adrs.png) no-repeat 50%;
+        background-size: 100% 100%;
+      }
+
+      .sui-cell-map .imp-blue{
+        color: #6392fe;
+      }
+
+      .sui-cell-map .address {
+        font-size: .28rem;
+        color: #333333;
+        line-height: .4rem;
+      }
+
+      .sui-cell-map .city-area {
+        margin-top: .05rem;
+        font-size: .24rem;
+        line-height: .33rem;
+        color: #CCCCCC;
+        opacity: .66;
+      }
+    }
+
+    .gather {
+      padding: 0 .11rem;
+
+      .place{
+        border: 1px solid #CCCCCC;
+        border-radius: 0.06rem;
+        font-size: 0.24rem;
+        color: #aaa;
+        padding: 0.05rem ;
+        display: flex;
+        margin-right: 0.2rem;
+        margin-top: .1rem;
+        .icon-place{
+          background: url("../../images/newInnerCity/didian.png") no-repeat 50%;
+          background-size: 100% 100%;
+          width: 0.14rem;
+          height: 0.26rem;
+          display: block;
+          margin-top: 0.01rem;
+        }
+
+        .icon-zan{
+          background: url("../../images/newInnerCity/zan.png") no-repeat 50%;
+          background-size: 100% 100%;
+          width: 0.14rem;
+          height: 0.26rem;
+          display: block;
+          margin-top: 0.01rem;
+        }
+
+        span{
+          margin-left: 0.1rem;
+        }
+      }
+
+
+      .title{
+        font-family: PingFangSC-Regular;
+        font-size: 0.2rem;
+        color: #999999;
+      }
+      .current{
+        .station-group{
+          margin-top: 0.2rem;
+          display: flex;
+          flex-wrap: wrap;
+          span{
+            //height: 0.5rem;
+            opacity: 0.6;
+            background: #6392FE;
+            box-shadow: 0 0 0.2rem 0 rgba(227,227,227,0.40);
+            border-radius: 0.06rem;
+            font-size: 0.28rem;
+            color: #FFFFFF;
+            padding: 0.1rem;
+            margin-right: .2rem;
+            margin-top: .2rem;
+          }
+        }
+      }
+
+      .history{
+        border-bottom: 1px solid #F2F2F2;
+        display: flex;
+      }
+
+      .recommend{
+        .subtitle{
+          font-family: PingFangSC-Regular;
+          font-size: 0.28rem;
+          color: #333333;
+          margin-top: .2rem;
+        }
+        .area-list{
+          margin-top: .2rem;
+          .station-group{
+            margin-top: 0.2rem;
+            display: flex;
+            flex-wrap: wrap;
+            .city-area{
+              //height: 0.5rem;
+              opacity: 0.6;
+              background: #6392FE;
+              box-shadow: 0 0 0.2rem 0 rgba(227,227,227,0.40);
+              border-radius: 0.06rem;
+              font-size: 0.28rem;
+              color: #FFFFFF;
+              padding: 0.1rem;
+              margin-top: .2rem;
+              margin-right: .2rem;
+            }
+
+            .area-place{
+              display: flex;
+              margin-top: 0.2rem;
+              overflow: hidden;
+              flex-wrap: wrap;
+              padding: 0 .12rem .22rem;
+            }
+          }
+        }
+
+      }
+    }
+    .gather>div {
+      padding: 0 .12rem .22rem;
+      overflow: hidden;
+      -webkit-transition: all .3s;
+      transition: all .3s;
+    }
+
+  }
+}

@@ -1,0 +1,725 @@
+@charset "utf-8";
+body {
+  background: #f3f4f5;
+  padding-bottom: .25rem
+}
+
+.ticket-tips {
+  background: #ff6b6b;
+  width: 100%;
+  height: .7rem;
+  position: relative
+}
+
+.ticket-tips > .info {
+  line-height: .7rem;
+  font-size: .28rem;
+  color: #f3f4f5;
+  padding-left: .22rem;
+  background: transparent
+}
+
+.ticket-tips:after {
+  content: "";
+  width: .13rem;
+  height: .23rem;
+  display: block;
+  background: url(../../images/hailing/icon-right.png) 50% no-repeat;
+  background-size: 100% 100%;
+  position: absolute;
+  top: .23rem;
+  right: .44rem
+}
+
+.car-number-container {
+  margin: .32rem .22rem .2rem;
+  background-color: #fff;
+  box-shadow: 0 .02rem .06rem 0 rgba(0, 0, 0, .1);
+  border-radius: .03rem;
+  text-align: center;
+  padding: 0 .22rem
+}
+
+.car-number-container > .instruction {
+  height: .48rem;
+  line-height: .48rem;
+  font-size: .2rem;
+  color: #6392fe
+}
+
+.car-number-container > .car-number-content {
+  font-size: .28rem;
+  color: #999;
+  height: .68rem;
+  line-height: .68rem
+}
+
+.car-number-container span {
+  color: #f27d4a
+}
+
+.search-form {
+  padding: 0 .22rem
+}
+
+.search-form .present-time {
+  height: 1.25rem;
+  line-height: 1.25rem;
+  position: relative
+}
+
+.search-form .present-time > .startTime, .search-form .present-time > .startWeekTime {
+  font-size: .38rem;
+  color: #4b4b4b;
+  border: none;
+  margin-left: .38rem
+}
+
+.search-form .present-time:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: .262rem;
+  height: .262rem;
+  background: url(../../images/rent/icon_time.png) no-repeat 50%;
+  background-size: 100% 100%;
+  top: .47rem;
+  left: 0
+}
+
+.search-form .search-station {
+  border-bottom: 1px solid #f1f1f1
+}
+
+.search-form .search-station .sui-list li {
+  margin-left: 0
+}
+
+.search-form .billing .billing-loading {
+  width: 100%;
+  height: 1.59rem;
+  font-size: .28rem;
+  color: #6392fe
+}
+
+.search-form .billing .billing-loading .loading {
+  width: 2.24rem;
+  margin: 0 auto;
+  padding-left: .68rem;
+  line-height: 1.59rem;
+  position: relative
+}
+
+.search-form .billing .billing-loading .loading:before {
+  content: "";
+  display: inline-block;
+  width: .49rem;
+  height: .49rem;
+  background: url(../../images/hailing/icon-loading.png) 50% no-repeat;
+  background-size: 100% 100%;
+  position: absolute;
+  left: 0;
+  top: .5rem;
+  animation: a 2s ease-in-out infinite;
+  -moz-animation: a 2s ease-in-out infinite;
+  -webkit-animation: a 2s ease-in-out infinite;
+  -o-animation: a 2s ease-in-out infinite
+}
+
+.search-form .billing .billing-charge {
+  width: 100%;
+  height: 1.59rem;
+  font-size: .28rem;
+  color: #999;
+  display: flow-root
+}
+
+.search-form .billing .billing-charge .charge-info {
+  padding-top: .3rem;
+  font-size: .82rem;
+  color: #f27d4a;
+  display: inline-block;
+  width: 73%;
+  text-align: center
+}
+
+.search-form .billing .billing-charge .charge-info > .charge {
+  display: inline-block;
+  max-width: 3.2rem;
+  white-space: nowrap;
+  overflow: scroll;
+  line-height: .5rem;
+  padding: .05rem 0 .01rem;
+  margin-bottom: -.1rem;
+  vertical-align: bottom;
+}
+
+.search-form .billing .billing-charge .charge-info > .charge .charge-sale{
+  font-family: PingFangSC-Regular;
+  font-size: 0.2rem;
+  color: #999999;
+}
+
+.search-form .billing .billing-charge .charge-info > .charge-type {
+  background: rgba(242, 125, 74, .1);
+  border: 1px solid #f27d4a;
+  border-radius: .28rem;
+  color: #f27d4a;
+  font-size: .2rem;
+  margin-right: .1rem;
+  padding: .04rem .1rem
+}
+
+.search-form .billing .billing-charge .charge-info > .unit {
+  font-size: .28rem;
+  color: #999;
+  margin-left: .1rem
+}
+
+.search-form .billing .billing-charge > .bill-rules-btn {
+  line-height: 1.59rem;
+  font-size: .28rem;
+  color: #999;
+  margin-left: .2rem
+}
+
+.search-btn {
+  display: block;
+  width: 7.06rem;
+  height: 1rem;
+  position: relative;
+  margin: .22rem auto;
+  line-height: 1rem;
+  font-size: .38rem;
+  color: #fff;
+  text-align: center;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 .12rem .1rem 0 #ccc;
+  background: #6392fe
+}
+
+.search-btn.disabled {
+  border: none
+}
+
+.search-btn-group {
+  position: relative;
+  margin: .22rem .22rem 0;
+  height: 1rem;
+  line-height: 1rem;
+  font-size: .38rem;
+  color: #fff;
+  text-align: center;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 .12rem .1rem 0 #ccc
+}
+
+.search-btn-group .search-btn {
+  display: block;
+  background: #6392fe;
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  margin: 0
+}
+
+.intro-container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  margin: .48rem .22rem .33rem
+}
+
+.intro-container > .intro-item {
+  text-align: center;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+  width: 2.246rem;
+  margin-left: .16rem
+}
+
+.intro-container > .intro-item:first-child {
+  margin-left: 0
+}
+
+.intro-container > .intro-item > .img {
+  width: .44rem;
+  height: .46rem;
+  margin: 0 auto .06rem
+}
+
+.intro-container > .intro-item > .img img {
+  display: block;
+  width: .44rem;
+  height: .46rem
+}
+
+.intro-container > .intro-item > .intro-name {
+  font-size: .28rem;
+  color: #999;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden
+}
+
+.intro-container > .intro-item > .intro-info {
+  font-size: .2rem;
+  color: #bbb;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden
+}
+
+.agreement-btn {
+  margin: 0 .22rem;
+  text-align: center;
+  font-size: .2rem;
+  color: #6392fe;
+  height: .5rem
+}
+
+.agreement-btn > .switcher {
+  display: inline-block;
+  width: .34rem;
+  height: .34rem;
+  margin-right: .07rem;
+  vertical-align: middle
+}
+
+.agreement-btn .switcher_agree, .agreement-btn > .switcher {
+  background: url(../../images/hailing/icon-agree.png) 50% no-repeat;
+  background-size: 100% 100%
+}
+
+.agreement-btn .switcher_disagree {
+  background: url(../../images/hailing/icon-disagree.png) 50% no-repeat;
+  background-size: 100% 100%
+}
+
+.agreement-btn > input {
+  display: none
+}
+
+.agreement-btn > .agreement {
+  display: inline-block;
+  height: 100%;
+  line-height: .5rem
+}
+
+.agreement-btn .agree-color {
+  color: #6392fe
+}
+
+.agreement-btn .disagree-color {
+  color: #bbb
+}
+
+.popup-container, .popup-container .sui-popup-modal {
+  background: #f3f4f5
+}
+
+.popup-container .sui-popup-modal .all {
+  padding-bottom: .22rem;
+  position: relative
+}
+
+.popup-container .sui-popup-modal .all .close-btn {
+  position: absolute;
+  right: .39rem;
+  top: .3rem;
+  width: .4rem;
+  height: .4rem;
+  background: url(../../images/hailing/icon-close.png) 50% no-repeat;
+  background-size: 100% 100%
+}
+
+.popup-container .sui-popup-modal .all .btn-group {
+  position: static
+}
+
+#agreement_container .all .agreement-title {
+  width: 100%;
+  height: 1rem;
+  line-height: 1rem;
+  background: #fff;
+  box-shadow: 0 .02rem .05rem 0 rgba(0, 0, 0, .05);
+  font-size: .32rem;
+  color: #333;
+  text-align: center;
+  font-weight: 700
+}
+
+#agreement_container .all .sub-nav {
+  width: 5.28rem;
+  height: .88rem;
+  margin: .2rem auto 0;
+  background: #fff;
+  box-shadow: 0 .02rem .05rem 0 rgba(0, 0, 0, .05);
+  border-radius: 1rem;
+  font-size: .24rem;
+  color: #ccc
+}
+
+#agreement_container .all .sub-nav .nav-item {
+  display: inline-block;
+  width: 2.5rem;
+  height: .8rem;
+  border-radius: 1rem;
+  text-align: center;
+  margin: .04rem;
+  line-height: .38rem
+}
+
+#agreement_container .all .sub-nav .nav-active {
+  box-shadow: 0 .02rem .06rem 0 rgba(0, 0, 0, .1);
+  color: #6392fe
+}
+
+#agreement_container .all .agreement-box {
+  margin-top: .2rem
+}
+
+#agreement_container .all .agreement-box .agreement-content {
+  width: 6.72rem;
+  margin: 0 auto;
+  background: #fff;
+  box-shadow: 0 .02rem .06rem 0 rgba(0, 0, 0, .05);
+  padding: .2rem .17rem;
+  font-size: .28rem;
+  color: #999
+}
+
+#agreement_container .all .agreement-box .agreement-content p {
+  font-size: .28rem;
+  color: #999
+}
+
+.search-loading-container {
+  display: block;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, .8)
+}
+
+.search-loading-container > .content {
+  padding-top: 2.03rem;
+  text-align: center
+}
+
+.search-loading-container > .content > .title {
+  font-size: .48rem;
+  color: #fff
+}
+
+.search-loading-container > .content > .number {
+  font-size: .28rem;
+  color: #fff
+}
+
+.search-loading-container > .content > .number span {
+  color: #f27d4a
+}
+
+.search-loading-container > .content > .loading-content {
+  margin: .35rem auto .5rem;
+  position: relative
+}
+
+.search-loading-container > .content > .loading-content > .timer {
+  width: .82rem;
+  height: 2.4rem;
+  line-height: 2.4rem;
+  text-align: center;
+  font-size: .38rem;
+  color: #fff;
+  position: absolute;
+  left: 44.5%;
+  top: 0
+}
+
+.search-loading-container > .content > .loading-content > .loading {
+  width: 2.4rem;
+  height: 2.4rem;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  position: relative;
+  margin: 0 auto;
+  background: transparent;
+  -webkit-animation: a 2s ease-in-out infinite;
+  animation: a 2s ease-in-out infinite
+}
+
+.search-loading-container > .content > .loading-content > .loading > span {
+  display: inline-block;
+  width: .5rem;
+  height: .5rem;
+  border-radius: 50%;
+  background: #fff;
+  position: absolute;
+  top: -.25rem;
+  right: .95rem
+}
+
+.search-loading-container > .content > .tips {
+  font-size: .28rem;
+  color: #999
+}
+
+.search-loading-container > .content .btn-group {
+  background: rgba(0, 0, 0, .5);
+  padding: 0
+}
+
+.search-loading-container > .content .btn-group .cancel {
+  font-size: .38rem;
+  color: #fff
+}
+
+@-webkit-keyframes a {
+  0% {
+    transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg)
+  }
+  to {
+    transform: rotate(1turn);
+    -ms-transform: rotate(1turn);
+    -moz-transform: rotate(1turn);
+    -webkit-transform: rotate(1turn);
+    -o-transform: rotate(1turn)
+  }
+}
+
+@keyframes a {
+  0% {
+    transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg)
+  }
+  to {
+    transform: rotate(1turn);
+    -ms-transform: rotate(1turn);
+    -moz-transform: rotate(1turn);
+    -webkit-transform: rotate(1turn);
+    -o-transform: rotate(1turn)
+  }
+}
+
+.map-panel {
+  position: relative;
+  height: 100%;
+  padding-top: .88rem;
+  box-sizing: border-box
+}
+
+#mapContainer {
+  width: 100%;
+  height: 46%
+}
+
+.amap-copyright, .amap-logo {
+  display: none !important
+}
+
+#currLocation {
+  width: 1rem;
+  height: 1rem;
+  background: url(../../images/rent/icon_currlocation.png) 50% no-repeat;
+  background-size: 100% 100%;
+  right: .08rem
+}
+
+#currLocation, .map-wrapper {
+  position: absolute;
+  bottom: 0;
+  z-index: 500
+}
+
+.map-wrapper {
+  left: 0;
+  width: 100%;
+  height: 50.5%;
+  overflow: hidden;
+  background-color: #fff
+}
+
+.map-wrapper li {
+  padding: 0;
+  margin-left: .22rem;
+  background: transparent;
+  border-bottom: 1px solid #e6e6e6
+}
+
+.map-wrapper li:last-child {
+  border-bottom: 0 none
+}
+
+.map-wrapper li .sui-cell-map-result .left {
+  padding: .19rem 0 .12rem;
+  margin-right: .22rem;
+  width: auto;
+  max-width: 97%
+}
+
+.map-wrapper li .sui-cell-map-result .left h1 {
+  position: relative;
+  padding-left: .56rem;
+  font-size: .3rem;
+  color: #4b4b4b;
+  height: .42rem;
+  line-height: .42rem
+}
+
+.map-wrapper li .sui-cell-map-result .left h1:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto 0;
+  width: .34rem;
+  height: .34rem;
+  background: url(../../images/rent/icon_address.png) no-repeat 50%;
+  background-size: 100% 100%
+}
+
+.map-wrapper li .sui-cell-map-result .left p {
+  margin-top: .09rem;
+  font-size: .26rem;
+  line-height: .4rem;
+  color: #333
+}
+
+.map-wrapper li.active {
+  background-color: rgba(0, 0, 0, .1);
+  margin-left: 0;
+  padding-left: .22rem
+}
+
+.map-wrapper li.active .left {
+  max-width: 75%
+}
+
+.map-wrapper li.active .left h1:before {
+  background: url(../../images/rent/icon_address-2.png) no-repeat 50%;
+  background-size: 100% 100%
+}
+
+.map-wrapper li.active .right {
+  display: block !important
+}
+
+.map-wrapper li.active .right button {
+  display: inline-block;
+  width: 1.38rem;
+  height: 1.22rem;
+  text-align: center;
+  background: #6392fe;
+  font-size: .28rem;
+  color: #fff
+}
+
+.map-wrapper li.active .right button:before {
+  content: "";
+  display: block;
+  width: .46rem;
+  height: .46rem;
+  margin: 0 auto .07rem;
+  background: url(../../images/rent/icon_confirm.png) no-repeat 50%;
+  background-size: 100% 100%
+}
+
+.sui-cell-map-result {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center
+}
+
+.sui-cell-map-result .left {
+  -webkit-box-flex: 3;
+  -webkit-flex: 3;
+  flex: 3;
+  width: 100%
+}
+
+.sui-cell-map-result .left h1 {
+  font-size: .16rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis
+}
+
+.sui-cell-map-result .left p {
+  color: #666;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis
+}
+
+.sui-cell-map-result .right {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+  text-align: right;
+  display: none
+}
+
+.sui-cell-map-result .right button {
+  width: .7rem;
+  height: .35rem
+}
+
+#select-Citys .sui-popup-modal {
+  background-color: #f0f1f5
+}
+
+#select-Citys .sui-popup-modal .search-bar {
+  background-color: transparent;
+  box-shadow: none
+}
+
+#select-Citys .sui-popup-modal .current-city {
+  background-color: #fff
+}
+
+.bill-close-btn {
+  background: #6392fe;
+  box-shadow: 0 .12rem .1rem 0 #ccc;
+  border-radius: 1rem;
+  margin: .22rem;
+  text-align: center;
+  font-size: .38rem;
+  color: #fff;
+  line-height: 1rem
+}
+
+.bill-close-btn:active {
+  background: #014bfa
+}
+
+.bill-close-icon {
+  position: absolute;
+  width: .36rem;
+  height: .36rem;
+  background: url(../../images/bus/nav_close.png) 50% no-repeat;
+  background-size: 100% 100%;
+  right: .3rem;
+  top: .32rem
+}

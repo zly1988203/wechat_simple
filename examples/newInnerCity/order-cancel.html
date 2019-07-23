@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>订单取消</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/newInnerCity/order-cancel.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <div class="main-container">
+        <!--行程起始点信息-->
+        <div class="journey-container">
+            <div class="time-box">出发时间：10月15日 10:00 - 10:30</div>
+            <div class="station-box">
+                <div class="left">
+                    <div class="station depart">深圳南山·深圳湾创业投资大厦</div>
+                    <div class="station arrive">深圳福田·一个神奇的地方</div>
+                </div>
+                <div class="right">
+                    <div class="box"><div>4人</div><div>舒适型</div></div>
+                </div>
+            </div>
+            <div class="notes-box">
+                <div class="icon"></div>
+                <div class="notes">愿意等待15分钟以上</div>
+            </div>
+        </div>
+        <!--订单状态信息 默认乘客取消-->
+        <div class="cancel-status-container">
+            <div class="status">
+                <div class="result">订单取消成功</div>
+            </div>
+            <div class="tips">你可以重新预约用车</div>
+        </div>
+        <!--订单状态信息 客服取消-->
+        <div class="cancel-status-container service-cancel">
+            <div class="status">
+                <div class="result">客服已取消订单</div>
+            </div>
+            <div class="tips">你可以重新预约用车</div>
+        </div>
+        <!--订单状态信息 车辆忙取消-->
+        <div class="cancel-status-container busy-cancel">
+            <div class="status">
+                <div class="result">车辆忙已取消订单</div>
+            </div>
+            <div class="tips">你可以重新预约用车</div>
+        </div>
+        <!--订单状态信息 超时取消-->
+        <div class="cancel-status-container timeout-cancel">
+            <div class="status">
+                <div class="result">超时已取消订单</div>
+            </div>
+            <div class="tips">你可以重新预约用车</div>
+        </div>
+        <!--退款详情信息-->
+        <div class="cancel-detail-container">
+            <div class="title">退款详情</div>
+            <div class="detail-list">
+                <ul>
+                    <li>
+                        <div class="name">一口价</div>
+                        <div class="value">93.3元</div>
+                    </li>
+                    <li>
+                        <div class="name">优惠券</div>
+                        <div class="value">-10元</div>
+                    </li>
+                    <li>
+                        <div class="name">实付金额</div>
+                        <div class="value">88.3元</div>
+                    </li>
+                </ul>
+                <div class="refund-amount">
+                    <div class="amount">退款金额<span>88.3元</span>(手续费 0元)</div>
+                    <div class="tips">退款金额将在7个工作日内，按原支付途径退回</div>
+                </div>
+                <div class="refund-notes-box">
+                    <textarea class="notes" placeholder="取消原因（选填）" maxlength="20"></textarea>
+                    <div class="compute"><span class="current">0</span>/<span class="max">200</span></div>
+                </div>
+            </div>
+        </div>
+        <!--按钮-->
+        <div class="btn-group">
+            <div class="btn normal">暂不取消</div>
+            <div class="btn protrude">确定取消</div>
+        </div>
+    </div>
+
+    <script src="../../dist/javascripts/zepto.min.js"></script>
+    <script src="../../dist/javascripts/simpleui.min.js"></script>
+    <script src="../../dist/javascripts/vectors.min.js"></script>
+    <script src="../../dist/javascripts/backtrack.min.js"></script>
+    <script src="../../src/js/newInnerCity/order-cancel.js"></script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+function swNewsImg(){new Swiper(".swiper-container",{pagination:".swiper-pagination",slidesPerView:"true",centeredSlides:!0,paginationClickable:!0,spaceBetween:30})}$(function(){swNewsImg()});

@@ -1,0 +1,204 @@
+html,body{
+  height: 100%;
+  min-height: 100%;
+  background: #F2F2F2;
+}
+.trip-container{
+  //background: #F2F2F2;
+  margin: 0 0.2rem 0;
+  padding-bottom: 0.5rem;
+  &>ul{
+    &>li{
+      margin-top: 0.3rem;
+      .trip-date{
+        font-size: 0.2rem;
+        color: #AAAAAA;
+      }
+      ul{
+        margin-top: 0.1rem;
+
+        li.trip-item{
+          background: #FFFFFF;
+          box-shadow: 0 0 0.2rem 0 rgba(0,0,0,0.05);
+          border-radius: 0.06rem;
+          margin: 0.2rem 0 0;
+          padding: 0 0.2rem;
+          .trip-top{
+            display: flex;
+            align-items: center;
+            padding: 0.1rem 0;
+            justify-content: space-between;
+            .top-left{
+              .start-time{
+                font-size: 0.2rem;
+                color: #666666;
+              }
+              .business-name{
+                border: 1px solid #9EBBFB;
+                border-radius: 0.06rem;
+                font-size: 0.2rem;
+                text-align: center;
+                color: #9EBBFB;
+                margin-left: 0.2rem;
+                height: 0.3rem;
+                line-height: 0.3rem;
+                padding: 0 0.15rem;
+              }
+            }
+            .trip-status{
+              font-size: 0.2rem;
+              color: #F5A623;
+            }
+            .trip-status.checked{
+              color: #7ED321;
+            }
+
+          }
+          .trip-middle{
+            display: flex;
+            align-items: center;
+            padding: 0.2rem 0;
+            border-bottom: 1px dashed #E8E8E8;
+            position: relative;
+            .station-info{
+              text-align: center;
+              .station-name{
+                font-size: 0.24rem;
+                color: #666666;
+                width: 1.86rem;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+
+              }
+              .station-city{
+                font-size: 0.2rem;
+                color: #AAAAAA;
+              }
+
+            }
+            .transfer{
+              width: 1.42rem;
+              height: 0.08rem;
+              background: url("../../images/bus_new/line.png") center no-repeat;
+              background-size: 100% 100%;
+              margin: 0 0.39rem;
+            }
+            .more-info-btn{
+              width: 0.08rem;
+              height: 0.16rem;
+              background: url("../../images/bus_new/icon_more.png") center no-repeat;
+              background-size: 100% 100%;
+              position: absolute;
+              right: 0;
+              top: 50%;
+              transform: translate(0 , -50%);
+            }
+          }
+          .trip-bottom{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.26rem 0;
+            font-size: 0.2rem;
+            .license-plate{
+              color: #666666;
+            }
+            .trip-buttons{
+              display: flex;
+              align-items: center;
+              text-align: right;
+              .button{
+                color: #AAAAAA;
+                box-shadow: 0 0 0.2rem 0 rgba(227,227,227,0.40);
+                border-radius: 0.06rem;
+                padding: 0.05rem 0.16rem;
+                &:active{
+                  color: #FFF;
+                  background: #6392FE;
+                  box-shadow: 0 0 0.2rem 0 rgba(61,59,238,0.30);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* 解锁车票 */
+.deblocking {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
+  width: 100%;
+  height: 100%;
+  background: rgba(102,102,102,0.30);
+
+  .main {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 88%;
+    height: 6.6rem;
+    margin: auto;
+    background: #F9F9F9;
+    border-radius: 0.2rem;
+
+    .progress {
+      display: none;
+      position: absolute;
+      top: -14px;
+      left: 6px;
+      right: 6px;
+      height: 8px;
+      background: #F1F1F1;
+      border-radius: 1rem;
+
+      .bar {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 8px;
+        background: #6392FE;
+        border-radius: 1rem;
+        transition: width 0.5s;
+        width: 0;
+        max-width: 100%;
+      }
+    }
+
+    .content {
+      h4 {
+        font-size: 0.32rem;
+        color: #333;
+        text-align: center;
+        margin-top: 0.29rem;
+      }
+
+      p {
+        font-size: 0.24rem;
+        color: #999;
+        margin-top: 0.1rem;
+        text-align: center;
+      }
+
+      .thumb {
+        margin: 0.75rem auto 0;
+        width: 4.33rem;
+        height: 3.87rem;
+        //padding-top: 0.7rem;
+        background: url(../../images/bus_new/deblocking.png) no-repeat center;
+        background-size: 100% 100%;
+      }
+    }
+  }
+}

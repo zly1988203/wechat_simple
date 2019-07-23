@@ -1,0 +1,190 @@
+@charset "utf-8";
+body {
+  background-color: #fff;
+}
+
+.success {
+  padding: 0 0.22rem;
+  text-align: center;
+
+  .status {
+    .thumb {
+      position: relative;
+      margin: 0.26rem auto 0;
+      width: 1.6rem;
+      height: 1.6rem;
+      box-sizing: border-box;
+      border: 0.06rem solid #25CE5F;
+      border-radius: 100%;
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        box-sizing: border-box;
+        width: 0.68rem;
+        height: 0.4rem;
+        border-left: 0.06rem solid #25CE5F;
+        border-bottom: 0.06rem solid #25CE5F;
+        border-bottom-left-radius: 3px;
+        transform: translateY(-5px) rotate(-45deg);
+      }
+    }
+
+    p {
+      margin-top: 0.22rem;
+      font-size: 0.38rem;
+      line-height: 0.53rem;
+      color: #333;
+    }
+  }
+
+  .link {
+    margin-top: 0.3rem;
+    font-size: 0.32rem;
+    line-height: 0.45rem;
+    color: #6392FE;
+
+    &:after {
+      content: '';
+      display: inline-block;
+      width: 0.2rem;
+      height: 0.2rem;
+      margin-left: 0.1rem;
+      box-sizing: border-box;
+      border-left: 0.03rem solid #6392FE;
+      border-bottom: 0.03rem solid #6392FE;
+      border-bottom-left-radius: 2px;
+      transform: rotate(-135deg);
+    }
+  }
+
+  /* 活动详情 */
+  .activity {
+    margin-top: 0.2rem;
+
+    .title {
+      font-size: 0.28rem;
+      line-height: 0.4rem;
+      color: #999;
+    }
+
+    .progress-box {
+      width: 4.87rem;
+      margin: 0.2rem auto 0;
+      padding: 0.28rem 0.14rem 0.1rem;
+      background: #FFF6E1;
+      border-radius: 0.15rem;
+    }
+  }
+
+  .info {
+    margin-top: 0.2rem;
+
+    .txt {
+      font-size: 0.28rem;
+      line-height: 0.4rem;
+      color: #999;
+    }
+
+    .pic {
+      margin-top: 0.21rem;
+
+      img {
+        display: block;
+        margin: 0 auto;
+        width: 4.9rem;
+      }
+    }
+  }
+
+  .foot-bar {
+    margin: 0.25rem 0 0.22rem;
+
+    .btn-group {
+      position: relative;
+      display: flex;
+      background-color: #fff;
+      padding: 0;
+
+      button {
+        position: relative;
+        text-align: center;
+        font-size: 19px;
+        height: 50px;
+        line-height: 50px;
+        border-radius: 50px;
+        box-sizing: border-box;
+        overflow: hidden;
+        flex: 1;
+        margin-left: 10px;
+
+        &:first-child {
+          margin-left: 0;
+        }
+
+        &:before {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.2);
+        }
+
+        &:active::before {
+          content: '';
+        }
+
+        &.default {
+          background-color: #fff;
+          color: #999;
+          border: 1px solid #ccc;
+        }
+
+        &.primary {
+          background-color: #6392FE;
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+
+.btn-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  padding: 18px 15px 50px;
+  background-color: #fafafa;
+
+  button {
+    position: relative;
+    width: 100%;
+    height: 44px;
+    font-size: 16px;
+    color: #fff;
+    background: #6392FE;
+    border-radius: 50px;
+
+    &:before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 50px;
+    }
+  }
+
+  &:active button:before {
+    content: '';
+  }
+}

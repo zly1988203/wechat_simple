@@ -1,0 +1,806 @@
+@charset "utf-8";
+html,body{
+  min-height: 100%;
+  height: 100%;
+  font-family: PingFangSC-Medium;
+}
+
+.main-container{
+  //司机信息
+  .driver-info-container{
+    background: #FFFFFF;
+    box-shadow: 0 0 0.2rem 0 rgba(227,227,227,0.40);
+    position: relative;
+    .info{
+      display: flex;
+      border-bottom: 1px solid #F1F1F1;
+      padding: 0.3rem 0.2rem 0.2rem;
+      .avatar{
+        width: 1.2rem;
+        height: 1.2rem;
+        border-radius: 100%;
+        img{
+          display: block;
+          width: 100%;
+          height: 100%;
+          border-radius: 100%;
+        }
+      }
+      .content{
+        flex: 1;
+        margin-left: 0.2rem;
+        position: relative;
+        h4{
+          font-size: 0.28rem;
+          color: #333333;
+          letter-spacing: 0;
+        }
+        .second{
+          font-size: 0.22rem;
+          color: #999999;
+          letter-spacing: 0;
+          .service{
+            display: flex;
+            .level{
+              height: 0.3rem;
+              line-height: 0.35rem;
+              background: #FFA800;
+              border-radius: 1rem;
+              margin-left: 0.2rem;
+              font-size: 0.2rem;
+              color: #FFFFFF;
+              letter-spacing: 0;
+              padding: 0 0.1rem 0 0.36rem;
+              position: relative;
+              &:before{
+                content: '';
+                display: block;
+                width: 0.16rem;
+                height: 0.16rem;
+                background: url("../../images/newInnerCity/icon-star.png") center no-repeat;
+                background-size: 100% 100%;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                margin: auto 0;
+                left: 0.1rem;
+              }
+            }
+          }
+        }
+
+      }
+      .other-info{
+        position: absolute;
+        right: 0;
+        top: 0.1rem;
+        .identification{
+          height: 0.4rem;
+          line-height: 0.44rem;
+          background: #6392FE;
+          border-radius: 1rem 0 0 1rem;
+          font-size: 0.2rem;
+          padding: 0 0.1rem;
+          color: #FFFFFF;
+          letter-spacing: 0;
+          text-align: center;
+        }
+        .tel{
+          width: 0.7rem;
+          height: 0.7rem;
+          background: url("../../images/common/icon_tel.png") center no-repeat;
+          background-size: 100% 100%;
+          margin-top: 0.2rem;
+        }
+      }
+    }
+    .tips-box{
+      display: flex;
+      padding: 0.1rem 0.3rem 0.1rem 0;
+      .icon{
+        width: 0.4rem;
+        height: 0.4rem;
+        background: url("../../images/newInnerCity/icon-notice.png") center no-repeat;
+        background-size: 100% 100%;
+        align-self: center;
+        margin: 0 0.2rem;
+      }
+      .tips{
+        flex: 1;
+        font-size: 0.22rem;
+        color: #999999;
+        letter-spacing: 0;
+        line-height: 0.42rem;
+      }
+    }
+  }
+
+  //行程信息
+  .journey-container{
+    padding: 0 0.2rem;
+    background: rgba(0,0,0,0);
+    overflow-y: hidden;
+    transition:height 1s;
+    -moz-transition:height 1s; /* Firefox 4 */
+    -webkit-transition:height 1s; /* Safari and Chrome */
+    -o-transition:height 1s; /* Opera */
+
+    .journey-content{
+      background: #FFFFFF;
+      box-shadow: 0 0 0.2rem rgba(227,227,227,0.40);
+      font-size: 0.28rem;
+      color: #333;
+      letter-spacing: 0;
+      padding: 0.2rem;
+      margin-top: 0.2rem;
+
+
+      .time-box{
+        font-weight: bold;
+      }
+      .station-box{
+        display: flex;
+        padding: 0.2rem 0;
+        border-bottom:1px solid #F1F1F1;;
+        .left{
+          flex: 1;
+          font-weight: bold;
+          .station{
+            padding-left: 0.48rem;
+            position: relative;
+            &:before{
+              content: "";
+              position: absolute;
+              top: 4px;
+              left: 0;
+              width: 6px;
+              height: 6px;
+              border-radius: 50%;
+              border: 0.01rem solid #6392FE;
+            }
+          }
+          .depart{
+            &:after{
+              content: "";
+              position: absolute;
+              top: 14px;
+              left: 3px;
+              bottom: -6px;
+              z-index: 6;
+              width: 0;
+              height: auto;
+              border-left: 1px dotted  #ccc;
+            }
+          }
+          .arrive{
+            &:before{
+              border: 0.01rem solid #333333;
+            }
+            margin-top: 0.1rem;
+          }
+        }
+        .right{
+          text-align: center;
+          .box{
+            padding: 0.1rem 0.2rem;
+            background: #FFFFFF;
+            box-shadow: 0 0 0.2rem 0 rgba(227,227,227,0.40);
+            border-radius: 0.06rem;
+          }
+        }
+      }
+      .notes-box{
+        display: flex;
+        padding: 0.26rem 0 0;
+        .icon{
+          width: 0.24rem;
+          height: 0.24rem;
+          background: url("../../images/newInnerCity/icon-notes-gray.png") center no-repeat;
+          background-size: 100% 100%;
+          align-self: center;
+        }
+        .notes{
+          flex: 1;
+          margin-left: 0.27rem;
+          border: none;
+          line-height: 0.4rem;
+          font-size: 0.2rem;
+          color: #999999;
+          letter-spacing: 0;
+        }
+      }
+    }
+    .switch-box{
+      width: 0.8rem;
+      height: 0.21rem;
+      padding-top: 0.09rem;
+      background: #FFFFFF;
+      box-shadow: 0 0 0.2rem 0 rgba(0,0,0,0.10);
+      border-radius: 0 0 0.06rem 0.06rem;
+      margin: 0 auto;
+      position: relative;
+      i{
+        display: block;
+        width: 0.2rem;
+        height: 0.12rem;
+        background:url("../../images/newInnerCity/icon-bottom.png") center no-repeat;
+        background-size: 100% 100%;
+        margin: 0 auto;
+        transform:rotate(180deg);
+        -ms-transform:rotate(180deg); 	/* IE 9 */
+        -moz-transform:rotate(180deg); 	/* Firefox */
+        -webkit-transform:rotate(180deg); /* Safari 和 Chrome */
+        -o-transform:rotate(180deg); 	/* Opera */
+      }
+      &:before{
+        content: '';
+        display: block;
+        width: 100%;
+        height: 0.1rem;
+        background: #fff;
+        position: absolute;
+        top: -0.1rem;
+        left: 0;
+      }
+    }
+  }
+
+  .switch-box{
+    width: 0.8rem;
+    height: 0.21rem;
+    padding-top: 0.09rem;
+    background: #FFFFFF;
+    box-shadow: 0 0 0.2rem 0 rgba(0,0,0,0.10);
+    border-radius: 0 0 0.06rem 0.06rem;
+    margin: 0 auto;
+    position: relative;
+    i{
+      display: block;
+      width: 0.2rem;
+      height: 0.12rem;
+      background:url("../../images/newInnerCity/icon-bottom.png") center no-repeat;
+      background-size: 100% 100%;
+      margin: 0 auto;
+      transform:rotate(180deg);
+      -ms-transform:rotate(180deg); 	/* IE 9 */
+      -moz-transform:rotate(180deg); 	/* Firefox */
+      -webkit-transform:rotate(180deg); /* Safari 和 Chrome */
+      -o-transform:rotate(180deg); 	/* Opera */
+    }
+    &:before{
+      content: '';
+      display: block;
+      width: 100%;
+      height: 0.1rem;
+      background: #fff;
+      position: absolute;
+      top: -0.1rem;
+      left: 0;
+    }
+  }
+  //底部公共样式
+  .bottom-container{
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 400;
+    background: #FFFFFF;
+    box-shadow: 0 0 0.2rem 0 rgba(0,0,0,0.10);
+  }
+
+  //更多
+  .more-service-container{
+    ul{
+      li{
+        font-size: 0.28rem;
+        padding: 0.2rem 0;
+        color: #666666;
+        letter-spacing: 0;
+        text-align: center;
+        border-top: 1px solid #F2F2F2;
+        &:first-child{
+          border-top:none;
+        }
+      }
+      .active{
+        background: #6392FE;
+        color: #FFFFFF;
+      }
+    }
+  }
+
+  //支付
+  .payment-container{
+    padding:0.2rem 0  ;
+    .top{
+      position: relative;
+      text-align: center;
+      .amount{
+        font-size: 0.38rem;
+        color: #333333;
+      }
+      .detail{
+        font-size: 0.24rem;
+        color: #CCCCCC;
+        position: relative;
+        display: inline-block;
+        margin: 0 auto;
+        padding-right: 0.16rem;
+        &:after{
+          content: '';
+          display: block;
+          width:0.096rem;
+          height: 0.176rem;
+          background: url("../../images/newInnerCity/icon-right-gray.png") center no-repeat;
+          background-size: 100% 100%;
+          position: absolute;
+          right: 0;
+          top:0;
+          bottom: 0;
+          margin: auto 0;
+        }
+      }
+      .close{
+        width: 0.6rem;
+        height: 0.6rem;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: url("../../images/newInnerCity/close.png") center no-repeat;
+        background-size: 100% 100%;
+      }
+    }
+    .middle{
+      margin-top: 0.1rem;
+      ul{
+        padding: 0 0.4rem;
+        li{
+          display: flex;
+          padding: 0.05rem 0;
+          font-size: 0.28rem;
+          color: #666666;
+          letter-spacing: 0;
+          .name{
+            flex: 1;
+          }
+          .value{
+            flex: 1;
+            text-align: right;
+          }
+        }
+        .coupon{
+          color: #FE6666;
+          .value{
+            padding-right: 0.2rem;
+            position: relative;
+            &:after{
+              content: '';
+              display: block;
+              width: 0.12rem;
+              height: 0.2rem;
+              background: url("../../images/newInnerCity/icon-right-red.png") center no-repeat;
+              background-size: 100% 100%;
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              margin: auto 0;
+              right: 0;
+            }
+          }
+        }
+      }
+    }
+    .bottom{
+      .pay-btn{
+        width: 3.45rem;
+        margin: 0 auto;
+        background: #F2F2F2;
+        box-shadow: 0 0 0.2rem 0 rgba(227,227,227,0.31);
+        border-radius: 0.06rem;
+        text-align: center;
+        padding: 0.18rem 0 0.17rem;
+      }
+      .normal{
+        background: #F2F2F2;
+        color: #AAAAAA;
+      }
+      .protrude{
+        background: #6392FE;
+        color: #FFFFFF;
+      }
+    }
+  }
+
+  //评价
+  .evaluate-container{
+    .top{
+      .title{
+        font-size: 0.28rem;
+        color: #333333;
+        text-align: center;
+        padding: 0.2rem 0;
+        font-weight: bold;
+      }
+      .close{
+        width: 0.6rem;
+        height: 0.6rem;
+        position: absolute;
+        left: 0;
+        top: 0.1rem;
+        background: url("../../images/newInnerCity/close.png") center no-repeat;
+        background-size: 100% 100%;
+      }
+    }
+    .evaluate-content{
+      padding: 0.2rem 0 0.4rem;
+      margin: 0.02rem 0.22rem 0;
+      background: #fff;
+      box-shadow: 0 0.02rem 0.05rem 0 rgba(0,0,0,0.05);
+      border-radius: 0.03rem;
+      text-align: center;
+      font-size: 0.24rem;
+      color: #ccc;
+      h4{
+        font-weight: normal;
+      }
+
+      .star-box{
+        .star{
+          letter-spacing: -3px;
+          text-align: center;
+          overflow: hidden;
+
+          span{
+            margin: 0.28rem 0.3rem 0.38rem 0;
+            width: 0.7rem;
+            height: 0.7rem;
+            display: inline-block;
+            letter-spacing: 0;
+            background: url(../../images/evaluate/icon_star.png) center no-repeat;
+            background-size: 100% 100%;
+
+            &:last-child {
+              margin-right: 0;
+            }
+
+            &.active {
+              background-image: url("../../images/hailing/icon-star-active.png");
+            }
+          }
+
+
+        }
+      }
+
+      .evaluate-box{
+        .tag {
+          letter-spacing: -3px;
+          text-align: center;
+          .tag-tips{
+            font-size: 0.24rem;
+            color: #666666;
+            letter-spacing: 0;
+            text-align: left;
+            padding-left: 0.76rem;
+            padding-top: 0.22rem;
+          }
+
+          span {
+            display: inline-block;
+            letter-spacing: 0;
+            padding: 0.05rem 0.24rem;
+            font-size: 0.28rem;
+            color: #666;
+            border: 1px solid #ccc;
+            border-radius: 0.06rem;
+            margin: 0.2rem 0.2rem 0 0;
+
+            &:last-child {
+              margin-right: 0;
+            }
+
+            &.active {
+              background: #6392FE;
+              color: #FFFFFF;
+            }
+          }
+        }
+        .others{
+          //margin: 0 0.2rem;
+          .message-area {
+            margin-top: 0.4rem;
+            padding-top: 0.14rem;
+            display: block;
+            background: #F3F4F5;
+            border: 1px solid #ccc;
+            border-radius: 0.06rem;
+
+            textarea {
+              display: block;
+              border: 0 none;
+              background: transparent;
+              padding: 0 0.14rem 0.14rem;
+              width: 100%;
+              box-sizing: border-box;
+              line-height: 0.5rem;
+              height: 0.6rem;
+              font-size: 0.28rem;
+              color: #999;
+            }
+            textarea::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+              color: #ccc;
+            }
+            textarea:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+              color: #ccc;
+            }
+            textarea::-moz-placeholder { /* Mozilla Firefox 19+ */
+              color: #ccc;
+            }
+            textarea:-ms-input-placeholder { /* Internet Explorer 10-11 */
+              color: #ccc;
+            }
+
+
+            .message-length {
+              text-align: right;
+              padding-right: 0.11rem;
+              font-size: 0.26rem;
+              color: #999;
+              line-height: 0.37rem;
+            }
+
+            .sui-red {
+              text-align: right;
+              font-size: 0.26rem;
+              padding-right: 2px;
+              line-height: 0.37rem;
+            }
+          }
+        }
+        .evaluate-commit{
+          font-size: 0.28rem;
+          color: #FFFFFF;
+          letter-spacing: 0;
+          text-align: center;
+          display: inline-block;
+          margin: 0.9rem auto 0;
+          padding: 0.18rem 1.17rem 0.17rem;
+        }
+      }
+    }
+  }
+  //已评价
+  .evaluated-container{
+    padding: 0.6rem 0 1.85rem;
+    z-index: 80;
+    .evaluate-content{
+      .payment-info{
+        text-align: center;
+        .amount{
+          font-size: 0.38rem;
+          color: #333333;
+          font-weight: bold;
+        }
+        .detail{
+          font-size: 0.24rem;
+          color: #CCCCCC;
+          position: relative;
+          display: inline-block;
+          margin: 0 auto;
+          padding-right: 0.16rem;
+          &:after{
+            content: '';
+            display: block;
+            width:0.096rem;
+            height: 0.176rem;
+            background: url("../../images/newInnerCity/icon-right-gray.png") center no-repeat;
+            background-size: 100% 100%;
+            position: absolute;
+            right: 0;
+            top:0;
+            bottom: 0;
+            margin: auto 0;
+          }
+        }
+      }
+
+    }
+  }
+
+  //费用详情弹出
+  .price-detail-container{
+
+    .price-detail-title{
+      font-size: 0.38rem;
+      color: #666666;
+      text-align: center;
+      padding-top: 0.4rem;
+    }
+    .close-btn{
+      padding: 0.2rem;
+      position: absolute;
+      top: 0.36rem;
+      left: 0.1rem;
+      i{
+        display: block;
+        width: 0.14rem;
+        height: 0.24rem;
+        background: url("../../images/newInnerCity/icon-left.png") center no-repeat;
+        background-size: 100% 100%;
+      }
+    }
+    .price-detail-main{
+      margin: 1.05rem 1.2rem 0;
+      .detail-box{
+        .detail-item{
+          display: flex;
+          font-size: 0.28rem;
+          color: #666666;
+          letter-spacing: 0;
+          padding: 0.15rem 0;
+          .name{
+            flex: 1;
+          }
+          .number{
+            flex: 1;
+            text-align: right;
+          }
+        }
+
+      }
+      .coupon-box{
+        margin-top: 0.15rem;
+        padding: 0.3rem 0;
+        border-top: 1px solid #F2F2F2;
+        border-bottom: 1px solid #F2F2F2;
+        .coupon-item{
+          display: flex;
+          font-size: 0.28rem;
+          color: #FE6666;
+          letter-spacing: 0;
+          .name{
+            flex: 1;
+          }
+          .number{
+            flex: 1;
+            text-align: right;
+          }
+
+        }
+      }
+    }
+
+    .market-rules-btn{
+      background: #FFFFFF;
+      border: 1px solid #F2F2F2;
+      border-radius: 0.06rem;
+      font-size: 0.32rem;
+      color: #AAAAAA;
+      letter-spacing: 0;
+      text-align: center;
+      padding: 0.2rem 0;
+      width: 3.12rem;
+      margin: 2.9rem auto 0;
+    }
+  }
+
+  //分享
+  .share-box{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.8);
+    .share-tips{
+      width: 100%;
+      height: 3.11rem;
+      background: url(../../images/newInnerCity/sharing-tips.png) 50% no-repeat;
+      background-size: 100% 100%
+    }
+  }
+
+  //投诉建议提交成功
+  .complain-success {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    height: 100%;
+    background: hsla(0,0%,40%,.3);
+    .complain-success-modal {
+      margin: 2.75rem .35rem auto;
+      padding-bottom: .2rem;
+      background: #fff;
+      border-radius: .2rem;
+      overflow: hidden;
+      .title {
+        font-size: .32rem;
+        line-height: .45rem;
+        text-align: center;
+        font-weight: 700;
+        padding: .163rem .1rem .167rem;
+        border-bottom: .01rem solid #eaeaea
+      }
+      .content {
+        padding: .305rem .5rem .305rem .246rem;
+        ul{
+          li{
+            margin-top: .4rem;
+            h4 {
+              font-size: .28rem;
+              color: #333;
+              line-height: .4rem;
+              &:before {
+                display: inline-block;
+                content: "";
+                vertical-align: inherit;
+                width: .208rem;
+                height: .208rem;
+                background: #6392fe;
+                margin-right: .246rem;
+                border-radius: 100%
+              }
+            }
+            p {
+              padding-left: .454rem;
+              margin-top: .1rem;
+              font-size: .28rem;
+              color: #999
+            }
+            &:first-child {
+              margin-top: 0
+            }
+          }
+        }
+      }
+    }
+    .btn {
+      margin: .955rem auto 0;
+      width: 3rem
+    }
+  }
+
+}
+
+.btn-group{
+  z-index: 300;
+}
+
+.btn{
+  font-size: 0.28rem;
+  background: #FFFFFF;
+  box-shadow: 0 0 0.2rem 0 rgba(227,227,227,0.40);
+  border-radius: 0.06rem;
+  color: #AAAAAA;
+  letter-spacing: 0;
+  text-align: center;
+  padding: 0.1rem;
+}
+.normal{
+  background: #FFFFFF;
+  box-shadow: 0 0 0.2rem 0 rgba(227,227,227,0.40);
+  color: #AAAAAA;
+}
+.protrude{
+  background: #6392FE;
+  box-shadow: 0 0 0.2rem 0 rgba(61,59,238,0.31);
+  color: #FFFFFF;
+}
+.finish{
+  background: #F2F2F2;
+}
+
+//地图
+.ola-maps{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+}

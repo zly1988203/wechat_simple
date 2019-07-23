@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>中交出行</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/bus/payment-2.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+    <div id="insuranceList">
+            <div class="popup-list insurance-list">
+                <div class="item green">
+                    <div class="left">
+                        <div class="head">
+                            <div class="content">
+                                <h4>太平洋保险</h4>
+                                <p>60000元意外伤害，60000元意外医疗。</p>
+                            </div>
+                            <div class="price"><span>5</span>元/份</div>
+                        </div>
+                        <div class="state insurance-rule" data-href="insuranceRule.html">保险说明</div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-fixed">
+                <div class="btn-bar pab-10">
+                    <button id="closeInsurance">不购买保险</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../../dist/javascripts/zepto.min.js"></script>
+    <script src="../../dist/javascripts/simpleui.min.js"></script>
+    <script src="../../dist/javascripts/vectors.min.js"></script>
+    <script>
+        $(function () {
+            $('#closeInsurance').on('click', function () {
+               $.toast('暂不提供此功能');
+            });
+        });
+    </script>
+</body>
+</html>

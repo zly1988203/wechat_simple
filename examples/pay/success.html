@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>中交出行</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/progressbar.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/pay/success.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+    <div class="success">
+        <div class="status">
+            <div class="thumb"></div>
+            <p>支付成功</p>
+        </div>
+
+        <div class="link" data-href="#">查看订单详情</div>
+
+        <div class="activity">
+            <div class="title">在个人中心-活动查看活动详情</div>
+            <div class="progress-box">
+                <div class="content">
+                    <!-- data-amount：总计，data-count：当前占数 -->
+                    <div class="progress" data-amount="1000" data-count="750">
+                        <div class="progress-bar progress-bar-warning progress-bar-striped active" style="width: 90%;"></div>
+                    </div>
+                    <div class="progress-info">
+                        <span>买满有礼</span>
+                        <span class="progress-value"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="info">
+            <div class="txt">在首页车票快捷入口查看车票，凭票上车</div>
+            <div class="pic"><img src="../../dist/images/bus/payment-success-pic.png"></div>
+        </div>
+
+        <div class="foot-bar">
+            <div class="btn-group">
+                <div class="btn primary" style="max-width: 3.12rem; margin: 0 auto;">查看订单</div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../../dist/javascripts/zepto.min.js"></script>
+    <script src="../../dist/javascripts/simpleui.min.js"></script>
+    <script src="../../dist/javascripts/vectors.min.js"></script>
+    <script>
+        $(function() {
+            progress();
+        });
+
+        /*
+        * 进度条
+        * */
+        function progress() {
+            $('.progress').each(function (index, item) {
+                var $el = $(this),
+                    $bar = $el.find('.progress-bar'),
+                    $value = $el.parent().find('.progress-value');
+                var amount = $el.data('amount'),
+                    count = $el.data('count');
+
+                $bar.css('width', count / amount * 100 + '%');
+                $value.text(count + '/' + amount);
+            });
+        }
+    </script>
+</body>
+</html>

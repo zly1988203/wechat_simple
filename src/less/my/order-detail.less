@@ -1,0 +1,419 @@
+@charset "utf-8";
+
+body {
+    padding-bottom: 1.6rem;
+}
+
+.count-down{
+    padding: 0.15rem 0.25rem;
+    height: auto;
+    font-size: 0.28rem;
+    color: #F3F4F5;
+    background: #FF6B6a;
+    text-align: center;
+}
+
+.pab-10 {
+    padding-bottom: 10px!important;
+}
+
+/*旅游班线*/
+.travel-detail {
+    margin: 0.221rem 0 0.229rem;
+    background: #fff;
+    box-shadow: 0 0.02rem 0.02rem 0 rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+
+    .thumb {
+        margin-right: 0.2rem;
+        width: 2.5rem;
+        height: 0;
+        padding-top: 19.733%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: auto 100%;
+    }
+
+    .content {
+        flex: 1;
+        overflow: hidden;
+
+        h4 {
+            padding: 0.089rem 0 0.1rem;
+            font-size: 0.28rem;
+            height: 0.73rem;
+            color: #424242;
+            border-bottom: 0.01rem solid #F1F1F1;
+            overflow : hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        a {
+            float: right;
+            padding: 0 0.526rem 0 0.219rem;
+            margin: 0.02rem 0 0.05rem;
+            font-size: 0.28rem;
+            line-height: 0.4rem;
+            color: #999;
+            position: relative;
+
+            &:after {
+                content: '';
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                right: 0.219rem;
+                width: 0.263rem;
+                height: 0.263rem;
+                margin: auto 0;
+                background: url("../../images/my/more-right.png") no-repeat center;
+                background-size: 100% 100%;
+            }
+        }
+    }
+}
+
+.ticket-info {
+    padding: 0.3rem 0.22rem 0;
+    background-color: #fff;
+    box-shadow: 0 0.02rem 0.04rem 0 rgba(0,0,0,0.05);
+
+    .row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .time {
+            font-size: 0.32rem;
+            line-height: 0.45rem;
+            color: #424242;
+
+            .distribution {
+                border-radius: 0.1rem;
+                font-size: 0.2rem;
+                display: inline-block;
+                line-height: 0.28rem;
+                margin: -0.05rem 0 0 0.22rem;
+                padding: 0.04rem 0.07rem 0.03rem;
+                background: rgba(177, 201, 255, 0.41);
+                border: 0.01rem solid #6392FE;
+                color: #6392FE;
+                vertical-align: middle;
+            }
+        }
+    }
+
+    .station {
+        margin-top: 0.29rem;
+        padding-bottom: 0.05rem;
+    }
+
+    .ticket-rule {
+        text-align: center;
+        color: #999;
+        font-size: 0.28rem;
+        letter-spacing: 0;
+        padding: 0.13rem 0;
+    }
+}
+
+/*订单信息*/
+.coupon-btn {
+    margin-top: 0.22rem;
+    box-shadow: 0 0.02rem 0.02rem 0 rgba(0,0,0,0.05);
+
+    li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        line-height: 0.45rem;
+        margin: 0 0.22rem;
+        padding: 0.39rem 0;
+
+        .name {
+            align-self: flex-start;
+            white-space: nowrap;
+            word-break: keep-all;
+            font-size: 0.32rem;
+            color: #4A4A4A;
+        }
+
+        .value {
+            font-size: 0.32rem;
+            color: #9b9b9b;
+            width: 70%;
+            text-align: right;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+
+            &.passenger-date {
+                overflow: auto;
+                text-overflow: inherit;
+                white-space: inherit;
+
+                span {
+                    display: inline-block;
+                    margin-right: 5px;
+                }
+            }
+        }
+
+        &.insurance-row {
+            .value {
+                font-size: 0.32rem;
+                color: #4A4A4A;
+                line-height: 0.45rem;
+
+                span {
+                    color: #FE6666;
+                }
+
+                p {
+                    margin-top: 0.06rem;
+                    font-size: 0.24rem;
+                    color: #F27D4A;
+                    line-height: 0.33rem;
+                }
+            }
+        }
+
+        .text-red {
+            font-size: 0.42rem;
+            color: #FE6666;
+        }
+
+        .text-gray {
+            color: #9b9b9b;
+        }
+    }
+}
+
+/*乘车人*/
+.passenger {
+    margin-top: 0.22rem;
+    padding: 0 0.22rem;
+    background: #FFFFFF;
+    box-shadow: 0 0.02rem 0.02rem 0 rgba(0,0,0,0.05);
+
+    .content {
+        .item {
+            display: flex;
+            align-items: center;
+            position: relative;
+            height: 1.35rem; /*默认有身份证信息*/
+
+            .title {
+                width: 1rem;
+                font-size: 0.32rem;
+                color: #333;
+            }
+
+            .name {
+                font-size: 0.32rem;
+                color: #999;
+                width: 1.8rem;
+                text-align: center;
+            }
+
+            .info {
+                flex: 1;
+                /*margin-left: 0.32rem;*/
+                position: absolute;
+                right: 0;
+                width: 4.18rem;
+
+                p {
+                    font-size: 0.32rem;
+                    color: #999;
+                    margin-top: 0.06rem;
+
+                    &:first-child {
+                        margin-top: 0;
+                    }
+
+                    .label {
+                        margin-right:0.22rem;
+                    }
+                }
+            }
+        }
+
+        /*没有身份证信息*/
+        .no-ID-number{
+            height: 1.25rem;
+        }
+
+        /*身份证信息显示年份*/
+        .show-year{
+            /*.title{
+                width: 0.96rem;
+                margin-right: 0.25rem;
+            }
+            .info{
+                position: absolute;
+                right: 0;
+            }*/
+        }
+    }
+}
+
+
+
+// override
+.sui-popup-container .sui-popup-modal {
+    background-color: #fafafa;
+}
+
+.rule-btn {
+    text-align: right;
+    padding: 15px 11px 8px;
+    color: #999;
+    span {
+        padding-left: 18px;
+        background: url(../../images/bus/icon_question_mark.png) left center no-repeat;
+        background-size: 13px 13px;
+        &:active {
+            color: #000;
+        }
+    }
+}
+
+/*.rule-content {
+    padding: 15px;
+    line-height: 25px;
+    color:#666;
+
+    .close {
+        display: block;
+        width: 48px;
+        height: 48px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: url(../../images/bus/nav_close.png) center no-repeat;
+        background-size: 18px auto;
+    }
+
+    button {
+        width: 100%;
+        height: 35px;
+       !* .btn-style();*!
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 16px;
+        display: block;
+        padding-bottom: 8px;
+        color: #333;
+    }
+}*/
+
+/*底部按钮组*/
+.btn-group {
+    position:fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    padding: 0.22rem;
+    background: rgba(255,255,255, 1);
+    box-shadow: 4px 0 4px 0 rgba(0,0,0,0.10);
+    display: flex;
+
+    button {
+        position: relative;
+        text-align: center;
+        font-size: 0.38rem;
+        height: 1rem;
+        line-height: 1rem;
+        border-radius: 1rem;
+        box-sizing: border-box;
+        overflow: hidden;
+        flex: 1;
+        margin-left: 0.22rem;
+
+        &:first-child {
+            margin-left: 0;
+        }
+
+        &:before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        &:active::before {
+            content: '';
+        }
+
+        &.default {
+            background-color: #fff;
+            color: #999;
+            border: 1px solid #ccc;
+        }
+
+        &.primary {
+            background-color: #6392FE;
+            color: #fff;
+        }
+    }
+}
+
+/* 备注 */
+.commit-bar {
+    margin-top: 0.22rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 0.22rem;
+    background: #fff;
+    box-shadow: 0 0.02rem 0.06rem 0 rgba(0, 0, 0, 0.1);
+    border-radius: 0.03rem;
+
+    h4 {
+        font-weight: normal;
+        font-size: 0.32rem;
+        color: #333;
+        margin-right: 0.22rem;
+    }
+
+    .commit {
+        flex: 1;
+        padding: 0.13rem;
+        background: #F3F4F5;
+        border-radius: 0.03rem;
+
+        textarea {
+            width: 100%;
+            min-height: 1rem;
+            border: 0 none;
+            background: transparent;
+            line-height: 0.33rem;
+            font-size: 0.24rem;
+            color: #333;
+        }
+
+        .message-length {
+            text-align: right;
+            line-height: 0.37rem;
+            font-size: 0.26rem;
+            color: #999;
+        }
+    }
+
+    .commit-content {
+        flex: 1;
+        font-size: 0.32rem;
+        color: #999;
+        margin-left: 0.68rem;
+    }
+}

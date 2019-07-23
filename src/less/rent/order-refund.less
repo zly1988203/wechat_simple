@@ -1,0 +1,364 @@
+@charset "utf-8";
+@import "../base/head-order.less";
+
+.to-destination, .refund {
+    padding-bottom: 2.4rem;
+}
+
+.msg-tip {
+    border-top: 1px solid #E6E6E6;
+    border-bottom: 1px solid #E6E6E6;
+    background-color: #fff;
+    padding: 0.33rem 0.22rem 0.33rem 0.82rem;
+    font-size: 0.26rem;
+    color: #666;
+    position: relative;
+
+    &:before {
+        content: '';
+        width: 0.44rem;
+        height: 0.44rem;
+        position: absolute;
+        left: 0.215rem;
+        top: 0.3rem;
+        background: url(../../images/rent/icon_horn_grey.png) center no-repeat;
+        background-size: 100% 100%;
+    }
+}
+
+.driver-out {
+    background: #fff;
+    border-bottom: 1px solid #E9E9E9;
+    padding: 0.16rem;
+    text-align: center;
+
+    .thumb {
+        width: 0.8rem;
+        height: 0.8rem;
+        margin: 0 auto;
+        background: url("../../images/common/avatar_driver_out.png") center no-repeat;
+        background-size: 100% 100%;
+    }
+
+    p {
+        margin-top: 0.12rem;
+        font-size: 0.28rem;
+        color: #999;
+        line-height: 0.4rem;
+    }
+}
+
+.driver-detail {
+    margin: 0.22rem;
+    background-color: #fff;
+    border: 1px solid #E8E8E8;
+
+    .attribute {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 8px 0;
+        text-align: center;
+        color: #666;
+
+        .distance, .antipate-time {
+            flex: 1;
+        }
+
+        span {
+            font-size: 14px;
+            color: #ff001f;
+        }
+
+        .bevy {
+            line-height: 20px;
+
+            span {
+                font-size: 16px;
+            }
+        }
+    }
+
+    .no-flex {
+        display: block;
+    }
+
+    .head {
+        padding: 0.22rem;
+        font-size: 0.32rem;
+        color: #333;
+        text-align: center;
+        border-bottom: 1px solid #E6E6E6;
+
+        span {
+            color: rgb(241, 124, 74);
+        }
+    }
+
+    .order-address {
+        padding: 0.22rem;
+
+        .content {
+            margin-top: 0.22rem;
+            display: flex;
+            align-self: center;
+
+            ul {
+                flex: 1;
+
+                li {
+                    position: relative;
+                    padding-left: 0.38rem;
+                    text-align: left;
+                    font-size: 0.32rem;
+                    color: #333;
+                    line-height: 0.45rem;
+                    margin-top: 0.13rem;
+
+                    &:first-child {
+                        margin-top: 0;
+                    }
+
+                    &:before {
+                        content: '';
+                        position: absolute;
+                        top: 0.12rem;
+                        left: 0;
+                        width: 0.16rem;
+                        height: 0.16rem;
+                        border-radius: 100%;
+                    }
+
+                    &.start:before {
+                        background: #25CE5F;
+                    }
+                    &.end:before {
+                        background: #FE6666;
+                    }
+
+                    &.start:after {
+                        content: '';
+                        position: absolute;
+                        top: 0.36rem;
+                        bottom: -0.18rem;
+                        left: 0.06rem;
+                        width: 0.04rem;
+                        background: #ccc;
+                    }
+                }
+            }
+        }
+    }
+
+    .inter {
+        position: relative;
+
+		.start-time {
+            font-size: 0.32rem;
+            color: #333;
+		}
+
+        .car-type {
+            min-width: 1.6rem;
+            height: 1.2rem;
+            text-align: center;
+            font-size: 0.32rem;
+            color: #333;
+            padding: 0.08rem 0.14rem 0.07rem 0.15rem;
+            border: 1px solid #E6E6E6;
+            border-radius: 0.08rem;
+            box-sizing: border-box;
+            margin: -0.22rem 0 0 0.22rem;
+
+            span {
+                color: #999;
+                font-size: 0.28rem;
+            }
+        }
+    }
+
+    .other-msg {
+        position: relative;
+        color: #999;
+        font-size: 0.28rem;
+        padding: 0.18rem 0.22rem 0.17rem 0.62rem;
+        border-top: 1px solid #E6E6E6;
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0.27rem;
+            left: 0.22rem;
+            width: 0.3rem;
+            height: 0.23rem;
+            background: url(../../images/rent/icon_dialog.png) center no-repeat;
+            background-size: 100% 100%;
+        }
+    }
+}
+
+.refund-swapper {
+    margin: 0.22rem 0.22rem 0 0.22rem;
+    padding: 0 0.21rem;
+    background: #fff;
+    border: 1px solid #E8E8E8;
+
+    .info {
+        display: flex;
+        align-self: center;
+        padding: 0.44rem 0 0.43rem;
+
+        .status {
+            padding: 0.15rem 0.84rem 0 0.67rem;
+            text-align: center;
+
+            i {
+                display: block;
+                margin: 0 auto;
+                width: 0.8rem;
+                height: 0.8rem;
+                background: url("../../images/rent/icon_refund.png") no-repeat center;
+                background-size: 100% 100%;
+            }
+
+            p {
+                margin-top: 0.09rem;
+                font-size: 0.28rem;
+                color: #999;
+                line-height: 0.4rem;
+            }
+        }
+
+        .detail {
+            border-left: 1px solid #E6E6E6;
+            padding-left: 0.41rem;
+
+            .item {
+                margin-top: 0.12rem;
+
+                &:first-child {
+                    margin-top: 0;
+                }
+
+                h4 {
+                    font-size: 0.28rem;
+                    font-weight: normal;
+                    color: #333;
+                    line-height: 0.4rem;
+                }
+
+                p {
+                    margin-top: 0.12rem;
+                    font-size: 0.24rem;
+                    color: #999;
+                    line-height: 0.33rem;
+                }
+            }
+        }
+    }
+
+    .cause {
+        border-top: 1px dashed #e8e8e8;
+        padding: 0.22rem 0 0.25rem;
+        font-size: 0.26rem;
+        color: #151515;
+        line-height: 0.37rem;
+
+        span {
+            color: #999;
+        }
+    }
+}
+
+.refund-tips {
+    position: relative;
+    margin-top: 0.17rem;
+    padding: 0 0.22rem 0 0.53rem;
+    font-size: 0.24rem;
+    color: #999;
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0.04rem;
+        left: 0.22rem;
+        width: 0.24rem;
+        height: 0.25rem;
+        background: url("../../images/rent/icon_tips.png") no-repeat center;
+        background-size: 100% 100%;
+    }
+}
+
+.driver-foot {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 666;
+    padding-bottom: 0.33rem;
+    background: #fafafa;
+
+    .btn-group {
+        position: relative;
+        padding-right: 0.15rem;
+
+        .btn {
+            font-size: 0.34rem;
+            margin-left: 0.07rem;
+
+            &:first-child {
+                margin-left: 0;
+            }
+
+            &:nth-child(2) {
+                min-width: 2.7rem;
+            }
+        }
+    }
+
+    .link {
+        text-align: center;
+        font-size: 0.28rem;
+        color: #999;
+
+        &:before {
+            content: '';
+            display: inline-block;
+            vertical-align: middle;
+            width: 0.33rem;
+            height: 0.34rem;
+            margin-right: 0.1rem;
+            background: url("../../images/rent/icon_earphone.png") no-repeat center;
+            background-size: 100% 100%;
+        }
+
+        span {
+            vertical-align: middle;
+
+            &.contacts-help {
+                &:before {
+                    content: '';
+                    display: inline-block;
+                    vertical-align: text-bottom;
+                    width: 0.35rem;
+                    height: 0.35rem;
+                    background: url("../../images/rent/emergency_help.png") no-repeat center;
+                    background-size: 100% 100%;
+                }
+            }
+        }
+    }
+}
+
+.driver-loading {
+    padding: 20px 0;
+    color:#999;
+}
+
+.driver-await {
+    .attribute {
+        color: #333;
+    }
+}
+//分享
+@import "../base/share-tips.less";

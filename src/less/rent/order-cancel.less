@@ -1,0 +1,112 @@
+@charset "utf-8";
+@import "../base/head-order.less";
+
+.order-cancel {
+    padding-bottom: 2.4rem;
+
+    .driver-out {
+        background: #fff;
+        border-bottom: 1px solid #E9E9E9;
+        padding: 0.16rem;
+        text-align: center;
+
+        .thumb {
+            width: 0.8rem;
+            height: 0.8rem;
+            margin: 0 auto;
+            background: url("../../images/common/avatar_driver_out.png") center no-repeat;
+            background-size: 100% 100%;
+        }
+
+        p {
+            margin-top: 0.12rem;
+            font-size: 0.28rem;
+            color: #999;
+            line-height: 0.4rem;
+        }
+    }
+
+    .status {
+        margin: 0.22rem;
+        padding: 0.74rem 0 0.96rem;
+        background: #FFFFFF;
+        border: 1px solid #E8E8E8;
+        text-align: center;
+
+        .thumb {
+            margin: 0 auto;
+            width: 0.75rem;
+            height: 0.75rem;
+            background: url("../../images/rent/icon_cancel.png") no-repeat center;
+            background-size: 100% 100%;
+        }
+
+        p {
+            margin-top: 0.15rem;
+            font-size: 0.28rem;
+            color: #999;
+            line-height: 0.4rem;
+        }
+    }
+}
+
+.cancel-foot {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 666;
+    padding-bottom: 0.33rem;
+    background: #fafafa;
+
+    .btn-group {
+        position: relative;
+        padding-right: 0.15rem;
+
+        .btn {
+            font-size: 0.34rem;
+            margin-left: 0.07rem;
+
+            &:first-child {
+                margin-left: 0;
+            }
+
+            &:nth-child(2) {
+                min-width: 2.7rem;
+            }
+        }
+    }
+
+    .link {
+        text-align: center;
+        font-size: 0.28rem;
+        color: #999;
+
+        &:before {
+            content: '';
+            display: inline-block;
+            vertical-align: middle;
+            width: 0.33rem;
+            height: 0.34rem;
+            margin-right: 0.1rem;
+            background: url("../../images/rent/icon_earphone.png") no-repeat center;
+            background-size: 100% 100%;
+        }
+
+        span {
+            vertical-align: middle;
+
+            &.contacts-help {
+                &:before {
+                    content: '';
+                    display: inline-block;
+                    vertical-align: text-bottom;
+                    width: 0.35rem;
+                    height: 0.35rem;
+                    background: url("../../images/rent/emergency_help.png") no-repeat center;
+                    background-size: 100% 100%;
+                }
+            }
+        }
+    }
+}

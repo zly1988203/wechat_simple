@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>中交出行</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/commuting/order-detail.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <div class="ticket-info">
+        <div class="row">
+            <div class="time">8:36</div>
+        </div>
+
+        <div class="station sui-border-b">
+            <div class="station-item">
+                <h4>深圳湾创业投资大厦</h4>
+            </div>
+            <div class="station-item">
+                <h4>深圳会展中心</h4>
+            </div>
+        </div>
+
+        <div class="ticket-rule" data-trigger-rule="#ticketRule">取票/退票规则</div>
+    </div>
+
+    <!-- 取票/退票规则 - 使用规则 -->
+    <div id="ticketRule" class="sui-popup-container">
+        <div class="sui-popup-mask"></div>
+        <div class="sui-popup-modal">
+            <div class="rule-content">
+                <div class="close cancel"></div>
+                <h1>取票/退票规则</h1>
+                <div class="rule-bar">
+                    <div class="content">
+                        <P>缺少文案</P>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--
+      如果不需要向右的箭头，去掉li.class=sui-cell-link即可
+    -->
+    <ul class="coupon-btn sui-list">
+        <li class="sui-border-b">
+            <div class="name">订单状态</div>
+            <div class="value text-gray">待支付</div>
+        </li>
+        <li class="sui-border-b coupon-toggle">
+            <div class="name">支付方式</div>
+            <div class="value text-gray">微信支付</div>
+        </li>
+        <li class="sui-border-b coupon-toggle">
+            <div class="name">购票天数</div>
+            <div class="value text-gray">12天</div>
+        </li>
+        <li class="sui-border-b coupon-toggle">
+            <div class="name">票价总额</div>
+            <div class="value text-gray">8元</div>
+        </li>
+        <li class="sui-border-b coupon-toggle">
+            <div class="name">特价优惠</div>
+            <div class="value text-gray">-2元</div>
+        </li>
+        <li class="sui-border-b coupon-toggle">
+            <div class="name">优惠金额</div>
+            <div class="value text-gray">-2元</div>
+        </li>
+        <li class="sui-border-b coupon-toggle">
+            <div class="name">分享立减</div>
+            <div class="value text-gray">-2元</div>
+        </li>
+        <li>
+            <div class="name">订单总额</div>
+            <div class="value text-red">4元</div>
+        </li>
+    </ul>
+
+    <ul class="coupon-btn sui-list">
+        <li class="sui-border-b">
+            <div class="name">下单时间</div>
+            <div class="value text-gray">2017-04-28   10:26:32  </div>
+        </li>
+        <li class="sui-border-b coupon-toggle">
+            <div class="name">订单编号</div>
+            <div class="value text-gray">ORCJ010002200202002002020</div>
+        </li>
+    </ul>
+
+    <ul class="coupon-btn sui-list">
+        <li class="sui-border-b">
+            <div class="name">乘车日期</div>
+            <div class="value passenger-date text-gray">
+                <span>06-11</span>
+                <span>06-11</span>
+                <span>06-11</span>
+                <span>06-11</span>
+                <span>06-11</span>
+                <span>06-11</span>
+                <span>06-11</span>
+                <span>06-11</span>
+            </div>
+        </li>
+    </ul>
+
+    <div class="btn-group">
+        <div class="btn default">取消订单</div>
+        <div class="btn primary">确认支付6元</div>
+    </div>
+
+    <script src="../../dist/javascripts/zepto.min.js"></script>
+    <script src="../../dist/javascripts/simpleui.min.js"></script>
+    <script src="../../dist/javascripts/vectors.min.js"></script>
+    <script>
+    $(function() {
+        /*顶部提示信息*/
+        setCountDown(67);
+
+        //规则
+        $.ruleInit();
+    });
+
+    /* 倒计时
+    * param  参数是秒数
+    * */
+    function setCountDown(n) {
+        var time = {
+            minute: 0,
+            second: 0
+        };
+
+        //计算出分和秒
+        if(typeof n === 'number') {
+            time.minute = parseInt(n / 60);
+            time.second = n % 60;
+        }
+
+        //填充元素到body最前面
+        var $cd = $('<div class="count-down">请在<span class="minute">' + time.minute + '</span>分<span class="second">' + time.second + '</span>秒内支付，超时未支付订单将自动取消。</div>');
+        $('body').prepend($cd);
+
+        full(time);
+
+        //计时
+        function full(t) {
+            if(t.second > 0) {
+                t.second--;
+            } else {
+                if(t.minute > 0) {
+                    t.minute--;
+                    t.second = 59;
+                } else {
+                    //计时完毕
+                    //todo
+
+                    return false;
+                }
+            }
+
+            $cd.find('.minute').text(t.minute);
+            $cd.find('.second').text(t.second);
+
+            setTimeout(function () {
+                full(t);
+            }, 1000);
+        }
+    }
+    </script>
+</body>
+</html>

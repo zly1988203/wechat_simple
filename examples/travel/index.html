@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>中交出行</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/fy-datepicker.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/bus/bus.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <!--顶部-->
+    <header class="header">
+        <div id="menuArmrest" class="avatar"></div>
+        <div class="nav">
+            <div class="thumb"></div>
+            <div class="list-bar">
+                <div class="content">
+                    <i class="icon"></i>
+                    <ul class="list">
+                        <li data-icon="bus" data-href="../bus/bus.html">定制班线</li>
+                        <li class="active" data-icon="bus" data-href="../travel/index.html">旅游班线</li>
+                        <li data-icon="bus" data-href="../bus/bus.html">上下班</li>
+                        <li data-icon="car" data-href="../rent/appointment.html">城际约租车</li>
+                        <li data-icon="bus" data-href="../coach/index.html">汽车票</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 广告位 -->
+    <div class="vrt">
+        <!-- src：引入运营平台广告接口 -->
+        <script src=""></script>
+    </div>
+    
+    <!--搜索界面-->
+    <div class="search-form sui-border-b">
+        <div class="search-station">
+            <ul class="sui-list">
+                <li>
+                    <div class="control start">
+                        <input id="startAddr" type="text" class="select-city-btn" placeholder="请选择出发地" readonly />
+                    </div>
+                </li>
+                <li>
+                    <div class="control end">
+                        <input id="endAddr" type="text" class="select-city-btn" placeholder="请选择目的地" readonly />
+                    </div>
+                </li>
+            </ul>
+            <div class="exchange"></div>
+        </div>
+        <div class="sui-border-t sui-padding">
+            <div class="search-date">
+                <input id="startTime" type="text" placeholder="请选择出发日期" value="2017-6-28" readonly />
+            </div> 
+        </div>
+    </div>
+    <div class="search-btn">查询购票</div>
+    <!-- 灰色按钮：disabled -->
+    <!--<div class="search-btn disabled">查询购票</div>-->
+
+    <!-- 选择日期 -->
+    <div id="select-date" class="sui-popup-container" data-trigger="">
+        <div class="sui-popup-mask"></div>
+        <div class="sui-popup-modal">
+            <div class="date"></div>
+            <div class="btn-group">
+                <div class="btn primary cancel">返回</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="line-wrapper">
+        <!--历史线路-->
+        <ul class="history-line-list">
+            <li class="sui-border-b history">
+                <div class="content">
+                    <div class="abreast">
+                        <div class="station">深圳西乡汽车站</div>
+                        <div class="station">湛江高校专线</div>
+                    </div>
+                    <div class="price">9.9元</div>
+                </div>
+            </li>
+            <li class="sui-border-b history">
+                <div class="content">
+                    <div class="abreast">
+                        <div class="station">深圳西乡汽车站</div>
+                        <div class="station">湛江高校专线</div>
+                    </div>
+                    <div class="price">9.9元</div>
+                </div>
+            </li>
+        </ul>
+
+        <!--热门线路-->
+        <ul class="hot-line-list">
+            <li class="sui-border-b hot">
+                <div class="content">
+                    <div class="txt">深圳西乡汽车站湛江高校专线</div>
+                    <div class="price">9.9元<i>起</i></div>
+                </div>
+            </li>
+            <li class="sui-border-b hot">
+                <div class="content">
+                    <div class="txt">深圳西乡汽车站湛江高校专线</div>
+                    <div class="price">9.9元<i>起</i></div>
+                </div>
+            </li>
+            <li class="sui-border-b recommend">
+                <div class="content">
+                    <div class="txt">深圳西乡汽车站湛江高校专线</div>
+                    <div class="price">9.9元<i>起</i></div>
+                </div>
+            </li>
+            <li class="sui-border-b recommend">
+                <div class="content">
+                    <div class="txt">深圳西乡汽车站湛江高校专线</div>
+                    <div class="price">9.9元<i>起</i></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!--底部按钮-->
+    <div class="foot-btn" data-href="#"></div>
+    
+    <!--查询地址-->
+    <div id="search-address" class="sui-popup-container">
+        <div class="sui-popup-mask"></div>
+        <div class="sui-popup-modal">
+            <div class="search-bar">
+               <div class="search-bar-inner">
+                    <div class="tools-control">
+                        <div id="setCityButton" class="set-city">深圳</div>
+                        <div class="serach-input">
+                            <input type="text" placeholder="请输入搜索关键字" />
+                        </div>
+                    </div>
+                    <button  type="button" class="cancel">取消</button>
+                </div>
+            </div>
+            
+            <div id="searchWrapper" class="wrapper">
+               <div class="content">
+                    <ul id="searchResult" class="sui-list">
+                        <!--<li class="sui-border-b">
+                            <div class="sui-cell-map">
+                                <h1>中交出行科技有限公司</h1>
+                                <h2>深圳市南山区科园路创业投资大厦8楼802</h2>
+                            </div>
+                        </li>
+                        <li class="sui-border-b">
+                            <div class="sui-cell-map">
+                                <h1>中交出行科技有限公司</h1>
+                                <h2>深圳市南山区科园路创业投资大厦8楼802</h2>
+                            </div>
+                        </li>
+                        <li class="sui-border-b">
+                            <div class="sui-cell-map">
+                                <h1>深圳虚拟大学园管理服务中心</h1>
+                                <h2>高新园南四道19深圳虚拟大学园2层</h2>
+                            </div>
+                        </li>-->
+                    </ul>
+
+                   <div class="gather">
+                       <!-- 当前位置 -->
+                       <div class="current">
+                           <h4 class="title">当前位置</h4>
+                           <div class="station-group">
+                               <span>创业投资大厦</span>
+                           </div>
+                       </div>
+
+                       <!-- 历史记录 -->
+                       <div class="history">
+                           <h4 class="title">历史记录</h4>
+                           <div class="station-group">
+                               <span>深圳市南山区创业投资大厦</span>
+                               <span>深圳北站</span>
+                               <span>创业投资大厦</span>
+                               <span>坪洲地铁站</span>
+                               <span>北京天安门广场</span>
+                           </div>
+                       </div>
+
+                       <!-- 地区推荐 -->
+                       <div class="recommend">
+                           <h4 class="title">地区推荐</h4>
+
+                           <h5 class="subtitle">珠海市</h5>
+                           <div class="station-group">
+                               <span>全部地区</span>
+                               <span>香洲区</span>
+                               <span>斗门区</span>
+                               <span>金湾区</span>
+                           </div>
+
+                           <h5 class="subtitle">深圳市</h5>
+                           <div class="station-group">
+                               <span>全部地区</span>
+                               <span>福田区</span>
+                               <span>南山区</span>
+                               <span>罗湖区</span>
+                               <span>宝安区</span>
+                           </div>
+                       </div>
+                   </div>
+
+                   <div class="remove-history">清空历史记录</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!--选择城市-->
+    <div id="select-Citys" class="sui-popup-container">
+        <div class="sui-popup-mask"></div>
+        <div class="sui-popup-modal">
+            <div class="search-bar sui-border-b">
+               <div class="search-bar-inner">
+                    <div class="tools-control search-city">
+                        <!--<div class="serach-input sui-border">
+                            <input type="text" placeholder="城市中文名或拼音" />
+                        </div>-->
+                        请选择城市
+                    </div>
+                    <button  type="button" class="cancel">取消</button>
+                </div>
+            </div>
+
+            <!-- 字母检索 -->
+            <ul class="nav-city">
+                <li><a href="#city1">A</a></li>
+                <li><a href="#city2">B</a></li>
+                <li><a href="#city3">C</a></li>
+                <li><a href="#city4">D</a></li>
+            </ul>
+
+            <div id="cityWrapper" class="wrapper">
+               <div class="content">
+                    <div class="current-city">当前定位城市：深圳市</div>
+                    <div class="sui-list-title" id="city1">A</div>
+                    <ul class="sui-list">
+                        <li>广州</li>
+                        <li>深圳</li>
+                        <li>珠海</li>
+                        <li>汕头</li>
+                        <li>佛山</li>
+                        <li>韶关</li>
+                        <li>东莞</li>
+                        <li>清远</li>
+                    </ul>
+                    <div class="sui-list-title" id="city2">B</div>
+                    <ul class="sui-list">
+                        <li>广州</li>
+                        <li>深圳</li>
+                        <li>珠海</li>
+                        <li>汕头</li>
+                        <li>佛山</li>
+                        <li>韶关</li>
+                        <li>东莞</li>
+                        <li>清远</li>
+                    </ul>
+                    <div class="sui-list-title" id="city3">C</div>
+                    <ul class="sui-list">
+                        <li>广州</li>
+                        <li>深圳</li>
+                        <li>珠海</li>
+                        <li>汕头</li>
+                        <li>佛山</li>
+                        <li>韶关</li>
+                        <li>东莞</li>
+                        <li>清远</li>
+                    </ul>
+                    <div class="sui-list-title" id="city4">D</div>
+                    <ul class="sui-list">
+                        <li>广州</li>
+                        <li>深圳</li>
+                        <li>珠海</li>
+                        <li>汕头</li>
+                        <li>佛山</li>
+                        <li>韶关</li>
+                        <li>东莞</li>
+                        <li>清远</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--侧边栏菜单-->
+    <div id="sideMenu" class="sui-popup-container">
+        <div class="sui-popup-mask"></div>
+        <div class="sui-popup-modal">
+            <div class="head" data-url="#">
+                <div class="avatar" style="background-image:url(../../dist/images/common/avatar_driver.png);"></div>
+                <div class="mobile">13800138000</div>
+            </div>
+            <ul class="sui-list">
+                <li data-url="#"><div class="sui-cell-icons"><span class="sui-cell-icon icon-myorder"></span> 订单</div></li>
+                <li data-url="#"><div class="sui-cell-icons"><span class="sui-cell-icon icon-ticket"></span> 车票</div></li>
+                <li data-url="#"><div class="sui-cell-icons"><span class="sui-cell-icon icon-coupon"></span> 优惠</div></li>
+                <li data-url="#"><div class="sui-cell-icons badge-hot"><span class="sui-cell-icon icon-activity"></span> 活动</div></li>
+                <li data-url="#"><div class="sui-cell-icons"><span class="sui-cell-icon icon-config"></span> 设置</div></li>
+                <li data-url="#"><div class="sui-cell-icons"><span class="sui-cell-icon icon-suggest"></span> 反馈建议</div></li>
+                <li data-url="#"><div class="sui-cell-icons"><span class="sui-cell-icon icon-conversion"></span> 奖品兑换</div></li>
+                <li data-url="#"><div class="sui-cell-icons"><span class="sui-cell-icon icon-ranking"></span> 员工排行榜</div></li>
+            </ul>
+            <div class="foot">
+                <div class="item" data-href="tel:123456789">
+                    <span class="icon icon-contact"></span>
+                    <p>联系客服</p>
+                </div>
+                <div class="item" data-href="#">
+                    <span class="icon icon-invite"></span>
+                    <p>邀请有礼</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+	<script src="../../dist/javascripts/zepto.min.js"></script>
+	<script src="../../dist/javascripts/simpleui.min.js"></script>
+    <script src="../../dist/javascripts/vectors.min.js"></script>
+    <script src="../../dist/javascripts/fy-datePicker.min.js"></script>
+	<script>
+    //获取当前月最大天数
+    function maxDay(month){
+        var d= new Date();
+        return new Date(d.getFullYear(), month, 0).getDate();
+    }
+
+    $(function() {
+        //header初始化
+        $.headerInit();
+
+        //交换地址
+        $('.exchange').on('click', function() {
+            var startAddr = $('#startAddr').val();
+            var endAddr = $('#endAddr').val();
+            $('#startAddr').val(endAddr);
+            $('#endAddr').val(startAddr);
+        });
+
+        /*创建随机数据*/
+        function createData(monthDrr) {
+            var result = [];
+
+            monthDrr.forEach(function (item, index) {
+                var _n = 0,
+                    _MAX = new Date(2017, item, 0).getDate();
+
+                var arr = [];
+                //创建数组
+                for(var i = 0; i < _MAX; i++) {
+                    _n = parseInt(Math.random().toFixed(2) * 10) + i + index;
+
+                    if(_n <= _MAX) {
+                        arr.push(_n);
+                    }
+                }
+
+                //去重
+                for(var n = 0; n < arr.length; n++) {
+                    for(var m = 0; m < arr.length; m++) {
+                        if(arr[n] == arr[m]) {
+                            arr.splice(m, 1);
+                        }
+                    }
+                }
+
+                //排序
+                arr.sort(function () {
+                    return -1;
+                });
+
+                //填充数据
+                for(var l = 0; l < arr.length; l++) {
+                    var _result = {
+                        date: '2017-' + item + '-' + arr[l],
+                        state: 'select'
+                    };
+
+                    if(parseInt(2 * Math.random())) {
+                        _result.comment = '备注';
+                    }
+
+                    /*switch(parseInt(4 * Math.random()) + 1) {
+                        case 1:
+                            _result.state = 'select';
+                            break;
+                        case 2:
+                            _result.state = 'readonly';
+                            break;
+                        case 3:
+                            _result.state = 'disabled';
+                            break;
+                    }*/
+                    _result.state = 'select';
+                    result.push(_result);
+                }
+            });
+
+            return result;
+        }
+
+        /* 选择日期 */
+        function selectDate() {
+            var trigger = $('#startTime'),
+                parent = $('#select-date'),
+                cancel = parent.find('.cancel');
+            var initDateStatus = false;
+
+            var init = function () {
+                //只初始化一次
+                if(!initDateStatus) {
+                    initDateStatus = true;
+                    parent.find('.date').datePicker({
+                        dateBase: '2017-10-10',
+                        weekend: false,
+                        multiple: false,
+                        gather: createData([10, 11, 12]),
+                        selectCallback: function (data) {
+                            //TODO
+                            var d = data.selectData[0].date;
+                            var val = d.year + '-' + d.month + '-' + d.day + '  ' + d.week;
+
+                            //是否是今天
+                            var today = new Date();
+                            if(today.getFullYear() == d.year && today.getMonth() + 1 == d.month && today.getDate() == d.day) {
+                                val += '(今天)';
+                            }
+
+                            parent.setPopupData(val);
+                            cancel.triggerHandler('click');
+                        }
+                    });
+                }
+            };
+
+            //弹出层
+            trigger.on('click', function () {
+                var self = $(this);
+
+                parent.popup('modal', init, function (data) {
+                    trigger.val(data);
+                    reSetWidth(trigger);
+                });
+            }).backtrack({
+                cancel: '#select-date .cancel'
+            });
+
+            //返回
+            $('#select-date .cancel').on('click', function () {
+                parent.closePopup();
+            });
+        }
+        selectDate();
+
+        /* 监听文字变化，重设宽度*/
+        function reSetWidth(o) {
+            var _html = $('<div>' + o.val() + '</div>');
+            _html.css({
+                position: 'absolute',
+                top: '-9999px',
+                zIndex: -9999,
+                paddingLeft: o.css('padding-left'),
+                paddingRight: o.css('padding-right'),
+                fontSize: o.css('font-size'),
+                fontWeight: o.css('font-weight'),
+                fontFamily: o.css('font-family')
+            });
+            o.after(_html);
+
+            var w = (_html.width() + 10) / parseFloat($('html').css('font-size')) + 'rem'
+            o.width(w);
+
+            _html.remove();
+        }
+        reSetWidth($('#startTime'));
+
+        // ================================= 选择地址相关 ===================================
+        
+        // 选择地址
+        var _isInitsa = false, _myIScrollsa;
+        $('.select-city-btn').on('click', function() {
+            var _this = $(this);
+            $('#search-address').popup('push', function() {
+                if(_isInitsa) return;
+                _isInitsa = true;
+                setTimeout(function() {
+                    $('#search-address .wrapper').css('height', $(window).height() - 44);
+                    _myIScrollsa = new IScroll('#searchWrapper');
+                }, 300);
+            }, function(data) {
+                _this.val(data);
+            });
+        }).backtrack({
+            cancel: '#search-address .cancel',
+            event: 'click'
+        });
+        
+        //关闭地址查询
+        $('#search-address .cancel').on('click', function() {
+            $('#search-address').closePopup(function() {
+                if(_myIScrollsa) {
+                    _isInitsa = false;
+                    _myIScrollsa.destroy();
+                    _myIScrollsa = null;
+                }
+            });
+        });
+        
+        //点击地址返回数据
+        var targetType = isAndroid() ? 'tap' : 'click';
+
+        $('#search-address .wrapper li:not(.remove-history)').on(targetType, function() {
+            var data = $(this).find('h1').text();
+            $('#search-address').setPopupData(data);
+            $('#search-address .cancel').triggerHandler('click');
+        });
+
+        //选择当前位置返回首页
+        $('#search-address .current .station-group span').on(targetType, function () {
+            var data = $(this).text();
+            $('#search-address').setPopupData(data);
+            $('#search-address .cancel').triggerHandler('click');
+        });
+
+        //点击历史记录返回首页
+        $('#search-address .history .station-group span').on(targetType, function () {
+            var data = $(this).text();
+            $('#search-address').setPopupData(data);
+            $('#search-address .cancel').triggerHandler('click');
+        });
+
+        //点击地区推荐返回首页
+        $('#search-address .recommend .station-group span').on(targetType, function () {
+            var data = $(this).parent().prev('.subtitle').text() + ' · ' + $(this).text();
+
+            $('#search-address').setPopupData(data);
+            $('#search-address .cancel').triggerHandler('click');
+        });
+        
+        // 打开选择城市
+		var _isInitsc = false, _myIScrollsc;
+         $('#setCityButton').on('click', function() {
+             var _this = $(this);
+             $('#select-Citys').popup('push', function() {
+                if(_isInitsc) return;
+                _isInitsc = true;
+
+                setTimeout(function() {
+                    $('#select-Citys .wrapper').css('height', $(window).height() - 44);
+                    var _myIScrollsc = new IScroll('#cityWrapper');
+
+                    retrieveWord(function (el) {
+                        _myIScrollsc.scrollToElement(el.attr('href'));
+                    });
+                }, 300);
+             }, function(data) {
+                 _this.text(data);
+             });
+             
+         }).backtrack({
+             cancel: '#select-Citys .cancel',
+             event: 'click'
+         });
+
+         /* 字母快速检索 */
+         function retrieveWord(callback) {
+             var $city = $('.nav-city'),
+                 $city_li = $city.find('li');
+             var city_h = 0;
+
+             $city_li.each(function () {
+                 city_h += $(this).height();
+             });
+
+             $city.css('height', city_h);
+
+             $('.nav-city a').on('click', function (e) {
+                 e.preventDefault();
+
+                 if(callback instanceof Function) {
+                     callback($(this));
+                 }
+             });
+         }
+        
+        // ================================= 选择城市相关 ===================================
+        
+        // 选择城市
+        $('#select-Citys .wrapper li').on('click', function() {
+            var data = $(this).text();
+            $('#select-Citys').setPopupData(data);
+            $('#select-Citys .cancel').triggerHandler('click');
+        });
+        
+        // 关闭选择城市
+        $('#select-Citys .cancel').on('click', function() {
+            $('#select-Citys').closePopup(function() {
+                if(_myIScrollsc) {
+                    _myIScrollsc.destroy();
+                    _myIScrollsc = null;
+                }
+            });
+        });
+		
+		//关键词搜索结果 - new (动态生成HTML并绑定事件)
+		$('.serach-input input').on('input', function() {
+		    var self = $(this);
+			var len = self.val().length;
+			var strHtml = '';
+
+			var gather = $('#searchResult').siblings();
+			if($.trim(self.val()) != '') {
+			    //内容不为空，隐藏下面的信息
+                gather.hide();
+            } else {
+                gather.show();
+            }
+
+			for(var i = 0; i < len; i++) {
+				strHtml += '<li class="sui-border-b">' +
+						'<div class="sui-cell-map">' +
+							'<h1>'+i+'中交出行</h1>' +
+							'<h2>深圳市南山区粤海街道科园路创业投资大厦8楼</h2>' +
+						'</div>' +
+					'</li>';
+			}
+
+			$('#searchResult').html(strHtml).children('li').off('click').on('click', function() {console.log('result')
+				var addr = $(this).find('h1').text();
+
+                $('#search-address').setPopupData(addr);
+                $('#search-address .cancel').triggerHandler('click');
+			});
+			
+			// 这句不能少，否则超出屏幕不能滚动。
+			if(_myIScrollsa) _myIScrollsa.refresh();
+		});
+
+		/*
+		* 清空历史记录
+		* */
+		$('.remove-history').on('click', function () {
+		    var history = $('.gather .history'),
+                station_group = history.find('.station-group');
+            var time = 300;
+
+            history.slideUp(time);
+            setTimeout(function () {
+                station_group.html('');
+            }, time);
+        });
+
+    });
+    </script>
+</body>
+</html>

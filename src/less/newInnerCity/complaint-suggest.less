@@ -1,0 +1,164 @@
+@charset "utf-8";
+
+.suggest-main{
+  width: 7.1rem;
+  background: #FFFFFF;
+  box-shadow: 0 0 .20rem 0 rgba(0,0,0,0.20);
+  border-radius: .06rem;
+  margin: 2.035rem .2rem 0;
+  font-family: PingFangSC-Medium;
+
+  .suggest-title{
+    display: flex;
+    font-size: .32rem;
+    font-weight:bold;
+    color: #333333;
+    padding-top: .163rem;
+    padding-bottom: .167rem;
+    border-bottom: .01rem solid #EAEAEA;
+    .title-name{
+      width: 1.04rem;
+      text-align: center;
+    }
+    .title-text{
+      width: 5.56rem;
+      text-align: right;
+      margin-right:.5rem;
+    }
+  }
+  .suggest-context{
+    .suggest-context-title{
+      padding-top: .305rem;
+      padding-left: 0.2rem;
+      font-size: .28rem;
+      line-height:.4rem;
+      color: #333333;
+      input{
+        margin-bottom: 0.1rem;
+      }
+    }
+
+    .suggest-context-text{
+      position: relative;
+      width: 5.75rem;
+      margin: .1rem auto;
+      textarea{
+        background: #F0F0F0;
+        border: .01rem solid #C8C8C8;
+      }
+      .input-tip{
+        position: absolute;
+        right: 0.12rem;
+        bottom: 0.12rem;
+        font-size: .26rem;
+        color: #999999;
+        line-height: .37rem;
+      }
+    }
+  }
+  div label{
+    border:none;
+    background:url(../../images/newInnerCity/no-select.png) no-repeat left;
+    background-size:0.3rem 0.3rem;
+    padding-left:0.4rem;
+  }
+  div input[type=radio]{
+    position: absolute;
+    opacity: 0;
+  }
+  div input[type=radio]:checked + label{
+    background:url(../../images/newInnerCity/select-this.png) no-repeat left;
+    background-size:0.3rem 0.3rem;
+  }
+  .suggest-foot{
+    margin: .8rem auto;
+    text-align: center;
+    padding-bottom: .2rem;
+    display: flex;
+    .suggest-btn{
+      margin-left: .2rem;
+      width: 3.25rem;
+      height:.75rem;
+      font-size: .28rem;
+      letter-spacing: 0;
+      border-radius: .06rem;
+      display: flex;
+      justify-content:center;
+      align-items:Center;
+    }
+    .btn-cancel{
+      color: #FFFFFF;
+      background: #6392FE;
+      box-shadow: 0 0 .20rem 0 rgba(61,59,238,0.31);
+    }
+    .btn-primary{
+      background: #FFFFFF;
+      color: #AAAAAA;
+      box-shadow: 0 0 .20rem 0 rgba(227,227,227,0.40);
+    }
+  }
+}
+
+.suggest-commited{
+  width: 7.1rem;
+  background: #FFFFFF;
+  box-shadow: 0 0 .20rem 0 rgba(0,0,0,0.20);
+  border-radius: .06rem;
+  margin: 2.035rem .2rem 0;
+  font-family: PingFangSC-Medium;
+
+  .suggest-commited-head{
+    font-size: .32rem;
+    color: #333333;
+    text-align: center;
+    font-weight:bold;
+    padding-top: .163rem;
+    padding-bottom: .167rem;
+    border-bottom: .01rem solid #EAEAEA;
+  }
+  .suggest-commited-body{
+    margin-top: .305rem;
+    .suggest-list{
+      line-height: .4rem;
+      margin-top: .4rem;
+      font-size: .28rem;
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+    dt{
+      display: flex;
+      color: #333333;
+      font-weight: bold;
+      &:before{
+        content: '';
+        margin: .1rem .246rem;
+        width: .208rem;
+        height: .208rem;
+        background: url("../../images/newInnerCity/select-this.png");
+        background-size: 100% 100%;
+      }
+    }
+    dd{
+      width: 5.88rem;
+      color: #999999;
+      margin-left: .7rem;
+    }
+  }
+  .suggest-commited-foot{
+    position: relative;
+    margin: 1.46rem auto;
+    width: 3.45rem;
+    height: .75rem;
+    background: #6392FE;
+    box-shadow: 0 0 .20rem 0 rgba(61,59,238,0.31);
+    border-radius: .06rem;
+    font-size: .28rem;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    display: flex;
+    justify-content:center;
+    align-items:Center;
+    bottom: .2rem;
+  }
+}

@@ -1,0 +1,467 @@
+@charset "utf-8";
+
+.text-gray {
+  color: #999;
+}
+
+.my-ticket {
+  padding-bottom: 0.22rem;
+
+  /*盒子*/
+  .box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #FFFFFF;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.10);
+    border-top: 1px dashed #e8e8e8;
+    border-radius: 8px;
+    overflow: hidden;
+
+    &:first-child {
+      border-top: 0 none;
+      border-radius: 3px 3px 8px 8px;
+    }
+  }
+
+  .item {
+    padding: 0.22rem 0.22rem 0;
+
+    .box-wrapper {
+      overflow: hidden;
+    }
+
+    .content {
+      padding: 0.22rem;
+      border-bottom: 1px dashed #e8e8e8;
+      box-shadow: 0 1px 2px 0 rgba(0,0,0,.1);
+
+      .left {
+        flex: 1;
+
+        .time {
+          font-size: 0.32rem;
+          color: #333;
+        }
+
+        .station {
+          position: relative;
+          margin: 0.15rem 0 0;
+
+          .station-item {
+            display: flex;
+            position: relative;
+            padding-left: 0.38rem;
+
+            &:before {
+              content: '';
+              position: absolute;
+              top: 0.16rem;
+              left: 0;
+              margin: auto 0;
+              width: 0.16rem;
+              height: 0.16rem;
+              border-radius: 100%;
+            }
+
+            &:first-child {
+              margin-top: 0;
+            }
+
+            &:first-child::before {
+              background: #25CE5F;
+            }
+            &:last-child::before {
+              background: #FE6666;
+            }
+
+            /*竖线*/
+            &:first-child::after {
+              content: '';
+              position: absolute;
+              top: 0.38rem;
+              left: 0.06rem;
+              bottom: -0.176rem;
+              z-index: 6;
+              width: 0;
+              height: auto;
+              border: 1px solid #ccc;
+            }
+
+            .station-text {
+              flex: 2.4;
+              text-align: left;
+
+              & > * {
+                display: inline-block;
+                line-height: 0.45rem;
+                vertical-align: text-top;
+              }
+
+              h4 {
+                font-size: 0.32rem;
+                color: #333;
+                font-weight: normal;
+              }
+            }
+          }
+        }
+      }
+
+      .right {
+        margin-left: 0.22rem;
+
+        .number {
+          margin-bottom: 0.13rem;
+          padding: 2px 3px;
+          font-size: 0.28rem;
+          color: #333;
+          background: #B1C9FF;
+          border-radius: 0.05rem;
+        }
+
+        .thumb {
+          i {
+            display: block;
+            width: 0.7rem;
+            height: 0.7rem;
+            margin: 0 auto;
+            background: url(../../images/my/icon-mark.png) no-repeat center;
+            background-size: 100% 100%;
+          }
+
+          p {
+            font-size: 0.28rem;
+            .text-gray;
+            text-align: center;
+            margin-top: 0.11rem;
+          }
+        }
+      }
+    }
+
+    .card {
+      position: relative;
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0.4rem;
+        bottom: 0.4rem;
+        left: 0;
+        margin: auto 0;
+        width: 2px;
+        background: #B1C9FF;
+      }
+
+      .main {
+        flex: 1;
+        margin-left: 0.22rem;
+        padding: 0.2rem 0;
+        font-size: 0.32rem;
+        color: #999;
+
+        .date, .code, .seat {
+          white-space: nowrap;
+
+          span {
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 0.19rem;
+
+            &:first-child {
+              margin-left: 0;
+            }
+          }
+
+          .value {
+            font-size: 0.38rem;
+            color: #000;
+          }
+
+          &.seat .value {
+            font-size: 0.32rem;
+          }
+
+          .number {
+            margin-left: 0;
+            padding: 2px 3px;
+            font-size: 0.24rem;
+            color: #333;
+            background: #B1C9FF;
+            border-radius: 0.05rem;
+          }
+        }
+      }
+
+      /* 评价 */
+      .evaluate {
+        flex: 1;
+        text-align: right;
+        margin: 0 0.167rem 0 0.05rem;
+
+        button {
+          position: relative;
+          overflow: hidden;
+          margin: auto;
+          text-align: center;
+          font-size: 0.28rem;
+          color: #AAAAB1;
+          display: inline-block;
+          width: auto;
+          padding: 0.05rem 0.16rem;
+          height: 0.4rem;
+          line-height: 0.4rem;
+          white-space: nowrap;
+          box-sizing: content-box;
+          border: 1px solid #AAAAB1;
+          border-radius: 1rem;
+
+          &:before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2);
+          }
+
+          &:active::before {
+            content: '';
+          }
+        }
+      }
+
+      .handle {
+        margin: 0.35rem 0;
+        width: 2.44rem;
+        text-align: center;
+        border-left: 1px solid #EAEAEA;
+
+        button {
+          position: relative;
+          overflow: hidden;
+          display: inline-block;
+          clear: both;
+          padding: 0.12rem 0.36rem;
+          margin: auto;
+          text-align: center;
+          height: 0.45rem;
+          line-height: 0.45rem;
+          border: 1px solid #B1C9FF;
+          border-radius: 1rem;
+          font-size: 0.36rem;
+          color: #6392FE;
+          white-space: nowrap;
+          box-sizing: content-box;
+
+          &:before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2);
+          }
+
+          &:active::before {
+            content: '';
+          }
+        }
+
+        .status {
+          display: block;
+          position: relative;
+          height: 0.88rem;
+
+          &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 1.21rem;
+            height: 1.08rem;
+            margin: auto;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+          }
+
+          &.refund::before {
+            background-image: url(../../images/my/icon-refund.png);
+          }
+          &.success::before {
+            background-image: url(../../images/my/icon-success.png);
+          }
+          &.out::before {
+            background-image: url(../../images/my/icon-out.png);
+          }
+          &.wait::before {
+            background-image: url(../../images/my/icon-wait.png);
+          }
+        }
+      }
+    }
+
+    .show-all {
+      flex: 1;
+      text-align: center;
+      padding: 0.08rem 0;
+      border-right: 1px solid #EAEAEA;
+
+      span {
+        font-size: 0.28rem;
+        color: #999;
+
+        &:after {
+          content: '';
+          display: inline-block;
+          width: 0.3rem;
+          height: 0.18rem;
+          margin-left: 0.11rem;
+          vertical-align: middle;
+          background: url(../../images/my/button-whole.png) no-repeat center;
+          background-size: 100% 100%;
+          transition: all 0.2s;
+        }
+      }
+
+      &.open span:after {
+        transform: rotate(180deg);
+      }
+    }
+
+    .foot-btn {
+      flex: 1;
+      position: relative;
+      padding: 0.1rem 0;
+      text-align: center;
+      font-size: 0.28rem;
+      color: #999;
+
+      &:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.2);
+      }
+
+      &:active::before {
+        content: '';
+      }
+    }
+  }
+}
+
+/* 解锁车票 */
+.deblocking {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
+  width: 100%;
+  height: 100%;
+  background: rgba(102,102,102,0.30);
+
+  .main {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 88%;
+    height: 4rem;
+    margin: auto;
+    background: #F9F9F9;
+    border-radius: 0.2rem;
+
+    .progress {
+      display: none;
+      position: absolute;
+      top: -14px;
+      left: 6px;
+      right: 6px;
+      height: 8px;
+      background: #F1F1F1;
+      border-radius: 1rem;
+
+      .bar {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 8px;
+        background: #6392FE;
+        border-radius: 1rem;
+        transition: width 0.5s;
+        width: 0;
+        max-width: 100%;
+      }
+    }
+
+    .content {
+      h4 {
+        font-size: 0.32rem;
+        color: #333;
+        text-align: center;
+        margin-top: 0.29rem;
+      }
+
+      p {
+        font-size: 0.24rem;
+        color: #999;
+        margin-top: 0.1rem;
+        text-align: center;
+      }
+
+      .thumb {
+        margin: 0.21rem auto 0;
+        width: 2.25rem;
+        height: 0;
+        padding-top: 30.27%;
+        background: url(../../images/my/deblocking.png) no-repeat center;
+        background-size: auto 100%;
+      }
+    }
+  }
+}
+
+
+/**************************
+        empty
+***************************/
+.empty-page {
+  padding: 100px 15px 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #BCBBC4;
+  font-size: 18px;
+
+  .empty-main {
+    width: 100%;
+
+    i {
+      display: block;
+      height: 0;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: auto 100%;
+      margin: 0 auto 20px;
+    }
+
+    p {
+      font-size: 14px;
+      color: #999;
+    }
+  }
+}

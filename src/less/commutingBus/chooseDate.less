@@ -1,0 +1,93 @@
+#chooseDate{
+  .order-head{
+    background: #FFFFFF;
+    box-shadow: 0 0 0.2rem 0 rgba(0,0,0,0.10);
+    .head-panle{
+      padding: 0.2rem;
+    }
+    .head{
+      display: flex;
+      align-items: center;
+      font-size: 0.28rem;
+      color: #333333;
+      .line-name{
+        margin-left: 0.2rem;
+        color: #CCCCCC;
+      }
+      .license-plate{
+        flex: 1;
+        text-align: right;
+        font-weight: bold;
+      }
+    }
+    .station{
+      margin-top: 0.2rem;
+      .station-item{
+        &:before{
+          width: 0.22rem;
+          height: 0.22rem;
+          border-radius: 0.22rem;
+        }
+        &:first-child:before{
+          background: url("../../images/commutingBus/icon-on.png") center no-repeat;
+          background-size: 100% 100%;
+        }
+        &:first-child:after{
+          border: 1px dashed #D3D2DB;
+          left: 0.08rem;
+        }
+        &:last-child:before{
+          background: url("../../images/commutingBus/icon-off.png") center no-repeat;
+          background-size: 100% 100%;
+        }
+      }
+    }
+  }
+
+  .btn-footer{
+    position: fixed;
+    display: flex;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.2rem;
+    text-align: center;
+    .back-btn{
+      background: #FFFFFF;
+      box-shadow: 0 0 0.2rem 0 rgba(227,227,227,0.40);
+      border-radius: 0.06rem;
+      font-family: PingFangSC-Regular;
+      font-size: 0.32rem;
+      color: #AAAAAA;
+      letter-spacing: 0;
+      text-align: center;
+      width: 1.44rem;
+      height: 0.75rem;
+      line-height: 0.75rem;
+      margin-right: 0.39rem;
+    }
+
+    .confirm-btn{
+      background: #6392FE;
+      box-shadow: 0 0 0.2rem 0 rgba(61,59,238,0.31);
+      border-radius: 0.06rem;
+      font-family: PingFangSC-Regular;
+      font-size: 0.32rem;
+      color: #FFFFFF;
+      letter-spacing: 0;
+      text-align: center;
+      width: 3.45rem;
+      height: 0.75rem;
+      line-height: 0.75rem;
+    }
+  }
+
+  .swiper-container-vertical>.swiper-scrollbar{
+    width: 0;
+  }
+
+  .date-picker-container .months-box .month-item-box table tbody tr td em{
+    vertical-align: middle;
+  }
+
+}

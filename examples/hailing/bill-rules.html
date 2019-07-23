@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>中交出行</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/rent/time-picker.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/rent/select-picker.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/fy-datepicker.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/hailing/bill-rules.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div class="all-content">
+    <!-- 计费规则 -->
+    <div class="bill-rules-content">
+        <div class="popup-header">
+            <div class="content">
+                <ul class="cities">
+                    <li  class="active">北京</li>
+                    <li>上海</li>
+                    <li>呼和浩特</li>
+                    <li>深圳</li>
+                    <li>广州</li>
+                    <li>天津</li>
+                    <li>重庆</li>
+                    <li>长沙</li>
+                    <li>清远</li>
+                    <li>杭州</li>
+                    <li>苏州</li>
+                    <li>苏州</li>
+                    <li>苏州</li>
+                    <li>苏州</li>
+                    <li>苏州</li>
+                    <li>苏州</li>
+                </ul>
+            </div>
+        </div>
+        <div class="sub-nav">
+            <a class="nav-item nav-active">即时用车</a>
+            <a class="nav-item">预约用车</a>
+        </div>
+        <div class="rules-table-container"></div>
+    </div>
+</div>
+
+
+<script src="../../dist/javascripts/zepto.min.js"></script>
+<script src="../../dist/javascripts/simpleui.min.js"></script>
+
+<script>
+    $(function () {
+        $('.rules-table-container').empty();
+        $.showLoading();
+        //模拟数据加载
+        setTimeout(function(){
+            $.hideLoading();
+            //重新加载计费规则数据
+            getBillRules();
+        },2000);
+
+        /*计费规则导航栏城市选择*/
+        $('.popup-header .cities li').on('click',function () {
+            console.log('点击点击点击');
+            var _self = this;
+            $(_self).addClass('active').siblings().removeClass('active');
+            //重新选择城市时，默认选择第一个孩子节点
+            $('.bill-rules-content .sub-nav .nav-item:first-child').addClass('nav-active').siblings().removeClass('nav-active');
+
+            $('.rules-table-container').empty();
+            $.showLoading();
+            //模拟数据加载
+            setTimeout(function(){
+                $.hideLoading();
+                //重新加载计费规则数据
+                getBillRules();
+            },2000);
+        });
+        /*二级导航栏点击重新加载计费规则数据*/
+        $('.bill-rules-content .sub-nav .nav-item').on('click',function () {
+            var _self = this;
+            $(_self).addClass('nav-active').siblings().removeClass('nav-active');
+            $('.rules-table-container').empty();
+            $.showLoading();
+
+            //模拟数据加载
+            setTimeout(function(){
+                $.hideLoading();
+                //重新加载计费规则数据
+                getBillRules();
+            },2000);
+        });
+    });
+
+    /* 动态生成定价规则表*/
+    function getBillRules(){
+        //动态生成价格表
+        var _html =
+            "<table>" +
+            "<tr>" +
+            "<td style='width: 50%'>" + "基础价格" +"</td>" +
+            "<td>" +"12元"+"</td>" +
+            "</tr>" +
+            "<tr>" +
+            "<td>" +"公里数（含）"+"</td>" +
+            "<td>" +"5公里"+"</td>" +
+            "</tr>" +
+            "<tr>" +
+            "<td>" +"基础时长（含）"+"</td>" +
+            "<td>" +"2小时"+"</td>" +
+            "</tr>" +
+            "<tr>" +
+            "<td>" +"超里程费（元／公里）"+"</td>" +
+            "<td>" +"2.6"+"</td>" +
+            "</tr>" +
+            "<tr>" +
+            "<td>" +"超时长费（元／分钟）"+"</td>" +
+            "<td>" +"<div>" +"平峰0.5"+"</div>" +"<div>" +"高峰1"+"</div>" +"</td>" +
+            "</tr>" +
+            "<tr>" +
+            "<td>" +"等候费（元／分钟）"+"</td>" +
+            "<td>" +"1"+"</td>" +
+            "</tr>" +
+            "<tr>" +
+            "<td>" +"回空里程"+"</td>" +
+            "<td>" +"10"+"</td>" +
+            "</tr>" +
+            "<tr>" +
+            "<td>" +"夜间服务里程附加费（元／公里）"+"</td>" +
+            "<td>" +"1"+"</td>" +
+            "</tr>" +
+            "<tr>" +
+            "<td>" +"夜间服务时段"+"</td>" +
+            "<td>" +"<div>" +"23:00到次日06:00"+"</div>" +"<div>" +"<a href='#'>" +"查看其他城市"+"</a>" +"</div>" +"</td>" +
+            "</tr>" +
+            "<tr>" +
+            "<td>" +"夜间服务时段"+"</td>" +
+            "<td>" +
+            "<div>" +"<span>" +"工作日"+"</span>" +"<span>" +"7:00 - 09:30"+"<br/>" +"7:00 - 09:30"+"</span>" +"</div>" +
+            "<div>" +"国家法定节假日高峰期服务时段以实际为准"+"</div>" +
+            "</td>" +
+            "</tr>" +
+            "</table>";
+        $('.rules-table-container').html(_html);
+    }
+</script>
+</body>
+</html>

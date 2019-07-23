@@ -1,0 +1,104 @@
+ <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>中交出行</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/rent/new-order-payment.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+    <div class="payment">
+        <div class="payment-top">
+            <p>请在<span class="text-mark" id="time"></span>内支付，超时未支付订单将自动取消</p>
+        </div>
+
+        <div class="payment-list">
+            <div class="head">
+                <div class="date">出发时间：10月15日 10:00 - 10:30</div>
+            </div>
+            <div class="main">
+                <div class="info">
+                    <div class="info-item start">深圳湾创业投资大厦</div>
+                    <div class="info-item end">深圳会展中心</div>
+                    <div class="code"><span>2人<br>舒适型</span></div>
+                </div>
+            </div>
+            <div class="tips">愿意等待15分钟以上</div>
+        </div>
+
+        <div class="payment-info">
+            <div class="title">费用</div>
+
+            <div class="detail-info">
+                <div class="detail">
+                    <dl class="list total-price">
+                        <dt>一口价</dt>
+                        <dd>93.3元</dd>
+                    </dl>
+                    <dl class="list activity-price">
+                        <dt >活动优惠</dt>
+                        <dd >-10元</dd>
+                    </dl>
+                    <dl class="list coupon-price" id="coupon">
+                        <dt>优惠券</dt>
+                        <dd>-10元<div class="coupon-price-pic"></div></dd>
+                    </dl>
+                </div>
+            </div>
+            <div class="border-dashed"></div>
+            <div class="price-container" >
+                <span>78.3元</span>
+                <div class="wait-pay">
+                    <a href="#">稍后支付</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="range" hidden>
+
+        </div>
+        <div class="block">
+            <div class="tip-content"><span>正在为您安排车辆</span></div>
+            <div class="location-point"></div>
+        </div>
+        <div class="white_overlay" hidden></div>
+        <div class="ola-maps" id="allmap" hidden></div>
+
+        <div class="black_overlay" hidden></div>
+        <div class="cancel-popup"  hidden>
+            <div class="cancel-tip">支付成功后，将优先为您安排车辆</div>
+            <div class="cancel-btns">
+                <div class="is-cancel">确定取消</div>
+                <div class="no-cancel">暂不取消</div>
+            </div>
+        </div>
+
+        <div class="pay-foot">
+            <div class="btn-group">
+                <div class="btn return">返回</div>
+                <div class="btn primary">微信支付</div>
+                <div class="btn cancel-1">取消订单</div>
+                <div class="btn cancel-2" hidden>取消订单</div>
+                <div class="btn contact-btn" hidden>联系客服</div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="../../dist/javascripts/zepto.min.js"></script>
+    <script src="../../dist/javascripts/simpleui.min.js"></script>
+    <script src="../../dist/javascripts/vectors.min.js"></script>
+    <script src="../../dist/javascripts/backtrack.min.js"></script>
+    <!--<script src="../../dist/javascripts/rent/new-oder-payment.min.js"></script>-->
+    <script src="../../src/js/rent/new-oder-payment.js"></script>
+    <script src="https://webapi.amap.com/maps?v=1.4.4&key=cc84bbc40681d10bdf6a924b2caf31d5&plugin=AMap.Driving"></script>
+
+</body>
+</html>

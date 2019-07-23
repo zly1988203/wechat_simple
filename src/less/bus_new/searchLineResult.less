@@ -1,0 +1,450 @@
+html,body{
+  min-height: 100%;
+  height: 100%;
+  background: #F2F2F2;
+}
+
+//时间选择
+.search-date-content{
+  background: #F2F2F2;
+  box-shadow: 0 0 0.2rem 0 rgba(0,0,0,0.10);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  .change-day{
+    padding: 0.4rem .2rem;
+
+    &:after{
+      content: '';
+      display: block;
+      width: 0.33rem;
+      height: 0.22rem;
+    }
+  }
+  .last-day{
+    &:after{
+      background: url("../../images/bus_new/icon-left.png") center no-repeat;
+      background-size: 100% 100%;
+    }
+  }
+  .current-box{
+    font-size: 0.32rem;
+    text-align: center;
+    color: #6392FE;
+    padding: 0 0.2rem 0 0.45rem;
+    position: relative;
+
+    &:before{
+      content: '';
+      display: block;
+      width: 0.34rem;
+      height: 0.37rem;
+      background: url("../../images/bus_new/icon-calendar.png") center no-repeat;
+      background-size: 100% 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto 0;
+    }
+  }
+  .next-day{
+    &:after{
+      background: url("../../images/bus_new/icon-right.png") center no-repeat;
+      background-size: 100% 100%;
+    }
+  }
+}
+.date-content{
+  background: rgba(0,0,0,0.3);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  top: 1rem;
+}
+
+
+
+.main-content{
+  margin-top: 1.2rem;
+  padding-bottom: 1.2rem;
+
+  //搜索结果
+  .result-line-list{
+    &>ul{
+      &>li.line-item{
+        background: #FFFFFF;
+        box-shadow: 0 0 0.2rem 0 rgba(0,0,0,0.10);
+        border-radius: 0.06rem;
+        margin: 0.2rem 0.2rem 0;
+        padding: 0.2rem;
+        .line-top{
+          padding-bottom: 0.2rem;
+          position: relative;
+          .top-left{
+            font-size: 0.28rem;
+            span{
+            }
+            span.start-time{
+              color: #333333;
+            }
+            span.line-name{
+              color: #CCCCCC;
+              margin-left: 0.2rem;
+            }
+          }
+          .top-right{
+            position: absolute;
+            right: -0.2rem;
+            top: 0;
+            .line-price{
+              background: #FE6666;
+              box-shadow: 0 0 0.2rem 0 rgba(227,227,227,0.40);
+              border-radius: 1rem 0 0 1rem;
+              font-size: 0.28rem;
+              color: #FFFFFF;
+              padding: 0 0.2rem;
+              height: 0.4rem;
+              line-height: 0.45rem;
+            }
+            .original{
+              font-size: 0.2rem;
+              color: #CCCCCC;
+              text-align: right;
+              padding-right: 0.2rem;
+              text-decoration: line-through;
+            }
+          }
+        }
+
+        .line-middle{
+          display: flex;
+          align-items: center;
+          .station-list{
+            width: 100%;
+            .station-item{
+              display: flex;
+              align-items: center;
+              padding: 0.05rem 0;
+              position: relative;
+              .item-name{
+                font-size: 0.28rem;
+                color: #333333;
+                padding-left: 0.56rem;
+                max-width: 2.4rem;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                position: relative;
+                &:before{
+                  content: '';
+                  width: 0.22rem;
+                  height: 0.22rem;
+                  border-radius: 100% ;
+                  position: absolute;
+                  left: 0;
+                  top: 40%;
+                  transform: translate(0,-50%);
+                  background: #ccc;
+                }
+              }
+              .item-time{
+                padding-left: 0.1rem;
+              }
+              .item-type{
+                font-size: 0.1rem;
+                color: #CCCCCC;
+                padding-left: 0.2rem;
+              }
+              .item-distance{
+                font-size: 0.2rem;
+                color: #CCCCCC;
+                text-align: right;
+                position: absolute;
+                right: 0;
+                display: flex;
+                align-items: center;
+                i{
+                  display: inline-block;
+                  width: 0.1rem;
+                  height: 0.2rem;
+                  background: url("../../images/bus_new/icon-walk.png") center no-repeat;
+                  background-size: 100% 100%;
+                  margin-right: 0.12rem;
+                }
+              }
+              &:before{
+                content: '';
+                display: block;
+                width: 0;
+                height: 0.2rem;
+                border-left: 1px dotted #D3D2DB;
+                position: absolute;
+                left: 0.11rem;
+                top: 76%;
+              }
+              &:last-child:before{
+                display: none;
+              }
+            }
+            //上车
+            .get-on{
+              .item-name{
+                &:before{
+                  background: url("../../images/bus_new/icon-on.png") center no-repeat;
+                  background-size: 100% 100%;
+                }
+              }
+            }
+            //上车灰
+            .get-on-gray{
+              .item-name{
+                &:before{
+                  background: url("../../images/bus_new/icon-on-gray.png") center no-repeat;
+                  background-size: 100% 100%;
+                }
+              }
+            }
+            //下车
+            .get-off{
+              .item-name{
+                &:before{
+                  background: url("../../images/bus_new/icon-off.png") center no-repeat;
+                  background-size: 100% 100%;
+                }
+              }
+            }
+            //下车灰
+            .get-off-gray{
+              .item-name{
+                &:before{
+                  background: url("../../images/bus_new/icon-off-gray.png") center no-repeat;
+                  background-size: 100% 100%;
+                }
+              }
+            }
+          }
+          .station-gray{
+            overflow: hidden;
+            transition: height 0.3s;
+            .station-item{
+              &:last-child:before{
+                content: '';
+                display: block;
+                width: 0;
+                height: 0.2rem;
+                border-left: 1px dotted #D3D2DB;
+                position: absolute;
+                left: 0.11rem;
+                top: 76%;
+              }
+            }
+          }
+          &>.flex-bar{
+            text-align: right;
+            position: absolute;
+            right: 0.2rem;
+            .switch-o{
+              height: 0.30rem;
+              width: 0.18rem;
+              margin: 0 auto;
+              background: url("../../images/bus_new/icon_more.png") center no-repeat;
+              background-size: 100% 100%;
+              transition: all 0.3s;
+            }
+            .switch-t{
+              transform: rotate(-90deg);
+            }
+            .switch-b{
+              transform: rotate(90deg);
+            }
+            .switch-btn{
+              font-size: 0.14rem;
+              color: #333333;
+              padding: 0 0.2rem;
+              border-radius: 0.06rem;
+            }
+          }
+        }
+        .line-bottom{
+          display: flex;
+          justify-content: space-between;
+          .services-group{
+            width: 5rem;
+            span{
+              display: inline-block;
+              background: #9FBCFC;
+              border-radius: 0.06rem;
+              font-size: 0.2rem;
+              color: #FFFFFF;
+              text-align: center;
+              padding: 0.04rem 0.07rem;
+              margin-right: 0.2rem;
+              margin-bottom: 0.17rem;
+              &:last-child{
+                margin-left: 0;
+              }
+            }
+          }
+          .bottom-right{
+            text-align: right;
+            .store-tips{
+              font-size: 0.2rem;
+              color: #999999;
+              margin-bottom: 0.14rem;
+            }
+            .buy-ticket-btn{
+              background: #6392FE;
+              box-shadow: 0 0 0.2rem 0 rgba(61,59,238,0.30);
+              border-radius: 0.06rem;
+              text-align: center;
+              color: #fff;
+              padding: 0.05rem 0.15rem;
+              display: inline;
+            }
+          }
+        }
+      }
+      &>li.sell-out{
+        .line-top{
+          .top-left{
+            span.start-time{
+              color: #ccc;
+            }
+          }
+          .top-right{
+            .line-price{
+              background: #ccc;
+            }
+          }
+        }
+        .line-middle{
+          .station-list{
+            .station-item{
+              .item-name{
+                color: #CCC;
+              }
+              .item-time{
+                color: #CCC;
+              }
+            }
+            //上车
+            .get-on{
+              .item-name{
+                &:before{
+                  background: url("../../images/bus_new/icon-on-gray.png") center no-repeat;
+                  background-size: 100% 100%;
+                }
+              }
+            }
+            //下车灰
+            .get-off{
+              .item-name{
+                &:before{
+                  background: url("../../images/bus_new/icon-off-gray.png") center no-repeat;
+                  background-size: 100% 100%;
+                }
+              }
+            }
+          }
+          .flex-bar{
+            .switch-btn{
+              color: #ccc;
+            }
+          }
+        }
+
+        .line-bottom{
+          .services-group{
+            span{
+              background: #CCC;
+            }
+          }
+          .bottom-right{
+            .store-tips{
+              color: #CCC;
+            }
+            .buy-ticket-btn{
+              background: inherit;
+              color: #CCCCCC;
+              box-shadow: none;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  //搜索结果没有线路
+  .no-line-box{
+    padding-top: 1.4rem;
+    .no-line{
+      width: 3.22rem;
+      height: 3.4rem;
+      background: url("../../images/bus_new/no-line-bg.png") center no-repeat;
+      background-size: 100% 100%;
+      margin: 0 auto 0;
+    }
+    .no-line-tips{
+      font-size: 0.24rem;
+      color: #999999;
+      letter-spacing: 0;
+      text-align: center;
+      margin: 0.4rem auto 0;
+    }
+  }
+}
+
+
+//操作按钮组
+.handle-list{
+  position: fixed;
+  bottom: 0;
+  padding: 0.2rem;
+  z-index: 10;
+  .handle{
+    background: #FFFFFF;
+    box-shadow: 0 0 0.2rem 0 rgba(227,227,227,0.40);
+    border-radius: 0.06rem;
+    font-size: 0.32rem;
+    color: #AAAAAA;
+    letter-spacing: 0;
+    text-align: center;
+    padding: 0.15rem 0.4rem;
+    &:active{
+      background: #CCCCCC;
+    }
+  }
+}
+
+.sui-popup-container{
+  height: 90%
+}
+
+.stopScroll{
+  overflow: hidden;
+}
+
+
+// ---------测试
+.date-container{
+  background: #fff;
+  height: 8rem;
+  overflow-y: scroll;
+
+  .paging-tips{
+    font-size: 0.18rem;
+    color: #999999;
+    letter-spacing: 0;
+    text-align: center;
+    padding: 0.2rem 0;
+  }
+}

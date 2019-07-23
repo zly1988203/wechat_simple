@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2018，你的专属出行记忆 - 乐乘巴士</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+</head>
+<style>
+    .banner{
+
+    }
+
+    .banner img{
+        width: 100%;
+
+    }
+    .title{
+        background-color: #F34032;
+        padding-top: 1rem;
+    }
+    .sorry{
+        /*background: url("../../dist/images/conclusion-Year/sorry.png") fixed center top no-repeat;*/
+        background-size: 100%;
+    }
+    .qrcode{
+        text-align: center;
+    }
+    .qrcode img{
+        width: 2.2rem;
+        height: 2.2rem;
+    }
+    .btn{
+        position: relative;
+        margin: .22rem .22rem 0;
+        height: 0.7rem;
+        line-height: 0.7rem;
+        font-size: .38rem;
+        color: #F34032;
+        text-align: center;
+        border:1px solid #F34032;
+    }
+
+     .popup-container {
+        background: rgba(0,0,0,.5);
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 100;
+    }
+
+    .popup-container .popup-main .close {
+        background: url(../../dist/images/conclusion-Year/icon-close.png) 50% no-repeat;
+        background-size: 100% 100%;
+    }
+    .popup-container .popup-main .close {
+        width: .71rem;
+        height: .71rem;
+        position: absolute;
+        right: .22rem;
+        top: .22rem;
+    }
+
+    .popup-container .popup-main .login-container {
+        width: 6.8rem;
+        padding: .3rem .3rem .16rem;
+        margin: 3.18rem auto 0;
+        background: #ffffff;
+        box-shadow: 0 0.04rem 0.1rem 0 rgba(0,0,0,.3);
+        border-radius: .2rem;
+    }
+
+
+    .popup-main .login-container .phone-no label {
+        background: url(../../dist/images/conclusion-Year/icon-phone.png) 50% no-repeat;
+        background-size: 100% 100%;
+    }
+     .popup-container .popup-main .login-container .input-box input {
+        height: .5rem;
+        border: none;
+        font-size: .36rem;
+        color: #666;
+        -webkit-box-flex: 2;
+        -webkit-flex: 2;
+        flex: 2;
+        max-width: 3rem;
+        margin-left: .2rem;
+    }
+    .popup-main .login-container .input-box button {
+        font-size: .36rem;
+        color: #f5a623;
+        text-align: right;
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        flex: 1;
+        border-left: 1px solid #ccc;
+    }
+   .popup-container .popup-main .login-container .input-box {
+        width: 6.2rem;
+        padding: .25rem .3rem;
+       background: #FFFFFF;
+       box-shadow: inset 0 0 0.06rem 0 rgba(0,0,0,0.20);
+       border-radius: 0.1rem;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+       margin-top: 0.2rem;
+    }
+    .popup-main .login-container .verification-code label {
+        background: url(../../dist/images/conclusion-Year/icon-verify.png) 50% no-repeat;
+        background-size: 100% 100%;
+    }
+     .popup-container .popup-main .login-container .input-box label {
+        width: .5rem;
+        height: .5rem;
+    }
+    .popup-container .popup-main .login-container .btn-box{
+        margin:0.3rem 0.1rem 0.1rem;
+    }
+     .popup-container .popup-main .login-container .btn-box button {
+         position: relative;
+         width: 6.2rem;
+         margin: .22rem .22rem 0;
+         height: 1rem;
+         line-height: 0.7rem;
+         font-size: .38rem;
+         color: #fff;
+         background: #CCCCCC;
+         text-align: center;
+         border-radius: 1rem;
+    }
+</style>
+<body>
+<div class="banner">
+    <div class="title">
+        <img src="../../dist/images/conclusion-Year/not-konw.png">
+    </div>
+    <div class="sorry">
+        <img src="../../dist/images/conclusion-Year/sorry.png">
+    </div>
+</div>
+
+<div class="qrcode">
+    <img src="../../dist/images/conclusion-Year/trial.jpg">
+</div>
+
+<div id="oldUser" class="btn">不，我是老用户</div>
+
+<div class="btn">了解 <span>乐乘巴士</span></div>
+
+<div class="popup-container login-content-popup" hidden>
+    <div class="popup-main">
+        <button class="close"></button>
+        <!--手机号验证码-->
+        <div class="login-container">
+            <div class="input-box phone-no">
+                <label class="icon-phone"></label>
+                <input type="number" placeholder="请输入手机号" id="phoneNo" oninput="if(value.length>11)value=value.slice(0,11)">
+                <button id="getVerificationCode">获取验证码</button>
+            </div>
+            <div class="input-box verification-code"><label></label><input type="text" placeholder="请输入验证码" id="verificationCode"></div>
+            <div class="btn-box"><button  class="" disabled="">登录</button></div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script src="../../dist/javascripts/zepto.min.js"></script>
+<script>
+    $('#oldUser').on('click',function () {
+        $('.login-content-popup').show();
+    })
+
+    $('.login-content-popup .close').on('click',function () {
+        $('.login-content-popup').hide();
+    })
+
+</script>
+</html>

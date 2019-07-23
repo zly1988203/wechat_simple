@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>紧急联系人</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/my/contacts.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+    <div class="contact-tip">
+       为了保证您的行程安全<br/>
+       紧急联系人将用于自动分享行程及紧急求助功能 
+    </div>
+    
+    <ul id="contacts" class="sui-list sui-border-b">
+        <li class="add-contact sui-border-b" data-href="#">添加紧急联系人</li>
+        <li data-phone="13800138000" data-name="隔壁老王" class="check">
+            <span>隔壁老王</span>
+            <span>13800138000</span>
+        </li>
+        <li data-phone="13632145546" data-name="隔壁老王" class="check">
+            <span>牛嘎嘎</span>
+            <span>13632145546</span>
+        </li>
+    </ul>
+
+    <div class="btn-group">
+        <button class="primary">完成</button>
+    </div>
+    
+	<script src="../../dist/javascripts/zepto.min.js"></script>
+	<script src="../../dist/javascripts/simpleui.min.js"></script>
+	<script src="../../dist/javascripts/common.min.js"></script>
+	<script>
+    $(function() {
+        deleteEventBind();
+    });
+        
+    //删除操作
+    function deleteEventBind() {
+        $('#contacts .check').off('click').on('click', function() {
+            var _this = $(this);
+            var name = _this.data('name');
+            var phone = _this.data('phone');
+            $.confirm('<p class="text-default">姓名：' + name + '</p><p class="text-default">联系电话：' + phone + '</p>', '提示', ['删除', '确定'], null, function() {
+                $.showLoading('正在删除数据');
+                setTimeout(function() {
+                    $.hideLoading();
+                    _this.remove();
+                    $('.add-contact').show();
+                }, 800);
+            });
+        });
+    }
+    </script>
+</body>
+</html>

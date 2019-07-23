@@ -1,0 +1,167 @@
+@charset "utf-8";
+body{
+  margin-bottom: 1.66rem;
+}
+
+  .content{
+    padding:  0.26rem 0.29rem;
+    background: #FFFFFF;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05);
+
+    .item{
+
+      h4{
+        color: #9B9B9B;
+        letter-spacing: 0;
+      }
+
+      .fs-32{
+        font-size: 0.32rem;
+      }
+      .fs-36{
+        font-size: 0.36rem;
+      }
+
+
+      .caption {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        &:before, &:after {
+          content: '';
+          flex: 1;
+          width: 0;
+          height: 0;
+          border-bottom: 1px dashed #ccc;
+        }
+
+        &:before {
+          margin-right: 0.26rem;
+        }
+
+        &:after {
+          margin-left: 0.28rem;
+        }
+      }
+
+      .refund-detail{
+        padding: 0.33rem 0;
+
+          .refund-item{
+            margin-top: 0.22rem;
+
+            &:first-child {
+              margin-top: 0;
+            }
+
+            .detail-list{
+              display: inline-block;
+              height:0.4rem;
+              font-size: 0.32rem;
+              letter-spacing: 0;
+            }
+            .color-orange{
+              color: #F5A623;
+            }
+            .color-gray{
+              color: #999999;
+            }
+            .text-right{
+              text-align: right;
+              width: 2.66rem;
+            }
+            .text-left{
+              text-align: left;
+              margin-left: 1.6rem;
+            }
+
+          }
+        }
+
+      .reason-list{
+        width: 5.4rem;
+        margin-left: 0.9rem;
+        text-align: left;
+
+        .reason-item{
+          font-size: 0.28rem;
+          color: #999999;
+          letter-spacing: 0;
+          height: 0.5rem;
+          line-height: 0.52rem;
+          display: inline-block;
+          width: auto;
+          border: 0.01rem solid #EDEEF0;
+          border-radius: 0.15rem;
+          margin-top: 0.3rem;
+          margin-right: 0.28rem;
+          padding:0.05rem 0.14rem;
+
+          &.active{
+            background: #6392FE;
+            color: #FFFFFF;
+          }
+        }
+      }
+
+      .message-area {
+        margin-top: 0.38rem;
+        padding-top: 0.14rem;
+        display: block;
+        background: #F0F0F0;
+        border: 1px solid #C8C8C8;
+
+        textarea {
+          display: block;
+          border: 0 none;
+          background: transparent;
+          padding: 0 0.14rem 0.14rem;
+          width: 100%;
+          box-sizing: border-box;
+          line-height: 0.4rem;
+          height: 1.02rem;
+          font-size: 0.28rem;
+          color: #999999;
+
+          &::placeholder{
+            color: #CCCCCC;
+          }
+          &::-webkit-input-placeholder{
+          color: #CCCCCC;
+        }
+        }
+
+        .message-length {
+          text-align: right;
+          padding-right: 2px;
+          font-size: 0.26rem;
+          color: #999;
+          line-height: 0.37rem;
+        }
+
+        .sui-red {
+          text-align: right;
+          font-size: 0.26rem;
+          padding-right: 2px;
+          line-height: 0.37rem;
+        }
+      }
+    }
+  }
+
+  .btn-group {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background: rgba(255,255,255, 1);
+    box-shadow: 4px 0 4px 0 rgba(0,0,0,0.10);
+
+    /*按钮不可点击样式*/
+    .unclickable{
+      background: #999999;
+      border-radius: 1rem;
+      color: #FDFDFE;
+    }
+  }
+

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>中交出行</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/travel/line-introduce.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <div class="introduce">
+        <div class="head">
+            <div class="thumb" style="background-image:url(https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2634846866,171705924&fm=27&gp=0.jpg);"></div>
+            <h4>长春-哈尔滨万达冰灯节，包含2日往返车票、冰灯节1日畅玩通票，两日丰盛主餐</h4>
+            <div class="line-label">
+                <span>有WIFI</span>
+                <span>漯河车队 联系电话：18655567778</span>
+                <span>有厕所</span>
+            </div>
+        </div>
+
+        <!-- 导航 -->
+        <ul class="nav">
+            <li class="item active"><a href="#page1">产品特色</a></li>
+            <li class="item"><a href="#page2">行程安排</a></li>
+            <li class="item"><a href="#page3">费用说明</a></li>
+            <li class="item"><a href="#page4">购买须知</a></li>
+        </ul>
+
+        <!-- page -->
+        <div class="page-wrapper">
+            <div class="page" id="page1">
+                <h5>产品特色</h5>
+                <p>文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息。</p>
+            </div>
+            <div class="page" id="page2">
+                <h5>行程安排</h5>
+                <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2634846866,171705924&fm=27&gp=0.jpg" alt="thumb">
+                <p>文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息。</p>
+            </div>
+            <div class="page" id="page3">
+                <h5>费用说明</h5>
+                <p>文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息。</p>
+            </div>
+            <div class="page" id="page4">
+                <h5>购买须知</h5>
+                <p>文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息文本信息。</p>
+            </div>
+        </div>
+
+        <!-- 返回按钮 -->
+        <div class="btn-group">
+            <div class="btn primary" data-href="../bus/line-list.html">返回选择班次</div>
+        </div>
+    </div>
+    
+	<script src="../../dist/javascripts/zepto.min.js"></script>
+	<script src="../../dist/javascripts/simpleui.min.js"></script>
+    <script src="../../dist/javascripts/vectors.min.js"></script>
+    <script src="../../dist/javascripts/stickUp.min.js"></script>
+    <script type="text/javascript">
+        Zepto(function($) {
+            $(document).ready( function() {
+                $('.nav').stickUp({
+                    parts: {
+                        0: 'page1',
+                        1: 'page2',
+                        2: 'page3',
+                        3: 'page4'
+                    },
+                    itemClass: 'item',
+                    itemHover: 'active',
+                    topMargin: 'auto'
+                });
+
+                //自定义定位
+                var nav_h = $('.nav').height();
+                $('.nav a').on('click', function (e) {
+                    e.preventDefault();
+                    var self = $(this),
+                        id = self.attr('href');
+                    var offsetTop = $(id).offset().top;
+
+                    $(window).scrollTop(offsetTop - nav_h)
+                    self.parent().addClass('active').siblings().removeClass('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

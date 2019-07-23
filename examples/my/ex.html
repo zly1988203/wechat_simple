@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>练习例子</title>
+    <style>
+        .box:before{
+            display:block;
+            content:"钉子";
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            background-color: black;
+            color: white;
+            font-weight:bold;
+            text-align: center;
+            line-height: 50px;
+        }
+        .box:after{
+            display: block;
+            content: "";
+            width: 0;
+            height: 0;
+            border: 25px solid transparent;
+            border-top: 50px solid black;
+            margin-top: -20px;
+        }
+
+        .outer{
+            margin-left: 20px;
+            width: 100px;
+            height: 100px;
+            background: red;
+            transform: skewX(-30deg);
+            position: relative;
+        }
+        .inner{
+            text-align: center;
+            position: absolute;
+            top:40px;
+            transform:skewX(30deg);
+        }
+
+        .xin{
+            display:inline-block;
+            margin:50px;
+            height: 100px;
+            width: 100px;
+            background-color: red;
+            transform: rotate(-45deg);
+        }
+        .xin:before,.xin:after{
+            display:block;
+            content:"";
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border-radius: 50%;
+            margin-top:-50%;
+        }
+        .xin:after{
+            margin-left:50%;
+        }
+
+        @keyframes typing{0%{width:0;}}
+        @keyframes caret{50%{border-color:transparent;}}
+        .a{
+            width: 6em;
+            animation: typing 4s steps(6) infinite ,caret .5s steps(1) infinite ;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right:1px solid;
+        }
+
+        .box{
+            position: relative;
+            height: 300px;
+            width: 500px;
+        }
+        .in1,.in2{
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background-size: cover;
+            animation: move 100s infinite linear alternate;
+        }
+        @keyframes move {
+            100%{background-position: 500% 0;}
+        }
+        .in1{
+            background-image: url('http://sandbox.runjs.cn/uploads/rs/26/ddzmgynp/cloud.png');
+        }
+        .in2{
+            background-image: url('http://sandbox.runjs.cn/uploads/rs/26/ddzmgynp/cloud1.png');
+            animation-duration: 10s;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="outer">
+        <div class="inner">我是你爸爸</div>
+    </div>
+
+    <div class="xin"></div>
+
+    <div class="a" align="center">
+        我是你爸爸
+    </div>
+
+    <div class="box1">
+        <div class="in1"></div>
+        <div class="in2"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>服务器错误</title>
+</head>
+<style>
+    * {
+        /* padding: 0px; */
+        margin: 0px;
+        outline: none;
+        word-wrap: break-word;
+    }
+
+    div.notice_page {
+        margin: 0 auto;
+        height: 100%;
+    }
+
+    div.notice_page .notice_404_p {
+        height: 470px;
+        background: url(../src/images/errorPage/404_02.png) center 70px no-repeat;
+    }
+
+    div.notice_page .home_page .notice_retun {
+        margin-right: 20px;
+    }
+
+    div.notice_page .home_page {
+        margin: 0 auto;
+        height: 40px;
+        width: 300px;
+        padding-left: 82px;
+    }
+</style>
+<body>
+    <<div class="notice_page">
+        <div class="notice_404_p"></div>
+        <div class="home_page"><a class="notice_retun" href="javascript:history.go(-1);">返回上一页</a><a class="notice_home" href="/">返回首页</a></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,590 @@
+body{
+  font-family: PingFangSC-Semibold;
+}
+.all-container{
+  background: #f3f4f5;
+  .poster-container{
+    background: #F3F4F5;
+    padding: 0.2rem 0 0.23rem;
+    position: relative;
+    //海报
+    .poster-box{
+      width: 4.86rem;
+      height: 8.65rem;
+      margin: 0 auto;
+      position: relative;
+      background: #FFFFFF;
+      box-shadow: 0 0.02rem 0.02rem 0 rgba(0,0,0,0.05);
+
+      img{
+        display: block;
+        width: 100%;
+        height:100%;
+      }
+
+      .poster-content{
+        position: absolute;
+        top:0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 3;
+        .avatar{
+          width: 0.9rem;
+          height: 0.9rem;
+          border-radius: 100%;
+          box-shadow: 0 0.02rem 0.04rem 0 rgba(0,0,0,0.20);
+          background: #fff;
+          margin: 0.6rem auto 0;
+          img{
+            display: block;
+            width: 100%;
+            height: 100%;
+            border-radius: 100%;
+            margin: 0 auto;
+          }
+        }
+        .tips{
+          //color: #4A90E2;
+          font-size: 0.18rem;
+          //text-shadow: 0 1px 2px rgba(0,0,0,0.50);
+          text-align: center;
+          width: 100%;
+          margin-top: 0.15rem;
+        }
+        .lines-box{
+          margin: 0.1rem 0.38rem 0;
+          position: relative;
+          //价格
+          .price-container{
+            width: 1.23rem;
+            height: 1.23rem;
+            border-radius: 100%;
+            position: absolute;
+            right: -0.36rem;
+            top:0;
+            img{
+              display: block;
+              width: 100%;
+              height: 100%;
+              position: absolute;
+              right: 0;
+              top: 0;
+              z-index: 3;
+            }
+            .price-content{
+              position: absolute;
+              z-index: 5;
+              top: 0;
+              right: 0;
+              width: 100%;
+              height: 100%;
+              .price-box{
+                color: #fff;
+                text-align: center;
+                em{
+                  font-size: 0.16rem;
+                  position: absolute;
+                  top: 0.24rem;
+                  left: 0.3rem;
+                }
+                .price{
+                  font-size: 0.28rem;
+                  line-height: 1.23rem;
+                  padding-left: 0.12rem;
+                }
+              }
+            }
+          }
+          //一行
+          .line-name{
+            font-size: 0.26rem;
+            color: #FE6666;
+            font-weight: bold;
+            text-align: center;
+            padding-top: 0.26rem;
+            margin: 0 0.78rem;
+          }
+          //二行
+          .station{
+            font-size: 0.32rem;
+            color: #FE6666;
+            font-weight: bold;
+            text-align: center;
+            position: relative;
+            transform: translateX(-50%);
+            left: 50%;
+            display: inline-block;
+            position: relative;
+            .item{
+              max-width: 1.86rem;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              overflow: hidden;
+            }
+            img{
+              display: block;
+              width: 0.286rem;
+              height: 0.424rem;
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              margin: auto 0;
+              &:first-child{
+                left: -0.36rem;
+              }
+              &:last-child{
+                right: -0.36rem;
+              }
+            }
+          }
+        }
+        //平台介绍 网约车介绍 TODO
+        .platform-desc{
+          font-size: 0.2rem;
+          //color: #4A90E2;
+          text-align: center;
+          margin: 0 0.356rem;
+          padding: 0.308rem 0.22rem 0;
+        }
+
+        .company-box{
+          position: absolute;
+          top: 3.9rem;
+          width: 100%;
+          text-align: center;
+          .desc{
+            //color: #4a90e2;
+            font-size: 0.2rem;
+            text-align: center;
+            margin: 0 0.356rem;
+            max-height: 1.45rem;
+            padding: 0 0.22rem;
+          }
+        }
+
+        //二维码
+        .OR-content{
+          position: absolute;
+          bottom: 1.6rem;
+          left: 0;
+          right: 0;
+          margin: 0 auto;
+          .OR-box{
+            width: 1.44rem;
+            height: 1.44rem;
+            background: #fff;
+            margin: 0 auto;
+            img{
+              display: block;
+              width: 100%;
+              height: 100%;
+            }
+          }
+          p{
+            margin-top: 0.122rem;
+            font-size: 0.18rem;
+            text-align: center;
+            line-height: 0.28rem;
+          }
+        }
+
+        .copyright{
+          font-size: 0.14rem;
+          //color: #fff;
+          position: absolute;
+          bottom: 0.08rem;
+          text-align: center;
+          margin: 0 auto;
+          left: 0;
+          right: 0;
+        }
+      }
+    }
+    //更多
+    .more{
+      width: 1.42rem;
+      height: 1.42rem;
+      background: url("../../images/distribution/icon-more.png") center no-repeat;
+      background-size: 100% 100%;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+  }
+
+  .poster-switch-box{
+    background: #FFFFFF;
+    box-shadow: 0 0.02rem 0.02rem 0 rgba(0,0,0,0.10);
+    padding: .2rem 0 .41rem;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+
+    //切换背景
+    .switch{
+      position: absolute;
+      ul{
+        white-space: nowrap;
+        display: flex;
+        .item{
+          flex: 1;
+          height: 1.8rem;
+          width: 1.01rem;
+          background-size: 100% 100%;
+          margin: 0 0.2rem;
+          position: relative;
+          display: inline-block;
+          &:first-child{
+            background: url("../../images/distribution/v2/poster-bg-1.png") center no-repeat;
+            background-size: 100% 100%;
+          }
+          &:nth-child(2){
+            background: url("../../images/distribution/v2/poster-bg-2.png") center no-repeat;
+            background-size: 100% 100%;
+          }
+          &:nth-child(3){
+            background: url("../../images/distribution/v2/poster-bg-3.png") center no-repeat;
+            background-size: 100% 100%;
+          }
+          &:nth-child(4){
+            background: url("../../images/distribution/v2/poster-bg-4.png") center no-repeat;
+            background-size: 100% 100%;
+          }
+          &:nth-child(5){
+            background: url("../../images/distribution/v2/poster-bg-5.png") center no-repeat;
+            background-size: 100% 100%;
+          }
+          &:nth-child(6){
+            background: url("../../images/distribution/v2/poster-bg-6.png") center no-repeat;
+            background-size: 100% 100%;
+          }
+          &:nth-child(7){
+            background: url("../../images/distribution/v2/poster-bg-7.png") center no-repeat;
+            background-size: 100% 100%;
+          }
+          &:nth-child(8){
+            background: url("../../images/distribution/v2/poster-bg-8.png") center no-repeat;
+            background-size: 100% 100%;
+          }
+        }
+        .active{
+          &:after{
+            content: '';
+            display: block;
+            width: 1.01rem;
+            height: 1.8rem;
+            background: url("../../images/distribution/poster-check.png") center no-repeat;
+            background-size: 100% 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+          }
+        }
+      }
+
+    }
+
+    //收益须知
+    .notice{
+      margin-top: 2.29rem;
+      text-align: center;
+      .notice-btn{
+        padding-left: 0.46rem;
+        position: relative;
+        font-size: 0.24rem;
+        color: #999999;
+        line-height: 0.36rem;
+        display: inline-block;
+        &:before{
+          content: '';
+          display: block;
+          width: 0.36rem;
+          height: 0.36rem;
+          background: url("../../images/distribution/icon-notice.png") center no-repeat;
+          background-size: 100% 100%;
+          position: absolute;
+          left: 0 ;
+          top: 0;
+        }
+      }
+    }
+  }
+
+  .popup-container{
+    position: fixed;
+    display: block;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background: rgba(0,0,0,0.3);
+    top: 0;
+    left: 0;
+    padding-top: 1.656rem;
+
+    .popup-box{
+      background: #FFFFFF;
+      border-radius: 0.2rem;
+      width: 6.6rem;
+      margin:  0 auto;
+
+      //分享方式
+      .type-box{
+        width: 5.6rem;
+        margin: 0 0.46rem 0  0.54rem;
+        padding: 0.33rem 0 0.33rem;
+        .type{
+          font-size: 0.32rem;
+          color: #333333;
+          position: relative;
+          //padding-bottom: 0.9rem;
+          margin: 0.9rem 0 0;
+          &:first-child{
+            margin: 0;
+          }
+
+          .copy-btn{
+            display: block;
+            position: absolute;
+            right: -0.24rem;
+            top: 0.1rem;
+            background: #6392FE;
+            border-radius: 1rem;
+            padding: 0 0.34rem ;
+            font-size: 0.28rem;
+            height: 0.4rem;
+            line-height: 0.4rem;
+            color: #FFFFFF;
+            &:active{
+              background: #014BFA;
+            }
+          }
+          &:before{
+            content: '';
+            display: block;
+            width: 0.15rem;
+            height: 0.15rem;
+            border-radius: 0.15rem;
+            background: #6392FE;
+            position: absolute;
+            top: 0.15rem;
+            left: -0.32rem;
+          }
+
+          .hunter-url{
+            width: 100%;
+            height: 1.8rem;
+            border: none;
+            line-height: 0.45rem;
+          }
+        }
+      }
+      //收益须知
+      .notice-box{
+        padding: 0.416rem 0.39rem 0.702rem;
+        .title{
+          font-size: 0.36rem;
+          color: #333333;
+          text-align: center;
+        }
+        .img{
+          width: 5.3rem;
+          height: 1.52rem;
+          background: url("../../images/distribution/notice-img.png") center no-repeat;
+          background-size: 100% 100%;
+          margin: 0.438rem auto 0.67rem;
+        }
+        .notice-content{
+          font-size: 0.28rem;
+          color: #333333;
+          max-height: 3.2rem;
+          overflow: scroll;
+        }
+
+      }
+      //关闭
+      .close-btn{
+        margin-top: 0.06rem;
+        font-size: 0.38rem;
+        color: #6392FE;
+        padding: 0.2rem 0;
+        text-align: center;
+      }
+    }
+
+
+  }
+}
+
+/*清除浮动代码*/
+.clearfloat:after{display:block;clear:both;content:"";visibility:hidden;height:0}
+.clearfloat{zoom:1}
+
+#img-box{
+  img{
+    display: block;
+    width: 4.86rem;
+    height: 8.65rem;
+    margin: 0 auto;
+  }
+}
+
+//复制样式
+.copy-s{
+  //background: #6392fe;
+  //color: #fff;
+}
+
+canvas{
+  display: none;
+}
+//第1张海报样式
+.poster-1{
+  .poster-box .poster-content .tips{
+    color: #4A90E2;
+  }
+  .poster-box .poster-content .company-box .desc{
+    color: #4A90E2;
+  }
+  .poster-box .poster-content .OR-content p{
+    color: #333;
+  }
+  .poster-box .poster-content .copyright{
+    color:#fff;
+  }
+  .poster-box .poster-content .platform-desc{
+    color: #4A90E2;
+  }
+}
+//第2张海报样式
+.poster-2{
+  .poster-box .poster-content .tips{
+    color: #4A90E2;
+  }
+  .poster-box .poster-content .company-box .desc{
+    color: #FFFFFF;
+  }
+  .poster-box .poster-content .OR-content p{
+    color: #FFFFFF;
+  }
+  .poster-box .poster-content .copyright{
+    color:#fff;
+  }
+  .poster-box .poster-content .platform-desc{
+    color: #4A90E2;
+  }
+}
+//第3张海报样式
+.poster-3{
+  .poster-box .poster-content .tips{
+    color: #F8A100;
+  }
+  .poster-box .poster-content .company-box .desc{
+    color: #F8A100;
+  }
+  .poster-box .poster-content .OR-content p{
+    color: #666666;
+  }
+  .poster-box .poster-content .copyright{
+    color:#fff;
+  }
+  .poster-box .poster-content .platform-desc{
+    color: #F8A100;
+  }
+}
+//第4张海报样式
+.poster-4{
+  .poster-box .poster-content .tips{
+    color: #666666;
+  }
+  .poster-box .poster-content .company-box .desc{
+    color: #FE6666;
+  }
+  .poster-box .poster-content .OR-content p{
+    color: #666666;
+  }
+  .poster-box .poster-content .copyright{
+    color:#fff;
+  }
+  .poster-box .poster-content .platform-desc{
+    color: #FE6666;
+  }
+}
+//第5张海报样式
+.poster-5{
+  .poster-box .poster-content .tips{
+    color: #F5A623;
+  }
+  .poster-box .poster-content .company-box .desc{
+    color: #F5A623;
+  }
+  .poster-box .poster-content .OR-content p{
+    color: #666666;
+  }
+  .poster-box .poster-content .copyright{
+    color:#fff;
+  }
+  .poster-box .poster-content .platform-desc{
+    color: #F5A623;
+  }
+}
+//第6张海报样式
+.poster-6{
+  .poster-box .poster-content .tips{
+    color: #333333;
+  }
+  .poster-box .poster-content .company-box .desc{
+    color: #333333;
+  }
+  .poster-box .poster-content .OR-content p{
+    color: #666666;
+  }
+  .poster-box .poster-content .copyright{
+    color:#fff;
+  }
+  .poster-box .poster-content .platform-desc{
+    color: #333333;
+  }
+}
+//第7张海报样式
+.poster-7{
+  .poster-box .poster-content .tips{
+    color: #333333;
+  }
+  .poster-box .poster-content .company-box .desc{
+    color: #333333;
+  }
+  .poster-box .poster-content .OR-content p{
+    color: #666666;
+  }
+  .poster-box .poster-content .copyright{
+    color:#fff;
+  }
+  .poster-box .poster-content .platform-desc{
+    color: #333333;
+  }
+}
+//第8张海报样式
+.poster-8{
+  .poster-box .poster-content .tips{
+    color: #333333;
+  }
+  .poster-box .poster-content .company-box .desc{
+    color: #333333;
+  }
+  .poster-box .poster-content .OR-content p{
+    color: #666666;
+  }
+  .poster-box .poster-content .copyright{
+    color:#fff;
+  }
+  .poster-box .poster-content .platform-desc{
+    color: #333333;
+  }
+}
+
+//默认为小的 小-145*145  大-208*208
+.all-container .poster-container .poster-box .poster-content .company-box .size-l{
+  width: 2.08rem;
+  height: 2.08rem;
+}

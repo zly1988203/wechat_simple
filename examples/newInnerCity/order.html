@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>订单</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/newInnerCity/order-common.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<!--地图请保持在前面-->
+<div class="ola-maps" id="allmap"></div>
+
+<div class="main-container">
+    <!--司机信息-->
+    <div class="driver-info-container">
+        <div class="info">
+            <div class="avatar"><img src="../../dist/images/common/avatar_driver.png"/></div>
+            <div class="content">
+                <h4>王师傅 · 粤BDE990</h4>
+                <div class="second">
+                    <div>白色 · 别克君越</div>
+                    <div class="service">
+                        <div class="times">已服务123次</div>
+                        <div class="level">5.0</div>
+                    </div>
+                </div>
+            </div>
+            <div class="other-info">
+                <div class="identification">中交认证</div>
+                <div class="tel" data-tel="12345678"></div>
+            </div>
+        </div>
+        <div class="tips-box">
+            <div class="icon"></div>
+            <div class="tips">司机已出发，请准时到达约定地点等候。司机已出发，请准时到达约定地点等候。司机已出发，请准时到达约定地点等候。</div>
+        </div>
+    </div>
+    <!--行程信息-->
+    <div class="journey-container">
+        <div class="journey-content">
+            <div class="time-box">出发时间：10月15日 10:00 - 10:30</div>
+            <div class="station-box">
+                <div class="left">
+                    <div class="station depart">深圳南山·深圳湾创业投资大厦</div>
+                    <div class="station arrive">深圳福田·一个神奇的地方</div>
+                </div>
+                <div class="right">
+                    <div class="box"><div>4人</div><div>舒适型</div></div>
+                </div>
+            </div>
+            <div class="notes-box">
+                <div class="icon"></div>
+                <div class="notes">愿意等待15分钟以上</div>
+            </div>
+        </div>
+    </div>
+    <div class="switch-box" data-show="true"><i></i></div>
+
+    <!--按钮-->
+    <div class="btn-group" style="display: none">
+        <div class="btn normal">返回</div>
+        <div class="btn protrude">紧急求助</div>
+        <div class="btn protrude">立即支付</div>
+        <div class="btn normal" id="moreBtn">更多</div>
+    </div>
+
+    <!--更多-->
+    <div class="bottom-container more-service-container">
+        <ul>
+            <li data-href="tel:123456">联系客服</li>
+            <li class="share-btn active" id="share">分享行程</li>
+            <li>取消订单</li>
+            <li class="complain">投诉建议</li>
+            <li class="close-more-service">取消</li>
+        </ul>
+    </div>
+    <!--支付-->
+    <div class="bottom-container payment-container" hidden>
+        <div class="top">
+            <div class="amount">21.00元</div>
+            <div class="detail">车费明细</div>
+            <div class="close"></div>
+        </div>
+        <div class="middle">
+            <ul>
+                <li>
+                    <div class="name">一口价</div>
+                    <div class="value">31.00元</div>
+                </li>
+                <li class="coupon">
+                    <div class="name">优惠券</div>
+                    <div class="value">-10.00元</div>
+                </li>
+            </ul>
+        </div>
+        <div class="bottom">
+            <div class="pay-btn normal" id="paymentBtn">支付中</div>
+            <!--<div class="pay-btn protrude" id="">微信支付</div>-->
+        </div>
+    </div>
+    <!--评价-->
+    <div class="bottom-container evaluate-container" hidden>
+        <div class="top sui-border-b">
+            <div class="title">评价</div>
+            <div class="close"></div>
+        </div>
+        <div class="evaluate-content">
+            <div class="star-box">
+                <!--<div class="star-info">匿名评价司机</div>-->
+                <div class="star max" data-size="max">
+                    <input type="hidden" id="star1">
+                    <!--<span class="active"></span><span></span><span></span><span></span><span></span>-->
+                </div>
+                <div class="star-info">完成匿名评价，我们将提供更好的服务</div>
+            </div>
+            <div class="evaluate-box" style="display: block">
+                <div class="tag">
+                    <!--<div class="tag-tips">请选择标签</div>-->
+                    <span data-value="服务好态度棒">服务好态度棒</span>
+                    <span data-value="车内整洁">车内整洁</span>
+                    <span data-value="驾驶平稳">驾驶平稳</span>
+                    <span data-value="活地图认路准">活地图认路准</span>
+                    <span data-value="不是订单显示车辆">不是订单显示车辆</span>
+                    <span data-value="车内有其他陌生人">车内有其他陌生人</span>
+                    <span data-value="车内有其他陌生人">车内有其他陌生人</span>
+                    <input type="hidden" id="tag1">
+                </div>
+                <div class="others">
+                    <label class="message-area" for="message-1">
+                        <textarea id="message-1" data-max="200" placeholder="其他想说的" maxlength="200"></textarea>
+                        <!--<div class="message-length">0/200</div>-->
+                    </label>
+                </div>
+                <div class="evaluate-commit protrude" id="evaluateCommit">匿名提交</div>
+            </div>
+        </div>
+    </div>
+    <!--已评价-->
+    <div class="bottom-container evaluated-container" hidden>
+        <div class="evaluate-content">
+            <div class="payment-info">
+                <div class="amount">21.00元</div>
+                <div class="detail">车费明细</div>
+            </div>
+            <div class="btn-group">
+                <div class="btn">返回</div>
+                <div class="btn finish">评价</div>
+                <div class="btn">返程</div>
+                <div class="btn">更多</div>
+            </div>
+        </div>
+    </div>
+    <!--费用详情-->
+    <div class="sui-popup-container price-detail-container" hidden>
+        <div class="sui-popup-mask"></div>
+        <div class="sui-popup-modal">
+            <!--内容开始-->
+            <div class="price-detail-title">价格详情</div>
+            <div id="closeButton" class="close-btn"><i></i></div>
+            <div class="price-detail-main">
+                <div class="detail-box">
+                    <div class="detail-item"><div class="name">舒适型一口价</div><div class="number">30元</div></div>
+                    <div class="detail-item"><div class="name">人数</div><div class="number">3人</div></div>
+                </div>
+                <div class="coupon-box">
+                    <div class="coupon-item"><div class="name">优惠券</div><div class="number">-2.3元</div></div>
+                </div>
+            </div>
+            <div class="market-rules-btn">查看计价规则</div>
+        </div>
+    </div>
+
+    <!--分享-->
+    <div class="share-box" style="display: none">
+        <div class="share-tips"></div>
+    </div>
+    <!-- 投诉建议 - 提交成功 -->
+    <div class="complain-success" hidden>
+        <div class="complain-success-modal">
+            <div class="title">提交成功</div>
+            <div class="content">
+                <ul>
+                    <li>
+                        <h4>投诉结果：客服已收到。</h4>
+                        <p>我们将尽快给您安排处理，给您本次出行带来 的不便，深感歉意。</p>
+                    </li>
+                    <li>
+                        <h4>投诉原因：</h4>
+                        <p>本文信息描述本文信息描述本文信息描述本文 本文信息描述本文信息描述本文信息描述信息 描述</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="btn primary confirm">知道了</div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<script src="../../dist/javascripts/zepto.min.js"></script>
+<script src="../../dist/javascripts/simpleui.min.js"></script>
+<script src="../../dist/javascripts/vectors.min.js"></script>
+<script src="../../dist/javascripts/backtrack.min.js"></script>
+<script src="https://webapi.amap.com/maps?v=1.4.4&key=cc84bbc40681d10bdf6a924b2caf31d5&plugin=AMap.Driving"></script>
+
+<script src="../../src/js/newInnerCity/order.js"></script>
+</body>
+</html>

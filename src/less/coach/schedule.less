@@ -1,0 +1,482 @@
+@charset "utf-8";
+
+body{
+  background: #F3F4F5;
+}
+
+header {
+  position: fixed;
+  left: 0;
+  z-index: 66;
+  width: 100%;
+
+  .ola-date {
+    display: flex;
+    background-color: #fff;
+    box-shadow: 0 0.04rem 0.04rem 0 rgba(0,0,0,0.10);
+
+    li {
+      flex: 1;
+
+      span {
+        display: block;
+        height: 1rem;
+        line-height: 1rem;
+        text-align: center;
+        color: #333;
+
+        &:active {
+          background-color: rgba(0,0,0,.1)
+        }
+      }
+
+      &.ola-prev span {
+        padding-left: 0.22rem;
+        text-align: left;
+        font-size: 0.32rem;
+      }
+
+      &.ola-next span {
+        padding-right: 0.22rem;
+        text-align: right;
+        font-size: 0.32rem;
+      }
+
+      &.ola-disabled {
+        span {
+          color: #ccc;
+
+          &:active {
+            background-color: transparent;
+          }
+
+          &:after,&:before {
+            border-color: #ccc;
+          }
+        }
+
+        &.ola-prev span:before,&.ola-next span:after {
+          border-color: #ccc;
+        }
+      }
+
+      &.ola-current {
+        span {
+          position: relative;
+
+          input {
+            width: 0;
+            height: 1rem;
+            text-indent: 0.3rem;
+            text-align: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border: 0 none;
+            background-color: transparent;
+            color: #333;
+            opacity: 0;
+            z-index: -10;
+          }
+
+          i {
+            display: block;
+            color: #666;
+            background-color: transparent;
+            width: 100%;
+            height: 1rem;
+            font-size: 0.32rem;
+            position: relative;
+            z-index: 66;
+
+            &:active {
+              //background-color: #bf7813;
+            }
+
+            &:after {
+              display: inline-block;
+              content: '';
+              width: 0.4rem;
+              height: 0.4rem;
+              background-image: url(../../images/bus/icon_under.png);
+              background-position: center;
+              background-repeat: no-repeat;
+              background-size: 100% 100%;
+              position: relative;
+              top: 0.1rem;
+              left: 0;
+            }
+          }
+        }
+      }
+
+      &.ola-prev {
+        span {
+          &:before {
+            left: -8px;
+            transform: rotate(225deg);
+          }
+        }
+      }
+
+      &.ola-next {
+        span {
+          &:after {
+            right: -8px;
+            transform: rotate(45deg);
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.main{
+  padding:0 0.22rem;
+
+  .no-schedule-container{
+    padding: 2.5rem 0;
+
+    .no-schedule-icon{
+      margin: 0 auto;
+      width: 2.76rem;
+      height: 3.22rem;
+      background: url(../../images/coach/no_schedule.png) no-repeat center;
+      background-size: 100% 100%;
+    }
+    .no-schedule-tips{
+      font-size: 0.28rem;
+      color: #787979;
+      text-align: center;
+      margin-top: 0.6rem;
+    }
+  }
+
+  .border-dotted-b{
+    border-bottom:1px dashed #E8E8E8;
+  }
+
+  .border-shadow{
+    box-shadow: 0 2px 2px 0
+    rgba(0,0,0,0.10);
+  }
+
+  .ola-list-box{
+    margin-bottom: 1.25rem;
+    padding:1rem 0;
+
+    li.schedule-item{
+      .schedule-name{
+        margin-top:0.22rem;
+        display:inline-block;
+        width:1.7rem;
+        height:0.6rem;
+        font-size: 0.32rem;
+        color:#fff;
+        line-height: 0.6rem;
+        text-align: center;
+        border-radius: 0.03rem;
+      }
+
+      .custom-line-bgc{
+        background: #B1C9FF;
+      }
+
+      .introduce-line-bgc{
+        background: #DEB1FF;
+      }
+
+      .to-from-work-bgc{
+        background: #F6A480;
+      }
+
+      .intercity-renting-bgc{
+        background: #66DD8F;
+      }
+
+      .coach-ticket-bgc{
+        background: #F88484;
+      }
+
+      .lineItem{
+        .ticket-info {
+          padding: 0.22rem;
+          background-color: #fff;
+          border-radius: 0.03rem 0.03rem 0.16rem  0.16rem ;
+          position:relative;
+
+          .left-line{
+            width: 0.04rem;
+            height: 1.11rem;
+            border-radius: 0.03rem;
+            position: absolute;
+            left: 0;
+            top: 0.625rem;
+          }
+
+          .row {
+            height:0.7rem;
+            .time {
+              font-size: 0.32rem;
+              color: #333333;
+            }
+
+            .licence{
+              font-size: 0.28rem;
+              color: #000000;
+              margin-left: 0.243rem;
+              line-height: 0.4rem;
+            }
+
+            .icon-img{
+              display:inline-block;
+              width:0.7rem;
+              height:0.7rem;
+              float:right;
+              margin-left: 0.3rem;
+            }
+
+            .icon-phone{
+              background: url(../../images/coach/icon_phone.png) no-repeat center;
+              background-size: 100% 100%;
+            }
+
+            .icon-phone-disable{
+              background: url(../../images/coach/icon_phone_no.png) no-repeat center;
+              background-size: 100% 100%;
+            }
+
+            .icon-view-map{
+              background: url(../../images/coach/button_bus_2.png) no-repeat center;
+              background-size: 100% 100%;
+            }
+
+            .icon-list{
+              background: url(../../images/coach/icon_list.png) no-repeat center;
+              background-size: 100% 100%;
+            }
+          }
+
+          .station {
+            position: relative;
+
+            .start, .end {
+              position: relative;
+              padding: 3px 0;
+              margin: 0 25px 0 23px;
+              font-size: 0.32rem;
+              color: #333333;
+              line-height: 0.52rem;
+
+              &:before {
+                content: '';
+                position: absolute;
+                top: 12px;
+                left: -18px;
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+              }
+            }
+
+            /*竖线*/
+            .start:after {
+              content: '';
+              position: absolute;
+              top: 23px;
+              left: -15px;
+              bottom: -10px;
+              z-index: 6;
+              width: 0;
+              height: auto;
+              border: 1px solid #ccc;
+            }
+
+            .start:before {
+              background-color: #25CE5F;
+            }
+
+            .end:before {
+              background-color: #FE6666;
+            }
+          }
+        }
+
+        .ola-ticket{
+          li.ola-ticket-item{
+            border-radius: 0.16rem;
+            background:#fff;
+            height:1.4rem;
+            position: relative;
+
+            .left-line-li{
+              width:0.04rem;
+              height:0.6rem;
+              position: absolute;
+              top:0.4rem;
+            }
+
+            .ticket-checking-info{
+              display: inline-block;
+              width: 4.6rem;
+              height: 100%;
+
+              .checking-item{
+                font-size: 0.32rem;
+                color: #9B9B9B;
+                padding-left: 0.21rem;
+                height: 1.4rem;
+                line-height: 0.53rem;
+                display: table-cell;
+                vertical-align: middle;
+
+                span{
+                  font-size: 0.38rem;
+                  color: #000000;
+                  margin-left: 0.19rem;
+                }
+
+                .seat-number span{
+                  font-size: 0.32rem;
+                }
+
+              }
+
+              button{
+                width: 1.45rem;
+                height: 0.5rem;
+                opacity: 0.8;
+                border: 0.02rem solid #AAAAB1;
+                border-radius: 1rem;
+                font-size: 0.28rem;
+                color: #AAAAB1;
+                position: absolute;
+                right:2.68rem;
+                top:0.45rem;
+
+                &:before {
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                  background: rgba(0, 0, 0, 0.2);
+                  border-radius: 1rem;
+                }
+
+                &:active::before {
+                  content: '';
+                }
+              }
+            }
+
+          }
+
+          /* 品牌支持 */
+          li.brand {
+            position: relative;
+            min-height: 0.45rem;
+            height: auto;
+            padding: 0.18rem 0 0.15rem;
+            border-top: 0.01rem dashed #e8e8e8;
+
+            .brand-logo {
+              position: absolute;
+              top: 0.124rem;
+              left: 0.21rem;
+              width: 1.275rem;
+              height: 0.45rem;
+            }
+
+            .brand-content {
+              margin-left: 2.375rem;
+              font-size: 0.32rem;
+              line-height: 0.45rem;
+              color: #FE6666;
+              text-align: left;
+            }
+          }
+        }
+
+      }
+
+      .custom-line{
+        .ola-ticket{
+
+          .icon-ticket-state{
+            display: inline-block;
+            width:2.44rem;
+            height:0.88rem;
+            position:absolute;
+            top:0.28rem;
+            border-left: 1px solid #eaeaea;
+            text-align: center;
+
+            .state-icon{
+              display: inline-block;
+              width:1.21rem;
+              height:1.08rem;
+              margin-top: -0.1rem;
+            }
+
+            .success{
+              background:  url(../../images/coach/icon_checked.png) no-repeat center;
+              background-size: 100% 100%;
+            }
+            .refund{
+              background:  url(../../images/coach/icon_refunded.png) no-repeat center;
+              background-size: 100% 100%;
+            }
+            .wait{
+              background:  url(../../images/coach/icon_toride.png) no-repeat center;
+              background-size: 100% 100%;
+            }
+          }
+
+        }
+      }
+
+      .to-from-work{
+        .ola-ticket{
+          .icon-ticket-state{
+            display: inline-block;
+            width:2.44rem;
+            height:0.88rem;
+            position:absolute;
+            top:0.28rem;
+            border-left: 1px solid #eaeaea;
+            text-align: center;
+
+            button{
+              display: inline-block;
+              width:2rem;
+              height:0.68rem;
+              line-height: 0.68rem;
+              border: 1px solid #B1C9FF;
+              border-radius: 1rem;
+              font-size: 0.32rem;
+              color: #6392FE;
+              margin-top: 0.1rem;
+              position: relative;
+
+              &:before {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width:100%;
+                height:100%;
+                border-radius: 1rem;
+                background: rgba(177,201,255, 0.2);
+              }
+
+              &:active::before {
+                content: '';
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

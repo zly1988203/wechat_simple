@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>下单</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/commutingBus/toAddOrder.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="preOrderInfo" class="content">
+    <div class="order-head">
+        <div class="head-panle">
+            <div class="head">
+                <div class="time"></div>
+                <div class="line-name"></div>
+                <div class="license-plate"></div>
+            </div>
+            <div class="station">
+                <div id="departTitle" class="station-item"></div>
+                <div id="arriveTitle" class="station-item"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="order-panle">
+        <div class="item-info">
+            <div class="title">乘车日期</div>
+            <div id="payDays" class="txt">共 0 天</div>
+        </div>
+        <div class="item-info">
+                <div class="ticket-total">
+                    <span>票价总额</span>
+                </div>
+
+            <div class="price-txt">
+                <div id="normalPrice" class="normal-price">60元</div>
+                <div id="specialPrice" class="special-price">50元</div>
+            </div>
+        </div>
+        <div class="item-info coupon-toggle">
+            <div class="title">优惠券</div>
+            <div id="couponUsePrice" class="coupon-price">
+                选择优惠券
+            </div>
+        </div>
+        <div class="item-info">
+            <div class="title">联系手机 <span class="tip">(用于接收短信电话通知)</span></div>
+            <div class="txt">
+                <input id="mobile" type="tel" maxlength="11" autofocus placeholder="填写手机号码">
+            </div>
+        </div>
+    </div>
+
+
+    <div class="rule-content">
+
+    </div>
+
+    <div class="order-footer">
+        <div class="back-btn">返回</div>
+        <div class="pay-price">实付<span id="payPrice">0</span>元</div>
+        <div class="pay-btn">确认支付 </div>
+    </div>
+
+</div>
+
+</body>
+<script src="../../dist/javascripts/zepto.min.js"></script>
+<script src="../../dist/javascripts/simpleui.min.js"></script>
+<script src="../../dist/javascripts/vectors.min.js"></script>
+<script src="../../src/js/commutingBus/serverApi.js"></script>
+<script src="../../src/js/commutingBus/toAddOrder.js"></script>
+</html>

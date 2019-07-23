@@ -1,0 +1,197 @@
+@charset "utf-8";
+@import "../base/variable.less";
+
+.contact-tip {
+    padding: 15px 10px;
+    text-align: center;
+    font-size: 14px;
+    color: #F3F4F5;
+    background-color: #999;
+}
+
+.add-contact {
+    padding: 20px 0;
+    text-align: center;
+    font-size: 16px;
+    line-height: 25px;
+    color: #333;
+
+    &:before {
+        content: '';
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        margin-right: 8px;
+        vertical-align: bottom;
+        background: url(../../images/my/icon-plus.png) no-repeat center;
+        background-size: 100% 100%;
+    }
+}
+
+#contacts {
+    margin-top: 10px;
+    background: #FFFFFF;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.05);
+
+    li {
+        color: #333;
+
+        span {
+            margin-right: 30px;
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+
+        &.check {
+            position: relative;
+            padding-right: 31px;
+
+            &:after {
+                content: '';
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                right: 15px;
+                width: 16px;
+                height: 10px;
+                margin: auto 0;
+                background: url(../../images/my/icon-eye.png) no-repeat center;
+                background-size: 100% 100%;
+            }
+        }
+    }
+}
+
+.contact-add {
+    padding: 10px;
+
+    .box {
+        background: #FFFFFF;
+        box-shadow: 0 2px 6px 0 rgba(0,0,0,0.10);
+        border-radius: 3px;
+
+        .frm {
+            .item {
+                padding: 20px 10px;
+                display: flex;
+                align-items: center;
+                border-bottom: 1px solid #F1F1F1;
+
+                &:last-child {
+                    border-bottom: 0 none;
+                }
+
+                label {
+                    width: 60px;
+                    text-align: left;
+                    font-size: 16px;
+                    line-height: 22px;
+                    color: #333;
+                }
+
+                input {
+                    flex: 1;
+                    margin-left: 15px;
+                    line-height: 22px;
+                    border: 0 none;
+                }
+            }
+        }
+    }
+}
+
+.sui-dialog {
+    overflow: hidden;
+
+    .text-default {
+        margin-top: 8px;
+        font-size: 18px;
+        line-height: 22px;
+        color: #333;
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+
+    .sui-dialog-hd {
+        padding: 8px;
+        font-size: 19px;
+        color: #fff;
+        text-align: center;
+        background: #999;
+    }
+
+    .sui-dialog-bd {
+        padding: 28px 30px;
+    }
+
+    .sui-dialog-text {
+        text-align: left !important;
+    }
+
+    .sui-dialog-ft {
+        button {
+            font-size: 19px;
+            color: #6392FE;
+
+            &.sui-dialog-cancel {
+                color: #666;
+            }
+        }
+    }
+}
+
+.btn-group {
+    position:fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    padding: 10px;
+    background-color: #fafafa;
+    display: flex;
+
+    button {
+        position: relative;
+        text-align: center;
+        font-size: 19px;
+        height: 50px;
+        line-height: 50px;
+        border-radius: 50px;
+        box-sizing: border-box;
+        overflow: hidden;
+        flex: 1;
+        margin-left: 10px;
+
+        &:first-child {
+            margin-left: 0;
+        }
+
+        &:before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        &:active::before {
+            content: '';
+        }
+
+        &.default {
+            background-color: #fff;
+            color: #999;
+            border: 1px solid #ccc;
+        }
+
+        &.primary {
+            background-color: #6392FE;
+            color: #fff;
+        }
+    }
+}

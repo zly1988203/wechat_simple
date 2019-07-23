@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>中交出行</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/rent/order-wait.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <div class="order-wait">
+        <div class="wait-box">
+            <div class="call-car-tip">
+                <h1>下单成功，正在为您安排车辆</h1>
+                <p>附近的车辆会优先通知</p>
+            </div>
+
+            <div class="leave-msg">我在创业投资大厦斜角45度天等你。<i></i></div>
+
+            <div class="banner"></div>
+        </div>
+
+        <div class="order-wait-foot">
+            <!-- 已支付样式btn-group-paid -->
+            <div class="btn-group btn-group-paid">
+                <div class="btn primary">返回首页</div>
+                <div class="btn default">取消订单并退款</div>
+            </div>
+            <!-- 未支付样式btn-group-not-paid -->
+            <div class="btn-group btn-group-not-paid">
+                <div class="btn default">返回首页</div>
+                <div class="btn default">取消订单</div>
+                <div class="btn primary">立即支付</div>
+            </div>
+            <div class="link">
+                <span class="inter-rule">城际约租车规则</span>
+                |
+                <span data-href="#">联系客服</span>
+            </div>
+        </div>
+
+        <!--温馨提示-->
+        <div class="ola-tips">
+            <div class="head">
+                <h4>温馨提醒</h4>
+            </div>
+            <div class="main">
+                <p>1.微信订单服务时间：08:30~20:00。00:00~8:00或20:00~24:00时间段下单，并需要在该时间段出行的乘客，请拨打客服热线预约。</p>
+                <p>2. 当前仅提供市区（城区）直达市区（城区）的约车服务，暂无市区（城区）以外的上下车站点，敬请谅解。</p>
+            </div>
+        </div>
+    </div>
+
+    <!--城际约租车规则-->
+    <div id="interRule" class="sui-popup-container">
+        <div class="sui-popup-mask"></div>
+        <div class="sui-popup-modal">
+            <div class="listWrapper">
+                <div class="content">
+                    <article class="sui-article">
+                        <h1>城际约租车规则</h1>
+                        <div class="sui-border-t content">
+                            <p><strong>一、约车流程</strong><br/>
+                                1、预约下单：乘客下单需至少提前20分钟。<br/>
+                                2、车企服务：为保证服务质量，车企客服将与您联系确认出行事宜，并沟通清楚情况下，对乘客发起的城际约租车行程进行调整，如调整：出发地、目的地、出行时间、出行费用等信息。<br/>
+                                3、司机服务：司机根据订单需求接送乘客。 <br/>
+                                4、双方评价：司机和乘客均可在拼车后评价对方。</p>
+                            <p><strong>二、司机责任</strong><br/>
+                                1、停靠点选择：司机按照乘客指定停靠点拼车；请乘客尽量设置方便司机停靠的地点；司机可以拒绝停靠交通规则禁止的地点。<br/>
+                                2、车辆规范：司机需要驾驶经过认证的车辆，并保持车内整洁干净，无杂物。<br/>
+                                3、行李放置：司机需要保持车辆可以放置至少一个标准行李箱；乘客如有超大行李，需与客服提前说明；<br/>
+                                4、城际约租车的过路、过桥费由司机承担。<br/>
+                                5、文明驾驶，遵守交通规则。</p>
+                            <p><strong>三、双方共同遵守的规则</strong><br/>
+                                1、守时规则：司机和乘客均需按照订单时间前后10分钟完成搭乘；如有特殊情况，需要提前电话沟通。<br/>
+                                2、文明拼车：双方均需遵守文明规范，共建和谐社会。<br/>
+                                3、本平台倡议无烟行车；如果有宠物搭乘，需要提前说明；司机有权拒绝未经申请的宠物搭乘。<br/>
+                                4、违反本规则的司机和乘客，平台有权取消注册会员资格，并追究可能导致的损失。</p>
+                            <p><strong>四、取消及退款</strong><br/>
+                                1、原则上司机和乘客在订单确认后，均不能取消订单；<br/>
+                                2、司机或乘客如有特殊情况，请致电客服协商处理；<br/>
+                                3、司机未能按照本规则服务，乘客可致电客服处理。</p>
+                        </div>
+                    </article>
+                    <div class="close-popup close" data-target="interRule"></div>
+                </div>
+            </div>
+            <div class="btn-group">
+                <div class="btn primary close-popup" data-target="interRule">返回城际约租车</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../dist/javascripts/zepto.min.js"></script>
+    <script src="../../dist/javascripts/simpleui.min.js"></script>
+    <script src="../../dist/javascripts/vectors.min.js"></script>
+    <script src="../../dist/javascripts/backtrack.min.js"></script>
+    <script>
+        $(function () {
+            //城际约租车规则
+            $('.inter-rule').on('click', function () {
+                $('#interRule').popup('popup', function() {
+                    var $el = $('#interRule');
+                    if($el.data('isInitsc')) return;
+                    $el.data('isInitsc', true);
+
+                    setTimeout(function() {
+                        $el.find('.listWrapper').css('height', $(window).height() - $el.find('.btn.primary').height() - 15);
+                        new IScroll('#interRule .listWrapper');
+                        $el.data('isInitsc', false);
+                    }, 300);
+                });
+            });
+            checkPaid();//显示已支付页面或显示未支付页面
+
+            //返回键控制
+            backtrack(function () {
+                var self = this;
+
+                //弹窗层，返回0
+                $('.inter-rule').on('click.back', function () {
+                    self.setState(0);
+                });
+
+                //关闭弹窗层，返回-1
+                $('[data-target="interRule"]').on('click.back', function () {
+                    self.setState(-1);
+                });
+            }, function (data) {
+                this.go();
+            });
+        });
+        //已支付-未支付 切换 paidFlag：1-已支付,0或其他-未支付
+        function checkPaid(paidFlag){
+            if(1==paidFlag){
+                $('.btn-group-paid').show();
+                $('.btn-group-not-paid').hide();
+            }else{
+                $('.btn-group-paid').hide();
+                $('.btn-group-not-paid').show();
+            }
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>中交出行</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/bus_new/line-map.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div class="line-detail">
+    <div class="detail-head-content">
+        <div class="detail-head">
+            <div class="detail-date">2019年1月2日 8:36
+                <div class="detail-busNo">LXC123</div>
+            </div>
+            <!--<div class="detail-carNo">粤B76527</div>-->
+            <div class="detail-price">
+                <s class="special-price"><i>￥</i>0.09元</s><strong class="sell-price"><i>￥</i>0.03元</strong>
+            </div>
+        </div>
+    </div>
+    <div class="detail-main-content">
+        <div class="detail-main">
+            <div class="content">
+                <div class="detail-station-list">
+                    <ul class="detail-station-start">
+                        <li class="active" data-lng="113.877227" data-lat="22.575276" data-name="坪洲地铁站" data-time="预计6:00" data-form="on">
+                            <div class="content">
+                                <div class="station-name-one">坪洲地铁站</div>
+                                <span>(预计6:00)</span>
+                            </div>
+                        </li>
+                        <li data-lng="113.887762" data-lat="22.566564" data-name="宝体地铁站" data-time="预计7:00" data-form="on">
+                            <div class="content">
+                                <div class="station-name-two">宝体地铁站</div>
+                                <span>(预计7:00)</span>
+                            </div>
+                        </li>
+                        <li data-lng="113.890656" data-lat="22.561495" data-name="宝安区" data-time="预计8:00" data-form="on">
+                            <div class="content">
+                                <h4>宝安区</h4>
+                                <span>(预计8:00)</span>
+                            </div>
+                        </li>
+                        <!-- active：当前，sell-out：已停售 -->
+                        <li class="sell-out" data-lng="113.638318" data-lat="22.806702" data-name="虎门大桥" data-time="预计9:00" data-form="on">
+                            <div class="content">
+                                <h4>虎门大桥</h4>
+                                <span>(已停售)</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="detail-station-ending">
+                        <li data-lng="112.315033" data-lat="22.189566" data-name="恩平市" data-time="预计10:00" data-form="off">
+                            <div class="content">
+                                <h4>恩平市</h4>
+                                <span>(预计10:00)</span>
+                            </div>
+                        </li>
+                        <li data-lng="111.625709" data-lat="21.757866" data-name="阳西市" data-time="预计11:00" data-form="off">
+                            <div class="content">
+                                <h4>阳西市</h4>
+                                <span>(预计11:00)</span>
+                            </div>
+                        </li>
+                        <li data-lng="110.790931" data-lat="21.447624" data-name="吴川市" data-time="预计12:00" data-form="off">
+                            <div class="content">
+                                <h4>吴川市</h4>
+                                <span>(预计12:00)</span>
+                            </div>
+                        </li>
+                        <li class="active" data-lng="110.465529" data-lat="21.249946" data-name="坡头区" data-time="预计13:00" data-form="off">
+                            <div class="content">
+                                <h4>坡头区</h4>
+                                <span>(预计13:00)</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="detail-bottom">
+        <div class="edit-station">修改上下车点</div>
+        <div class="save-station" style="display:none;">确定上下车点</div>
+        <div class="detail-toggle" data-toggle="true"></div>
+    </div>
+</div>
+<div class="map-panel">
+    <div class="ola-maps" id="container"></div>
+</div>
+<div class="foot-panel">
+    <div id="back" class="back">返回</div>
+    <div id="btnTicket" class="buy-ticket">购票</div>
+</div>
+
+
+<div id="stationImage" style="display: none">
+    <div class="img-content">
+        <img src="">
+    </div>
+    <div class="close-img"></div>
+</div>
+
+<script src="../../dist/javascripts/zepto.min.js"></script>
+<script src="../../dist/javascripts/simpleui.min.js"></script>
+<script src="../../dist/javascripts/vectors.min.js"></script>
+<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.13&key=cc84bbc40681d10bdf6a924b2caf31d5&plugin=AMap.Driving"></script>
+<!--引入UI组件库（1.0版本） -->
+<script src="https://webapi.amap.com/ui/1.0/main.js?v=1.0.11"></script>
+<script>
+    var imgUrl = '';
+
+    var map = new AMap.Map('container', {
+        resizeEnable: true,
+        zoom:12,
+        // center: [116.397428, 39.90923]
+    });
+
+    map.on('click',function (e) {
+        var el = e.target;
+    })
+
+    var startMarker = new AMap.Marker({
+        map: map,
+        icon:new AMap.Icon({
+            size: new AMap.Size(21, 32),  //图标大小
+            image: '../../dist/images/bus_new/icon_up.png',
+            imageOffset: new AMap.Pixel(0, 0)//偏移量 0-left;60-top
+        })
+    });
+
+    var endMarker = new AMap.Marker({
+        map: map,
+        icon:new AMap.Icon({
+            size: new AMap.Size(21, 32),  //图标大小
+            image:  '../../dist/images/bus_new/icon_down.png',
+            imageOffset: new AMap.Pixel(0, 0)//偏移量 0-left;60-top
+        })
+    });
+
+   // var  carMarker = new AMap.Marker({
+   //      map: map,
+   //      position: [113.877227, 22.575276],
+   //      icon: "https://webapi.amap.com/images/car.png",
+   //      offset: new AMap.Pixel(-26, -13),
+   //      autoRotation: true,
+   //      angle:-90,
+   //  });
+   //
+   //  carMarker.on('moving', function (e) {
+   //      passedPolyline.setPath(e.passedPath);
+   //  });
+
+    var lineArr = [
+                {
+                name: "坪洲地铁站",
+                lnglat: [113.877227, 22.575276],
+                    time:'预计06:00',
+                    imgUrl:'../../dist/images/summary/qrcode-ex.png',
+            },
+                {
+                name: "宝体地铁站",
+                lnglat: [113.887762, 22.566564],
+                    time:'预计06:10',
+                    imgUrl:'../../dist/images/summary/qrcode-ex.png',
+            },
+                {
+                name: "宝安区",
+                lnglat: [113.890656, 22.561495],
+                    time:'06:15',
+                    imgUrl:'../../dist/images/summary/qrcode-ex.png',
+            },
+                {
+                name: "虎门大桥",
+                lnglat: [113.638318, 22.806702],
+                    time:'预计07:00',
+                    imgUrl:'../../dist/images/summary/qrcode-ex.png',
+            },
+                {
+                name: "恩平市",
+                lnglat: [112.315033, 22.189566],
+                    time:'预计09:00',
+                    imgUrl:'../../dist/images/summary/qrcode-ex.png',
+            },
+                {
+                name: "阳西市",
+                lnglat: [111.625709,21.757866],
+                    time:'预计011:00',
+                    imgUrl:'../../dist/images/summary/qrcode-ex.png',
+            },
+                {
+                name: "吴川市",
+                lnglat: [110.790931, 21.447624],
+                    time:'预计013:00',
+                    imgUrl:'../../dist/images/summary/qrcode-ex.png',
+            },
+                {
+                name: "坡头区",
+                lnglat: [110.465529, 21.249946],
+                    time:'预计015:00',
+                    imgUrl:'../../dist/images/summary/qrcode-ex.png',
+            }
+            ];
+
+    function  addMark() {
+        // var marker = null;
+        lineArr.forEach(function (item,index) {
+            var name = item.name;
+            var time = item.time;
+            var imgUrl = item.imgUrl;
+            var lng = item.lnglat[0];
+            var lat = item.lnglat[1];
+            var marker = new AMap.Marker({
+                map: map,
+                position:item.lnglat,
+                offset: new AMap.Pixel(-8, -3),
+                content:'<div class="circle-mark" data-name="'+name+'" data-time="'+time+'"' +
+                ' data-img-url="'+imgUrl+'" data-lng="'+lng+'" data-lat="'+lat+'"></div>',
+            });
+
+            marker.on('click',function (e) {
+                var $el = $(e.target.getContentDom());
+                var _this = $(this);
+                var name = $el.find('.circle-mark').data('name');
+                var time = $el.find('.circle-mark').data('time');
+                var imgUrl = $el.find('.circle-mark').data('img-url');
+                var lng = $el.find('.circle-mark').data('lng');
+                var lat = $el.find('.circle-mark').data('lat');
+                var point = {
+                    imgUrl: imgUrl,
+                    lnglat:  [lng, lat],
+                    name: name,
+                    time: time,
+                }
+                openInfoWindow(point);
+            })
+
+        })
+    }
+
+    function openInfoWindow(point) {
+        var title = point.name;
+        var dataTime = point.time;
+        imgUrl = point.imgUrl;
+        var infoWindow = new AMap.InfoWindow({
+            isCustom:true,
+            // //基点指向marker的头部位置
+            offset: new AMap.Pixel(0, -5),
+            position:point.lnglat,
+            content:' <div class="simple-content-body">' +
+            '        <div class="simple-window-panel">' +
+            '            <div class="simple-window-title">'+title+'</div>' +
+            '            <div class="simple-window-body">' +
+            '                <div class="info-content">'+dataTime+'出发</div>' +
+            '            </div>' +
+            '             <div class="window-foot">' +
+            '                            <div class="icon-view-img"></div>' +
+            '                            <div id="showImg" class="foot-txt">查看图片</div>' +
+            '                            <div class="icon-see"></div>' +
+            '                       </div>' +
+            '        </div>' +
+            '        <div class="ifwn-combo-sharp"></div>' +
+            '    </div>',
+        });
+
+        infoWindow.on('open',function (e) {
+            $('#showImg').bind('click',function () {
+                $('.img-content img').attr('src',imgUrl) ;
+                $('#stationImage').show();
+            })
+        })
+
+        infoWindow.open(map, point.lnglat);
+    }
+    document.body.addEventListener('touchstart', function(e){
+        if( e.target.id === 'showImg'){
+            $('.img-content img').attr('src',imgUrl) ;
+            $('#stationImage').show();
+        }
+    }, true);
+
+    $(function () {
+        init();
+        var driving = new AMap.Driving({
+            map: map,
+            hideMarkers:true,
+        });
+        // 根据起终点经纬度规划驾车导航路线
+        driving.search(new AMap.LngLat(113.877227, 22.575276), new AMap.LngLat(110.465529, 21.249946),{
+            waypoints:[new AMap.LngLat(113.887762, 22.566564),new AMap.LngLat(113.890656, 22.561495),
+                new AMap.LngLat(113.638318,22.806702),new AMap.LngLat(112.315033, 22.189566),
+                new AMap.LngLat(111.625709,21.757866),new AMap.LngLat(110.790931, 21.447624)]
+        }, function(status, result) {
+            // result 即是对应的驾车导航信息，相关数据结构文档请参考  https://lbs.amap.com/api/javascript-api/reference/route-search#m_DrivingResult
+            if (status === 'complete') {
+                addMark();
+                openInfoWindow(lineArr[0]);
+                console.log('绘制驾车路线完成')
+            } else {
+                console.log('获取驾车数据失败：' + result)
+            }
+        });
+        setMap();
+    })
+
+    function showImg() {
+        $('.img-content img').attr('src',imgUrl) ;
+        $('#stationImage').show();
+    }
+
+    $('.close-img').on('click',function () {
+        $('#stationImage').hide();
+    })
+
+    /*展开收起切换*/
+    $('.detail-toggle').on('touchstart', function () {
+        animateSwitchDetail();
+    });
+
+    /*选中站点*/
+    $('.detail-station-list li').on('touchstart', function () {
+        // startAnimation();
+        var $el = $(this);
+        var lat = $el.data('lat');
+        var lng = $el.data('lng');
+        var name = $el.data('name');
+        var time = $el.data('time');
+        var type = $el.data('form');
+        if(type == 'on'){
+            startMarker.setPosition([lng,lat]);
+        }else {
+            endMarker.setPosition([lng,lat]);
+        }
+        var point = {
+            imgUrl: "../../dist/images/summary/qrcode-ex.png",
+            lnglat:  [lng, lat],
+            name: name,
+            time: time,
+        }
+        openInfoWindow(point);
+        //剔除已停售站点
+        if($el.hasClass('sell-out')) {
+            return false;
+        }
+
+        $el.addClass('active').siblings().removeClass('active');
+        //滚动
+        scrollMiddle($el);
+    });
+
+    $('#back').on('click',function () {
+
+    })
+
+    $('#btnTicket').on('click',function () {
+
+    })
+
+
+    //初始化
+    function init(){
+        //获取站点详情高度
+        var main_content =  $('.detail-main-content');
+        main_content.data('height',main_content.height());
+        main_content.height(main_content.data('height'));
+    }
+
+    //线路详情展开收起动画
+    function animateSwitchDetail(){
+        var el = $('.detail-main-content');
+        if(el.data('toggle')){
+            $('.edit-station').hide();
+            $('.save-station').show();
+            el.height(el.data('height'));
+            el.data('toggle',false);
+            $('.detail-toggle').removeClass('turn');
+
+            //设置地图边界
+            var line_detail_h = $('.detail-head-content').height()+ el.data('height')+ $('.detail-bottom').height();;
+            var h = $(window).height() - line_detail_h;
+            $('.ola-maps').css({height: h + 'px', 'margin-top': line_detail_h});
+
+        }else{
+            $('.edit-station').show();
+            $('.save-station').hide();
+            el.height(0);
+            el.data('toggle',true);
+            $('.detail-toggle').addClass('turn');
+
+            //设置地图边界
+            var line_detail_h = $('.detail-head-content').height()+ $('.detail-bottom').height();;
+            var h = $(window).height() - line_detail_h;
+            $('.ola-maps').css({height: h + 'px', 'margin-top': line_detail_h});
+        }
+
+        //滚动设置
+        bindScroll();
+    }
+
+    //设置地图的外边距
+    function setMap() {
+        var h = $(window).height() - $('.line-detail').height();
+        $('.ola-maps').css({height: h + 'px', 'margin-top': $('.line-detail').height()});
+    }
+
+    // 绑定滚动条
+    var _myIScroll;
+    var bindScroll = function() {
+        if(_myIScroll) {
+            _myIScroll.destroy();
+        }
+        setTimeout(function() {
+            _myIScroll = new IScroll('.detail-main', {
+                click: iScrollClick(),
+                scrollX: false,
+                scrollY: true,
+                mouseWheel: true
+            });
+
+            //第一次滚动的位移
+            scrollMiddle($('.detail-station-start li.active'));
+        }, 300);
+    };
+
+    /*
+    * 滚动到中间
+    * */
+    function scrollMiddle(el) {
+        /*
+         * param
+         *
+         *   el：当前上车点
+         *   _moveTop：移动距离
+         *   el_halfHeight：当前上车点元素高度的一半
+         *   _redundant：多余高度
+         *   _startScrollTop：当前上车点位置
+         *   _mainHeight：盒子高度
+         *   _halfMainHeight：盒子高度的一半
+         *   _contentHeight：内容总高度
+         *   _MAX：最大移动距离
+         *
+         * */
+        var _moveTop = 0;
+        var el_halfHeight = parseInt(el.height() / 2);
+        var _redundant = el_halfHeight;
+        var _startScrollTop = el.position().top,
+            _mainHeight = parseInt($('.detail-main').height()),
+            _halfMainHeight = _mainHeight / 2,
+            _contentHeight = parseInt($('.detail-main .content').height()),
+            _MAX = _contentHeight - _mainHeight;
+
+        //如果 当前上车点的位置小于盒子高度的一半 => 不移动
+        if(_startScrollTop < _halfMainHeight) {
+            _moveTop = 0;
+        } else {
+            //如果 当前上车点的位置大于盒子高度的一半 => 移动距离为 当前上车点的位置 - 盒子高度的一半 + 多余的高度
+            _moveTop = -(_startScrollTop - _halfMainHeight + _redundant);
+        }
+
+        //如果移动距离超过最大移动距离
+        if(Math.abs(_moveTop) > _MAX) {
+            _moveTop = -_MAX;
+        }
+
+        //滚动
+        // _myIScroll.scrollTo(0, _moveTop);
+    }
+
+    //兼容安卓
+    function iScrollClick(){
+        if (/iPhone|iPad|iPod|Macintosh/i.test(navigator.userAgent)) return false;
+        if (/Chrome/i.test(navigator.userAgent)) return (/Android/i.test(navigator.userAgent));
+        if (/Silk/i.test(navigator.userAgent)) return false;
+        if (/Android/i.test(navigator.userAgent)) {
+            var s=navigator.userAgent.substr(navigator.userAgent.indexOf('Android')+8,3);
+            return parseFloat(s[0]+s[3]) < 44 ? false : true
+        }
+    }
+</script>
+
+</body>
+</html>

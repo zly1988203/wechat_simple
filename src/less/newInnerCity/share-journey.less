@@ -1,0 +1,182 @@
+@charset "utf-8";
+html,body{
+  min-height: 100%;
+  height: 100%;
+  font-family: PingFangSC-Medium;
+}
+.main-container{
+  .head{
+    background: #FFFFFF;
+    box-shadow: 0 0 0.2rem 0 rgba(0,0,0,0.20);
+    font-size: 0.28rem;
+    color: #333333;
+    padding: 0.2rem;
+  }
+
+  //行程信息
+  .journey-container{
+    width: 100%;
+    background: rgba(0,0,0,0);
+    overflow-y: hidden;
+    position: fixed;
+    bottom: 0;
+    .container{
+      background: #FFFFFF;
+      box-shadow: 0 0 20px 0 rgba(227,227,227,0.40);
+      font-size: 0.28rem;
+      color: #333;
+      letter-spacing: 0;
+      margin: 0.2rem;
+
+      .title{
+        padding: 0.2rem 0  0.2rem 0.28rem;
+      }
+      .journey-content{
+        .time-box{
+          font-weight: bold;
+        }
+        .station-box{
+          padding: 0.2rem ;
+          border-bottom:1px solid #F1F1F1;;
+          .station{
+            padding-left: 0.48rem;
+            position: relative;
+            .time{
+              font-size: 0.2rem;
+              color: #333333;
+              font-weight: normal;
+            }
+            &:before{
+              content: "";
+              position: absolute;
+              top: 4px;
+              left: 0;
+              width: 6px;
+              height: 6px;
+              border-radius: 50%;
+              border: 0.01rem solid #6392FE;
+            }
+          }
+
+          .depart{
+            margin-bottom: 0.2rem;
+            &:after{
+              content: "";
+              position: absolute;
+              top: 14px;
+              left: 3px;
+              bottom: -11px;
+              z-index: 6;
+              width: 0;
+              height: auto;
+              border-left: 1px dotted  #ccc;
+            }
+          }
+          .arrive{
+            &:before{
+              border: 0.01rem solid #333333;
+            }
+            margin-top: 0.1rem;
+          }
+        }
+
+      }
+      .driver-info-container{
+        background: #FFFFFF;
+        box-shadow: 0 0 0.2rem 0 rgba(227,227,227,0.40);
+        position: relative;
+        .info{
+          display: flex;
+          border-bottom: 1px solid #F1F1F1;
+          padding: 0.3rem 0.2rem 0.2rem;
+          .avatar{
+            width: 1.2rem;
+            height: 1.2rem;
+            border-radius: 100%;
+            img{
+              display: block;
+              width: 100%;
+              height: 100%;
+              border-radius: 100%;
+            }
+          }
+          .content{
+            flex: 1;
+            margin-left: 0.2rem;
+            position: relative;
+            h4{
+              font-size: 0.28rem;
+              color: #333333;
+              letter-spacing: 0;
+            }
+            .second{
+              font-size: 0.22rem;
+              color: #999999;
+              letter-spacing: 0;
+              .service{
+                display: flex;
+                .level{
+                  height: 0.3rem;
+                  line-height: 0.35rem;
+                  background: #FFA800;
+                  border-radius: 1rem;
+                  margin-left: 0.2rem;
+                  font-size: 0.2rem;
+                  color: #FFFFFF;
+                  letter-spacing: 0;
+                  padding: 0 0.1rem 0 0.36rem;
+                  position: relative;
+                  &:before{
+                    content: '';
+                    display: block;
+                    width: 0.16rem;
+                    height: 0.16rem;
+                    background: url("../../images/newInnerCity/icon-star.png") center no-repeat;
+                    background-size: 100% 100%;
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    margin: auto 0;
+                    left: 0.1rem;
+                  }
+                }
+              }
+            }
+
+          }
+          .other-info{
+            position: absolute;
+            right: 0;
+            top: 0.1rem;
+            .identification{
+              height: 0.4rem;
+              line-height: 0.44rem;
+              background: #6392FE;
+              border-radius: 1rem 0 0 1rem;
+              font-size: 0.2rem;
+              padding: 0 0.1rem;
+              color: #FFFFFF;
+              letter-spacing: 0;
+              text-align: center;
+            }
+            .tel{
+              width: 0.7rem;
+              height: 0.7rem;
+              background: url("../../images/common/icon_tel.png") center no-repeat;
+              background-size: 100% 100%;
+              margin-top: 0.2rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+//地图
+.ola-maps{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+}

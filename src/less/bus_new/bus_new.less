@@ -1,0 +1,318 @@
+@charset "utf-8";
+
+body {
+    background: #F3F4F5;
+}
+
+/* 搜索 */ 
+.search-form {
+    margin: 0.12rem 0.22rem 0;
+    position: relative;
+    background-color: #fff;
+    box-shadow: 0 .02rem .06rem 0 rgba(0,0,0,0.10);
+    border-radius: .03rem;
+
+    .search-station {
+        display: flex;
+        align-items: center;
+
+        .sui-list {
+            flex: 1;
+            .bottom-line {
+                width: 5.5rem;
+                border-bottom: 1px solid #f1f1f1;
+                margin-left: .98rem;
+            }
+            li {
+                padding: 0.362rem 0 0.35rem;
+                background: none;
+
+                .control {
+                    padding-left: 0.98rem;
+                    position: relative;
+
+                    &:before {
+                        content: '';
+                        display: block;
+                        width: 0.18rem;
+                        height: 0.18rem;
+                        position: absolute;
+                        left: 0.3rem;
+                        top: 0;
+                        bottom: 0;
+                        margin: auto 0;
+                        border-radius: 100%;
+                        border: .03rem solid #333333;
+                    }
+
+                    input {
+                        display: block;
+                        width: 100%;
+                        border: 0;
+                        color: #333333;;
+                        font-size: 0.28rem;
+                    }
+
+                    &.start {
+                        &:before {
+                          border: .03rem solid #6392fe;
+                        }
+                    }
+                }
+            }
+          .v-line{
+            height: .6rem;
+            border-right: .02rem dashed #D3D2DB;;
+            float: left;
+            position: relative;
+            margin-top: .745rem;
+            margin-left: .72rem;
+            //margin-left: 10%;
+          }
+        }
+    }
+
+    .sui-padding {
+        padding: 0.36rem 0 0.39rem;
+    }
+}
+
+/*************************************/
+.hot-line-list,.scheduling{
+  header{
+    display: flex;
+    border-bottom: 1px solid #F2F2F2;
+    .border-weight{
+      border-left: .06rem solid #6392fe;
+      height: 0.24rem;
+      margin-top: 0.2rem;
+    }
+    .title{
+      font-family: PingFangSC-Regular;
+      font-size: 0.28rem;
+      color: #666666;
+      letter-spacing: 0;
+      margin: 0.1rem;
+      width: 90%;
+    }
+    .nav-right{
+      background: url("../../images/bus_new/index/icon_more.png") no-repeat 50%;
+      background-size: 100% 100%;
+      height: 0.24rem;
+      width: 0.15rem;
+      margin-top: 0.2rem;
+    }
+  }
+}
+
+.scheduling{
+  width: 7.1rem;
+  height: 2.11rem;
+  margin: .2rem;
+  background: #FFFFFF;
+  box-shadow: 0 0 20px 0 rgba(227,227,227,0.40);
+  border-radius: 6px;
+  .content{
+    display: inline-flex;
+    margin-top: .2rem;
+    .addr{
+      font-size: 0.24rem;
+      color: #666666;
+      font-family: PingFangSC-Regular;
+      letter-spacing: 0;
+      text-align: center;
+      overflow: hidden;
+      text-overflow:ellipsis;
+      white-space: nowrap;
+      width: 1.86rem;
+    }
+    .area{
+      font-size: 0.2rem;
+      color: #AAAAAA;
+    }
+    .startAdrs{
+      margin-left: .39rem;
+    }
+
+    .center-line{
+      margin: 0 0.3rem;
+      .time{
+        font-family: PingFangSC-Regular;
+        font-size: 0.18rem;
+        color: #6392FE;
+        letter-spacing: 0;
+        text-align: center;
+      }
+      .line{
+        background: url("../../images/bus_new/index/line.png") no-repeat 100%;
+        background-size: 100% 100%;
+        width: 1.82rem;
+        height: 0.1rem;
+      }
+    }
+  }
+
+  .rolling{
+    ul{
+      display: flex;
+      margin-top: .25rem;
+      justify-content: center;
+      li{
+        width: .12rem;
+        height: .12rem;
+        margin: 0 .06rem;
+        border-radius: 100%;
+        background: #EEEEEE;
+      }
+      .active{
+        background: #6392FE;
+      }
+    }
+  }
+}
+
+.near-order{
+  margin: .2rem;
+  width: 7.1rem;
+  height: 2.18rem;
+  position: relative;
+  background-color: #fff;
+  border-radius: .06rem;
+  box-shadow: 0 0 20px 0 rgba(227,227,227,0.40);
+  .content{
+    display: inline-flex;
+    margin: .2rem;
+    .location{
+      background: url("../../images/bus_new/index/location.png") no-repeat 50%;
+      background-size: 100% 100%;
+      width: 0.18rem;
+      height: 0.18rem;
+      margin-top: 0.3rem;
+    }
+
+    .addr{
+      font-size: 0.24rem;
+      color: #666666;
+      font-family: PingFangSC-Regular;
+      letter-spacing: 0;
+      text-align: center;
+      overflow: hidden;
+      text-overflow:ellipsis;
+      white-space: nowrap;
+      width: 1.88rem;
+    }
+    .area{
+      font-size: 0.2rem;
+      color: #AAAAAA;
+    }
+    .startAdrs{
+      margin-left: .2rem;
+    }
+
+    .center-line{
+      margin-left: 0.2rem;
+      margin-right: 0.2rem;
+      .arrow{
+        background: url("../../images/bus_new/index/arrow_right.png") no-repeat 50%;
+        background-size: 100% 100%;
+        width: 0.45rem;
+        height: 0.1rem;
+        margin-top: 0.3rem;
+      }
+    }
+
+    .btn-list{
+      display: inline-flex;
+      margin-left: 0.1rem;
+      div{
+        background: #FFFFFF;
+        box-shadow: 0 0 0.2rem 0 rgba(227,227,227,0.40);
+        border-radius: 0.06rem;
+        font-family: PingFangSC-Regular;
+        font-size: 0.2rem;
+        color: #AAAAAA;
+        letter-spacing: 0;
+        text-align: center;
+        margin-left: 0.1rem;
+        margin-top: 0.3rem;
+        width: 0.7rem;
+        line-height: .4rem;
+      }
+      div:active{
+        background: #6392FE;
+        box-shadow: 0 0 .2rem 0 rgba(61,59,238,0.30);
+        color: #FFFFFF;
+      }
+    }
+  }
+  .line{
+    width: 90%;
+    border-bottom: 1px solid #F2F2F2;
+    float: right;
+  }
+}
+
+.banner{
+  margin: .2rem;
+  width: 7.1rem;
+  height: 1.5rem;
+  position: relative;
+  background: #fff;
+  border-radius: .06rem;
+  box-shadow: 0 0 20px 0 rgba(227,227,227,0.40);
+  img{
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.hot-line-list{
+  margin: .2rem;
+  width: 7.1rem;
+  position: relative;
+  background-color: #fff;
+  border-radius: .06rem;
+  box-shadow: 0 0 20px 0 rgba(227,227,227,0.40);
+  .line-list{
+    display: inline-flex;
+    flex-wrap: wrap;
+    flex-direction:row;
+    text-align: center;
+    div{
+      width: 32.4%;
+      padding: 0.09rem .6rem;
+      font-family: PingFangSC-Regular;
+      font-size: .24rem;
+      color: #666666;
+      letter-spacing: 0;
+      text-align: center;
+      border: .01rem solid #F2F2F2;
+      position: relative;
+      i{
+        display: block;
+        width: .48rem;
+        height: .22rem;
+        background: url("../../images/bus_new/index/special_icon.png") no-repeat 100%;
+        background-size: 100% 100%;
+        position: absolute;
+        top: 0rem;
+        left: 0rem;
+      }
+      span{
+        font-size: .20rem;
+        color: #FE6666;
+        margin: 0 .033rem;
+      }
+      .discount{
+        color: #000000;
+        text-decoration:line-through
+      }
+    }
+  }
+}
+
+/*************************************/
+
+@import "./select-citys.less";
+

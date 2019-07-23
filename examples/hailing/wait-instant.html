@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>中交出行</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/hailing/wait.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+    <div id="wait-instant">
+        <header>
+            <div class="info">
+                <div class="avatar" style="background-image: url(../../dist/images/common/avatar_driver.png)"></div>
+                <div class="content">
+                    <h4>王师傅 · 江苏客运认证网约车司机</h4>
+                    <div class="second">
+                        <span>白色 · 别克君越</span>
+                        <span>粤BDE990</span>
+                    </div>
+                    <div class="starbar">
+                        <div class="grade"><span>4.0</span></div>
+                        <i class="star"></i>
+                        <i class="star"></i>
+                        <i class="star"></i>
+                        <i class="star"></i>
+                        <i></i>
+                    </div>
+                </div>
+                <div class="tel" data-tel="12345678"></div>
+            </div>
+            <div class="tips">司机将准时来接您，请您耐心等待。</div>
+        </header>
+        <div id="allmap"></div>
+
+        <!-- 更多操作 -->
+        <div id="more"></div>
+        <div class="more-modal">
+            <ul>
+                <li class="cancel-order">取消订单</li>
+                <li data-href="#">投诉建议</li>
+                <li data-href="tel:123456">联系客服</li>
+                <li class="share-btn">分享</li>
+            </ul>
+        </div>
+    </div>
+
+    <!--分享-->
+    <div class="share-box" style="display: none">
+        <div class="share-tips"></div>
+    </div>
+    
+	<script src="../../dist/javascripts/zepto.min.js"></script>
+	<script src="../../dist/javascripts/simpleui.min.js"></script>
+    <script src="../../dist/javascripts/vectors.min.js"></script>
+    <script src="../../dist/javascripts/hailing/common-hailing.min.js"></script>
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.4&key=cc84bbc40681d10bdf6a924b2caf31d5&plugin=AMap.Driving"></script>
+    <script type="text/javascript">
+        //强制使用https
+        var AMapUIProtocol = 'https:';  //注意结尾包括冒号
+    </script>
+    <!--引入UI组件库（1.0版本） -->
+    <script src="https://webapi.amap.com/ui/1.0/main.js"></script>
+    <script src="../../dist/javascripts/communicate.min.js"></script>
+	<script>
+        $(function() {
+            //分享行程
+            $('.share-btn').on('click',function () {
+                //隐藏更多操作
+                $('#more').removeClass('open').data('state', 'close');
+                $('.more-modal').hide();
+                $('.share-box').show();
+            });
+            $('.share-box').on('click',function () {
+                $(this).hide();
+            });
+            $('.share-tips').on('click',function () {
+                return false;// 阻止事件冒泡
+            })
+
+            //map
+            AMapUI.loadUI(['overlay/SimpleMarker'], function (SimpleMarker) {
+                initMap(SimpleMarker)
+            })
+            function initMap(SimpleMarker) {
+                var map = new AMap.Map('allmap', {
+                    resizeEnable: true,
+                    zoom: 16,
+                    center: [113.939428, 22.528159]
+                });
+
+                //获取司机坐标规划驾车行程
+                var driving = new AMap.Driving({
+                    policy: AMap.DrivingPolicy.LEAST_TIME,
+                });
+
+                // 根据起终点经纬度规划驾车导航路线
+                var currentPosition = new AMap.LngLat(113.870999, 22.572401)
+                planRoute(currentPosition, new AMap.LngLat(113.937839, 22.522394));
+                /**
+                 * origin   当前位置
+                 * destination   司机位置
+                */
+                function planRoute(origin, destination) {
+                    driving.search(origin, destination, function (status, result) {
+                        if (status == 'complete') {
+                            //规划成功 - 标注点
+                            console.log(result)
+                            setLabel(result.routes[0].distance, result.routes[0].time)
+
+                            //设置起点为中心点
+                            map.setCenter(origin)
+                        } else if (status == 'no_data') {
+                            //返回0结果
+                        } else if (status == 'error') {
+                            //规划错误
+                            console.log(status)
+                            console.log(result)
+                        }
+                    });
+                }
+                
+
+                //创建司机定位实例
+                var driverMark = new SimpleMarker({
+                    //背景图标样式
+                    iconStyle: {
+                        src: '../../dist/images/hailing/mark.png',
+                        style: {
+                            width: '0.56rem',
+                            height: '0.78rem'
+                        }
+                    },
+                    //图标前景文字
+                    iconLabel: {
+                        innerHTML: '<div class="mark-label">师傅距您 &nbsp; 2.3公里 &nbsp; 预计2分钟到达</div>'
+                    },
+                    map: map,
+                    position: currentPosition
+                });
+
+                //websocket
+                var wss = new communicate({
+                    url: 'ws://10.1.21.241:8080',       //不用localhost，因为手机会有兼容问题，连接不是一直重连
+                    errorCallback: function (event) {
+                        if(event == '正在重连') {
+                            console.warn(event)
+                        } else {
+                            console.error(event)
+                        }
+                    },
+                    openCallback: function(event) {
+                        console.log(event)
+                        //获取司机距离和到达时间
+                        this.send({
+                            distance: true,
+                            time: true
+                        })
+                    },
+                    messageCallback: function(event) {
+                        console.log(event)
+                        var data = event.data
+
+                        //获取司机距离和到达时间
+                        if(data.hasOwnProperty('distance') && data.hasOwnProperty('time')) {
+                            setLabel(data.distance, data.time)
+                        }
+
+                        //司机取消订单
+                        if (data.hasOwnProperty('driver-cancel')) {
+                            $.confirm('由于' + data['driver-cancel'] + '原因，<br />张师傅已取消本次订单', '订单已取消', ['返回首页', '重新叫车'], function() {
+                                console.log('重新叫车')
+                            }, function () {
+                                console.log('返回首页')
+                            })
+                        }
+                    }
+                })
+                wss.init();
+
+                //模拟司机取消订单
+                // setTimeout(function() {
+                //     wss.send({
+                //         'driver-cancel': true
+                //     })
+                // }, 3000);
+
+                //5秒刷新位置，预计到达时间
+                function setLabel(distance, time) {
+                    var d = distance + '公里',
+                        t = time + '分钟';
+
+                    driverMark.setIconLabel({
+                        innerHTML: '<div class="mark-label">师傅距您 &nbsp; ' + d + ' &nbsp; 预计' + t + '到达</div>'
+                    })
+                }
+            }
+
+            //拨打电话
+            $('.tel').on('click.tel', function() {
+                var tel = $(this).data('tel')
+
+                $.alert('您的电话号码已做加密处理，<br />联系司机师傅，请您通过页面按键拨打。', '温馨提示', ['知道了'], function() {
+                    window.location.href = 'tel:' + tel
+                })
+            });
+
+            //点击更多
+            $('#more').on('click', function() {
+                var self = $(this),
+                    $modal = $('.more-modal');
+                
+                if(!self.data('state') || self.data('state') == 'close') {
+                    self.addClass('open').data('state', 'open');
+                    $modal.show();
+                } else {
+                    self.removeClass('open').data('state', 'close');
+                    $modal.hide();
+                }
+            });
+
+            //更多操作栏点击 - 增加active
+            $('.more-modal li').on('click', function () {
+                $(this).addClass('active').siblings().removeClass('active');
+            });
+
+            //取消订单
+            $('.cancel-order').on('click', function () {
+                //隐藏更多操作
+                $('#more').removeClass('open').data('state', 'close');
+                $('.more-modal').hide();
+
+                //弹窗提示
+                $.confirm('师傅已在路上，你确定取消本次订单吗？<br />这将影响您的信用等级', '温馨提示', ['点错了', '确定'], function () {
+                    console.log('确定')
+
+                    //取消原因
+                    $.dialog({
+                        title: '取消原因',
+                        html: '<form id="cancel-reason">' +
+                            '<label><input type="radio" name="reason" checked /> 我的行程改变了，暂时不需要用车</label>' +
+                            '<label><input type="radio" name="reason" /> 我需要等的时间太长了</label>' +
+                            '<label><input type="radio" name="reason" /> 由于司机原因，无法提供服务</label>' +
+                            '<label class="other-reason"><input type="radio" name="reason" /> 其他原因</label>' +
+                            '<div class="frm-item"><textarea maxlength="200" placeholder="请描述（内容匿名，可放心填写）"></textarea><span class="amount">0/200</span></div>' +
+                            '</form>',
+                        buttons: [{
+                            text: '确定',
+                            onClick: function() {
+                                console.log('确定')
+                            }
+                        }]
+                    });
+
+                    //reset dialog
+                    $('.sui-dialog').addClass('reset-dialog');
+
+                    //其他原因
+                    $('#cancel-reason label').on('click', function () {
+                        if($(this).hasClass('other-reason')) {
+                            $('.frm-item').show();
+                        } else {
+                            $('.frm-item').hide();
+                        }
+                    });
+
+                    //计算
+                    $('.frm-item textarea').on('input', amountHandler);
+                    $('.frm-item textarea').on('change', amountHandler);
+
+                    function amountHandler() {
+                        var self = $(this);
+                        var len = self.val().length;
+
+                        if (len > 200) {
+                            $.trim(self.val()).length = 200;
+                        } else {
+                            self.next().text(len + '/200')
+                        }
+
+                        // 表情转换为字符串
+                        self.val(utf16toEntities(self.val()));
+                    }
+                }, function () {
+                    console.log('点错了')
+                });
+            });
+        });
+
+    </script>
+</body>
+</html>

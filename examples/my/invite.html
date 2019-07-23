@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>邀请有礼</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <link href="../../dist/stylesheets/simpleui.min.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/base/vectors.2.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/my/invite.css" rel="stylesheet" type="text/css">
+    <link href="../../dist/stylesheets/my/artborard.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+	<div class="invite-infobar">
+	    <div class="image"></div>
+	    <div class="tip">邀请好友注册，当TA注册成功时</div>
+	    <div class="award">您将获得 <span>5元</span> 优惠券</div>
+	</div>
+   
+    <div class="qrcode">
+        <img src="http://www.olakeji.com/images/qrcode.png" align="middle" >
+    </div>
+
+    <div class="qrcode-tips">邀好友扫一扫注册领优惠券</div>
+
+    <div class="invite-foot">
+        <button class="btn primary">邀请好友</button>
+        <div class="links">
+            <span id="sp1">已成功推荐 0 人</span> |
+            <span id="sp2">累计获得优惠券 0 张</span>
+        </div>
+    </div>
+
+	<!--分享-->
+	<div class="share" style="display:none">
+	    <div class="arrow"></div>
+	    <div class="tip">
+            点击右上角“发送给好友/分享到朋友圈”<br/>即可邀请朋友加入
+        </div>
+	</div>
+
+    <div id="fade" class="black_overlay" hidden></div>
+    <div id="myDiv" class="pop-invite" hidden>
+        <div class="invite-page">
+            <div class="invite">
+                <div class="title">
+                    <div class="title-name">中交出行</div>
+                    <div class="title-explain">安全放心的出行平台</div>
+                </div>
+                <div class="head">
+                    <!--头像-->
+                    <div class="head-img"></div>
+                </div>
+                <div class="user-name">XXXX</div>
+                <!--优惠券价值-->
+                <div class="invite-explain">
+                    <p>我一直在用{中交出行}，强烈推荐你使
+                        用。再送你20元优惠券。</p>
+                </div>
+                <div class="qrcode-img">
+                    <div class="qrcode-img-ex">
+
+                    </div>
+                </div>
+                <div class="qrcode-explain">
+                    <p>长按扫码，还有优惠券可以领</p>
+                </div>
+                <div class="use-condition">
+                    <p>该二维码7天内（12月31日前）有效</p>
+                </div>
+            </div>
+        </div>
+        <div class="invite-tip">
+            <div class="invite-tip-text">
+                <p>长按上方图片保存到手机，即可分享</p>
+            </div>
+            <div class="invite-tip-close"></div>
+        </div>
+    </div>
+
+	<script src="../../dist/javascripts/zepto.min.js"></script>
+	<script src="../../dist/javascripts/simpleui.min.js"></script>
+    <script src="../../dist/javascripts/my/invite.min.js"></script>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</body>
+</html>
